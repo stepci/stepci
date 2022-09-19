@@ -1,0 +1,32 @@
+version: "1.0"
+name: Captures
+env:
+  host: jsonplaceholder.typicode.com
+  resource: posts
+steps:
+  - name: Post the post
+    url: https://{{env.host}}/{{env.resource}}
+    method: POST
+    headers:
+      Content-Type: application/json
+    check:
+      status: 201
+    body: |
+      {
+        "title": "Hello Step CI!",
+        "body": "This is the body",
+        "userId": 1
+      }
+    captures:
+      - name: id
+        jsonpath: $.id
+  - name: Get post by id
+    url: https://{{env.host}}/{{env.resource}}/{{captures.id}}
+    method: GET
+    headers:
+      Content-Type: application/json
+    check:
+      status: 404
+      headers:
+        Content-Type: application/json; charset=utf-8
+      body: "{}"

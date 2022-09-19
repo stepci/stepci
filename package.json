@@ -1,0 +1,34 @@
+{
+  "name": "stepci",
+  "version": "1.0.0",
+  "description": "API Testing and Monitoring made simple",
+  "main": "index.js",
+  "bin": {
+    "stepci": "bin/index.js"
+  },
+  "dependencies": {
+    "@stepci/runner": "^0.1.9",
+    "chalk": "^5.0.1",
+    "exit": "^0.1.2",
+    "yaml": "^2.1.1",
+    "yargs": "^17.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stepci/cli.git"
+  },
+  "keywords": [
+    "http",
+    "testing",
+    "api"
+  ],
+  "author": "Mish Ushakov <mish@stepci.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/stepci/cli/issues"
+  },
+  "homepage": "https://github.com/stepci/cli#readme"
+}

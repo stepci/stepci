@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
@@ -30,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/stepci/cli/issues"
   },
-  "homepage": "https://github.com/stepci/cli#readme"
+  "homepage": "https://github.com/stepci/cli#readme",
+  "type": "module"
 }

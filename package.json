@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stepci/cli.git"
+    "url": "git+https://github.com/stepci/stepci.git"
   },
   "keywords": [
     "http",
@@ -28,8 +28,8 @@
   "author": "Mish Ushakov <mish@stepci.com>",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/stepci/cli/issues"
+    "url": "https://github.com/stepci/stepci/issues"
   },
-  "homepage": "https://github.com/stepci/cli#readme",
+  "homepage": "https://github.com/stepci/stepci#readme",
   "type": "module"
 }

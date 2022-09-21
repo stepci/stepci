@@ -1,4 +1,4 @@
-![Step CI Banner](https://i.imgur.com/HsL26Qj.png)
+![Step CI Banner](https://i.imgur.com/DiM3Gqg.png)
 
 # Welcome
 

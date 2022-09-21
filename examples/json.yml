@@ -1,0 +1,9 @@
+version: "1.0"
+name: Validating JSON
+steps:
+  - name: GET request
+    url: https://jsonplaceholder.typicode.com/posts/1
+    method: GET
+    check:
+      jsonpath:
+        $.id: 1

@@ -1,0 +1,9 @@
+version: "1.0"
+name: Performance
+steps:
+  - name: GET Request
+    url: https://example.com
+    method: GET
+    check:
+      duration:
+        - lte: 500

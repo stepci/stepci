@@ -1,0 +1,10 @@
+version: "1.0"
+name: Form Submission
+steps:
+  - name: Subscribe to newsletter
+    url: http://newsletter.com
+    method: POST
+    form:
+      email: hello@stepci.com
+    check:
+      status: 200

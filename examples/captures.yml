@@ -9,14 +9,12 @@ steps:
     method: POST
     headers:
       Content-Type: application/json
+    json:
+      title: Hello Step CI!
+      body: This is the body
+      userId: 1
     check:
       status: 201
-    body: |
-      {
-        "title": "Hello Step CI!",
-        "body": "This is the body",
-        "userId": 1
-      }
     captures:
       - name: id
         jsonpath: $.id

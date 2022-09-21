@@ -1,0 +1,22 @@
+version: "1.0"
+name: SOAP API
+steps:
+  - name: POST request
+    url: https://www.dataaccess.com/webservicesserver/NumberConversion.wso
+    method: POST
+    headers:
+      Content-Type: text/xml
+      SOAPAction: "#POST"
+    body: |
+      <?xml version="1.0" encoding="utf-8"?>
+      <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+        <soap:Body>
+          <NumberToWords xmlns="http://www.dataaccess.com/webservicesserver/">
+            <ubiNum>500</ubiNum>
+          </NumberToWords>
+        </soap:Body>
+      </soap:Envelope>
+    check:
+      status: 200
+      selector:
+        m\:numbertowordsresult: "five hundred "

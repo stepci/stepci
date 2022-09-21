@@ -1,0 +1,11 @@
+version: "1.0"
+name: Using Matchers
+steps:
+  - name: GET request
+    url: https://jsonplaceholder.typicode.com/posts/1
+    method: GET
+    check:
+      jsonpath:
+        $.id:
+          - eq: 1
+          - isNumber: true

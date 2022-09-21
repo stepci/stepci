@@ -1,0 +1,24 @@
+version: "1.0"
+name: GraphQL
+steps:
+  - name: Request
+    url: https://echo.hoppscotch.io/graphql
+    method: POST
+    headers:
+      Content-Type: application/json
+    graphql:
+      query: |
+        query Request {
+          method
+          url
+          headers {
+            key
+            value
+          }
+        }
+      variables:
+        id: 1
+    check:
+      status: 200
+      jsonpath:
+        $.data.method: POST

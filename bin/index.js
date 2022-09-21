@@ -17,11 +17,12 @@ const labels = {
   selector: "Selector"
 }
 
+// Render output
 function render (result, path) {
-  console.log((result.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(result.workflow.name) + ' (' + chalk.gray(path) + ')' + ' in ' + result.duration / 1000 + 's\n')
+  console.log((result.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(result.workflow.name) + ' (' + chalk.gray(path) + ')' + ' in ' + result.duration / 1000 + 's')
 
   result.result.forEach((step, i) => {
-    console.log(chalk.bgWhite.bold.black(` ${step.name} `) + (step.passed ? chalk.bgGreenBright.bold(' PASSED ') : chalk.bgRed.bold(' FAILED ')) + ' in ' + step.duration / 1000 + 's')
+    console.log('\n' + chalk.bgWhite.bold.black(` ${step.name} `) + (step.passed ? chalk.bgGreenBright.bold(' PASSED ') : chalk.bgRed.bold(' FAILED ')) + ' in ' + step.duration / 1000 + 's')
 
     if (step.failed || step.skipped) {
       return console.log('\n' + chalk.yellow('⚠︎ ') + (step.failReason || 'Step was skipped') + '\n')
@@ -45,22 +46,29 @@ function render (result, path) {
           : console.log(chalk.red('✕ ') + chalk.bold(step.checks[check].given) + ' (expected ' + step.checks[check].expected + ')')
       }
     }
-
-    console.log('\n')
   })
 }
 
-async function runWorkflow (path) {
-  if (fs.existsSync(path)) {
+// Run workflow files
+async function runWorkflows (path) {
+  if (fs.lstatSync(path).isDirectory()) {
+    const files = fs.readdirSync(path).filter(file => file.includes('yml') || file.includes('yaml'))
+    files.forEach(async (file, i) => {
+      const workflowFile = fs.readFileSync(path + file).toString()
+      const config = yaml.parse(workflowFile)
+      const result = await run(config)
+
+      render(result, path + file)
+      if (i !== files.length - 1) console.log('-'.repeat(process.stdout.columns))
+      if (!result.passed) exit(5)
+    })
+  } else {
     const workflowFile = fs.readFileSync(path).toString()
     const config = yaml.parse(workflowFile)
     const result = await run(config)
 
     render(result, path)
     if (!result.passed) exit(5)
-  } else {
-    console.error('Workflow File not found')
-    exit(2)
   }
 }
 
@@ -68,7 +76,7 @@ yargs(hideBin(process.argv))
   .command('run [workflow]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
-        describe: 'workflow file'
+        describe: 'workflow path (file or a directory)'
       })
-  }, (argv) => runWorkflow(argv.workflow))
+  }, (argv) => runWorkflows(argv.workflow))
   .parse()

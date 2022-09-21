@@ -1,0 +1,22 @@
+name: Docker build and publish
+on:
+  push:
+    branches:
+    - main
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Setup env
+      run: |
+        echo CONTAINER_IMAGE=ghcr.io/${GITHUB_REPOSITORY,,}:${GITHUB_SHA} >> $GITHUB_ENV
+        echo CONTAINER_IMAGE_LATEST=ghcr.io/${GITHUB_REPOSITORY,,}:latest >> $GITHUB_ENV
+    - name: Build
+      run: docker build -t $CONTAINER_IMAGE -t $CONTAINER_IMAGE_LATEST .
+    - name: Login
+      run: docker login -u $GITHUB_ACTOR -p ${{secrets.GITHUB_TOKEN}} ghcr.io
+    - name: Publish
+      run: |
+        docker push $CONTAINER_IMAGE
+        docker push $CONTAINER_IMAGE_LATEST

@@ -24,7 +24,7 @@ function render (result, path) {
     console.log(chalk.bgWhite.bold.black(` ${step.name} `) + (step.passed ? chalk.bgGreenBright.bold(' PASSED ') : chalk.bgRed.bold(' FAILED ')) + ' in ' + step.duration / 1000 + 's')
 
     if (step.failed || step.skipped) {
-      return console.log('\n' + chalk.yellow('⚠︎ ') + step.failReason + '\n')
+      return console.log('\n' + chalk.yellow('⚠︎ ') + (step.failReason || 'Step was skipped') + '\n')
     }
 
     console.log(chalk.bold('\nRequest\n'))

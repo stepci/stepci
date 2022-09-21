@@ -1,7 +1,9 @@
 name: Step CI Action
+author: Step CI
 description: Run Step CI workflows
-icon: check-circle
-color: white
+branding:
+  icon: check-circle
+  color: white
 inputs:
   path:
     description: 'Workflow Path'

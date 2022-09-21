@@ -8,7 +8,7 @@ inputs:
   path:
     description: 'Workflow Path'
     required: true
-    default: '.'
+    default: '.stepci/workflows/'
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -1,0 +1,12 @@
+name: 'Step CI Runner'
+description: 'Run workflows'
+inputs:
+  path:
+    description: 'Workflow Path'
+    required: true
+    default: '.'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}

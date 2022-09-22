@@ -1,22 +1,7 @@
-![Step CI Banner](https://i.imgur.com/DiM3Gqg.png)
 
-# Welcome
+# Get started
 
-Step CI is an open-source tool, which makes testing and monitoring APIs simple
-
-Quick overview:
-
-- Language-agnostic. Flexible, declarative configuration language
-- REST, GraphQL, XML
-- Integrated. Works seamlessly with Node, Docker and GitHub Actions
-
-**[Try Demo on our website](https://stepci.com)**
-
-**[Join our community on Matrix](https://matrix.to/#/#stepci:matrix.org)**
-
-## Get started
-
-### Using Node
+## Using Node
 
 Install the CLI
 
@@ -45,7 +30,7 @@ Run the test
 stepci run tests/
 ```
 
-### Using Docker
+## Using Docker
 
 Create example test (`tests/status.yml`)
 
@@ -68,7 +53,7 @@ Run the Docker image
 docker run -v "$(pwd)"/tests:/tests ghcr.io/stepci/stepci tests/
 ```
 
-### Using GitHub Action
+## Using GitHub Action
 
 Create example test (`tests/status.yml`)
 
@@ -100,15 +85,3 @@ jobs:
         with:
           path: "tests/"
 ```
-
-## Documentation
-
-Documentation is accessible under [`docs/`](docs/)
-
-## Example tests
-
-You can find a collection of Step CI example tests under [`examples/`](examples/)
-
-## License
-
-Step CI is distributed under Mozilla Public License terms

@@ -9,7 +9,7 @@ steps:
     captures:
       - name: title
         selector: title
-  - if: title != "Example Domain"
+  - if: captures.title != "Example Domain"
     name: GET request
     url: https://example.com
     method: GET

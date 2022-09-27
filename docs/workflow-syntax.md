@@ -290,7 +290,7 @@ steps:
     selector: title
 - name: GET request
   url: https://example.com
-  if: title == "Example Domain"
+  if: captures.title == "Example Domain"
   method: GET
   check:
     status: 200

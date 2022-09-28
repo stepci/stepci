@@ -112,7 +112,7 @@ import { runFromFile } from '@stepci/runner'
 
 test('Check Response Status', async t => {
   const result = await runFromFile(new URL('stepci/status.yml', import.meta.url))
-	t.is(result.passed, true)
+  t.is(result.passed, true)
 })
 ```
 
@@ -140,6 +140,6 @@ test('Check Response Status', async t => {
   }
 
   const result = await run(workflow)
-	t.is(result.passed, true)
+  t.is(result.passed, true)
 })
 ```

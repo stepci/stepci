@@ -1,6 +1,6 @@
-# Using with Mocha, Ava, Jest
+# Using in test tools
 
-Step CI runner can be integrated directly into your test tools
+Step CI runner can be integrated directly with JavaScript test tools
 
 ## Preparation
 

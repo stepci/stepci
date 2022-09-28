@@ -1,0 +1,51 @@
+name: Feedback
+description: Leave your feedback
+title: "Feedback"
+labels: ["feedback"]
+body:
+  - type: dropdown
+    id: sad
+    attributes:
+      label: Would you find it a pity or be sad if Step CI did not exist?
+      description: "1: not sad at all - 10: very sad"
+      multiple: false
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+  - type: dropdown
+    id: recommend
+    attributes:
+      label: How likely would you recommend Step CI to a colleague?
+      description: "1: not likely at all - 10: very likely"
+      multiple: false
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
+        - 10
+  - type: textarea
+    id: dislike
+    attributes:
+      label: What do you dislike about Step CI?
+  - type: textarea
+    id: ideas
+    attributes:
+      label: Do you have any ideas that could improve Step CI?
+  - type: textarea
+    id: else
+    attributes:
+      label: Anything else you want to tell us?

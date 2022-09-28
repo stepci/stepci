@@ -1,0 +1,10 @@
+version: "1.0"
+name: File Uploads
+steps:
+  - name: Upload
+    url: https://httpbin.org/post
+    method: POST
+    files:
+      readme: README.md
+    check:
+      status: 200

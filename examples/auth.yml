@@ -1,0 +1,11 @@
+version: "1.0"
+name: Basic Auth
+steps:
+  - name: Basic Auth
+    url: http://httpbin.org/basic-auth/hello/world
+    method: GET
+    auth:
+      user: hello
+      password: world
+    check:
+      status: 200

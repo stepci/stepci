@@ -111,6 +111,43 @@ steps:
       }
 ```
 
+### `steps.<step>.auth`
+
+Optional. Basic auth
+
+**Example: Auth**
+
+```yaml
+steps:
+  - name: Basic Auth
+    url: http://httpbin.org/basic-auth/hello/world
+    method: GET
+    auth:
+      user: hello
+      password: world
+    check:
+      status: 200
+```
+
+### `steps.<step>.cookies`
+
+Optional. Set Cookies. Once set, the cookies will be sent in consequent requests
+
+**Example: Setting Cookies**
+
+```yaml
+steps:
+  - name: Cookies
+    url: https://httpbin.org/cookies
+    method: GET
+    cookies:
+      wows: world
+    check:
+      status: 200
+      cookies:
+        wows: world
+```
+
 ### `steps.<step>.json`
 
 Optional. Request JSON
@@ -143,6 +180,23 @@ steps:
     method: POST
     form:
       email: hello@stepci.com
+```
+
+### `steps.<step>.files`
+
+Optional. File submission
+
+**Example: Submitting Files**
+
+```yaml
+steps:
+  - name: Upload
+    url: https://httpbin.org/post
+    method: POST
+    files:
+      readme: README.md
+    check:
+      status: 200
 ```
 
 ### `steps.<step>.graphql`
@@ -207,10 +261,11 @@ Following capture types are available to you
 - `xpath` - XPath
 - `header` - Response Header
 - `selector` - Cheerio (HTML) selector
+- `cookie` - Cookie
 
 ### `steps.<steps>.check`
 
-Optional. Provide checks to validate responses
+Required. Provide checks to validate responses
 
 Available checks:
 
@@ -222,6 +277,8 @@ Available checks:
 - `jsonpath` - JSONPath
 - `xpath` - XPath
 - `selector` - Cheerio (HTML) selector
+- `cookies` - Cookies
+- `sha256` - SHA-256 Hash
 
 **Example: Checking status code**
 
@@ -295,6 +352,14 @@ steps:
   check:
     status: 200
 ```
+
+### `steps.<step>.acceptCookies`
+
+Optional. Accept cookies from `Set-Cookie` response header. Enabled by default
+
+### `steps.<step>.followRedirects`
+
+Optional. Follow redirects. Enabled by default
 
 ## Using Matchers
 

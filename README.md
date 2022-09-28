@@ -12,7 +12,7 @@ Quick overview:
 
 **[Try Demo on our website](https://stepci.com)**
 
-**[Join our community on Matrix](https://matrix.to/#/#stepci:matrix.org)**
+**[Join us on GitHub Discussions](https://github.com/stepci/stepci/discussions)**
 
 ## Get started
 

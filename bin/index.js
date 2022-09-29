@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { run } from '@stepci/runner'
+import { runFromFile } from '@stepci/runner'
 import fs from 'fs'
 import exit from 'exit'
-import yaml from 'yaml'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
 
@@ -12,6 +11,9 @@ const labels = {
   status: "Status",
   duration: "Duration",
   jsonpath: "JSONPath",
+  json: "JSON",
+  jsonschema: "JSONSchema",
+  jsonexample: "JSON example",
   xpath: "XPath",
   headers: "Headers",
   body: "Body",
@@ -55,20 +57,13 @@ function renderStep (step) {
   }
 }
 
-// Run workflow files
-function runWorkflow (path) {
-  const workflowFile = fs.readFileSync(path).toString()
-  const config = yaml.parse(workflowFile)
-  run({ ...config, path }, { ee })
-}
-
 // Load workflow files
 function loadWorkflows (path) {
   if (fs.lstatSync(path).isDirectory()) {
     const files = fs.readdirSync(path).filter(file => file.includes('yml') || file.includes('yaml'))
-    files.forEach(file => runWorkflow(path + file))
+    files.forEach(file => runFromFile(path + file, { ee }))
   } else {
-    runWorkflow(path)
+    runFromFile(path, { ee })
   }
 }
 

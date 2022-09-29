@@ -1,0 +1,22 @@
+version: "1.0"
+name: JSON Schema
+steps:
+  - name: GET request
+    url: https://jsonplaceholder.typicode.com/posts/1
+    method: GET
+    check:
+      jsonschema:
+        type: object
+        properties:
+          userId:
+            type: integer
+            required: true
+          id:
+            type: integer
+            required: true
+          title:
+            type: string
+            required: true
+          body:
+            type: string
+            required: true

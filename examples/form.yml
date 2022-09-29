@@ -1,10 +1,12 @@
 version: "1.0"
 name: Form Submission
 steps:
-  - name: Subscribe to newsletter
-    url: http://newsletter.com
+  - name: Submit a form
+    url: https://httpbin.org/post
     method: POST
-    form:
+    formData:
       email: hello@stepci.com
+      readme:
+        file: README.md
     check:
       status: 200

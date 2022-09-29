@@ -111,6 +111,22 @@ steps:
       }
 ```
 
+### `steps.<step>.params`
+
+Optional. Query Params
+
+**Example: Query Params**
+
+```yaml
+steps:
+  - name: Query Params
+    url: http://httpbin.org
+    method: GET
+    params:
+      hello: world
+      world: hello
+```
+
 ### `steps.<step>.auth`
 
 Optional. Basic auth
@@ -143,7 +159,6 @@ steps:
     cookies:
       wows: world
     check:
-      status: 200
       cookies:
         wows: world
 ```
@@ -180,23 +195,6 @@ steps:
     method: POST
     form:
       email: hello@stepci.com
-```
-
-### `steps.<step>.files`
-
-Optional. File submission
-
-**Example: Submitting Files**
-
-```yaml
-steps:
-  - name: Upload
-    url: https://httpbin.org/post
-    method: POST
-    files:
-      readme: README.md
-    check:
-      status: 200
 ```
 
 ### `steps.<step>.graphql`
@@ -265,15 +263,20 @@ Following capture types are available to you
 
 ### `steps.<steps>.check`
 
-Required. Provide checks to validate responses
+Optional. Provide checks to validate responses
 
 Available checks:
 
+- `ok` - Response was OK
 - `status` - Status code
 - `statusText` - Status text
+- `redirected` - Response was redirected
 - `headers` - Response headers
 - `body` - Response body
 - `duration` - Request duration
+- `json` - Validate JSON
+- `jsonschema` - Validate JSONSchema
+- `jsonexample` - Validate JSON example
 - `jsonpath` - JSONPath
 - `xpath` - XPath
 - `selector` - Cheerio (HTML) selector

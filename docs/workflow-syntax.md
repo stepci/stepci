@@ -40,6 +40,14 @@ steps:
     method: GET
 ```
 
+### `options`
+
+Optional. Workflow options
+
+### `options.continueOnFail`
+
+Optional. Continue workflow after step failed
+
 ### `steps`
 
 Required. List of steps to be executed by runner
@@ -253,7 +261,7 @@ steps:
       Content-Type: application/json
 ```
 
-Following capture types are available to you
+Following capture types are available:
 
 - `jsonpath` - JSONPath
 - `xpath` - XPath
@@ -267,13 +275,10 @@ Optional. Provide checks to validate responses
 
 Available checks:
 
-- `ok` - Response was OK
 - `status` - Status code
 - `statusText` - Status text
-- `redirected` - Response was redirected
 - `headers` - Response headers
 - `body` - Response body
-- `duration` - Request duration
 - `json` - Validate JSON
 - `jsonschema` - Validate JSONSchema
 - `jsonexample` - Validate JSON example
@@ -282,6 +287,7 @@ Available checks:
 - `selector` - Cheerio (HTML) selector
 - `cookies` - Cookies
 - `sha256` - SHA-256 Hash
+- `performance` - Performance testing
 
 **Example: Checking status code**
 
@@ -356,10 +362,6 @@ steps:
     status: 200
 ```
 
-### `steps.<step>.acceptCookies`
-
-Optional. Accept cookies from `Set-Cookie` response header. Enabled by default
-
 ### `steps.<step>.followRedirects`
 
 Optional. Follow redirects. Enabled by default
@@ -368,7 +370,7 @@ Optional. Follow redirects. Enabled by default
 
 Matchers are useful when you want to check whether values match patterns
 
-**Example: Response duration to be lower or equal 500ms**
+**Example: Time to first byte to be lower or equal 500ms**
 
 ```yaml
 steps:
@@ -376,11 +378,12 @@ steps:
     url: https://example.com
     method: GET
     check:
-      duration:
-        - lte: 500
+      performance:
+        firstByte:
+          - lte: 500
 ```
 
-The matchers can be chained together
+Matchers can be chained together
 
 **Example: Chaining matchers**
 
@@ -390,9 +393,10 @@ steps:
     url: https://example.com
     method: GET
     check:
-      duration:
-        - lte: 500
-        - gte: 300
+      performance:
+        firstByte:
+          - lte: 500
+          - gte: 100
 ```
 
 Available Matchers:

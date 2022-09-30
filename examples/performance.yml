@@ -5,5 +5,8 @@ steps:
     url: https://example.com
     method: GET
     check:
-      duration:
-        - lte: 500
+      performance:
+        firstByte:
+          - lte: 200
+        total:
+          - lte: 500

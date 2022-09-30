@@ -277,6 +277,8 @@ Available checks:
 
 - `status` - Status code
 - `statusText` - Status text
+- `redirected` - Redirection status
+- `redirects` - Redirects
 - `headers` - Response headers
 - `body` - Response body
 - `json` - Validate JSON
@@ -365,6 +367,10 @@ steps:
 ### `steps.<step>.followRedirects`
 
 Optional. Follow redirects. Enabled by default
+
+### `steps.<step>.timeout`
+
+Optional. Request Timeout
 
 ## Using Matchers
 

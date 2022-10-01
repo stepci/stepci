@@ -202,16 +202,69 @@ Optional. Capture response values into named variables
 captures:
   id:
     jsonpath: $.id
+  username:
+    cookie: user
 ```
 
-Following capture types are available:
+### `steps.<step>.captures.<capture>.jsonpath`
 
-- `jsonpath` - JSONPath
-- `xpath` - XPath
-- `header` - Response Header
-- `selector` - Cheerio (HTML) selector
-- `cookie` - Cookie
-- `regex` - Regex
+Optional. JSONPath
+
+```yaml
+captures:
+  id:
+    jsonpath: $.id
+```
+
+### `steps.<step>.captures.<capture>.xpath`
+
+Optional. XPath
+
+```yaml
+captures:
+  id:
+    xpath: //ID
+```
+
+### `steps.<step>.captures.<capture>.header`
+
+Optional. Response Header
+
+```yaml
+captures:
+  type:
+    header: Content-Type
+```
+
+### `steps.<step>.captures.<capture>.selector`
+
+Optional. HTML Selector
+
+```yaml
+captures:
+  title:
+    selector: h1
+```
+
+### `steps.<step>.captures.<capture>.cookie`
+
+Optional. Cookie
+
+```yaml
+captures:
+  user:
+    cookie: user
+```
+
+### `steps.<step>.captures.<capture>.regex`
+
+Optional. Match Regex
+
+```yaml
+captures:
+  title:
+    regex: <title>(.*?)<\/title>
+```
 
 ### `steps.<step>.check`
 

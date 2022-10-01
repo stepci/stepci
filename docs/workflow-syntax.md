@@ -18,8 +18,6 @@ Required. Workflow name
 
 Optional. Environment Variables
 
-**Example: Defining environment variables**
-
 ```yaml
 env:
   host: example.com
@@ -91,195 +89,119 @@ Required. Request method
 
 Optional. Request headers
 
-**Example: Setting Request Headers**
-
 ```yaml
-steps:
-  - name: Request
-    url: https://echo.hoppscotch.io/graphql
-    method: POST
-    headers:
-      Content-Type: application/json
+headers:
+  Content-Type: application/json
 ```
 
 ### `steps.<step>.body`
 
 Optional. Request Body
 
-**Example: Setting Request Body**
-
 ```yaml
-steps:
-  - name: Post the post
-    url: https://jsonplaceholder.typicode.com/posts
-    method: POST
-    headers:
-      Content-Type: application/json
-    body: |
-      {
-        "title": "Hello Step CI!",
-        "body": "This is the body",
-        "userId": 1
-      }
+body: |
+  {
+    "title": "Hello Step CI!",
+    "body": "This is the body",
+    "userId": 1
+  }
 ```
 
 ### `steps.<step>.params`
 
 Optional. Query Params
 
-**Example: Query Params**
-
 ```yaml
-steps:
-  - name: Query Params
-    url: http://httpbin.org
-    method: GET
-    params:
-      hello: world
-      world: hello
+params:
+  hello: world
+  world: hello
 ```
 
 ### `steps.<step>.auth`
 
 Optional. Basic auth
 
-**Example: Auth**
-
 ```yaml
-steps:
-  - name: Basic Auth
-    url: http://httpbin.org/basic-auth/hello/world
-    method: GET
-    auth:
-      user: hello
-      password: world
-    check:
-      status: 200
+auth:
+  user: hello
+  password: world
 ```
 
 ### `steps.<step>.cookies`
 
 Optional. Set Cookies. Once set, the cookies will be sent in consequent requests
 
-**Example: Setting Cookies**
-
 ```yaml
-steps:
-  - name: Cookies
-    url: https://httpbin.org/cookies
-    method: GET
-    cookies:
-      wows: world
-    check:
-      cookies:
-        wows: world
+cookies:
+  wows: world
 ```
 
 ### `steps.<step>.json`
 
 Optional. Request JSON
 
-**Example: Setting Request JSON**
-
 ```yaml
-steps:
-  - name: Post the post
-    url: https://jsonplaceholder.typicode.com/posts
-    method: POST
-    headers:
-      Content-Type: application/json
-    json:
-      title: Hello Step CI!
-      body: This is the body
-      userId: 1
+json:
+  title: Hello Step CI!
+  body: This is the body
+  userId: 1
 ```
 
 ### `steps.<step>.form`
 
 Optional. Form submission
 
-**Example: Submitting Form**
-
 ```yaml
-steps:
-  - name: Subscribe to newsletter
-    url: http://newsletter.com
-    method: POST
-    form:
-      email: hello@stepci.com
+form:
+  email: hello@stepci.com
 ```
 
 ### `steps.<step>.formData`
 
 Optional. Multipart Form submission
 
-**Example: Submitting Multipart Form**
-
 ```yaml
-steps:
-  - name: Submit a form
-    url: https://httpbin.org/post
-    method: POST
-    formData:
-      email: hello@stepci.com
-      readme:
-        file: README.md
+formData:
+  email: hello@stepci.com
+  readme:
+    file: README.md
 ```
 
 ### `steps.<step>.graphql`
 
 Optional. GraphQL Data
 
-**Example: Sending GraphQL request**
+```yaml
+graphql:
+  query: |
+    query Request {
+      method
+      url
+      headers {
+        key
+        value
+      }
+    }
+  variables:
+    id: 1
+```
+
+### `steps.<step>.if`
+
+Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/joewalnes/filtrex#expressions)
 
 ```yaml
-steps:
-  - name: Request
-    url: https://echo.hoppscotch.io/graphql
-    method: POST
-    headers:
-      Content-Type: application/json
-    graphql:
-      query: |
-        query Request {
-          method
-          url
-          headers {
-            key
-            value
-          }
-        }
-      variables:
-        id: 1
+if: captures.title == "Example Domain"
 ```
 
 ### `steps.<step>.captures`
 
 Optional. Capture response values into named variables
 
-**Example: Submitting post and using captured id**
-
 ```yaml
-steps:
-  - name: Post the post
-    url: https://jsonplaceholder.typicode.com/posts
-    method: POST
-    headers:
-      Content-Type: application/json
-    body: |
-      {
-        "title": "Hello Step CI!",
-        "body": "This is the body",
-        "userId": 1
-      }
-    captures:
-      id:
-        jsonpath: $.id
-  - name: Get post by id
-    url: https://jsonplaceholder.typicode.com/posts/{{captures.id}}
-    method: GET
-    headers:
-      Content-Type: application/json
+captures:
+  id:
+    jsonpath: $.id
 ```
 
 Following capture types are available:
@@ -291,102 +213,302 @@ Following capture types are available:
 - `cookie` - Cookie
 - `regex` - Regex
 
-### `steps.<steps>.check`
+### `steps.<step>.check`
 
 Optional. Provide checks to validate responses
 
-Available checks:
+### `steps.<step>.check.status`
 
-- `status` - Status code
-- `statusText` - Status text
-- `redirected` - Redirection status
-- `redirects` - Redirects
-- `headers` - Response headers
-- `body` - Response body
-- `json` - Validate JSON
-- `jsonschema` - Validate JSONSchema
-- `jsonexample` - Validate JSON example
-- `jsonpath` - JSONPath
-- `xpath` - XPath
-- `selector` - Cheerio (HTML) selector
-- `cookies` - Cookies
-- `sha256` - SHA-256 Hash
-- `md5` - MD5 Hash
-- `captures` - Captures
-- `performance` - Performance testing
-- `ssl` - Certificate Validation
-
-**Example: Checking status code**
+Optional. Check status code
 
 ```yaml
-steps:
-  - name: GET request
-    url: https://example.com
-    method: GET
-    check:
-      status: /^20/
+check:
+  status: 200
 ```
 
-**Example: Checking headers**
+### `steps.<step>.check.statusText`
+
+Optional. Check status text
 
 ```yaml
-steps:
-  - name: Get post by id
-    url: https://jsonplaceholder.typicode.com/posts
-    method: GET
-    headers:
-      Content-Type: application/json
-    check:
-      headers:
-        Content-Type: application/json; charset=utf-8
+check:
+  statusText: OK
 ```
 
-**Example: Checking JSON Response**
+### `steps.<step>.check.redirected`
+
+Optional. Check redirection status
 
 ```yaml
-steps:
-  - name: GET request
-    url: https://jsonplaceholder.typicode.com/posts/1
-    method: GET
-    check:
-      jsonpath:
-        $.id: 1
+check:
+  redirected: true
 ```
 
-**Example: Checking XML Response**
+### `steps.<step>.check.redirects`
+
+Optional. Check redirects
 
 ```yaml
-steps:
-  - name: GET request
-    url: https://api-campaign-us-1.goacoustic.com/XMLAPI
-    method: GET
-    check:
-      xpath:
-        //SUCCESS: "false"
+check:
+  redirects:
+    - https://example.com/
 ```
 
-### `steps.<step>.if`
+### `steps.<step>.check.headers`
 
-Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/joewalnes/filtrex#expressions)
-
-**Example: Conditional Request**
+Optional. Check headers
 
 ```yaml
-steps:
-- name: GET request
-  url: https://example.com
-  method: GET
-  check:
-    status: 200
+check:
+  headers:
+    Content-Type: application/json
+```
+
+### `steps.<step>.check.body`
+
+Optional. Check body
+
+```yaml
+check:
+  body: "Hello"
+```
+
+### `steps.<step>.check.json`
+
+Optional. Check JSON
+
+```yaml
+check:
+  json:
+    hello: world
+```
+
+### `steps.<step>.check.jsonschema`
+
+Optional. Check JSONSchema
+
+```yaml
+check:
+  jsonschema:
+    type: object
+    properties:
+      id:
+        type: integer
+        required: true
+```
+
+### `steps.<step>.check.jsonexample`
+
+Optional. Check JSON example
+
+```yaml
+check:
+  jsonexample:
+    hello: string
+```
+
+### `steps.<step>.check.jsonpath`
+
+Optional. Check JSONPath
+
+```yaml
+check:
+  jsonpath:
+    $.id: 1
+```
+
+### `steps.<step>.check.xpath`
+
+Optional. Check XPath
+
+```yaml
+check:
+  xpath:
+    //SUCCESS: false
+```
+
+### `steps.<step>.check.selector`
+
+Optional. Check HTML selector
+
+```yaml
+check:
+  selector:
+    h1: "Example Domain"
+```
+
+### `steps.<step>.check.cookies`
+
+Optional. Check cookies
+
+```yaml
+check:
+  cookies:
+    hello: world
+```
+
+### `steps.<step>.check.captures`
+
+Optional. Check captures
+
+```yaml
+check:
   captures:
-  - name: title
-    selector: title
-- name: GET request
-  url: https://example.com
-  if: captures.title == "Example Domain"
-  method: GET
-  check:
-    status: 200
+    id: 1
+```
+
+### `steps.<step>.check.sha256`
+
+Optional. Check SHA-256 Hash (response)
+
+```yaml
+check:
+  sha256: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
+```
+
+### `steps.<step>.check.md5`
+
+Optional. Check MD5 Hash (response)
+
+```yaml
+check:
+  md5: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
+```
+
+### `steps.<step>.check.performance`
+
+Optional. Performance Checking
+
+```yaml
+check:
+  performance:
+    firstByte:
+      - lte: 200
+    total:
+      - lte: 500
+```
+
+### `steps.<step>.check.performance.wait`
+
+Optional
+
+```yaml
+check:
+  performance:
+    wait: 20
+```
+
+### `steps.<step>.check.performance.dns`
+
+Optional
+
+```yaml
+check:
+  performance:
+    dns: 20
+```
+
+### `steps.<step>.check.performance.tcp`
+
+Optional
+
+```yaml
+check:
+  performance:
+    tcp: 20
+```
+
+### `steps.<step>.check.performance.tls`
+
+Optional
+
+```yaml
+check:
+  performance:
+    tls: 20
+```
+
+### `steps.<step>.check.performance.request`
+
+Optional
+
+```yaml
+check:
+  performance:
+    request: 20
+```
+
+### `steps.<step>.check.performance.firstByte`
+
+Optional
+
+```yaml
+check:
+  performance:
+    firstByte: 20
+```
+
+### `steps.<step>.check.performance.download`
+
+Optional
+
+```yaml
+check:
+  performance:
+    download: 20
+```
+
+### `steps.<step>.check.performance.total`
+
+Optional
+
+```yaml
+check:
+  performance:
+    total: 20
+```
+
+### `steps.<step>.check.ssl`
+
+Optional
+
+```yaml
+check:
+  ssl:
+    expired: false
+    signed: true
+    daysUntilExpiration:
+      - gte: 60
+```
+
+### `steps.<step>.check.ssl.expired`
+
+Optional
+
+```yaml
+check:
+  ssl:
+    expired: false
+```
+
+### `steps.<step>.check.ssl.signed`
+
+Optional
+
+```yaml
+check:
+  ssl:
+    signed: true
+```
+
+### `steps.<step>.check.ssl.daysUntilExpiration`
+
+Optional
+
+```yaml
+check:
+  ssl:
+    daysUntilExpiration: 30
 ```
 
 ### `steps.<step>.followRedirects`

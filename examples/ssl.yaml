@@ -6,7 +6,7 @@ steps:
     url: https://example.com
     check:
       ssl:
-        expired: false
+        valid: true
         signed: true
         daysUntilExpiration:
           - gte: 60

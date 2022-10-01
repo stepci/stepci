@@ -523,25 +523,25 @@ check:
 
 ### `steps.<step>.check.ssl`
 
-Optional
+Optional. SSL Certificate Validation
 
 ```yaml
 check:
   ssl:
-    expired: false
+    valid: true
     signed: true
     daysUntilExpiration:
       - gte: 60
 ```
 
-### `steps.<step>.check.ssl.expired`
+### `steps.<step>.check.ssl.valid`
 
 Optional
 
 ```yaml
 check:
   ssl:
-    expired: false
+    valid: true
 ```
 
 ### `steps.<step>.check.ssl.signed`

@@ -13,11 +13,13 @@ steps:
       title: Hello Step CI!
       body: This is the body
       userId: 1
+    captures:
+      id:
+        jsonpath: $.id
     check:
       status: 201
-    captures:
-      - name: id
-        jsonpath: $.id
+      captures:
+        id: 101
   - name: Get post by id
     url: https://{{env.host}}/{{env.resource}}/{{captures.id}}
     method: GET

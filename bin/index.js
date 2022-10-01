@@ -20,7 +20,10 @@ const labels = {
   selector: "Selector",
   cookies: "Cookies",
   sha256: "Hash (SHA-256)",
-  performance: "Performance"
+  md5: "Hash (MD5)",
+  performance: "Performance",
+  captures: "Captures",
+  ssl: "Certificate"
 }
 
 const ee = new EventEmitter()
@@ -44,7 +47,7 @@ function renderStep (step) {
 
   for (const check in step.checks) {
     console.log('\n' + labels[check])
-    if (['jsonpath', 'xpath', 'headers', 'selector', 'cookies', 'performance'].includes(check)) {
+    if (['jsonpath', 'xpath', 'headers', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
       for (const component in step.checks[check]) {
         step.checks[check][component].passed
           ? console.log(chalk.green('✔ ') + chalk.bold(component) + ': ' + step.checks[check][component].given)

@@ -1,9 +1,5 @@
 #  Step CI Workflow Syntax
 
-## Versions
-
-- 1.0 (current)
-
 ## YAML
 
 Step CI workflows use YAML syntax. You can learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
@@ -40,13 +36,21 @@ steps:
     method: GET
 ```
 
-### `options`
+### `config`
 
-Optional. Workflow options
+Optional. Workflow config
 
-### `options.continueOnFail`
+### `config.continueOnFail`
 
 Optional. Continue workflow after step failed
+
+### `config.rejectUnauthorized`
+
+Optional. Reject if SSL certificate is invalid
+
+### `config.http2`
+
+Optional. Enable HTTP/2 support
 
 ### `steps`
 
@@ -73,7 +77,7 @@ Optional. Step id
 
 ### `steps.<step>.name`
 
-Required. Step name
+Optional. Step name
 
 ### `steps.<step>.url`
 
@@ -205,6 +209,23 @@ steps:
       email: hello@stepci.com
 ```
 
+### `steps.<step>.formData`
+
+Optional. Multipart Form submission
+
+**Example: Submitting Multipart Form**
+
+```yaml
+steps:
+  - name: Submit a form
+    url: https://httpbin.org/post
+    method: POST
+    formData:
+      email: hello@stepci.com
+      readme:
+        file: README.md
+```
+
 ### `steps.<step>.graphql`
 
 Optional. GraphQL Data
@@ -252,7 +273,7 @@ steps:
         "userId": 1
       }
     captures:
-      - name: id
+      id:
         jsonpath: $.id
   - name: Get post by id
     url: https://jsonplaceholder.typicode.com/posts/{{captures.id}}
@@ -268,6 +289,7 @@ Following capture types are available:
 - `header` - Response Header
 - `selector` - Cheerio (HTML) selector
 - `cookie` - Cookie
+- `regex` - Regex
 
 ### `steps.<steps>.check`
 
@@ -289,7 +311,10 @@ Available checks:
 - `selector` - Cheerio (HTML) selector
 - `cookies` - Cookies
 - `sha256` - SHA-256 Hash
+- `md5` - MD5 Hash
+- `captures` - Captures
 - `performance` - Performance testing
+- `ssl` - Certificate Validation
 
 **Example: Checking status code**
 

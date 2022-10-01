@@ -9,4 +9,4 @@ steps:
         firstByte:
           - lte: 200
         total:
-          - lte: 500
+          - lte: 600

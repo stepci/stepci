@@ -1,12 +1,14 @@
 version: "1.0"
 name: Form Submission
-steps:
-  - name: Submit a form
-    url: https://httpbin.org/post
-    method: POST
-    formData:
-      email: hello@stepci.com
-      readme:
-        file: README.md
-    check:
-      status: 200
+tests:
+  example:
+    steps:
+      - name: Submit a form
+        url: https://httpbin.org/post
+        method: POST
+        formData:
+          email: hello@stepci.com
+          logo:
+            file: README.md
+        check:
+          status: 200

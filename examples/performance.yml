@@ -1,12 +1,14 @@
 version: "1.0"
 name: Performance
-steps:
-  - name: GET Request
-    url: https://example.com
-    method: GET
-    check:
-      performance:
-        firstByte:
-          - lte: 200
-        total:
-          - lte: 600
+tests:
+  example:
+    steps:
+      - name: GET Request
+        url: https://example.com
+        method: GET
+        check:
+          performance:
+            firstByte:
+              - lte: 200
+            total:
+              - lte: 500

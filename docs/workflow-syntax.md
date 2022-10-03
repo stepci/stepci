@@ -50,11 +50,60 @@ Optional. Reject if SSL certificate is invalid
 
 Optional. Enable HTTP/2 support
 
-### `steps`
+### `tests`
 
-Required. List of steps to be executed by runner
+Required. A list of tests to be executed by runner
 
-### `steps.<step>`
+### `tests.<test>`
+
+Required. A test
+
+**Example: Checking Response Status**
+
+```yaml
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://example.com
+        method: GET
+        check:
+          status: 200
+```
+
+### `tests.<test>.name`
+
+Optional. Test name
+
+### `tests.<test>.env`
+
+Optional. Environment Variables
+
+```yaml
+tests:
+  example:
+    env:
+      host: example.com
+```
+
+### `tests.<test>.config`
+
+Optional. Workflow config
+
+### `tests.<test>.config.continueOnFail`
+
+Optional. Continue workflow after step failed
+
+### `tests.<test>.config.rejectUnauthorized`
+
+Optional. Reject if SSL certificate is invalid
+
+
+### `tests.<test>.steps`
+
+Required. A list of steps to be executed by runner
+
+### `tests.<test>.steps.<step>`
 
 Required. The step to be executed
 
@@ -69,23 +118,23 @@ steps:
       status: 200
 ```
 
-### `steps.<step>.id`
+### `tests.<test>.steps.<step>.id`
 
 Optional. Step id
 
-### `steps.<step>.name`
+### `tests.<test>.steps.<step>.name`
 
 Optional. Step name
 
-### `steps.<step>.url`
+### `tests.<test>.steps.<step>.url`
 
 Required. Request URL
 
-### `steps.<step>.method`
+### `tests.<test>.steps.<step>.method`
 
 Required. Request method
 
-### `steps.<step>.headers`
+### `tests.<test>.steps.<step>.headers`
 
 Optional. Request headers
 
@@ -94,7 +143,7 @@ headers:
   Content-Type: application/json
 ```
 
-### `steps.<step>.body`
+### `tests.<test>.steps.<step>.body`
 
 Optional. Request Body
 
@@ -107,7 +156,7 @@ body: |
   }
 ```
 
-### `steps.<step>.params`
+### `tests.<test>.steps.<step>.params`
 
 Optional. Query Params
 
@@ -117,7 +166,7 @@ params:
   world: hello
 ```
 
-### `steps.<step>.auth`
+### `tests.<test>.steps.<step>.auth`
 
 Optional. Basic auth
 
@@ -127,7 +176,7 @@ auth:
   password: world
 ```
 
-### `steps.<step>.cookies`
+### `tests.<test>.steps.<step>.cookies`
 
 Optional. Set Cookies. Once set, the cookies will be sent in consequent requests
 
@@ -136,7 +185,7 @@ cookies:
   wows: world
 ```
 
-### `steps.<step>.json`
+### `tests.<test>.steps.<step>.json`
 
 Optional. Request JSON
 
@@ -147,7 +196,7 @@ json:
   userId: 1
 ```
 
-### `steps.<step>.form`
+### `tests.<test>.steps.<step>.form`
 
 Optional. Form submission
 
@@ -156,7 +205,7 @@ form:
   email: hello@stepci.com
 ```
 
-### `steps.<step>.formData`
+### `tests.<test>.steps.<step>.formData`
 
 Optional. Multipart Form submission
 
@@ -167,7 +216,7 @@ formData:
     file: README.md
 ```
 
-### `steps.<step>.graphql`
+### `tests.<test>.steps.<step>.graphql`
 
 Optional. GraphQL Data
 
@@ -186,7 +235,7 @@ graphql:
     id: 1
 ```
 
-### `steps.<step>.if`
+### `tests.<test>.steps.<step>.if`
 
 Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/joewalnes/filtrex#expressions)
 
@@ -194,7 +243,7 @@ Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/
 if: captures.title == "Example Domain"
 ```
 
-### `steps.<step>.captures`
+### `tests.<test>.steps.<step>.captures`
 
 Optional. Capture response values into named variables
 
@@ -206,7 +255,7 @@ captures:
     cookie: user
 ```
 
-### `steps.<step>.captures.<capture>.jsonpath`
+### `tests.<test>.steps.<step>.captures.<capture>.jsonpath`
 
 Optional. JSONPath
 
@@ -216,7 +265,7 @@ captures:
     jsonpath: $.id
 ```
 
-### `steps.<step>.captures.<capture>.xpath`
+### `tests.<test>.steps.<step>.captures.<capture>.xpath`
 
 Optional. XPath
 
@@ -226,7 +275,7 @@ captures:
     xpath: //ID
 ```
 
-### `steps.<step>.captures.<capture>.header`
+### `tests.<test>.steps.<step>.captures.<capture>.header`
 
 Optional. Response Header
 
@@ -236,7 +285,7 @@ captures:
     header: Content-Type
 ```
 
-### `steps.<step>.captures.<capture>.selector`
+### `tests.<test>.steps.<step>.captures.<capture>.selector`
 
 Optional. HTML Selector
 
@@ -246,7 +295,7 @@ captures:
     selector: h1
 ```
 
-### `steps.<step>.captures.<capture>.cookie`
+### `tests.<test>.steps.<step>.captures.<capture>.cookie`
 
 Optional. Cookie
 
@@ -256,7 +305,7 @@ captures:
     cookie: user
 ```
 
-### `steps.<step>.captures.<capture>.regex`
+### `tests.<test>.steps.<step>.captures.<capture>.regex`
 
 Optional. Match Regex
 
@@ -266,11 +315,11 @@ captures:
     regex: <title>(.*?)<\/title>
 ```
 
-### `steps.<step>.check`
+### `tests.<test>.steps.<step>.check`
 
 Optional. Provide checks to validate responses
 
-### `steps.<step>.check.status`
+### `tests.<test>.steps.<step>.check.status`
 
 Optional. Check status code
 
@@ -279,7 +328,7 @@ check:
   status: 200
 ```
 
-### `steps.<step>.check.statusText`
+### `tests.<test>.steps.<step>.check.statusText`
 
 Optional. Check status text
 
@@ -288,7 +337,7 @@ check:
   statusText: OK
 ```
 
-### `steps.<step>.check.redirected`
+### `tests.<test>.steps.<step>.check.redirected`
 
 Optional. Check redirection status
 
@@ -297,7 +346,7 @@ check:
   redirected: true
 ```
 
-### `steps.<step>.check.redirects`
+### `tests.<test>.steps.<step>.check.redirects`
 
 Optional. Check redirects
 
@@ -307,7 +356,7 @@ check:
     - https://example.com/
 ```
 
-### `steps.<step>.check.headers`
+### `tests.<test>.steps.<step>.check.headers`
 
 Optional. Check headers
 
@@ -317,7 +366,7 @@ check:
     Content-Type: application/json
 ```
 
-### `steps.<step>.check.body`
+### `tests.<test>.steps.<step>.check.body`
 
 Optional. Check body
 
@@ -326,7 +375,7 @@ check:
   body: "Hello"
 ```
 
-### `steps.<step>.check.json`
+### `tests.<test>.steps.<step>.check.json`
 
 Optional. Check JSON
 
@@ -336,7 +385,7 @@ check:
     hello: world
 ```
 
-### `steps.<step>.check.jsonschema`
+### `tests.<test>.steps.<step>.check.jsonschema`
 
 Optional. Check JSONSchema
 
@@ -350,7 +399,7 @@ check:
         required: true
 ```
 
-### `steps.<step>.check.jsonexample`
+### `tests.<test>.steps.<step>.check.jsonexample`
 
 Optional. Check JSON example
 
@@ -360,7 +409,7 @@ check:
     hello: string
 ```
 
-### `steps.<step>.check.jsonpath`
+### `tests.<test>.steps.<step>.check.jsonpath`
 
 Optional. Check JSONPath
 
@@ -370,7 +419,7 @@ check:
     $.id: 1
 ```
 
-### `steps.<step>.check.xpath`
+### `tests.<test>.steps.<step>.check.xpath`
 
 Optional. Check XPath
 
@@ -380,7 +429,7 @@ check:
     //SUCCESS: false
 ```
 
-### `steps.<step>.check.selector`
+### `tests.<test>.steps.<step>.check.selector`
 
 Optional. Check HTML selector
 
@@ -390,7 +439,7 @@ check:
     h1: "Example Domain"
 ```
 
-### `steps.<step>.check.cookies`
+### `tests.<test>.steps.<step>.check.cookies`
 
 Optional. Check cookies
 
@@ -400,7 +449,7 @@ check:
     hello: world
 ```
 
-### `steps.<step>.check.captures`
+### `tests.<test>.steps.<step>.check.captures`
 
 Optional. Check captures
 
@@ -410,7 +459,7 @@ check:
     id: 1
 ```
 
-### `steps.<step>.check.sha256`
+### `tests.<test>.steps.<step>.check.sha256`
 
 Optional. Check SHA-256 Hash (response)
 
@@ -419,7 +468,7 @@ check:
   sha256: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
 ```
 
-### `steps.<step>.check.md5`
+### `tests.<test>.steps.<step>.check.md5`
 
 Optional. Check MD5 Hash (response)
 
@@ -428,7 +477,7 @@ check:
   md5: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
 ```
 
-### `steps.<step>.check.performance`
+### `tests.<test>.steps.<step>.check.performance`
 
 Optional. Performance Checking
 
@@ -441,7 +490,7 @@ check:
       - lte: 500
 ```
 
-### `steps.<step>.check.performance.wait`
+### `tests.<test>.steps.<step>.check.performance.wait`
 
 Optional
 
@@ -451,7 +500,7 @@ check:
     wait: 20
 ```
 
-### `steps.<step>.check.performance.dns`
+### `tests.<test>.steps.<step>.check.performance.dns`
 
 Optional
 
@@ -461,7 +510,7 @@ check:
     dns: 20
 ```
 
-### `steps.<step>.check.performance.tcp`
+### `tests.<test>.steps.<step>.check.performance.tcp`
 
 Optional
 
@@ -471,7 +520,7 @@ check:
     tcp: 20
 ```
 
-### `steps.<step>.check.performance.tls`
+### `tests.<test>.steps.<step>.check.performance.tls`
 
 Optional
 
@@ -481,7 +530,7 @@ check:
     tls: 20
 ```
 
-### `steps.<step>.check.performance.request`
+### `tests.<test>.steps.<step>.check.performance.request`
 
 Optional
 
@@ -491,7 +540,7 @@ check:
     request: 20
 ```
 
-### `steps.<step>.check.performance.firstByte`
+### `tests.<test>.steps.<step>.check.performance.firstByte`
 
 Optional
 
@@ -501,7 +550,7 @@ check:
     firstByte: 20
 ```
 
-### `steps.<step>.check.performance.download`
+### `tests.<test>.steps.<step>.check.performance.download`
 
 Optional
 
@@ -511,7 +560,7 @@ check:
     download: 20
 ```
 
-### `steps.<step>.check.performance.total`
+### `tests.<test>.steps.<step>.check.performance.total`
 
 Optional
 
@@ -521,7 +570,7 @@ check:
     total: 20
 ```
 
-### `steps.<step>.check.ssl`
+### `tests.<test>.steps.<step>.check.ssl`
 
 Optional. SSL Certificate Validation
 
@@ -534,7 +583,7 @@ check:
       - gte: 60
 ```
 
-### `steps.<step>.check.ssl.valid`
+### `tests.<test>.steps.<step>.check.ssl.valid`
 
 Optional
 
@@ -544,7 +593,7 @@ check:
     valid: true
 ```
 
-### `steps.<step>.check.ssl.signed`
+### `tests.<test>.steps.<step>.check.ssl.signed`
 
 Optional
 
@@ -554,7 +603,7 @@ check:
     signed: true
 ```
 
-### `steps.<step>.check.ssl.daysUntilExpiration`
+### `tests.<test>.steps.<step>.check.ssl.daysUntilExpiration`
 
 Optional
 
@@ -564,11 +613,11 @@ check:
     daysUntilExpiration: 30
 ```
 
-### `steps.<step>.followRedirects`
+### `tests.<test>.steps.<step>.followRedirects`
 
 Optional. Follow redirects. Enabled by default
 
-### `steps.<step>.timeout`
+### `tests.<test>.steps.<step>.timeout`
 
 Optional. Request Timeout
 

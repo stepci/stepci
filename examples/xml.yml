@@ -1,9 +1,11 @@
 version: "1.0"
 name: Validating XML
-steps:
-  - name: GET request
-    url: https://api-campaign-us-1.goacoustic.com/XMLAPI
-    method: GET
-    check:
-      xpath:
-        //SUCCESS: "false"
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://api-campaign-us-1.goacoustic.com/XMLAPI
+        method: GET
+        check:
+          xpath:
+            //SUCCESS: "false"

@@ -1,9 +1,11 @@
 version: "1.0"
 name: Validating HTML
-steps:
-  - name: GET request
-    url: https://example.com
-    method: GET
-    check:
-      selector:
-        title: Example Domain
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://example.com
+        method: GET
+        check:
+          selector:
+            title: Example Domain

@@ -46,10 +46,6 @@ Optional. Continue workflow after step failed
 
 Optional. Reject if SSL certificate is invalid
 
-### `config.http2`
-
-Optional. Enable HTTP/2 support
-
 ### `tests`
 
 Required. A list of tests to be executed by runner

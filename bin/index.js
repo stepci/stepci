@@ -29,7 +29,7 @@ const labels = {
 const ee = new EventEmitter()
 ee.on('test:result', (test) => {
   test.steps.forEach(renderStep)
-  console.log('\n' + (test.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(test.id) + ' ' + (test.passed ? 'passed' :'failed') + ' in ' + test.duration / 1000 + 's')
+  console.log('\n' + (test.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(test.name || test.id) + ' ' + (test.passed ? 'passed' :'failed') + ' in ' + test.duration / 1000 + 's')
 })
 
 ee.on('workflow:result', ({ workflow, result }) => {

@@ -4,7 +4,7 @@ Step CI runner can be integrated directly with JavaScript test tools
 
 ## Preparation
 
-1. Put your Step CI tests under `test/stepci/`
+1. Put your Step CI workflows under `test/stepci/`
 
 2. Install `@stepci/runner` dependency
 
@@ -16,11 +16,11 @@ Step CI runner can be integrated directly with JavaScript test tools
 
 ### General
 
-Your tests can be run using Step CI test runner by using `runFromFile` or `run` methods
+Your workflows can be run using Step CI test runner by using `runFromFile` or `run` methods
 
 ### Mocha
 
-**Example: Run test from file**
+**Example: Run workflow from file**
 
 ```js
 const assert = require('assert')
@@ -33,7 +33,7 @@ it('Check Response Status', async () => {
 })
 ```
 
-**Example: Run test from config**
+**Example: Run workflow from config**
 
 ```js
 const assert = require('assert')
@@ -46,14 +46,18 @@ it('Check Response Status', async () => {
     env: {
       host: "example.com"
     },
-    steps: [{
-      name: "GET request",
-      url: "https://{{env.host}}",
-      method: "GET",
-      check: {
-        status: "/^20/"
+    tests: {
+      example: {
+        steps: [{
+          name: "GET request",
+          url: "https://{{env.host}}",
+          method: "GET",
+          check: {
+            status: "/^20/"
+          }
+        }]
       }
-    }]
+    }
   }
 
   const result = await run(workflow)
@@ -63,7 +67,7 @@ it('Check Response Status', async () => {
 
 ### Jest
 
-**Example: Run test from file**
+**Example: Run workflow from file**
 
 ```js
 const { runFromFile } = require('@stepci/runner')
@@ -75,7 +79,7 @@ test('Check Response Status', async () => {
 })
 ```
 
-**Example: Run test from config**
+**Example: Run workflow from config**
 
 ```js
 const { run } = require('@stepci/runner')
@@ -87,14 +91,18 @@ test('Check Response Status', async () => {
     env: {
       host: "example.com"
     },
-    steps: [{
-      name: "GET request",
-      url: "https://{{env.host}}",
-      method: "GET",
-      check: {
-        status: "/^20/"
+    tests: {
+      example: {
+        steps: [{
+          name: "GET request",
+          url: "https://{{env.host}}",
+          method: "GET",
+          check: {
+            status: "/^20/"
+          }
+        }]
       }
-    }]
+    }
   }
 
   const result = await run(workflow)
@@ -104,7 +112,7 @@ test('Check Response Status', async () => {
 
 ### Ava
 
-**Example: Run test from file**
+**Example: Run workflow from file**
 
 ```js
 import test from 'ava'
@@ -116,7 +124,7 @@ test('Check Response Status', async t => {
 })
 ```
 
-**Example: Run test from config**
+**Example: Run workflow from config**
 
 ```js
 import test from 'ava'
@@ -129,14 +137,18 @@ test('Check Response Status', async t => {
     env: {
       host: "example.com"
     },
-    steps: [{
-      name: "GET request",
-      url: "https://{{env.host}}",
-      method: "GET",
-      check: {
-        status: "/^20/"
+    tests: {
+      example: {
+        steps: [{
+          name: "GET request",
+          url: "https://{{env.host}}",
+          method: "GET",
+          check: {
+            status: "/^20/"
+          }
+        }]
       }
-    }]
+    }
   }
 
   const result = await run(workflow)

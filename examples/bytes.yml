@@ -1,10 +1,12 @@
 version: "1.0"
 name: Validating Bytes
-steps:
-  - name: Image
-    url: https://httpbin.org/image
-    headers:
-      accept: image/webp
-    method: GET
-    check:
-      sha256: 567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63
+tests:
+  example:
+    steps:
+      - name: Image
+        url: https://httpbin.org/image
+        headers:
+          accept: image/webp
+        method: GET
+        check:
+          sha256: 567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63

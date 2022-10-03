@@ -15,3 +15,22 @@ steps:
     method: GET
     check:
       status: 200
+version: "1.0"
+name: Conditions
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://example.com
+        method: GET
+        check:
+          status: 200
+        captures:
+          title:
+            selector: title
+      - if: captures.title != "Example Domain"
+        name: GET request
+        url: https://example.com
+        method: GET
+        check:
+          status: 200

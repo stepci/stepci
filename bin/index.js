@@ -27,9 +27,13 @@ const labels = {
 }
 
 const ee = new EventEmitter()
-ee.on('result', renderStep)
-ee.on('done', result => {
-  console.log('\n' + (result.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(result.workflow.name) + ' (' + chalk.gray(result.workflow.path) + ') ' + (result.passed ? 'passed' :'failed') + ' in ' + result.duration / 1000 + 's')
+ee.on('test:result', (test) => {
+  test.steps.forEach(renderStep)
+  console.log('\n' + (test.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(test.name || test.id) + ' ' + (test.passed ? 'passed' :'failed') + ' in ' + test.duration / 1000 + 's')
+})
+
+ee.on('workflow:result', ({ workflow, result }) => {
+  console.log('\n' + (result.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(workflow.name) + ' (' + chalk.gray(workflow.path) + ') ' + (result.passed ? 'passed' :'failed') + ' in ' + result.duration / 1000 + 's')
   if (!result.passed) exit(5)
 })
 
@@ -37,8 +41,8 @@ ee.on('done', result => {
 function renderStep (step) {
   console.log('\n' + chalk.bgWhite.bold.black(` ${step.name} `) + (step.passed ? chalk.bgGreenBright.bold(' PASSED ') : chalk.bgRed.bold(' FAILED ')) + ' in ' + step.duration / 1000 + 's')
 
-  if (step.failed || step.skipped) {
-    return console.log('\n' + chalk.yellow('⚠︎ ') + (step.failReason || 'Step was skipped') + '\n')
+  if (step.errored || step.skipped) {
+    return console.log('\n' + chalk.yellow('⚠︎ ') + (step.errorMessage || 'Step was skipped') + '\n')
   }
 
   console.log(chalk.bold('\nRequest\n'))
@@ -62,20 +66,15 @@ function renderStep (step) {
 }
 
 // Load workflow files
-function loadWorkflows (path) {
-  if (fs.lstatSync(path).isDirectory()) {
-    const files = fs.readdirSync(path).filter(file => file.includes('yml') || file.includes('yaml'))
-    files.forEach(file => runFromFile(path + file, { ee }))
-  } else {
-    runFromFile(path, { ee })
-  }
+function loadWorkflow (path) {
+  runFromFile(path, { ee })
 }
 
 yargs(hideBin(process.argv))
   .command('run [workflow]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
-        describe: 'workflow path (file or a directory)'
+        describe: 'workflow path (file)'
       })
-  }, (argv) => loadWorkflows(argv.workflow))
+  }, (argv) => loadWorkflow(argv.workflow))
   .parse()

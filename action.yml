@@ -5,12 +5,12 @@ branding:
   icon: check-circle
   color: white
 inputs:
-  path:
+  workflow:
     description: 'Workflow Path'
     required: true
-    default: '.stepci/workflows/'
+    default: '.stepci/workflows/workflow.yml'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.path }}
+    - ${{ inputs.workflow }}

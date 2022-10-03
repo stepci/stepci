@@ -2,9 +2,11 @@ version: "1.0"
 name: Status Check
 env:
   host: example.com
-steps:
-  - name: GET request
-    url: https://{{env.host}}
-    method: GET
-    check:
-      status: /^20/
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://{{env.host}}
+        method: GET
+        check:
+          status: /^20/

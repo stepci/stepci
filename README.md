@@ -24,65 +24,71 @@ Install the CLI
 npm install -g stepci
 ```
 
-Create example test (`tests/status.yml`)
+Create example workflow (`tests/workflow.yml`)
 
 ```yaml
 version: "1.0"
 name: Status Check
 env:
   host: example.com
-steps:
-  - name: GET request
-    url: https://{{env.host}}
-    method: GET
-    check:
-      status: /^20/
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://{{env.host}}
+        method: GET
+        check:
+          status: /^20/
 ```
 
-Run the test
+Run the workflow
 
 ```
-stepci run tests/
+stepci run tests/workflow.yml
 ```
 
 ### Using Docker
 
-Create example test (`tests/status.yml`)
+Create example workflow (`tests/workflow.yml`)
 
 ```yaml
 version: "1.0"
 name: Status Check
 env:
   host: example.com
-steps:
-  - name: GET request
-    url: https://{{env.host}}
-    method: GET
-    check:
-      status: /^20/
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://{{env.host}}
+        method: GET
+        check:
+          status: /^20/
 ```
 
 Run the Docker image
 
 ```
-docker run -v "$(pwd)"/tests:/tests ghcr.io/stepci/stepci tests/
+docker run -v "$(pwd)"/tests:/tests ghcr.io/stepci/stepci tests/workflow.yml
 ```
 
 ### Using GitHub Action
 
-Create example test (`tests/status.yml`)
+Create example workflow (`tests/workflow.yml`)
 
 ```yaml
 version: "1.0"
 name: Status Check
 env:
   host: example.com
-steps:
-  - name: GET request
-    url: https://{{env.host}}
-    method: GET
-    check:
-      status: /^20/
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://{{env.host}}
+        method: GET
+        check:
+          status: /^20/
 ```
 
 Add Step CI GitHub Action (`./github/workflows/stepci.yml`)
@@ -98,7 +104,7 @@ jobs:
       - name: Step CI Action
         uses: stepci/stepci@main
         with:
-          path: "tests/"
+          workflow: "tests/workflow.yml"
 ```
 
 ## Documentation

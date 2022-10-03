@@ -1,12 +1,14 @@
 version: "1.0"
 name: SSL Certificates
-steps:
-  - name: GET Request
-    method: GET
-    url: https://example.com
-    check:
-      ssl:
-        valid: true
-        signed: true
-        daysUntilExpiration:
-          - gte: 60
+tests:
+  example:
+    steps:
+      - name: GET Request
+        method: GET
+        url: https://example.com
+        check:
+          ssl:
+            valid: true
+            signed: true
+            daysUntilExpiration:
+              - gte: 60

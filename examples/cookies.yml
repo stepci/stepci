@@ -1,17 +1,5 @@
 version: "1.0"
 name: Cookies
-steps:
-  - name: Cookies
-    url: https://httpbin.org/cookies
-    method: GET
-    cookies:
-      wows: world
-    check:
-      status: 200
-      cookies:
-        wows: world
-version: "1.0"
-name: Cookies
 tests:
   example:
     steps:

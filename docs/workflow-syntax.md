@@ -46,6 +46,38 @@ Optional. Continue workflow after step failed
 
 Optional. Reject if SSL certificate is invalid
 
+### `components`
+
+Optional. Swagger components
+
+### `components.schemas`
+
+Optional. Swagger schemas
+
+### `components.schemas.<schema>`
+
+Optional. Swagger schema
+
+```yaml
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        userId:
+          type: integer
+          required: true
+        id:
+          type: integer
+          required: true
+        title:
+          type: string
+          required: true
+        body:
+          type: string
+          required: true
+```
+
 ### `tests`
 
 Required. A list of tests to be executed by runner
@@ -93,7 +125,6 @@ Optional. Continue workflow after step failed
 ### `tests.<test>.config.rejectUnauthorized`
 
 Optional. Reject if SSL certificate is invalid
-
 
 ### `tests.<test>.steps`
 
@@ -187,6 +218,17 @@ Optional. Request JSON
 
 ```yaml
 json:
+  title: Hello Step CI!
+  body: This is the body
+  userId: 1
+```
+
+### `tests.<test>.steps.<step>.xml`
+
+Optional. Request XML
+
+```yaml
+xml:
   title: Hello Step CI!
   body: This is the body
   userId: 1

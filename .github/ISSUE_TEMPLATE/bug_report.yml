@@ -1,0 +1,56 @@
+name: 🐛 Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: '## Thanks for taking the time to fill out this bug report!'
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Version
+      description: What version of Step CI are you running?
+      options:
+        - 2.0.1 (Default)
+        - 1.3.3
+    validations:
+      required: true
+  - type: input
+    id: enviroment
+    attributes:
+      label: Environment
+      description: How did you run the workflow? Please also provide the version.
+      placeholder: Node v16.15.1
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How can we reproduce this bug?
+      description: If applicable, consider sharing the workflow that produced this bug.
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
+      render: shell
+    validations:
+       required: false
+  - type: checkboxes
+    id: assignment
+    attributes:
+      label: Would you be interested in working on a bugfix for this issue?
+      options:
+      - label: Yes! Assign me
+        required: false

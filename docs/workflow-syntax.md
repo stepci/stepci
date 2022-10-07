@@ -46,17 +46,21 @@ Optional. Continue workflow after step failed
 
 Optional. Reject if SSL certificate is invalid
 
+### `config.baseURL`
+
+Optional. Base URL
+
 ### `components`
 
-Optional. Swagger components
+Optional. OpenAPI components
 
 ### `components.schemas`
 
-Optional. Swagger schemas
+Optional. OpenAPI schemas
 
 ### `components.schemas.<schema>`
 
-Optional. Swagger schema
+Optional. OpenAPI schema
 
 ```yaml
 components:
@@ -423,28 +427,18 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.check.jsonschema`
+### `tests.<test>.steps.<step>.check.schema`
 
-Optional. Check JSONSchema
+Optional. Check response against JSONSchema
 
 ```yaml
 check:
-  jsonschema:
+  schema:
     type: object
     properties:
       id:
         type: integer
         required: true
-```
-
-### `tests.<test>.steps.<step>.check.jsonexample`
-
-Optional. Check JSON example
-
-```yaml
-check:
-  jsonexample:
-    hello: string
 ```
 
 ### `tests.<test>.steps.<step>.check.jsonpath`

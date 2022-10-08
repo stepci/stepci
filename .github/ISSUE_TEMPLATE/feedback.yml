@@ -1,6 +1,6 @@
-name: Feedback
+name: 👍 Feedback
 description: Leave your feedback
-title: "Feedback"
+title: "[Feedback]: "
 labels: ["feedback"]
 body:
   - type: dropdown

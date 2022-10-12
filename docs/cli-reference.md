@@ -25,7 +25,7 @@ Options:
 ## Commands
 ---
 ### `run [workflow]`
-The `run ` command lets you execute a specified workflow
+The `run` command lets you execute a specified workflow
 
 #### **Arguments**
 | Argument | Required | Description |

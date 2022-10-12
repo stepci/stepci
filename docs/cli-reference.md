@@ -1,18 +1,15 @@
-# StepCI CLI reference
-The following documents evety command and flag avaliable for use in StepCI's command-line interface.
+# CLI reference
+The following documents every command and flag available for use in StepCI's command-line interface.
 
-With the CLI you can:
-- Run workflows
-
-Follow the [getting started guide](https://github.com/stepci/stepci/blob/main/docs/get-started.md) for setup instructions
+Follow the [getting started guide](../get-started.md) for setup instructions
 
 ## Synopsis
 ---
 The `stepci` command can be called once installed and is the main command for the CLI.
 
-The primary method to execute StepCI workflows is `stepci run [command]`
+The primary method to execute workflows is `stepci run [command]`
 
-When `stepci` is called with the `--help` option a list of avaliable commands and options will be displayed:
+When `stepci` is called with the `--help` option, a list of avaliable commands and options will be displayed:
 ```console
 $ stepci --help
 stepci [command]
@@ -28,12 +25,12 @@ Options:
 ## Commands
 ---
 ### `run [workflow]`
-The `run ` command allows you to execute a specified workflow
+The `run ` command lets you execute a specified workflow
 
 #### **Arguments**
 | Argument | Required | Description |
 |-|-|-|
-| workflow | Yes | Specify the path to a stepci workflow |
+| workflow | Yes | Specify the path to a workflow |
 <br>
 
 #### **Options**
@@ -44,7 +41,7 @@ The `run ` command allows you to execute a specified workflow
 <br>
 
 #### **Examples**
-Run test workflow to return the status of [example.com](https://example.com)
+Run example workflow to return the status of [example.com](https://example.com)
 ```console
 $ stepci run ./examples/status.yml
 
@@ -65,7 +62,7 @@ Status
 ## Options
 ---
 ### `--help`
-Outputs the help menu for the main `stepci` comamnd
+Outputs the help menu for the main `stepci` command
 
 #### **Examples**
 ```console
@@ -81,7 +78,7 @@ Options:
 ```
 
 ### `--version`
-Outputs the current version of stepci installed
+Outputs the version currently installed
 
 #### **Examples**
 ```console

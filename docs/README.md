@@ -3,3 +3,4 @@
 - [Get Started](./get-started.md)
 - [Using in test tools](./using-test-tools.md)
 - [Workflow Syntax](./workflow-syntax.md)
+- [CLI Reference](./cli-reference.md)

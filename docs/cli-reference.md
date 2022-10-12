@@ -1,15 +1,17 @@
 # CLI reference
-The following documents every command and flag available for use in StepCI's command-line interface.
 
-Follow the [getting started guide](../get-started.md) for setup instructions
+The following documents every command and flag available for use in Step CI command-line interface.
+
+Follow the [Getting Started guide](./get-started.md) for setup instructions
 
 ## Synopsis
----
+
 The `stepci` command can be called once installed and is the main command for the CLI.
 
 The primary method to execute workflows is `stepci run [command]`
 
 When `stepci` is called with the `--help` option, a list of avaliable commands and options will be displayed:
+
 ```console
 $ stepci --help
 stepci [command]
@@ -23,32 +25,35 @@ Options:
   ```
 
 ## Commands
----
+
 ### `run [workflow]`
+
 The `run` command lets you execute a specified workflow
 
 #### **Arguments**
+
 | Argument | Required | Description |
 |-|-|-|
 | workflow | Yes | Specify the path to a workflow |
-<br>
 
 #### **Options**
+
 | Options | Required | Description |
 |-|-|-|
 | --help | No | Outputs the help text for `stepci run` |
-| --version | No | Outputs the current stepci version |
-<br>
+| --version | No | Outputs the current version |
 
 #### **Examples**
-Run example workflow to return the status of [example.com](https://example.com)
+
+Run example workflow located at `./examples/status.yml`
+
 ```console
 $ stepci run ./examples/status.yml
 
 
 Request
 
- GET  https://example.com/  200 OK 
+ GET  https://example.com/  200 OK
 
 Checks
 
@@ -60,11 +65,12 @@ Status
 ```
 
 ## Options
----
+
 ### `--help`
 Outputs the help menu for the main `stepci` command
 
 #### **Examples**
+
 ```console
 $ stepci --help
 stepci [command]
@@ -81,6 +87,7 @@ Options:
 Outputs the version currently installed
 
 #### **Examples**
+
 ```console
 $ stepci --version
 2.1.0

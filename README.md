@@ -16,6 +16,17 @@ Quick overview:
 
 ## Get started
 
+### Prerequisites
+
+1. Git
+1. Node & npm [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) 
+1. A fork of the repo (for any contributions)
+1. A clone of the [stepci repo](https://github.com/stepci/stepci.git) on your local machine
+
+### Installation
+
+1. `cd stepci` to go into the project root
+
 ### Using Node
 
 Install the CLI

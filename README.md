@@ -138,15 +138,15 @@ You can find a collection of Step CI example tests under [`examples/`](examples/
 version: "1.0"
 name: Status Check
 env:
-	host: example.com
+  host: example.com
 tests:
-	example:
-		steps:
-			- name: GET request
-				url: https://{{env.host}}
-				method: GET
-				check:
-					status: /^20/
+  example:
+    steps:
+      - name: GET request
+        url: https://{{env.host}}
+        method: GET
+        check:
+          status: /^20/
 ```
 #### Validating XML
 ```yaml

@@ -10,7 +10,7 @@ Quick overview:
 - REST, GraphQL, XML
 - Integrated. Works seamlessly with Node, Docker and GitHub Actions
 
-**[Try Demo on our website](https://stepci.com)**
+**[Try the Demo on our website](https://stepci.com)**
 
 **[Join us on GitHub Discussions](https://github.com/stepci/stepci/discussions)**
 
@@ -465,4 +465,4 @@ tests:
 ```
 ## License
 
-Step CI is distributed under Mozilla Public License terms
+Step CI is distributed under Mozilla Public License terms.

@@ -199,12 +199,27 @@ params:
 
 ### `tests.<test>.steps.<step>.auth`
 
-Optional. Basic auth
+Optional. Auth configuration
+
+### `tests.<test>.steps.<step>.auth.basic`
+
+Optional. Basic Auth
 
 ```yaml
 auth:
-  user: hello
-  password: world
+  basic:
+    username: hello
+    password: world
+```
+
+### `tests.<test>.steps.<step>.auth.bearer`
+
+Optional. Bearer Auth
+
+```yaml
+auth:
+  bearer:
+    token: hello world
 ```
 
 ### `tests.<test>.steps.<step>.cookies`
@@ -222,17 +237,6 @@ Optional. Request JSON
 
 ```yaml
 json:
-  title: Hello Step CI!
-  body: This is the body
-  userId: 1
-```
-
-### `tests.<test>.steps.<step>.xml`
-
-Optional. Request XML
-
-```yaml
-xml:
   title: Hello Step CI!
   body: This is the body
   userId: 1
@@ -507,6 +511,15 @@ Optional. Check MD5 Hash (response)
 ```yaml
 check:
   md5: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
+```
+
+### `tests.<test>.steps.<step>.check.size`
+
+Optional. Check response size (in bytes)
+
+```yaml
+check:
+  size: 1024
 ```
 
 ### `tests.<test>.steps.<step>.check.performance`

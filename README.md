@@ -132,7 +132,7 @@ You can find a collection of Step CI example tests under [`examples/`](examples/
 - [Cookies](#cookies)
 - [Conditions](#conditions)
 - [Using Matchers](#using-matchers)
-  
+
 #### Status Check
 ```yaml
 version: "1.0"
@@ -402,8 +402,9 @@ tests:
         url: https://httpbin.org/basic-auth/hello/world
         method: GET
         auth:
-          user: hello
-          password: world
+          basic:
+            username: hello
+            password: world
         check:
           status: 200
 ```

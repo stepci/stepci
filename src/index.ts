@@ -5,25 +5,7 @@ import { runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/run
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
-
-const labels: { [key: string]: string } = {
-  status: "Status",
-  duration: "Duration",
-  jsonpath: "JSONPath",
-  json: "JSON",
-  xml: "XML",
-  schema: "Schema",
-  xpath: "XPath",
-  headers: "Headers",
-  body: "Body",
-  selector: "Selector",
-  cookies: "Cookies",
-  sha256: "Hash (SHA-256)",
-  md5: "Hash (MD5)",
-  performance: "Performance",
-  captures: "Captures",
-  ssl: "Certificate"
-}
+import labels from './labels.json'
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
@@ -31,8 +13,8 @@ ee.on('test:result', (test: TestResult) => {
   console.log('\n' + (test.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(test.name || test.id) + ' ' + (test.passed ? 'passed' :'failed') + ' in ' + test.duration / 1000 + 's')
 })
 
-ee.on('workflow:result', ({ workflow, result }: WorkflowResult) => {
-  console.log('\n' + (result.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(workflow.name) + ' (' + chalk.gray(workflow.path) + ') ' + (result.passed ? 'passed' :'failed') + ' in ' + result.duration / 1000 + 's')
+ee.on('workflow:result', ({ workflow, result, path }: WorkflowResult) => {
+  console.log('\n' + (result.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.white(workflow.name) + ' (' + chalk.gray(path) + ') ' + (result.passed ? 'passed' :'failed') + ' in ' + result.duration / 1000 + 's')
   if (!result.passed) exit(5)
 })
 
@@ -50,7 +32,7 @@ function renderStep (step: StepResult) {
 
   const checks = step.checks as {[key: string]: any}
   for (const check in checks) {
-    console.log('\n' + labels[check])
+    console.log('\n' + (labels as any)[check])
     if (['jsonpath', 'xpath', 'headers', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
       for (const component in (checks)[check]) {
         checks[check][component].passed

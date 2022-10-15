@@ -1,0 +1,21 @@
+{
+  "labels": {
+    "status": "Status",
+    "duration": "Duration",
+    "json": "JSON",
+    "schema": "Schema",
+    "jsonexample": "JSON example",
+    "jsonpath": "JSONPath",
+    "xpath": "XPath",
+    "headers": "Headers",
+    "body": "Body",
+    "selector": "Selector",
+    "cookies": "Cookies",
+    "sha256": "Hash (SHA-256)",
+    "md5": "Hash (MD5)",
+    "performance": "Performance",
+    "captures": "Captures",
+    "ssl": "Certificate",
+    "size": "Size"
+  }
+}

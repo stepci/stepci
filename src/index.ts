@@ -5,7 +5,7 @@ import { runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/run
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
-import labels from './labels.json'
+import { labels } from './labels.json'
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
@@ -32,9 +32,9 @@ function renderStep (step: StepResult) {
 
   const checks = step.checks as {[key: string]: any}
   for (const check in checks) {
-    console.log('\n' + (labels as any)[check])
+    console.log('\n' + (labels as {[key: string]: string})[check])
     if (['jsonpath', 'xpath', 'headers', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
-      for (const component in (checks)[check]) {
+      for (const component in checks[check]) {
         checks[check][component].passed
           ? console.log(chalk.green('✔ ') + chalk.bold(component) + ': ' + checks[check][component].given)
           : console.log(chalk.red('✕ ') + chalk.bold(component) + ': ' + checks[check][component].given + ' (expected ' + checks[check][component].expected + ')')

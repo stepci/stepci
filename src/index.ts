@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/runner'
+import { EnvironmentVariables, runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/runner'
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
@@ -48,8 +48,8 @@ function renderStep (step: StepResult) {
 }
 
 // Load workflow files
-function loadWorkflow (path: string) {
-  runFromFile(path, { ee })
+function loadWorkflow (path: string, env?: EnvironmentVariables) {
+  runFromFile(path, { ee, env })
 }
 
 yargs(hideBin(process.argv))
@@ -60,5 +60,22 @@ yargs(hideBin(process.argv))
         type: 'string',
         default: 'workflow.yml'
       })
-  }, (argv) => loadWorkflow(argv.workflow))
+      .option('e', {
+        alias: 'env',
+        array: true,
+        demandOption: false,
+        describe: 'env variables to use',
+        type: 'string'
+      })
+      .check((argv) => {
+        if (argv.e?.length && !argv.e.every(env => env.match(/^(\w+=.+)$/))) {
+          throw new Error('env variables have wrong format, use `env=VARIABLE`.')
+        }
+
+        return true;
+      })
+  }, (argv) => {
+    const parsedEnv: EnvironmentVariables = Object.fromEntries(argv.e?.map(opt => opt.split('=')) ?? [])
+    loadWorkflow(argv.workflow, parsedEnv)
+  })
   .parse()

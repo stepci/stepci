@@ -6,7 +6,7 @@ body:
   - type: dropdown
     id: sad
     attributes:
-      label: Would you find it a pity or be sad if Step CI did not exist?
+      label: Would you be sad if Step CI did not exist?
       description: "1: not sad at all - 10: very sad"
       multiple: false
       options:
@@ -40,7 +40,7 @@ body:
   - type: textarea
     id: dislike
     attributes:
-      label: What do you dislike about Step CI?
+      label: Is there something you dont like about Step CI?
   - type: textarea
     id: ideas
     attributes:

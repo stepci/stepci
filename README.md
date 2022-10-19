@@ -464,7 +464,7 @@ tests:
               - isNumber: true
 ```
 
-# Privacy
+## Privacy
 
 By default, the CLI collects anonymous usage data, which includes:
 

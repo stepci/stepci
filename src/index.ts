@@ -1,11 +1,33 @@
-#!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { EnvironmentVariables, runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/runner'
 import exit from 'exit'
 import chalk from 'chalk'
+import os from 'os'
 import { EventEmitter } from 'node:events'
+import { PostHog } from 'posthog-node'
 import { labels } from './labels.json'
+import ci from 'ci-info'
+
+const posthog = new PostHog(
+  'phc_SIwnNDitjnc44ozMtjud1Uz1wXb4cgM63MhtWy1mL2O',
+  { host: 'https://eu.posthog.com' }
+)
+
+if (!process.env.STEPCI_DISABLE_TELEMETRY) {
+  const { uid } = os.userInfo()
+  posthog.capture({
+    distinctId: uid.toString(),
+    event: 'ping',
+    properties: {
+      os: os.type(),
+      node: process.version,
+      version: process.env.npm_package_version,
+      isCI: ci.isCI,
+      CI: ci.name
+    }
+  })
+}
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
@@ -79,3 +101,5 @@ yargs(hideBin(process.argv))
     loadWorkflow(argv.workflow, parsedEnv)
   })
   .parse()
+
+posthog.shutdown()

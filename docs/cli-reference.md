@@ -42,6 +42,7 @@ The `run` command lets you execute a specified workflow
 |-|-|-|
 | --help | No | Outputs the help text for `stepci run` |
 | --version | No | Outputs the current version |
+| -e [--env] | No | Supply environment variables |
 
 #### **Examples**
 
@@ -92,3 +93,9 @@ Outputs the version currently installed
 $ stepci --version
 2.1.0
 ```
+
+## Environment Variables
+
+### `STEPCI_DISABLE_TELEMETRY`
+
+Anonymous Telemetry is enabled by default, use this environment variable to disable

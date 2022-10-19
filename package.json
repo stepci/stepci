@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "lerna run build --stream",
-    "build:watch": "lerna run build:watch --stream",
+    "build:watch": "lerna run --parallel build:watch --stream",
     "test": "lerna run test --stream"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
@@ -10,7 +10,9 @@
     "@stepci/runner": "^1.2.8",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
+    "conf": "^10.2.0",
     "exit": "^0.1.2",
+    "is-docker": "^2.2.1",
     "posthog-node": "^2.1.0",
     "yargs": "^17.5.1"
   },

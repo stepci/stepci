@@ -7,25 +7,30 @@ import chalk from 'chalk'
 import os from 'os'
 import { EventEmitter } from 'node:events'
 import { PostHog } from 'posthog-node'
-import { labels } from './labels.json'
+import { randomUUID } from 'crypto'
 import ci from 'ci-info'
+import isDocker from 'is-docker'
+import Conf from 'conf'
+import { labels } from './labels.json'
 
+const config = new Conf()
 const posthog = new PostHog(
   'phc_SIwnNDitjnc44ozMtjud1Uz1wXb4cgM63MhtWy1mL2O',
   { host: 'https://eu.posthog.com' }
 )
 
-if (!process.env.STEPCI_DISABLE_TELEMETRY) {
-  const { uid } = os.userInfo()
+if (!process.env.STEPCI_DISABLE_ANALYTICS) {
+  if (!config.get('uid')) config.set('uid', randomUUID())
+  const uid = config.get('uid')
+
   posthog.capture({
-    distinctId: uid.toString(),
+    distinctId: uid as string,
     event: 'ping',
     properties: {
       os: os.type(),
       node: process.version,
       version: '2.2.4',
-      isCI: ci.isCI,
-      CI: ci.name
+      environment: ci.isCI ? ci.name : isDocker() ? 'Docker' : 'Local'
     }
   })
 }

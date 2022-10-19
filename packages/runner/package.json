@@ -1,0 +1,54 @@
+{
+  "name": "@stepci/runner",
+  "version": "1.2.9",
+  "description": "Step CI Runner",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "build:watch": "tsc -w -p tsconfig.json",
+    "test": "ts-node ./tests/test.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StepCI/runner.git"
+  },
+  "keywords": [
+    "http",
+    "testing",
+    "api",
+    "framework"
+  ],
+  "author": "Mish Ushakov <mish@stepci.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/StepCI/runner/issues"
+  },
+  "homepage": "https://github.com/StepCI/runner#readme",
+  "dependencies": {
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
+    "cheerio": "^1.0.0-rc.12",
+    "ci-info": "^3.5.0",
+    "deep-equal": "^2.0.5",
+    "filtrex": "^3.0.0",
+    "flat": "^5.0.2",
+    "form-data": "^4.0.0",
+    "got": "^11.8.3",
+    "jsonpath-plus": "^7.2.0",
+    "liquidless": "^1.0.3",
+    "tough-cookie": "^4.1.2",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.32",
+    "yaml": "^2.1.1"
+  },
+  "devDependencies": {
+    "@tsconfig/node16": "^1.0.3",
+    "@types/deep-equal": "^1.0.1",
+    "@types/flat": "^5.0.2",
+    "@types/node": "^18.7.18",
+    "@types/tough-cookie": "^4.0.2",
+    "@types/xmldom": "^0.1.31",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
+  }
+}

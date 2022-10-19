@@ -96,6 +96,6 @@ $ stepci --version
 
 ## Environment Variables
 
-### `STEPCI_DISABLE_TELEMETRY`
+### `STEPCI_DISABLE_ANALYTICS`
 
-Anonymous Telemetry is enabled by default, use this environment variable to disable
+Anonymous usage analytics is enabled by default, use this environment variable to disable

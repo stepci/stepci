@@ -463,6 +463,19 @@ tests:
               - eq: 1
               - isNumber: true
 ```
+
+# Privacy
+
+By default, the CLI collects anonymous usage data, which includes:
+
+- Unique user ID
+- OS Name
+- Node Version
+- CLI Version
+- Environment (Local, Docker, CI/CD)
+
+The usage analytics can be disabled by adding `STEPCI_DISABLE_ANALYTICS` to your env variables
+
 ## License
 
 Step CI is distributed under Mozilla Public License terms

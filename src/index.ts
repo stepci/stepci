@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { EnvironmentVariables, runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/runner'
@@ -22,7 +23,7 @@ if (!process.env.STEPCI_DISABLE_TELEMETRY) {
     properties: {
       os: os.type(),
       node: process.version,
-      version: process.env.npm_package_version,
+      version: '2.2.4',
       isCI: ci.isCI,
       CI: ci.name
     }

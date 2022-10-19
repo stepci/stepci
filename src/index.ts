@@ -48,8 +48,8 @@ function renderStep (step: StepResult) {
 }
 
 // Load workflow files
-function loadWorkflow (path: string, env?: EnvironmentVariables) {
-  runFromFile(path, { ee, env })
+function loadWorkflow (path: string, envOverride?: EnvironmentVariables) {
+  runFromFile(path, { ee, envOverride })
 }
 
 yargs(hideBin(process.argv))

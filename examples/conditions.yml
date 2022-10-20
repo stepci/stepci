@@ -1,19 +1,21 @@
-version: "1.0"
+version: "1.1"
 name: Conditions
 tests:
   example:
     steps:
       - name: GET request
-        url: https://example.com
-        method: GET
-        check:
-          status: 200
-        captures:
-          title:
-            selector: title
+        http:
+          url: https://example.com
+          method: GET
+          check:
+            status: 200
+          captures:
+            title:
+              selector: title
       - if: captures.title != "Example Domain"
-        name: GET request
-        url: https://example.com
-        method: GET
-        check:
-          status: 200
+        http:
+          name: GET request
+          url: https://example.com
+          method: GET
+          check:
+            status: 200

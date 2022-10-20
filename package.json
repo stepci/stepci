@@ -1,13 +1,13 @@
 {
   "name": "stepci",
-  "version": "2.2.6",
+  "version": "2.3.0",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
     "stepci": "dist/index.js"
   },
   "dependencies": {
-    "@stepci/runner": "^1.3.4",
+    "@stepci/runner": "^1.4.1",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "conf": "^10.2.0",
@@ -27,7 +27,7 @@
   "scripts": {
     "build": "rm -r dist && tsc -p tsconfig.json",
     "build:watch": "tsc -w -p tsconfig.json",
-    "test": "ts-node ./src/index.ts run examples/status.yml"
+    "test": "ts-node ./src/index.ts run"
   },
   "repository": {
     "type": "git",

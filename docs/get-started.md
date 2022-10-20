@@ -1,4 +1,3 @@
-
 # Get started
 
 ## Using Node
@@ -12,7 +11,7 @@ npm install -g stepci
 Create example workflow (`tests/workflow.yml`)
 
 ```yaml
-version: "1.0"
+version: "1.1"
 name: Status Check
 env:
   host: example.com
@@ -20,10 +19,11 @@ tests:
   example:
     steps:
       - name: GET request
-        url: https://{{env.host}}
-        method: GET
-        check:
-          status: /^20/
+        http:
+          url: https://{{env.host}}
+          method: GET
+          check:
+            status: /^20/
 ```
 
 Run the workflow
@@ -37,7 +37,7 @@ stepci run tests/workflow.yml
 Create example workflow (`tests/workflow.yml`)
 
 ```yaml
-version: "1.0"
+version: "1.1"
 name: Status Check
 env:
   host: example.com
@@ -45,10 +45,11 @@ tests:
   example:
     steps:
       - name: GET request
-        url: https://{{env.host}}
-        method: GET
-        check:
-          status: /^20/
+        http:
+          url: https://{{env.host}}
+          method: GET
+          check:
+            status: /^20/
 ```
 
 Run the Docker image
@@ -62,7 +63,7 @@ docker run -v "$(pwd)"/tests:/tests ghcr.io/stepci/stepci tests/workflow.yml
 Create example workflow (`tests/workflow.yml`)
 
 ```yaml
-version: "1.0"
+version: "1.1"
 name: Status Check
 env:
   host: example.com
@@ -70,10 +71,11 @@ tests:
   example:
     steps:
       - name: GET request
-        url: https://{{env.host}}
-        method: GET
-        check:
-          status: /^20/
+        http:
+          url: https://{{env.host}}
+          method: GET
+          check:
+            status: /^20/
 ```
 
 Add Step CI GitHub Action (`./github/workflows/stepci.yml`)

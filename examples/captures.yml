@@ -1,4 +1,4 @@
-version: "1.0"
+version: "1.1"
 name: Captures
 env:
   host: jsonplaceholder.typicode.com
@@ -7,28 +7,30 @@ tests:
   example:
     steps:
       - name: Post the post
-        url: https://{{env.host}}/{{env.resource}}
-        method: POST
-        headers:
-          Content-Type: application/json
-        json:
-          title: Hello Step CI!
-          body: This is the body
-          userId: 1
-        captures:
-          id:
-            jsonpath: $.id
-        check:
-          status: 201
-          captures:
-            id: 101
-      - name: Get post by id
-        url: https://{{env.host}}/{{env.resource}}/{{captures.id}}
-        method: GET
-        headers:
-          Content-Type: application/json
-        check:
-          status: 404
+        http:
+          url: https://{{env.host}}/{{env.resource}}
+          method: POST
           headers:
-            Content-Type: application/json; charset=utf-8
-          body: "{}"
+            Content-Type: application/json
+          json:
+            title: Hello Step CI!
+            body: This is the body
+            userId: 1
+          captures:
+            id:
+              jsonpath: $.id
+          check:
+            status: 201
+            captures:
+              id: 101
+      - name: Get post by id
+        http:
+          url: https://{{env.host}}/{{env.resource}}/{{captures.id}}
+          method: GET
+          headers:
+            Content-Type: application/json
+          check:
+            status: 404
+            headers:
+              Content-Type: application/json; charset=utf-8
+            body: "{}"

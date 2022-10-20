@@ -3,7 +3,7 @@
     "status": "Status",
     "duration": "Duration",
     "json": "JSON",
-    "schema": "Schema",
+    "jsonschema": "JSON Schema",
     "jsonexample": "JSON example",
     "jsonpath": "JSONPath",
     "xpath": "XPath",

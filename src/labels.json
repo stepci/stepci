@@ -4,7 +4,6 @@
     "duration": "Duration",
     "json": "JSON",
     "schema": "JSON Schema",
-    "jsonexample": "JSON example",
     "jsonpath": "JSONPath",
     "xpath": "XPath",
     "headers": "Headers",

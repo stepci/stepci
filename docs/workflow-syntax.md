@@ -438,13 +438,13 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.http.check.jsonschema`
+### `tests.<test>.steps.<step>.http.check.schema`
 
 Optional. Check response against JSON Schema
 
 ```yaml
 check:
-  jsonschema:
+  schema:
     type: object
     properties:
       id:
@@ -759,13 +759,13 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.jsonschema`
+### `tests.<test>.steps.<step>.grpc.check.schema`
 
 Optional. Check response against JSON Schema
 
 ```yaml
 check:
-  jsonschema:
+  schema:
     type: object
     properties:
       id:

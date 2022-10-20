@@ -8,7 +8,7 @@ tests:
           url: https://jsonplaceholder.typicode.com/posts/1
           method: GET
           check:
-            jsonschema:
+            schema:
               type: object
               properties:
                 userId:

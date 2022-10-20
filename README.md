@@ -124,7 +124,7 @@ You can find a collection of Step CI example tests under [`examples/`](examples/
 - [Performance](#performance)
 - [SSL Certificates](#ssl-certificates)
 - [Captures](#captures)
-- [Graph QL](#graph-ql)
+- [GraphQL](#graphql)
 - [Soap API](#soap-api)
 - [Form Submission](#form-submission)
 - [File Uploads](#file-uploads)
@@ -303,7 +303,7 @@ tests:
             Content-Type: application/json; charset=utf-8
           body: "{}"
 ```
-#### Graph QL
+#### GraphQL
 ```yaml
 version: "1.0"
 name: GraphQL
@@ -462,6 +462,23 @@ tests:
             $.id:
               - eq: 1
               - isNumber: true
+```
+
+#### Fake Data
+
+See [Faker API](https://fakerjs.dev/api/) for available generators
+
+```yaml
+version: "1.0"
+name: Fake Data
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://en.wikipedia.org/wiki/{{animal.cat | fake}}
+        method: GET
+        check:
+          status: /^20/
 ```
 
 ## Privacy

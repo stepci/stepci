@@ -1,0 +1,10 @@
+version: "1.0"
+name: Fake Data
+tests:
+  example:
+    steps:
+      - name: GET request
+        url: https://en.wikipedia.org/wiki/{{animal.cat | fake}}
+        method: GET
+        check:
+          status: /^20/

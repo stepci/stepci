@@ -42,7 +42,8 @@ The `run` command lets you execute a specified workflow
 |-|-|-|
 | --help | No | Outputs the help text for `stepci run` |
 | --version | No | Outputs the current version |
-| -e [--env] | No | Supply environment variables |
+| -e [--env] | No | Supply environment variables (can be defined multiple times) |
+| -s [--secret] | No | Supply secret variables (can be defined multiple times) |
 
 #### **Examples**
 

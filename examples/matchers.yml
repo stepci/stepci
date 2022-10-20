@@ -1,13 +1,14 @@
-version: "1.0"
+version: "1.1"
 name: Using Matchers
 tests:
   example:
     steps:
       - name: GET request
-        url: https://jsonplaceholder.typicode.com/posts/1
-        method: GET
-        check:
-          jsonpath:
-            $.id:
-              - eq: 1
-              - isNumber: true
+        http:
+          url: https://jsonplaceholder.typicode.com/posts/1
+          method: GET
+          check:
+            jsonpath:
+              $.id:
+                - eq: 1
+                - isNumber: true

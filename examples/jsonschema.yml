@@ -1,24 +1,25 @@
-version: "1.0"
+version: "1.1"
 name: JSON Schema
 tests:
   example:
     steps:
       - name: GET request
-        url: https://jsonplaceholder.typicode.com/posts/1
-        method: GET
-        check:
-          jsonschema:
-            type: object
-            properties:
-              userId:
-                type: integer
-                required: true
-              id:
-                type: integer
-                required: true
-              title:
-                type: string
-                required: true
-              body:
-                type: string
-                required: true
+        http:
+          url: https://jsonplaceholder.typicode.com/posts/1
+          method: GET
+          check:
+            jsonschema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                  required: true
+                id:
+                  type: integer
+                  required: true
+                title:
+                  type: string
+                  required: true
+                body:
+                  type: string
+                  required: true

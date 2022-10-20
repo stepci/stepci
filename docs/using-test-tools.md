@@ -41,7 +41,7 @@ const { run } = require('@stepci/runner')
 
 it('Check Response Status', async () => {
   const workflow = {
-    version: "1.0",
+    version: "1.1",
     name: "Status Test",
     env: {
       host: "example.com"
@@ -50,10 +50,12 @@ it('Check Response Status', async () => {
       example: {
         steps: [{
           name: "GET request",
-          url: "https://{{env.host}}",
-          method: "GET",
-          check: {
-            status: "/^20/"
+          http: {
+            url: "https://{{env.host}}",
+            method: "GET",
+            check: {
+              status: "/^20/"
+            }
           }
         }]
       }
@@ -86,7 +88,7 @@ const { run } = require('@stepci/runner')
 
 test('Check Response Status', async () => {
   const workflow = {
-    version: "1.0",
+    version: "1.1",
     name: "Status Test",
     env: {
       host: "example.com"
@@ -95,10 +97,12 @@ test('Check Response Status', async () => {
       example: {
         steps: [{
           name: "GET request",
-          url: "https://{{env.host}}",
-          method: "GET",
-          check: {
-            status: "/^20/"
+          http: {
+            url: "https://{{env.host}}",
+            method: "GET",
+            check: {
+              status: "/^20/"
+            }
           }
         }]
       }
@@ -132,7 +136,7 @@ import { run } from '@stepci/runner'
 
 test('Check Response Status', async t => {
   const workflow = {
-    version: "1.0",
+    version: "1.1",
     name: "Status Test",
     env: {
       host: "example.com"
@@ -141,10 +145,12 @@ test('Check Response Status', async t => {
       example: {
         steps: [{
           name: "GET request",
-          url: "https://{{env.host}}",
-          method: "GET",
-          check: {
-            status: "/^20/"
+          http: {
+            url: "https://{{env.host}}",
+            method: "GET",
+            check: {
+              status: "/^20/"
+            }
           }
         }]
       }

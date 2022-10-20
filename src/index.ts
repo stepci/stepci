@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { EnvironmentVariables, runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/runner'
+import { EnvironmentVariables, runFromFile, StepResult, TestResult, WorkflowResult, HTTPStepRequest, HTTPStepResponse, gRPCStepRequest } from '@stepci/runner'
 import exit from 'exit'
 import chalk from 'chalk'
 import os from 'os'
@@ -55,7 +55,18 @@ function renderStep (step: StepResult) {
   }
 
   console.log(chalk.bold('\nRequest\n'))
-  console.log(chalk.bgWhite.bold(` ${step.request?.method} `) + ' ' + step.request?.url + ' ' + chalk.bgGray.bold(` ${step.response?.status} ${step.response?.statusText} `))
+
+  if (step.type === 'http') {
+    const stepRequest = step.request as HTTPStepRequest
+    const stepResponse = step.response as HTTPStepResponse
+    console.log(chalk.bgWhite.bold(` ${stepRequest?.method} `) + ' ' + stepRequest.url + ' ' + chalk.bgGray.bold(` ${stepResponse.status} ${stepResponse.statusText} `))
+  }
+
+  if (step.type === 'grpc') {
+    const stepRequest = step.request as gRPCStepRequest
+    console.log(chalk.bgWhite.bold(` ${stepRequest.service.split('.')[1]} `) + ' ' + stepRequest.host + ' ' + chalk.bgGray.bold(` ${stepRequest.method} `))
+  }
+
   console.log(chalk.bold('\nChecks'))
 
   const checks = step.checks as {[key: string]: any}

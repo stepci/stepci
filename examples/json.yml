@@ -1,11 +1,12 @@
-version: "1.0"
+version: "1.1"
 name: Validating JSON
 tests:
   example:
     steps:
       - name: GET request
-        url: https://jsonplaceholder.typicode.com/posts/1
-        method: GET
-        check:
-          jsonpath:
-            $.id: 1
+        http:
+          url: https://jsonplaceholder.typicode.com/posts/1
+          method: GET
+          check:
+            jsonpath:
+              $.id: 1

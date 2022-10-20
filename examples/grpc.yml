@@ -1,0 +1,16 @@
+version: "1.1"
+name: gRPC API
+tests:
+  example:
+    steps:
+      - name: gRPC request
+        grpc:
+          proto: examples/helloworld.proto
+          host: 0.0.0.0:50051
+          service: helloworld.Greeter
+          method: SayHello
+          data:
+            name: world!
+          check:
+            jsonpath:
+              $.message: Hello world!

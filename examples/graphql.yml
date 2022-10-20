@@ -1,26 +1,27 @@
-version: "1.0"
+version: "1.1"
 name: GraphQL
 tests:
   example:
     steps:
       - name: Request
-        url: https://echo.hoppscotch.io/graphql
-        method: POST
-        headers:
-          Content-Type: application/json
-        graphql:
-          query: |
-            query Request {
-              method
-              url
-              headers {
-                key
-                value
+        http:
+          url: https://echo.hoppscotch.io/graphql
+          method: POST
+          headers:
+            Content-Type: application/json
+          graphql:
+            query: |
+              query Request {
+                method
+                url
+                headers {
+                  key
+                  value
+                }
               }
-            }
-          variables:
-            id: 1
-        check:
-          status: 200
-          jsonpath:
-            $.data.method: POST
+            variables:
+              id: 1
+          check:
+            status: 200
+            jsonpath:
+              $.data.method: POST

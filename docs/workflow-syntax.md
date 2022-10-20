@@ -30,8 +30,9 @@ env:
   host: example.com
 steps:
   - name: GET request
-    url: https://{{env.host}}
-    method: GET
+    http:
+      url: https://{{env.host}}
+      method: GET
 ```
 
 ### `config`
@@ -97,10 +98,11 @@ tests:
   example:
     steps:
       - name: GET request
-        url: https://example.com
-        method: GET
-        check:
-          status: 200
+        http:
+          url: https://example.com
+          method: GET
+          check:
+            status: 200
 ```
 
 ### `tests.<test>.name`
@@ -144,9 +146,10 @@ Required. The step to be executed
 steps:
   - name: GET request
     url: https://example.com
-    method: GET
-    check:
-      status: 200
+    http:
+      method: GET
+      check:
+        status: 200
 ```
 
 ### `tests.<test>.steps.<step>.id`
@@ -157,15 +160,27 @@ Optional. Step id
 
 Optional. Step name
 
-### `tests.<test>.steps.<step>.url`
+### `tests.<test>.steps.<step>.if`
+
+Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/joewalnes/filtrex#expressions)
+
+```yaml
+if: captures.title == "Example Domain"
+```
+
+### `tests.<test>.steps.<step>.http`
+
+Optional. HTTP Step
+
+### `tests.<test>.steps.<step>.http.url`
 
 Required. Request URL
 
-### `tests.<test>.steps.<step>.method`
+### `tests.<test>.steps.<step>.http.method`
 
 Required. Request method
 
-### `tests.<test>.steps.<step>.headers`
+### `tests.<test>.steps.<step>.http.headers`
 
 Optional. Request headers
 
@@ -174,7 +189,7 @@ headers:
   Content-Type: application/json
 ```
 
-### `tests.<test>.steps.<step>.body`
+### `tests.<test>.steps.<step>.http.body`
 
 Optional. Request Body
 
@@ -187,7 +202,7 @@ body: |
   }
 ```
 
-### `tests.<test>.steps.<step>.params`
+### `tests.<test>.steps.<step>.http.params`
 
 Optional. Query Params
 
@@ -197,11 +212,11 @@ params:
   world: hello
 ```
 
-### `tests.<test>.steps.<step>.auth`
+### `tests.<test>.steps.<step>.http.auth`
 
 Optional. Auth configuration
 
-### `tests.<test>.steps.<step>.auth.basic`
+### `tests.<test>.steps.<step>.http.auth.basic`
 
 Optional. Basic Auth
 
@@ -212,7 +227,7 @@ auth:
     password: world
 ```
 
-### `tests.<test>.steps.<step>.auth.bearer`
+### `tests.<test>.steps.<step>.http.auth.bearer`
 
 Optional. Bearer Auth
 
@@ -222,7 +237,7 @@ auth:
     token: hello world
 ```
 
-### `tests.<test>.steps.<step>.cookies`
+### `tests.<test>.steps.<step>.http.cookies`
 
 Optional. Set Cookies. Once set, the cookies will be sent in consequent requests
 
@@ -231,7 +246,7 @@ cookies:
   wows: world
 ```
 
-### `tests.<test>.steps.<step>.json`
+### `tests.<test>.steps.<step>.http.json`
 
 Optional. Request JSON
 
@@ -242,7 +257,7 @@ json:
   userId: 1
 ```
 
-### `tests.<test>.steps.<step>.form`
+### `tests.<test>.steps.<step>.http.form`
 
 Optional. Form submission
 
@@ -251,7 +266,7 @@ form:
   email: hello@stepci.com
 ```
 
-### `tests.<test>.steps.<step>.formData`
+### `tests.<test>.steps.<step>.http.formData`
 
 Optional. Multipart Form submission
 
@@ -262,7 +277,7 @@ formData:
     file: README.md
 ```
 
-### `tests.<test>.steps.<step>.graphql`
+### `tests.<test>.steps.<step>.http.graphql`
 
 Optional. GraphQL Data
 
@@ -281,15 +296,7 @@ graphql:
     id: 1
 ```
 
-### `tests.<test>.steps.<step>.if`
-
-Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/joewalnes/filtrex#expressions)
-
-```yaml
-if: captures.title == "Example Domain"
-```
-
-### `tests.<test>.steps.<step>.captures`
+### `tests.<test>.steps.<step>.http.captures`
 
 Optional. Capture response values into named variables
 
@@ -301,7 +308,7 @@ captures:
     cookie: user
 ```
 
-### `tests.<test>.steps.<step>.captures.<capture>.jsonpath`
+### `tests.<test>.steps.<step>.http.captures.<capture>.jsonpath`
 
 Optional. JSONPath
 
@@ -311,7 +318,7 @@ captures:
     jsonpath: $.id
 ```
 
-### `tests.<test>.steps.<step>.captures.<capture>.xpath`
+### `tests.<test>.steps.<step>.http.captures.<capture>.xpath`
 
 Optional. XPath
 
@@ -321,7 +328,7 @@ captures:
     xpath: //ID
 ```
 
-### `tests.<test>.steps.<step>.captures.<capture>.header`
+### `tests.<test>.steps.<step>.http.captures.<capture>.header`
 
 Optional. Response Header
 
@@ -331,7 +338,7 @@ captures:
     header: Content-Type
 ```
 
-### `tests.<test>.steps.<step>.captures.<capture>.selector`
+### `tests.<test>.steps.<step>.http.captures.<capture>.selector`
 
 Optional. HTML Selector
 
@@ -341,7 +348,7 @@ captures:
     selector: h1
 ```
 
-### `tests.<test>.steps.<step>.captures.<capture>.cookie`
+### `tests.<test>.steps.<step>.http.captures.<capture>.cookie`
 
 Optional. Cookie
 
@@ -351,7 +358,7 @@ captures:
     cookie: user
 ```
 
-### `tests.<test>.steps.<step>.captures.<capture>.regex`
+### `tests.<test>.steps.<step>.http.captures.<capture>.regex`
 
 Optional. Match Regex
 
@@ -361,11 +368,11 @@ captures:
     regex: <title>(.*?)<\/title>
 ```
 
-### `tests.<test>.steps.<step>.check`
+### `tests.<test>.steps.<step>.http.check`
 
 Optional. Provide checks to validate responses
 
-### `tests.<test>.steps.<step>.check.status`
+### `tests.<test>.steps.<step>.http.check.status`
 
 Optional. Check status code
 
@@ -374,7 +381,7 @@ check:
   status: 200
 ```
 
-### `tests.<test>.steps.<step>.check.statusText`
+### `tests.<test>.steps.<step>.http.check.statusText`
 
 Optional. Check status text
 
@@ -383,7 +390,7 @@ check:
   statusText: OK
 ```
 
-### `tests.<test>.steps.<step>.check.redirected`
+### `tests.<test>.steps.<step>.http.check.redirected`
 
 Optional. Check redirection status
 
@@ -392,7 +399,7 @@ check:
   redirected: true
 ```
 
-### `tests.<test>.steps.<step>.check.redirects`
+### `tests.<test>.steps.<step>.http.check.redirects`
 
 Optional. Check redirects
 
@@ -402,7 +409,7 @@ check:
     - https://example.com/
 ```
 
-### `tests.<test>.steps.<step>.check.headers`
+### `tests.<test>.steps.<step>.http.check.headers`
 
 Optional. Check headers
 
@@ -412,7 +419,7 @@ check:
     Content-Type: application/json
 ```
 
-### `tests.<test>.steps.<step>.check.body`
+### `tests.<test>.steps.<step>.http.check.body`
 
 Optional. Check body
 
@@ -421,7 +428,7 @@ check:
   body: "Hello"
 ```
 
-### `tests.<test>.steps.<step>.check.json`
+### `tests.<test>.steps.<step>.http.check.json`
 
 Optional. Check JSON
 
@@ -431,7 +438,7 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.check.schema`
+### `tests.<test>.steps.<step>.http.check.schema`
 
 Optional. Check response against JSONSchema
 
@@ -445,7 +452,7 @@ check:
         required: true
 ```
 
-### `tests.<test>.steps.<step>.check.jsonpath`
+### `tests.<test>.steps.<step>.http.check.jsonpath`
 
 Optional. Check JSONPath
 
@@ -455,7 +462,7 @@ check:
     $.id: 1
 ```
 
-### `tests.<test>.steps.<step>.check.xpath`
+### `tests.<test>.steps.<step>.http.check.xpath`
 
 Optional. Check XPath
 
@@ -465,7 +472,7 @@ check:
     //SUCCESS: false
 ```
 
-### `tests.<test>.steps.<step>.check.selector`
+### `tests.<test>.steps.<step>.http.check.selector`
 
 Optional. Check HTML selector
 
@@ -475,7 +482,7 @@ check:
     h1: "Example Domain"
 ```
 
-### `tests.<test>.steps.<step>.check.cookies`
+### `tests.<test>.steps.<step>.http.check.cookies`
 
 Optional. Check cookies
 
@@ -485,7 +492,7 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.check.captures`
+### `tests.<test>.steps.<step>.http.check.captures`
 
 Optional. Check captures
 
@@ -495,7 +502,7 @@ check:
     id: 1
 ```
 
-### `tests.<test>.steps.<step>.check.sha256`
+### `tests.<test>.steps.<step>.http.check.sha256`
 
 Optional. Check SHA-256 Hash (response)
 
@@ -504,7 +511,7 @@ check:
   sha256: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
 ```
 
-### `tests.<test>.steps.<step>.check.md5`
+### `tests.<test>.steps.<step>.http.check.md5`
 
 Optional. Check MD5 Hash (response)
 
@@ -513,7 +520,7 @@ check:
   md5: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
 ```
 
-### `tests.<test>.steps.<step>.check.size`
+### `tests.<test>.steps.<step>.http.check.size`
 
 Optional. Check response size (in bytes)
 
@@ -522,7 +529,7 @@ check:
   size: 1024
 ```
 
-### `tests.<test>.steps.<step>.check.performance`
+### `tests.<test>.steps.<step>.http.check.performance`
 
 Optional. Performance Checking
 
@@ -535,7 +542,7 @@ check:
       - lte: 500
 ```
 
-### `tests.<test>.steps.<step>.check.performance.wait`
+### `tests.<test>.steps.<step>.http.check.performance.wait`
 
 Optional
 
@@ -545,7 +552,7 @@ check:
     wait: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.dns`
+### `tests.<test>.steps.<step>.http.check.performance.dns`
 
 Optional
 
@@ -555,7 +562,7 @@ check:
     dns: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.tcp`
+### `tests.<test>.steps.<step>.http.check.performance.tcp`
 
 Optional
 
@@ -565,7 +572,7 @@ check:
     tcp: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.tls`
+### `tests.<test>.steps.<step>.http.check.performance.tls`
 
 Optional
 
@@ -575,7 +582,7 @@ check:
     tls: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.request`
+### `tests.<test>.steps.<step>.http.check.performance.request`
 
 Optional
 
@@ -585,7 +592,7 @@ check:
     request: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.firstByte`
+### `tests.<test>.steps.<step>.http.check.performance.firstByte`
 
 Optional
 
@@ -595,7 +602,7 @@ check:
     firstByte: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.download`
+### `tests.<test>.steps.<step>.http.check.performance.download`
 
 Optional
 
@@ -605,7 +612,7 @@ check:
     download: 20
 ```
 
-### `tests.<test>.steps.<step>.check.performance.total`
+### `tests.<test>.steps.<step>.http.check.performance.total`
 
 Optional
 
@@ -615,7 +622,7 @@ check:
     total: 20
 ```
 
-### `tests.<test>.steps.<step>.check.ssl`
+### `tests.<test>.steps.<step>.http.check.ssl`
 
 Optional. SSL Certificate Validation
 
@@ -628,7 +635,7 @@ check:
       - gte: 60
 ```
 
-### `tests.<test>.steps.<step>.check.ssl.valid`
+### `tests.<test>.steps.<step>.http.check.ssl.valid`
 
 Optional
 
@@ -638,7 +645,7 @@ check:
     valid: true
 ```
 
-### `tests.<test>.steps.<step>.check.ssl.signed`
+### `tests.<test>.steps.<step>.http.check.ssl.signed`
 
 Optional
 
@@ -648,7 +655,7 @@ check:
     signed: true
 ```
 
-### `tests.<test>.steps.<step>.check.ssl.daysUntilExpiration`
+### `tests.<test>.steps.<step>.http.check.ssl.daysUntilExpiration`
 
 Optional
 
@@ -658,13 +665,163 @@ check:
     daysUntilExpiration: 30
 ```
 
-### `tests.<test>.steps.<step>.followRedirects`
+### `tests.<test>.steps.<step>.http.followRedirects`
 
 Optional. Follow redirects. Enabled by default
 
-### `tests.<test>.steps.<step>.timeout`
+### `tests.<test>.steps.<step>.http.timeout`
 
 Optional. Request Timeout
+
+### `tests.<test>.steps.<step>.grpc`
+
+Optional. gRPC Step
+
+### `tests.<test>.steps.<step>.grpc.proto`
+
+Required. gRPC protocol buffer file
+
+### `tests.<test>.steps.<step>.grpc.host`
+
+Required. gRPC proto file
+
+### `tests.<test>.steps.<step>.grpc.service`
+
+Required. gRPC service
+
+### `tests.<test>.steps.<step>.grpc.method`
+
+Required. gRPC method
+
+### `tests.<test>.steps.<step>.grpc.data`
+
+Required. gRPC data
+
+### `tests.<test>.steps.<step>.grpc.tls`
+
+Optional. gRPC TLS config
+
+**Example: TLS Config**
+
+```yaml
+tls:
+  rootCerts: |
+    blablabla
+  privateKey: |
+    blablabla
+  certChain: |
+    blablabla
+```
+
+### `tests.<test>.steps.<step>.grpc.tls.rootCerts`
+
+Optional. gRPC TLS root certificate
+
+### `tests.<test>.steps.<step>.grpc.tls.privateKey`
+
+Optional. gRPC TLS private key
+
+### `tests.<test>.steps.<step>.grpc.tls.certChain`
+
+Optional. gRPC TLS certificate chain
+
+### `tests.<test>.steps.<step>.grpc.captures`
+
+Optional. Capture response values into named variables
+
+```yaml
+captures:
+  id:
+    jsonpath: $.id
+```
+
+### `tests.<test>.steps.<step>.grpc.captures.<capture>.jsonpath`
+
+Optional. JSONPath
+
+```yaml
+captures:
+  id:
+    jsonpath: $.id
+```
+
+### `tests.<test>.steps.<step>.grpc.check`
+
+Optional. Provide checks to validate responses
+
+### `tests.<test>.steps.<step>.grpc.check.json`
+
+Optional. Check JSON
+
+```yaml
+check:
+  json:
+    hello: world
+```
+
+### `tests.<test>.steps.<step>.grpc.check.schema`
+
+Optional. Check response against JSONSchema
+
+```yaml
+check:
+  schema:
+    type: object
+    properties:
+      id:
+        type: integer
+        required: true
+```
+
+### `tests.<test>.steps.<step>.grpc.check.jsonpath`
+
+Optional. Check JSONPath
+
+```yaml
+check:
+  jsonpath:
+    $.id: 1
+```
+
+### `tests.<test>.steps.<step>.grpc.check.captures`
+
+Optional. Check captures
+
+```yaml
+check:
+  captures:
+    id: 1
+```
+
+### `tests.<test>.steps.<step>.grpc.check.size`
+
+Optional. Check response size (in bytes)
+
+```yaml
+check:
+  size: 1024
+```
+
+### `tests.<test>.steps.<step>.grpc.check.performance`
+
+Optional. Performance Checking
+
+```yaml
+check:
+  performance:
+    total:
+      - lte: 500
+```
+
+### `tests.<test>.steps.<step>.grpc.check.performance.total`
+
+Optional
+
+```yaml
+check:
+  performance:
+    total: 20
+```
 
 ## Using Matchers
 
@@ -675,12 +832,13 @@ Matchers are useful when you want to check whether values match patterns
 ```yaml
 steps:
   - name: GET Request
-    url: https://example.com
-    method: GET
-    check:
-      performance:
-        firstByte:
-          - lte: 500
+    http:
+      url: https://example.com
+      method: GET
+      check:
+        performance:
+          firstByte:
+            - lte: 500
 ```
 
 Matchers can be chained together
@@ -690,13 +848,14 @@ Matchers can be chained together
 ```yaml
 steps:
   - name: GET Request
-    url: https://example.com
-    method: GET
-    check:
-      performance:
-        firstByte:
-          - lte: 500
-          - gte: 100
+    http:
+      url: https://example.com
+      method: GET
+      check:
+        performance:
+          firstByte:
+            - lte: 500
+            - gte: 100
 ```
 
 Available Matchers:

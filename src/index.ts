@@ -117,6 +117,7 @@ yargs(hideBin(process.argv))
     const parsedEnv: EnvironmentVariables = Object.fromEntries(argv.e?.map(opt => opt.split('=')) ?? [])
     loadWorkflow(argv.workflow, parsedEnv)
   })
+  .demandCommand()
   .parse()
 
 posthog.shutdown()

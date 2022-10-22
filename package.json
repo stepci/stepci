@@ -1,13 +1,13 @@
 {
   "name": "stepci",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
     "stepci": "dist/index.js"
   },
   "dependencies": {
-    "@stepci/runner": "^1.4.5",
+    "@stepci/runner": "^1.4.6",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "conf": "^10.2.0",

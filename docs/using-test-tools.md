@@ -28,7 +28,7 @@ const { runFromFile } = require('@stepci/runner')
 const path = require('path')
 
 it('Check Response Status', async () => {
-  const result = await runFromFile(path.join(__dirname, './stepci/status.yml'))
+  const { result } = await runFromFile(path.join(__dirname, './stepci/status.yml'))
   assert.equal(result.passed, true)
 })
 ```
@@ -62,7 +62,7 @@ it('Check Response Status', async () => {
     }
   }
 
-  const result = await run(workflow)
+  const { result } = await run(workflow)
   assert.equal(result.passed, true)
 })
 ```
@@ -76,7 +76,7 @@ const { runFromFile } = require('@stepci/runner')
 const path = require('path')
 
 test('Check Response Status', async () => {
-  const result = await runFromFile(path.join(__dirname, './stepci/status.yml'))
+  const { result } = await runFromFile(path.join(__dirname, './stepci/status.yml'))
   expect(result.passed).toBe(true)
 })
 ```
@@ -109,7 +109,7 @@ test('Check Response Status', async () => {
     }
   }
 
-  const result = await run(workflow)
+  const { result } = await run(workflow)
   expect(result.passed).toBe(true)
 })
 ```
@@ -123,7 +123,7 @@ import test from 'ava'
 import { runFromFile } from '@stepci/runner'
 
 test('Check Response Status', async t => {
-  const result = await runFromFile(new URL('stepci/status.yml', import.meta.url))
+  const { result } = await runFromFile(new URL('stepci/status.yml', import.meta.url))
   t.is(result.passed, true)
 })
 ```
@@ -157,7 +157,7 @@ test('Check Response Status', async t => {
     }
   }
 
-  const result = await run(workflow)
+  const { result } = await run(workflow)
   t.is(result.passed, true)
 })
 ```

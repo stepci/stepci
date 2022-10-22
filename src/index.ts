@@ -29,7 +29,7 @@ if (!process.env.STEPCI_DISABLE_ANALYTICS) {
     properties: {
       os: os.type(),
       node: process.version,
-      version: '2.2.6',
+      version: '2.3.x',
       environment: ci.isCI ? ci.name : isDocker() ? 'Docker' : 'Local'
     }
   })

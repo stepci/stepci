@@ -43,11 +43,15 @@ Optional. Workflow config
 
 Optional. Continue workflow after step failed
 
-### `config.rejectUnauthorized`
+### `config.http`
+
+Optional. HTTP-Client config
+
+### `config.http.rejectUnauthorized`
 
 Optional. Reject if SSL certificate is invalid
 
-### `config.baseURL`
+### `config.http.baseURL`
 
 Optional. Base URL
 
@@ -200,6 +204,13 @@ body: |
     "body": "This is the body",
     "userId": 1
   }
+```
+
+File as a body
+
+```yaml
+body:
+  file: README.md
 ```
 
 ### `tests.<test>.steps.<step>.http.params`
@@ -677,6 +688,20 @@ Optional. Request Timeout
 
 Optional. gRPC Step
 
+```yaml
+grpc:
+  proto:
+    - public/helloworld.proto
+  host: 0.0.0.0:50051
+  service: helloworld.Greeter
+  method: SayHello
+  data:
+    name: world!
+  check:
+    jsonpath:
+      $.message: Hello world!
+```
+
 ### `tests.<test>.steps.<step>.grpc.proto`
 
 Required. gRPC protocol buffer file
@@ -697,11 +722,13 @@ Required. gRPC method
 
 Required. gRPC data
 
+### `tests.<test>.steps.<step>.grpc.metadata`
+
+Optional. gRPC metadata
+
 ### `tests.<test>.steps.<step>.grpc.tls`
 
 Optional. gRPC TLS config
-
-**Example: TLS Config**
 
 ```yaml
 tls:
@@ -713,17 +740,35 @@ tls:
     blablabla
 ```
 
+Can be files:
+
+```yaml
+tls:
+  rootCerts:
+    file: root.cert
+  privateKey:
+    file: key.cert
+  certChain:
+    file: chain.cert
+```
+
 ### `tests.<test>.steps.<step>.grpc.tls.rootCerts`
 
 Optional. gRPC TLS root certificate
+
+Can be a file
 
 ### `tests.<test>.steps.<step>.grpc.tls.privateKey`
 
 Optional. gRPC TLS private key
 
+Can be a file
+
 ### `tests.<test>.steps.<step>.grpc.tls.certChain`
 
 Optional. gRPC TLS certificate chain
+
+Can be a file
 
 ### `tests.<test>.steps.<step>.grpc.captures`
 

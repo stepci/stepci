@@ -1,7 +1,33 @@
 tasks:
   -
-    name: install
+    name: tests
     default: true
+    language: Python
+    init: |
+      import glob
+      for file in glob.glob("source/examples/*.yaml"):
+        run_task("stepci_run",{ "workflow" : $file })
+    code: |
+      if "failure" in get_state():
+        raise Exception("some tests errored")
+      else:
+        print("all tests passed")
+    subtasks:
+      -
+        name: stepci_run
+        language: Bash
+        code: |
+          stepci run $workflow
+          code=$?
+          if test $code -ne 0; then
+            cat << HERE > $cache_root_dir/state.json
+              {
+                "failure" : true 
+              }
+            HERE  
+          fi
+  -
+    name: install
     language: Bash
     code: |
       sudo npm install -g stepci
@@ -12,4 +38,4 @@ tasks:
     name: install-deps
     language: Bash
     code: |
-      sudo apk add --update nodejs npm
+      sudo apk add --update nodejs npm python3 

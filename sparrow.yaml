@@ -17,15 +17,11 @@ tasks:
         name: stepci_run
         language: Bash
         code: |
-          stepci run $workflow
-          code=$?
-          if test $code -ne 0; then
-            cat << HERE > $cache_root_dir/state.json
-              {
-                "failure" : true 
-              }
-            HERE  
-          fi
+          stepci run $workflow || cat << 'HERE' > $cache_root_dir/state.json
+            {
+              "failure" : true 
+            }
+          HERE  
     depends:
       -
         name: install 

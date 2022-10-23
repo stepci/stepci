@@ -6,7 +6,7 @@ tasks:
     init: |
       import glob
       for file in glob.glob("source/examples/*.yaml"):
-        run_task("stepci_run",{ "workflow" : $file })
+        run_task("stepci_run",{ "workflow" : file })
     code: |
       if "failure" in get_state():
         raise Exception("some tests errored")

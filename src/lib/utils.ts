@@ -1,4 +1,4 @@
-import { EnvironmentVariables } from '@stepci/runner';
+import { EnvironmentVariables } from '@stepci/runner'
 
 // Check if env format matches the convention e.g. `variable=VARIABLE`
 export const checkEnvFormat = (str: string) => str.match(/^(\w+=.+)$/)

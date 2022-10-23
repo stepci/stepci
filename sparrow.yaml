@@ -4,7 +4,7 @@ tasks:
     default: true
     language: Bash
     code: |
-      npm install -g stepci
+      sudo npm install -g stepci
     depends:
       -
         name: install-deps

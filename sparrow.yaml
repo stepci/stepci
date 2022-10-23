@@ -26,6 +26,9 @@ tasks:
               }
             HERE  
           fi
+     depends:
+      -
+        name: install 
   -
     name: install
     language: Bash

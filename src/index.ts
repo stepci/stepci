@@ -128,7 +128,7 @@ yargs(hideBin(process.argv))
           throw new Error('secret variables have wrong format, use `secret=VARIABLE`.')
         }
 
-        return true;
+        return true
       })
   }, (argv) => {
     loadWorkflow(argv.workflow, {

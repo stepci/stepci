@@ -1,0 +1,15 @@
+tasks:
+  -
+    name: install
+    default: true
+    language: Bash
+    code: |
+      npm install -g stepci
+    depends:
+      -
+        name: install-deps
+  -
+    name: install-deps
+    language: Bash
+    code: |
+      sudo apk add --update nodejs npm

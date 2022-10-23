@@ -5,8 +5,12 @@ tasks:
     language: Python
     init: |
       import glob
+      import os
+
+      os.chdir("source")
       update_state({})
-      for file in glob.glob("source/examples/*.yml"):
+
+      for file in glob.glob("examples/*.yml"):
         run_task("stepci_run",{ "workflow" : file })
     code: |
       if "failure" in get_state():
@@ -18,6 +22,9 @@ tasks:
         name: stepci_run
         language: Bash
         code: |
+          set -e
+          cd source
+          echo "run test $workflow ..."
           stepci run $workflow || echo '{ "failure" : true  }' > $cache_root_dir/state.json
     depends:
       -

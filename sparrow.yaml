@@ -26,7 +26,7 @@ tasks:
               }
             HERE  
           fi
-     depends:
+    depends:
       -
         name: install 
   -

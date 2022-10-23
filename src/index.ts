@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { EnvironmentVariables, runFromFile, StepResult, TestResult, WorkflowResult, HTTPStepRequest, HTTPStepResponse, gRPCStepRequest } from '@stepci/runner'
+import { EnvironmentVariables, gRPCStepRequest, HTTPStepRequest, HTTPStepResponse, runFromFile, StepResult, TestResult, WorkflowResult } from '@stepci/runner'
 import exit from 'exit'
 import chalk from 'chalk'
 import os from 'os'
@@ -12,6 +12,7 @@ import ci from 'ci-info'
 import isDocker from 'is-docker'
 import Conf from 'conf'
 import { labels } from './labels.json'
+import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
 
 const config = new Conf()
 const posthog = new PostHog(
@@ -86,9 +87,14 @@ function renderStep (step: StepResult) {
   }
 }
 
+type LoadWorkflowOptions = {
+  env?: EnvironmentVariables
+  secrets?: EnvironmentVariables
+}
+
 // Load workflow files
-function loadWorkflow (path: string, env?: EnvironmentVariables) {
-  runFromFile(path, { ee, env })
+function loadWorkflow (path: string, options: LoadWorkflowOptions = {}) {
+  runFromFile(path, { ...options, ee })
 }
 
 yargs(hideBin(process.argv))
@@ -106,16 +112,29 @@ yargs(hideBin(process.argv))
         describe: 'env variables to use',
         type: 'string'
       })
-      .check((argv) => {
-        if (argv.e?.length && !argv.e.every(env => env.match(/^(\w+=.+)$/))) {
+      .option('s', {
+        alias: 'secret',
+        array: true,
+        demandOption: false,
+        describe: 'secret variables to use',
+        type: 'string'
+      })
+      .check(({ e: envs, s: secrets }) => {
+        if (checkOptionalEnvArrayFormat(envs)) {
           throw new Error('env variables have wrong format, use `env=VARIABLE`.')
         }
 
-        return true;
+        if (checkOptionalEnvArrayFormat(secrets)) {
+          throw new Error('secret variables have wrong format, use `secret=VARIABLE`.')
+        }
+
+        return true
       })
   }, (argv) => {
-    const parsedEnv: EnvironmentVariables = Object.fromEntries(argv.e?.map(opt => opt.split('=')) ?? [])
-    loadWorkflow(argv.workflow, parsedEnv)
+    loadWorkflow(argv.workflow, {
+      env: parseEnvArray(argv.e),
+      secrets: parseEnvArray(argv.s)
+    })
   })
   .parse()
 

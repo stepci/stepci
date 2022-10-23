@@ -6,7 +6,7 @@ tasks:
     init: |
       import glob
       update_state({})
-      for file in glob.glob("source/examples/*.yaml"):
+      for file in glob.glob("source/examples/*.yml"):
         run_task("stepci_run",{ "workflow" : file })
     code: |
       if "failure" in get_state():

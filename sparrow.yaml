@@ -5,6 +5,7 @@ tasks:
     language: Python
     init: |
       import glob
+      update_state({})
       for file in glob.glob("source/examples/*.yaml"):
         run_task("stepci_run",{ "workflow" : file })
     code: |

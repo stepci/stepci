@@ -1,15 +1,19 @@
 {
   "name": "stepci",
-  "version": "2.3.6",
+  "version": "2.4.0",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
     "stepci": "dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
-    "@stepci/runner": "^1.4.6",
+    "@stepci/runner": "^1.5.1",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
+    "cli-highlight": "^2.1.11",
     "conf": "^10.2.0",
     "exit": "^0.1.2",
     "is-docker": "^2.2.1",

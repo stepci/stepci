@@ -36,12 +36,15 @@ if (!process.env.STEPCI_DISABLE_ANALYTICS) {
   })
 }
 
+let includeRequest: boolean | undefined = false
+let includeResponse: boolean | undefined = false
+
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
   console.log((test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRed(' FAIL ')) + ' ' + chalk.bold(test.name || test.id))
   if (!test.passed) {
     renderStepSummary(test.steps)
-    test.steps.forEach(renderStep)
+    test.steps.forEach(step => renderStep(step, { includeRequest, includeResponse }))
   }
 })
 
@@ -82,6 +85,20 @@ yargs(hideBin(process.argv))
         describe: 'secret variables to use',
         type: 'string'
       })
+      .option('includeRequest', {
+        alias: 'request',
+        boolean: true,
+        demandOption: false,
+        describe: 'include request body in output',
+        type: 'boolean'
+      })
+      .option('includeResponse', {
+        alias: 'response',
+        boolean: true,
+        demandOption: false,
+        describe: 'include response body in output',
+        type: 'boolean'
+      })
       .check(({ e: envs, s: secrets }) => {
         if (checkOptionalEnvArrayFormat(envs)) {
           throw new Error('env variables have wrong format, use `env=VARIABLE`.')
@@ -94,9 +111,12 @@ yargs(hideBin(process.argv))
         return true
       })
   }, (argv) => {
+    includeRequest = argv.includeRequest
+    includeResponse = argv.includeResponse
+
     loadWorkflow(argv.workflow, {
       env: parseEnvArray(argv.e),
-      secrets: parseEnvArray(argv.s)
+      secrets: parseEnvArray(argv.s),
     })
   })
   .parse()

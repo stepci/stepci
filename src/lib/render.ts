@@ -3,6 +3,11 @@ import chalk from 'chalk'
 import { highlight, Theme } from 'cli-highlight'
 import { labels } from './../labels.json'
 
+type RenderStepOptions = {
+  includeRequest?: boolean
+  includeResponse?: boolean
+}
+
 const GitHubHighlightTheme: Theme = {
   tag: chalk.hex('#7ee787'),
   name: chalk.hex('#7ee787'),
@@ -40,7 +45,7 @@ export function renderStepSummary (steps: StepResult[]) {
   })
 }
 
-export function renderStep (step: StepResult) {
+export function renderStep (step: StepResult, options?: RenderStepOptions) {
   if (step.passed) return
 
   if (step.errored || step.skipped) {
@@ -53,19 +58,27 @@ export function renderStep (step: StepResult) {
   }
 
   if (step.type === 'http') {
-    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
-    console.log(highlight(renderHTTPRequest(step.request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    if (options?.includeRequest) {
+      console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
+      console.log(highlight(renderHTTPRequest(step.request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    }
 
-    console.log(chalk.bold(`Response\n`))
-    console.log(highlight(renderHTTPResponse(step.response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    if (options?.includeResponse) {
+      console.log(chalk.bold(`Response\n`))
+      console.log(highlight(renderHTTPResponse(step.response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    }
   }
 
   if (step.type === 'grpc') {
-    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
-    console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    if (options?.includeRequest) {
+      console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
+      console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    }
 
-    console.log(chalk.bold(`\nResponse\n`))
-    console.log(highlight(JSON.stringify(step.response, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    if (options?.includeResponse) {
+      console.log(chalk.bold(`\nResponse\n`))
+      console.log(highlight(JSON.stringify(step.response, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    }
   }
 
   console.log(chalk.bold('\nChecks'))

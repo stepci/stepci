@@ -1,4 +1,4 @@
-![Step CI Banner](https://i.imgur.com/DiM3Gqg.png)
+![Step CI CLI Demo](https://i.imgur.com/QgC0cRr.gif)
 
 # Welcome
 
@@ -7,7 +7,7 @@ Step CI is an open-source tool, which makes testing and monitoring APIs simple
 Quick overview:
 
 - Language-agnostic. Flexible, declarative configuration language
-- REST, GraphQL, XML
+- REST, GraphQL, gRPC
 - Integrated. Works seamlessly with Node, Docker and GitHub Actions
 
 **[Try Demo on our website](https://stepci.com)**

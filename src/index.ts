@@ -4,56 +4,32 @@ import { hideBin } from 'yargs/helpers'
 import { EnvironmentVariables, runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
 import exit from 'exit'
 import chalk from 'chalk'
-import os from 'os'
 import { EventEmitter } from 'node:events'
-import { PostHog } from 'posthog-node'
-import { randomUUID } from 'crypto'
-import ci from 'ci-info'
-import isDocker from 'is-docker'
-import Conf from 'conf'
 import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
 import { renderStep, renderSummary, renderStepSummary } from './lib/render'
+import { sendAnalyticsEvent } from './lib/analytics'
 
-const config = new Conf()
-const posthog = new PostHog(
-  'phc_SIwnNDitjnc44ozMtjud1Uz1wXb4cgM63MhtWy1mL2O',
-  { host: 'https://eu.posthog.com' }
-)
-
-if (!process.env.STEPCI_DISABLE_ANALYTICS) {
-  if (!config.get('uid')) config.set('uid', randomUUID())
-  const uid = config.get('uid')
-
-  posthog.capture({
-    distinctId: uid as string,
-    event: 'ping',
-    properties: {
-      os: os.type(),
-      node: process.version,
-      version: '2.3.x',
-      environment: ci.isCI ? ci.name : isDocker() ? 'Docker' : 'Local'
-    }
-  })
+type LoadWorkflowOptions = {
+  env?: EnvironmentVariables
+  secrets?: EnvironmentVariables
 }
+
+let noContext: boolean | undefined
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
   console.log((test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRed(' FAIL ')) + ' ' + chalk.bold(test.name || test.id))
   if (!test.passed) {
     renderStepSummary(test.steps)
-    test.steps.forEach(renderStep)
+    test.steps.forEach(step => renderStep(step, { noContext }))
   }
 })
 
 ee.on('workflow:result', ({ workflow, result, path }: WorkflowResult) => {
   renderSummary(result)
+  console.log(chalk.gray(`We'd love to hear your feedback: https://step.ci/Z3KD5g9`))
   if (!result.passed) exit(5)
 })
-
-type LoadWorkflowOptions = {
-  env?: EnvironmentVariables
-  secrets?: EnvironmentVariables
-}
 
 // Load workflow files
 function loadWorkflow (path: string, options: LoadWorkflowOptions = {}) {
@@ -82,6 +58,12 @@ yargs(hideBin(process.argv))
         describe: 'secret variables to use',
         type: 'string'
       })
+      .option('nocontext', {
+        boolean: true,
+        demandOption: false,
+        describe: 'hide context like request/response data',
+        type: 'boolean'
+      })
       .check(({ e: envs, s: secrets }) => {
         if (checkOptionalEnvArrayFormat(envs)) {
           throw new Error('env variables have wrong format, use `env=VARIABLE`.')
@@ -94,6 +76,8 @@ yargs(hideBin(process.argv))
         return true
       })
   }, (argv) => {
+    noContext = argv.nocontext
+
     loadWorkflow(argv.workflow, {
       env: parseEnvArray(argv.e),
       secrets: parseEnvArray(argv.s)
@@ -101,4 +85,4 @@ yargs(hideBin(process.argv))
   })
   .parse()
 
-posthog.shutdown()
+sendAnalyticsEvent()

@@ -44,6 +44,7 @@ The `run` command lets you execute a specified workflow
 | --version | No | Outputs the current version |
 | -e [--env] | No | Supply environment variables (can be defined multiple times) |
 | -s [--secret] | No | Supply secret variables (can be defined multiple times) |
+| --nocontext | No | Hide context like request/response data |
 
 #### **Examples**
 

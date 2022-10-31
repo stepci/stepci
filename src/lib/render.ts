@@ -3,6 +3,10 @@ import chalk from 'chalk'
 import { highlight, Theme } from 'cli-highlight'
 import { labels } from './../labels.json'
 
+type RenderOptions = {
+  noContext?: boolean | undefined
+}
+
 const GitHubHighlightTheme: Theme = {
   tag: chalk.hex('#7ee787'),
   name: chalk.hex('#7ee787'),
@@ -40,7 +44,7 @@ export function renderStepSummary (steps: StepResult[]) {
   })
 }
 
-export function renderStep (step: StepResult) {
+export function renderStep (step: StepResult, options?: RenderOptions) {
   if (step.passed) return
 
   if (step.errored || step.skipped) {
@@ -52,7 +56,7 @@ export function renderStep (step: StepResult) {
     console.log(chalk.redBright(`\n● ${step.testId} › ${step.name}`))
   }
 
-  if (step.type === 'http') {
+  if (step.type === 'http' && !options?.noContext) {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
     console.log(highlight(renderHTTPRequest(step.request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
@@ -60,7 +64,7 @@ export function renderStep (step: StepResult) {
     console.log(highlight(renderHTTPResponse(step.response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
-  if (step.type === 'grpc') {
+  if (step.type === 'grpc' && !options?.noContext) {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
     console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 

@@ -126,6 +126,7 @@ By default, the CLI collects anonymous usage data, which includes:
 - OS Name
 - Node Version
 - CLI Version
+- Command (eg. `run`)
 - Environment (Local, Docker, CI/CD)
 
 The usage analytics can be disabled by adding `STEPCI_DISABLE_ANALYTICS` to your env variables

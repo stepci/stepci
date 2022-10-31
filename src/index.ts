@@ -2,11 +2,12 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { EnvironmentVariables, runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
+import { generateWorkflowFile, GenerateWorkflowOptions } from '@stepci/plugin-openapi'
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
 import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
-import { renderStep, renderSummary, renderStepSummary } from './lib/render'
+import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage } from './lib/render'
 import { sendAnalyticsEvent } from './lib/analytics'
 
 type LoadWorkflowOptions = {
@@ -27,7 +28,7 @@ ee.on('test:result', (test: TestResult) => {
 
 ee.on('workflow:result', ({ workflow, result, path }: WorkflowResult) => {
   renderSummary(result)
-  console.log(chalk.gray(`We'd love to hear your feedback: https://step.ci/Z3KD5g9`))
+  renderFeedbackMessage()
   if (!result.passed) exit(5)
 })
 
@@ -40,7 +41,7 @@ yargs(hideBin(process.argv))
   .command('run [workflow]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
-        describe: 'workflow path (file)',
+        describe: 'workflow file path',
         type: 'string',
         default: 'workflow.yml'
       })
@@ -59,6 +60,7 @@ yargs(hideBin(process.argv))
         type: 'string'
       })
       .option('nocontext', {
+        alias: 'hide',
         boolean: true,
         demandOption: false,
         describe: 'hide context like request/response data',
@@ -82,6 +84,48 @@ yargs(hideBin(process.argv))
       env: parseEnvArray(argv.e),
       secrets: parseEnvArray(argv.s)
     })
+  })
+  .command('generate [spec] [path]', 'generate workflow from OpenAPI spec', yargs => {
+    return yargs
+      .positional('spec', {
+        describe: 'openapi file path',
+        type: 'string',
+        default: 'openapi.json'
+      })
+      .positional('path', {
+        describe: 'output file path',
+        type: 'string',
+        default: './workflow.yml'
+      })
+      .positional('generatePathParams', { type: 'boolean', default: true })
+      .positional('generateRequestBody', { type: 'boolean', default: true })
+      .positional('generateOptionalParams', { type: 'boolean', default: true })
+      .positional('useExampleValues', { type: 'boolean', default: true })
+      .positional('useDefaultValues', { type: 'boolean', default: true })
+      .positional('checkStatus', { type: 'boolean', default: true })
+      .positional('checkExamples', { type: 'boolean', default: true })
+      .positional('checkSchema', { type: 'boolean', default: true })
+      .positional('contentType', { type: 'string', default: 'application/json' })
+  }, async (argv) => {
+    const generateWorkflowConfig: GenerateWorkflowOptions = {
+      generator: {
+        pathParams: argv.generatePathParams,
+        requestBody: argv.generateRequestBody,
+        optionalParams: argv.generateOptionalParams,
+        useExampleValues: argv.useExampleValues,
+        useDefaultValues: argv.useDefaultValues,
+      },
+      check: {
+        status: argv.checkStatus,
+        examples: argv.checkExamples,
+        schema: argv.checkSchema
+      },
+      contentType: argv.contentType
+    }
+
+    await generateWorkflowFile(argv.spec, argv.path, generateWorkflowConfig)
+    console.log(`${chalk.greenBright('Success!')} The workflow file can be found at ${argv.path}`)
+    renderFeedbackMessage()
   })
   .parse()
 

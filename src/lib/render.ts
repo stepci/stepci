@@ -49,7 +49,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
 
   if (step.errored || step.skipped) {
     console.log(chalk.yellowBright(`\n⚠︎ ${step.testId} › ${step.name}`))
-    return console.log('\n' + step.errorMessage)
+    return console.log('\n' + step.errorMessage + '\n')
   }
 
   else {
@@ -106,4 +106,8 @@ export function renderSummary (result: WorkflowResult['result']) {
     ? chalk.greenBright(`\nWorkflow passed after ${result.duration / 1000}s`)
     : chalk.redBright(`\nWorkflow failed after ${result.duration / 1000}s`)
   )
+}
+
+export function renderFeedbackMessage () {
+  console.log(chalk.cyanBright(`Give us your feedback on ${chalk.underline('https://step.ci/Z3KD5g9')}`))
 }

@@ -1,0 +1,33 @@
+:root {
+  --vp-c-brand-dark: black;
+  --vp-c-brand: black;
+}
+
+.dark {
+  --vp-c-brand: white;
+  --vp-c-brand-dark: white;
+  --vp-c-bg-alt: #141414;
+  --vp-c-bg: #181818;
+}
+
+.dark .VPImage.logo {
+  filter: invert()
+}
+
+.vp-doc a {
+  color: blue
+}
+
+.dark .vp-doc a {
+  color: #3375f6
+}
+
+.outline-link {
+  /* white-space: normal !important */
+}
+
+@media (min-width: 960px) {
+  .dark .VPNavBar.has-sidebar .content {
+    background-color: #181818 !important;
+  }
+}

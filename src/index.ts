@@ -88,7 +88,7 @@ yargs(hideBin(process.argv))
   .command('generate [spec] [path]', 'generate workflow from OpenAPI spec', yargs => {
     return yargs
       .positional('spec', {
-        describe: 'openapi file path',
+        describe: 'openapi file url',
         type: 'string',
         default: 'openapi.json'
       })
@@ -98,8 +98,8 @@ yargs(hideBin(process.argv))
         default: './workflow.yml'
       })
       .positional('generatePathParams', { type: 'boolean', default: true })
-      .positional('generateRequestBody', { type: 'boolean', default: true })
       .positional('generateOptionalParams', { type: 'boolean', default: true })
+      .positional('generateRequestBody', { type: 'boolean', default: true })
       .positional('useExampleValues', { type: 'boolean', default: true })
       .positional('useDefaultValues', { type: 'boolean', default: true })
       .positional('checkStatus', { type: 'boolean', default: true })
@@ -110,8 +110,8 @@ yargs(hideBin(process.argv))
     const generateWorkflowConfig: GenerateWorkflowOptions = {
       generator: {
         pathParams: argv.generatePathParams,
-        requestBody: argv.generateRequestBody,
         optionalParams: argv.generateOptionalParams,
+        requestBody: argv.generateRequestBody,
         useExampleValues: argv.useExampleValues,
         useDefaultValues: argv.useDefaultValues,
       },

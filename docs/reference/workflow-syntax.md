@@ -1,4 +1,4 @@
-#  Step CI Workflow Syntax
+#  Workflow Syntax
 
 ## YAML
 
@@ -132,9 +132,47 @@ Optional. Workflow config
 
 Optional. Continue workflow after step failed
 
-### `tests.<test>.config.rejectUnauthorized`
+### `tests.<test>.testdata`
 
-Optional. Reject if SSL certificate is invalid
+Optional. Provide test data
+
+```yaml
+testdata:
+  file: testdata.csv
+```
+
+### `tests.<test>.testdata.file`
+
+Required. Test data file
+
+### `tests.<test>.testdata.options`
+
+Optional. Test data parsing options
+
+```yaml
+delimiter: ","
+quote: "'"
+escape: '"'
+headers:
+  - one
+  - two
+```
+
+### `tests.<test>.testdata.options.delimiter`
+
+Optional. The delimiter that will separate columns
+
+### `tests.<test>.testdata.options.quote`
+
+Optional. The character to use to quote fields that contain a delimiter
+
+### `tests.<test>.testdata.options.escape`
+
+The character to used to escape quotes inside of a quoted field
+
+### `tests.<test>.testdata.options.headers`
+
+Optional. The first row is always treated as headers. Otherwise, you can provide a list of headers
 
 ### `tests.<test>.steps`
 
@@ -676,6 +714,16 @@ check:
     daysUntilExpiration: 30
 ```
 
+### `tests.<test>.steps.<step>.http.check.co2`
+
+Optional. Check co2 emissions of the response in grams
+
+```yaml
+check:
+  co2:
+    - lte: 1
+```
+
 ### `tests.<test>.steps.<step>.http.followRedirects`
 
 Optional. Follow redirects. Enabled by default
@@ -868,59 +916,12 @@ check:
     total: 20
 ```
 
-## Using Matchers
+### `tests.<test>.steps.<step>.grpc.check.co2`
 
-Matchers are useful when you want to check whether values match patterns
-
-**Example: Time to first byte to be lower or equal 500ms**
+Optional. Check co2 emissions of the response in grams
 
 ```yaml
-steps:
-  - name: GET Request
-    http:
-      url: https://example.com
-      method: GET
-      check:
-        performance:
-          firstByte:
-            - lte: 500
+check:
+  co2:
+    - lte: 1
 ```
-
-Matchers can be chained together
-
-**Example: Chaining matchers**
-
-```yaml
-steps:
-  - name: GET Request
-    http:
-      url: https://example.com
-      method: GET
-      check:
-        performance:
-          firstByte:
-            - lte: 500
-            - gte: 100
-```
-
-Available Matchers:
-
-- `eq` - Equal (===)
-- `ne` - Not equal (!==)
-- `gt` - Greater than (>)
-- `gte` - Greater than or equal (>=)
-- `lt` - Lower than (<)
-- `lte` - Lower than or equal (<=)
-- `in` - Includes
-- `nin` - Not includes
-- `match` - Regex pattern
-
-Boolean Matchers:
-
-- `isNumber` - Is Number
-- `isString` - Is String
-- `isBoolean` - Is Boolean
-- `isNull` - Is Null
-- `isDefined` - Is Defined
-- `isObject` - Is Object
-- `isArray` - Is Array

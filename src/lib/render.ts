@@ -69,7 +69,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
     console.log(chalk.bold(`\nResponse\n`))
-    console.log(highlight(JSON.stringify(step.response, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    console.log(highlight(JSON.stringify(step.response?.body, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
   console.log(chalk.bold('\nChecks'))

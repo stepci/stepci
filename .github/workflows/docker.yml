@@ -1,8 +1,7 @@
 name: Docker build and publish
 on:
-  push:
-    branches:
-    - main
+  release:
+    types: [published]
 jobs:
   publish:
     runs-on: ubuntu-latest

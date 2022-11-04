@@ -1,6 +1,7 @@
 :root {
   --vp-c-brand-dark: black;
   --vp-c-brand: black;
+  --vp-code-block-bg: #242424;
 }
 
 .dark {
@@ -8,6 +9,7 @@
   --vp-c-brand-dark: white;
   --vp-c-bg-alt: #141414;
   --vp-c-bg: #181818;
+  --vp-code-block-bg: #141414;
 }
 
 .dark .VPImage.logo {
@@ -28,6 +30,6 @@
 
 @media (min-width: 960px) {
   .dark .VPNavBar.has-sidebar .content {
-    background-color: #181818 !important;
+    background-color: rgba(24, 24, 24, 0.95) !important;
   }
 }

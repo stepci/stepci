@@ -2,6 +2,10 @@
 
 With matchers you can validate that values match expected patterns
 
+::: info
+The syntax is inspired by MongoDB's [Comparison Query Operators](https://www.mongodb.com/docs/manual/reference/operator/query-comparison/)
+:::
+
 **Example: Time to first byte to be lower or equal 500ms**
 
 ```yaml

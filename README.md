@@ -11,64 +11,61 @@ Step CI is an open-source tool, which helps you automate API testing and monitor
 
 [→ **Read the Docs**](https://docs.stepci.com)
 
-[→ **Try in Online Playground**](https://stepci.com)
+[→ **Try the Online Playground**](https://stepci.com)
 
 [→ **Join us on GitHub Discussions**](https://github.com/stepci/stepci/discussions)
 
 ## Get started
-Install the CLI from [NPM](https://www.npmjs.com/package/stepci)
 
-```sh
-npm install -g stepci
-```
+1. Install the CLI from [NPM](https://www.npmjs.com/package/stepci)
 
-> **Note**
-> Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
+    ```sh
+    npm install -g stepci
+    ```
 
-Create example workflow
+    > **Note**: Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
 
-**workflow.yml**
+2. Create example workflow
 
-```yaml
-version: "1.1"
-name: Status Check
-env:
-  host: example.com
-tests:
-  example:
-    steps:
-      - name: GET request
-        http:
-          url: https://{{env.host}}
-          method: GET
-          check:
-            status: /^20/
-```
+    **workflow.yml**
 
-> **Note**
-> You can also also use JSON format to configure your workflow
+    ```yaml
+    version: "1.1"
+    name: Status Check
+    env:
+      host: example.com
+    tests:
+      example:
+        steps:
+          - name: GET request
+            http:
+              url: https://{{env.host}}
+              method: GET
+              check:
+                status: /^20/
+    ```
 
-Run the workflow
+    > **Note**: You can also also use JSON format to configure your workflow
 
-```sh
-stepci run workflow.yml
-```
+3. Run the workflow
 
-Result
+    ```sh
+    stepci run workflow.yml
+    ```
 
-```
- PASS  example
+    ```
+    PASS  example
 
-Tests: 0 failed, 1 passed, 1 total
-Steps: 0 failed, 1 passed, 1 total
-Time:  0.559s, estimated 1s
+    Tests: 0 failed, 1 passed, 1 total
+    Steps: 0 failed, 1 passed, 1 total
+    Time:  0.559s, estimated 1s
 
-Workflow passed after 0.559s
-```
+    Workflow passed after 0.559s
+    ```
 
 ## Documentation
 
-Documentation is accessible at [docs.stepci.com](https://docs.stepci.com)
+Documentation is available at [docs.stepci.com](https://docs.stepci.com)
 
 ## Example tests
 

@@ -1,5 +1,9 @@
 # Concepts
 
+### Workflows
+
+Workflows contain meta information, tests and configuration
+
 ### Tests
 
 Tests describe different test suites. Tests can have multiple steps. Tests are executed concurrently

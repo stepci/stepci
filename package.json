@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {

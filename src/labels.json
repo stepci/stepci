@@ -15,6 +15,7 @@
     "performance": "Performance",
     "captures": "Captures",
     "ssl": "Certificate",
-    "size": "Size"
+    "size": "Size",
+    "co2": "Emissions"
   }
 }

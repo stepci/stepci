@@ -2,6 +2,9 @@ export default {
   title: 'Step CI Docs',
   description: 'API Testing and Monitoring made simple.',
   lastUpdated: true,
+  markdown: {
+    theme: 'github-dark'
+  },
   themeConfig: {
     siteTitle: 'Step CI',
     socialLinks: [

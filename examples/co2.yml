@@ -1,0 +1,12 @@
+version: "1.1"
+name: Emission Check
+tests:
+  example:
+    steps:
+      - name: GET request
+        http:
+          url: https://example.com
+          method: GET
+          check:
+            co2:
+              - lte: 0.05 # in grams

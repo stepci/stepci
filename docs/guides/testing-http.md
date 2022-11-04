@@ -1,3 +1,3 @@
 # Testing HTTP
 
-This Article is Work-in-Progress, instruct [Workflow Syntax](/reference/workflow-syntax) for the time being
+This Article is Work-in-Progress, instruct [Workflow Syntax](/reference/workflow-syntax) and [Examples](/reference/examples) for the time being

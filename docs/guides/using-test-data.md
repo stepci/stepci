@@ -6,7 +6,7 @@ You can load test data from a `.csv` file to use in tests. Each test run a rando
 See [workflow syntax](/reference/workflow-syntax#tests-test-testdata-options) for data loader options
 :::
 
-**Example: Log-in with a user**
+**Example: Authenticate a user using test credentials**
 
 Test Data (`data.csv`)
 
@@ -31,8 +31,8 @@ tests:
           method: GET
           auth:
             basic:
-              username: {{testdata.username}}
-              password: {{testdata.password}}
+              username: {{ testdata.username }}
+              password: {{ testdata.password }}
           check:
             status: 200
 ```

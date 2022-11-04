@@ -1,6 +1,6 @@
 # CO<sub>2</sub> Testing
 
-With Step CI you can now setup checks to monitor your API carbon footprint by adding a special `co2` check
+You can now test your API carbon footprint by adding a special `co2` check
 
 ::: info
 The calculation algorithm is provided by [Sustainable Web Design](https://sustainablewebdesign.org/calculating-digital-emissions/)

@@ -65,7 +65,7 @@ Step CI is an open-source tool, which helps you automate API testing and monitor
 
 ## Documentation
 
-Documentation is available at [docs.stepci.com](https://docs.stepci.com)
+Documentation is available on [docs.stepci.com](https://docs.stepci.com)
 
 ## Example tests
 

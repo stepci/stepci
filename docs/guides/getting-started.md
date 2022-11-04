@@ -1,53 +1,51 @@
 # Getting started
 
-Install the CLI from [NPM](https://www.npmjs.com/package/stepci)
+1. Install the CLI from [NPM](https://www.npmjs.com/package/stepci)
 
-```sh
-npm install -g stepci
-```
+    ```sh
+    npm install -g stepci
+    ```
 
-::: tip
-Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
-:::
+    ::: tip
+    Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
+    :::
 
-Create example workflow
+2. Create example workflow
 
-**workflow.yml**
+    **workflow.yml**
 
-```yaml
-version: "1.1"
-name: Status Check
-env:
-  host: example.com
-tests:
-  example:
-    steps:
-      - name: GET request
-        http:
-          url: https://{{env.host}}
-          method: GET
-          check:
-            status: /^20/
-```
+    ```yaml
+    version: "1.1"
+    name: Status Check
+    env:
+      host: example.com
+    tests:
+      example:
+        steps:
+          - name: GET request
+            http:
+              url: https://{{env.host}}
+              method: GET
+              check:
+                status: /^20/
+    ```
 
-::: info
-You can also also use JSON format to configure your workflow
-:::
+    ::: info
+    You can also also use JSON format to configure your workflow
+    :::
 
-Run the workflow
+3. Run the workflow
 
-```sh
-stepci run workflow.yml
-```
+    ```sh
+    stepci run workflow.yml
+    ```
 
-Result
+    ```
+    PASS  example
 
-```
- PASS  example
+    Tests: 0 failed, 1 passed, 1 total
+    Steps: 0 failed, 1 passed, 1 total
+    Time:  0.559s, estimated 1s
 
-Tests: 0 failed, 1 passed, 1 total
-Steps: 0 failed, 1 passed, 1 total
-Time:  0.559s, estimated 1s
-
-Workflow passed after 0.559s
-```
+    Workflow passed after 0.559s
+    ```

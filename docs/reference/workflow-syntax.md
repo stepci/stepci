@@ -2,13 +2,13 @@
 
 ## YAML
 
-Step CI workflows use YAML syntax. You can learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
+Workflows use YAML syntax. You can learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
 
 ## Syntax
 
 ### `version`
 
-Required. Step CI workflow file version
+Required. Workflow file version
 
 ### `name`
 

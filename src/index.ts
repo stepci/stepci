@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import yargs from 'yargs'
+import yargs, {showHelp} from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
 import { loadTestFromFile }  from '@stepci/runner/dist/loadtesting'
@@ -7,6 +7,7 @@ import { generateWorkflowFile, GenerateWorkflowOptions } from '@stepci/plugin-op
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
+import { stepCiDefaultText } from './lib/constants'
 import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
 import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage, renderLoadTest } from './lib/render'
 import { sendAnalyticsEvent } from './lib/analytics'
@@ -29,6 +30,7 @@ ee.on('workflow:result', ({ result }: WorkflowResult) => {
 })
 
 yargs(hideBin(process.argv))
+  .scriptName("")
   .command('run [workflow]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
@@ -139,6 +141,12 @@ yargs(hideBin(process.argv))
     console.log(`${chalk.greenBright('Success!')} The workflow file can be found at ${argv.path}`)
     renderFeedbackMessage()
   })
+  .command(['$0'], false, () => {}, async () => {
+    console.log(stepCiDefaultText)
+    showHelp()
+  })
+  .help(false)
+  .version(false)
   .parse()
 
 sendAnalyticsEvent()

@@ -2,7 +2,7 @@
 
 # Welcome
 
-Step CI is an open-source tool, which helps you automate API testing and monitoring
+Step CI is an open-source toolset, which helps you automate API testing and monitoring
 
 - **Language-agnostic**. Configure easily using YAML
 - **REST, GraphQL, gRPC**. Test different API types at once
@@ -67,12 +67,12 @@ Step CI is an open-source tool, which helps you automate API testing and monitor
 
 Documentation is available on [docs.stepci.com](https://docs.stepci.com)
 
-## Example tests
+## Examples
 
-You can find a collection of Step CI example tests under [`examples/`](examples/)
+You can find example workflows under [`examples/`](examples/)
 
 ## License
 
-Step CI is distributed under Mozilla Public License terms
+The source code is distributed under Mozilla Public License terms
 
 ## [Privacy](https://docs.stepci.com/legal/privacy)

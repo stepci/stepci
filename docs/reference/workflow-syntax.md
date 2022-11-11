@@ -2,7 +2,11 @@
 
 ## YAML
 
-Workflows use YAML syntax. You can learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
+We choose YAML as a configuration format, because YAML files can be read and written by humans and machines. This allows you to write workflows by hand or generate them with code
+
+::: tip
+Learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
+:::
 
 ## Syntax
 
@@ -55,6 +59,58 @@ Optional. Reject if SSL certificate is invalid
 
 Optional. Base URL
 
+### `config.loadTest`
+
+Optional. Load-Testing configuration
+
+```yaml
+config:
+  loadTest:
+    phases:
+    - duration: 10
+      arrivalRate: 1
+    - duration: 20
+      arrivalRate: 100
+    check:
+      p99:
+      - lte: 500
+```
+
+### `config.loadTest.phases`
+
+Required. Load-Testing phases
+
+### `config.loadTest.phases.[phase]`
+
+Required. Load testing phase
+
+### `config.loadTest.phases.[phase].duration`
+
+Required. Load testing phase duration
+
+### `config.loadTest.phases.[phase].arrivalRate`
+
+Required. Load testing phase arrival rate (requests per second)
+
+### `config.loadTest.check`
+
+Optional. Load testing checks
+
+```yaml
+check:
+  p99:
+    - lte: 500
+```
+
+**Available checks:**
+
+- `avg`
+- `min`
+- `max`
+- `med`
+- `p95`
+- `p99`
+
 ### `components`
 
 Optional. OpenAPI components
@@ -89,7 +145,16 @@ components:
 
 ### `tests`
 
-Required. A list of tests to be executed by runner
+Optional. A list of tests to be executed by runner
+
+### `testsFrom`
+
+Optional. A list of tests to be included from other paths
+
+```yaml
+testsFrom:
+  - directory/workflow.yml
+```
 
 ### `tests.<test>`
 
@@ -136,9 +201,19 @@ Optional. Continue workflow after step failed
 
 Optional. Provide test data
 
+**Example: From csv file**
+
 ```yaml
 testdata:
   file: testdata.csv
+```
+
+**Example: From csv string**
+
+```yaml
+testdata: |
+  username,password
+  mish,ushakov
 ```
 
 ### `tests.<test>.testdata.file`
@@ -521,13 +596,13 @@ check:
     //SUCCESS: false
 ```
 
-### `tests.<test>.steps.<step>.http.check.selector`
+### `tests.<test>.steps.<step>.http.check.selectors`
 
-Optional. Check HTML selector
+Optional. Check CSS selectors
 
 ```yaml
 check:
-  selector:
+  selectors:
     h1: "Example Domain"
 ```
 
@@ -591,85 +666,16 @@ check:
       - lte: 500
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.wait`
+**Available checks:**
 
-Optional
-
-```yaml
-check:
-  performance:
-    wait: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.dns`
-
-Optional
-
-```yaml
-check:
-  performance:
-    dns: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.tcp`
-
-Optional
-
-```yaml
-check:
-  performance:
-    tcp: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.tls`
-
-Optional
-
-```yaml
-check:
-  performance:
-    tls: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.request`
-
-Optional
-
-```yaml
-check:
-  performance:
-    request: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.firstByte`
-
-Optional
-
-```yaml
-check:
-  performance:
-    firstByte: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.download`
-
-Optional
-
-```yaml
-check:
-  performance:
-    download: 20
-```
-
-### `tests.<test>.steps.<step>.http.check.performance.total`
-
-Optional
-
-```yaml
-check:
-  performance:
-    total: 20
-```
+- `wait`
+- `dns`
+- `tcp`
+- `tls`
+- `request`
+- `firstByte`
+- `download`
+- `total`
 
 ### `tests.<test>.steps.<step>.http.check.ssl`
 

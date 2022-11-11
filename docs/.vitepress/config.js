@@ -31,10 +31,17 @@ export default {
           { text: 'Testing gRPC', link: '/guides/testing-grpc' },
           { text: 'Using Test Data', link: '/guides/using-test-data' },
           { text: 'Using Fake Data', link: '/guides/using-fake-data' },
+          { text: 'Load Testing <span class="badge-new">New</span>', link: '/guides/load-testing' },
           { text: 'Fuzz Testing', link: '/guides/fuzz-testing' },
-          { text: 'CO<sub>2</sub> Testing', link: '/guides/co2-testing' },
-          { text: 'Importing from OpenAPI', link: '/guides/openapi' },
-          { text: 'Using as a library', link: '/guides/using-library' },
+          { text: 'CO<sub>2</sub> Testing <span class="badge-new">New</span>', link: '/guides/co2-testing' },
+          { text: 'Organising Tests', link: '/guides/organising-tests' },
+          { text: 'Using as a Library', link: '/guides/using-library' },
+        ]
+      },
+      {
+        text: 'Import',
+        items: [
+          { text: 'OpenAPI', link: '/import/openapi' },
         ]
       },
       {
@@ -44,23 +51,23 @@ export default {
           { text: 'Workflow Syntax', link: '/reference/workflow-syntax' },
           { text: 'Using Matchers', link: '/reference/matchers' },
           { text: 'Templating', link: '/reference/templating' },
-          { text: 'Examples', link: '/reference/examples' }
+          { text: 'Examples', link: '/reference/examples' },
         ]
       },
       {
-        text: 'Integrations',
+        text: 'Integration',
         items: [
-          { text: 'Docker', link: '/integrations/docker' },
-          { text: 'GitHub Actions', link: '/integrations/actions' },
-          { text: 'GitLab CI/CD', link: '/integrations/gitlab' },
-          { text: 'CircleCI', link: '/integrations/circle' },
-          { text: 'Azure Pipelines', link: '/integrations/azure' },
-          { text: 'Google Cloud Build', link: '/integrations/cloudbuild' },
-          { text: 'Bitbucket Pipelines', link: '/integrations/bitbucket' },
-          { text: 'TeamCity', link: '/integrations/teamcity' },
-          { text: 'Jest', link: '/integrations/jest' },
-          { text: 'Ava', link: '/integrations/ava' },
-          { text: 'Mocha', link: '/integrations/mocha' },
+          { text: 'Docker', link: '/integration/docker' },
+          { text: 'GitHub Actions', link: '/integration/actions' },
+          { text: 'GitLab CI/CD', link: '/integration/gitlab' },
+          { text: 'CircleCI', link: '/integration/circle' },
+          { text: 'Azure Pipelines', link: '/integration/azure' },
+          { text: 'Google Cloud Build', link: '/integration/cloudbuild' },
+          { text: 'Bitbucket Pipelines', link: '/integration/bitbucket' },
+          { text: 'TeamCity', link: '/integration/teamcity' },
+          { text: 'Jest', link: '/integration/jest' },
+          { text: 'Ava', link: '/integration/ava' },
+          { text: 'Mocha', link: '/integration/mocha' },
         ]
       },
       {

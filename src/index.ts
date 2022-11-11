@@ -1,19 +1,15 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import { EnvironmentVariables, runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
+import { runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
+import { loadTestFromFile }  from '@stepci/runner/dist/loadtesting'
 import { generateWorkflowFile, GenerateWorkflowOptions } from '@stepci/plugin-openapi'
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
 import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
-import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage } from './lib/render'
+import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage, renderLoadTest } from './lib/render'
 import { sendAnalyticsEvent } from './lib/analytics'
-
-type LoadWorkflowOptions = {
-  env?: EnvironmentVariables
-  secrets?: EnvironmentVariables
-}
 
 let noContext: boolean | undefined
 
@@ -26,16 +22,11 @@ ee.on('test:result', (test: TestResult) => {
   }
 })
 
-ee.on('workflow:result', ({ workflow, result, path }: WorkflowResult) => {
+ee.on('workflow:result', ({ result }: WorkflowResult) => {
   renderSummary(result)
   renderFeedbackMessage()
   if (!result.passed) exit(5)
 })
-
-// Load workflow files
-function loadWorkflow (path: string, options: LoadWorkflowOptions = {}) {
-  runFromFile(path, { ...options, ee })
-}
 
 yargs(hideBin(process.argv))
   .command('run [workflow]', 'run workflow', (yargs) => {
@@ -66,6 +57,13 @@ yargs(hideBin(process.argv))
         describe: 'hide context like request/response data',
         type: 'boolean'
       })
+      .option('loadtest', {
+        alias: 'load',
+        boolean: true,
+        demandOption: false,
+        describe: 'run workflow in load-testing mode',
+        type: 'boolean'
+      })
       .check(({ e: envs, s: secrets }) => {
         if (checkOptionalEnvArrayFormat(envs)) {
           throw new Error('env variables have wrong format, use `env=VARIABLE`.')
@@ -77,12 +75,26 @@ yargs(hideBin(process.argv))
 
         return true
       })
-  }, (argv) => {
+  }, async (argv) => {
     noContext = argv.nocontext
 
-    loadWorkflow(argv.workflow, {
+    if (argv.loadtest) {
+      console.log(chalk.yellowBright(`⚠︎ Running a load test. This may take a while`))
+      const { result } = await loadTestFromFile(argv.workflow, {
+        env: parseEnvArray(argv.e),
+        secrets: parseEnvArray(argv.s)
+      })
+
+      renderLoadTest(result)
+      renderFeedbackMessage()
+      if (!result.passed) exit(5)
+      return
+    }
+
+    runFromFile(argv.workflow, {
       env: parseEnvArray(argv.e),
-      secrets: parseEnvArray(argv.s)
+      secrets: parseEnvArray(argv.s),
+      ee
     })
   })
   .command('generate [spec] [path]', 'generate workflow from OpenAPI spec', yargs => {

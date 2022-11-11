@@ -1,6 +1,6 @@
 # Using Fake Data
 
-We can utilize the [templating](/reference/templating) functionality combined with `fake` filter to replace a placeholder value with fake data
+You can utilise the [templating](/reference/templating) functionality combined with `fake` filter to replace a placeholder value with fake data
 
 ::: info
 The fake data is provided by Faker. Instruct [Faker docs](https://fakerjs.dev/api/) to learn more

@@ -1,7 +1,7 @@
 :root {
   --vp-c-brand-dark: black;
   --vp-c-brand: black;
-  --vp-code-block-bg: #242424;
+  --vp-code-block-bg: #202020;
 }
 
 .dark {
@@ -26,6 +26,22 @@
 
 .outline-link {
   /* white-space: normal !important */
+}
+
+.badge-new {
+  margin-left: 2px;
+  box-sizing: border-box;
+  padding: 2px 6px;
+  background-color: blue;
+  font-size: 10px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.dark .badge-new {
+  background-color: #3375f6
 }
 
 @media (min-width: 960px) {

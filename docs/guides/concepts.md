@@ -6,11 +6,11 @@ Workflows contain meta information, tests and configuration
 
 ### Tests
 
-Tests describe different test suites. Tests can have multiple steps. Tests are executed concurrently
+Tests describe different test suites. Tests can have multiple steps. Tests are executed concurrently. Each test has a separate context, shared accross steps
 
 ### Steps
 
-Steps are the instructions to be executed by the runner. Steps contain the request parameters and assertions. Steps are executed in a sequence. If one step fails, all the following steps are skipped
+Steps are the instructions to be executed by the runner. Steps contain the request parameters and assertions. Steps are executed in a sequence. If one step fails, all the following steps are skipped. Steps have access to shared context
 
 ### Checks
 

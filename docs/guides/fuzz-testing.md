@@ -1,6 +1,6 @@
 # Fuzz Testing
 
-We can utilize the [templating](/reference/templating) functionality combined with `naughtystring` filter to replace a placeholder value with a "naughty" string
+You can utilise the [templating](/reference/templating) functionality combined with `naughtystring` filter to replace a placeholder value with a "naughty" string
 
 ::: info
 The values are provided by [Big List of Naughty Strings](https://github.com/minimaxir/big-list-of-naughty-strings)

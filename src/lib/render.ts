@@ -1,6 +1,7 @@
-import { gRPCStepRequest, HTTPStepRequest, HTTPStepResponse, StepResult, WorkflowResult } from '@stepci/runner'
 import chalk from 'chalk'
 import { highlight, Theme } from 'cli-highlight'
+import { HTTPStepRequest, HTTPStepResponse, StepResult, WorkflowResult } from '@stepci/runner'
+import { LoadTestResult } from '@stepci/runner/dist/loadtesting'
 import { labels } from './../labels.json'
 
 type RenderOptions = {
@@ -110,4 +111,46 @@ export function renderSummary (result: WorkflowResult['result']) {
 
 export function renderFeedbackMessage () {
   console.log(chalk.cyanBright(`Give us your feedback on ${chalk.underline('https://step.ci/Z3KD5g9')}`))
+}
+
+function dots (offset: number): string {
+  return chalk.gray('.').repeat(60 - offset)
+}
+
+export function renderLoadTest (result: LoadTestResult['result']) {
+  console.log(`response_time:`)
+  console.log(`  min: ${dots(0)} ${chalk.yellow(result.responseTime.min)}`)
+  console.log(`  max: ${dots(0)} ${chalk.yellow(result.responseTime.max)}`)
+  console.log(`  avg: ${dots(0)} ${chalk.yellow(result.responseTime.avg)}`)
+  console.log(`  med: ${dots(0)} ${chalk.yellow(result.responseTime.med)}`)
+  console.log(`  p95: ${dots(0)} ${chalk.yellow(result.responseTime.p95)}`)
+  console.log(`  p99: ${dots(0)} ${chalk.yellow(result.responseTime.p99)}`)
+
+  console.log(`steps:`)
+  console.log(`  failed: ${dots(3)} ${chalk.yellow(result.stats.steps.failed)}`)
+  console.log(`  passed: ${dots(3)} ${chalk.yellow(result.stats.steps.passed)}`)
+  console.log(`  skipped: ${dots(4)} ${chalk.yellow(result.stats.steps.skipped)}`)
+  console.log(`  errored: ${dots(4)} ${chalk.yellow(result.stats.steps.errored)}`)
+  console.log(`  total: ${dots(2)} ${chalk.yellow(result.stats.steps.total)}`)
+
+  console.log(`tests:`)
+  console.log(`  failed: ${dots(3)} ${chalk.yellow(result.stats.tests.failed)}`)
+  console.log(`  passed: ${dots(3)} ${chalk.yellow(result.stats.tests.passed)}`)
+  console.log(`  total: ${dots(2)} ${chalk.yellow(result.stats.tests.total)}`)
+
+  if (result.checks) {
+    console.log(`checks`)
+    for (const check in result.checks) {
+      console.log(`  ${check}: ${dots(0)} ${(result.checks as {[key: string]: any})[check].passed ? chalk.green('pass') : chalk.red('fail')}`)
+    }
+  }
+
+  console.log(`rps: ${dots(-2)} ${chalk.yellow(result.rps)}`)
+  console.log(`iterations: ${dots(5)} ${chalk.yellow(result.iterations)}`)
+  console.log(`duration: ${dots(3)} ${chalk.yellow(result.duration)}`)
+
+  console.log(result.passed
+    ? chalk.greenBright(`\nWorkflow passed after ${result.duration / 1000}s`)
+    : chalk.redBright(`\nWorkflow failed after ${result.duration / 1000}s`)
+  )
 }

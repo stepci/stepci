@@ -1,4 +1,4 @@
-# Using as a library
+# Using as a Library
 
 Step CI runner can be used independently in other Node projects
 

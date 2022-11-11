@@ -1,6 +1,6 @@
 # Using Test Data
 
-You can load test data from a `.csv` file to use in tests. Each test run a random row will be selected from the dataset. A row can be accessed by `testdata` variable in [templates](/reference/templating)
+You can load test data from a csv file/string to be used in tests. Each test run, a random row will be selected from the dataset. A row can be accessed by `testdata` variable in [templates](/reference/templating)
 
 ::: info
 See [workflow syntax](/reference/workflow-syntax#tests-test-testdata-options) for data loader options

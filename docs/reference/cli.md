@@ -42,11 +42,10 @@ The `run` command lets you run a specified workflow
 
 | Option | Required | Description |
 |-|-|-|
-| --help | No | Outputs the help text for `stepci run` |
-| --version | No | Outputs the current version |
 | -e [--env] | No | Supply environment variables (can be defined multiple times) |
 | -s [--secret] | No | Supply secret variables (can be defined multiple times) |
 | --nocontext [--hide] | No | Hide context like request/response data |
+| --loadtest [--load] | No | Run test in load-testing mode |
 
 #### **Examples**
 
@@ -66,7 +65,7 @@ Time:  0.524s, estimated 1s
 Workflow passed after 0.524s
 ```
 
-### `stepci generate [spec] [path]`
+### `generate [spec] [path]`
 
 Generate workflow from OpenAPI spec. The generator will use default and example values defined in your spec, when not specified, placeholder values will be generated according to your schema
 

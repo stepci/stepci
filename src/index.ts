@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import yargs, {showHelp} from 'yargs'
+import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
 import { loadTestFromFile }  from '@stepci/runner/dist/loadtesting'
@@ -30,7 +30,6 @@ ee.on('workflow:result', ({ result }: WorkflowResult) => {
 })
 
 yargs(hideBin(process.argv))
-  .scriptName("")
   .command('run [workflow]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
@@ -143,10 +142,7 @@ yargs(hideBin(process.argv))
   })
   .command(['$0'], false, () => {}, async () => {
     console.log(stepCiDefaultText)
-    showHelp()
   })
-  .help(false)
-  .version(false)
   .parse()
 
 sendAnalyticsEvent()

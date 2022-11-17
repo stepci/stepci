@@ -8,7 +8,7 @@ tests:
     steps:
       - name: Post the post
         http:
-          url: https://{{env.host}}/{{env.resource}}
+          url: https://${{env.host}}/${{env.resource}}
           method: POST
           headers:
             Content-Type: application/json
@@ -23,7 +23,7 @@ tests:
             status: 201
       - name: Get post by id
         http:
-          url: https://{{env.host}}/{{env.resource}}/{{captures.id}}
+          url: https://${{env.host}}/${{env.resource}}/${{captures.id}}
           method: GET
           headers:
             Content-Type: application/json

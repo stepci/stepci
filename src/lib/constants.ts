@@ -1,8 +1,11 @@
-const appVersion = require('../../package.json').version;
+import chalk from 'chalk'
 
-export const stepCiDefaultText = `
-Weclome to StepCI! ( Version ${appVersion} )
+export const defaultText = `${chalk.blue('Welcome!')}
+Step CI is an open-source framework, which helps you automate API testing and monitoring
 
-StepCI use Anonymous data collection.
-if you want to disable it, please set environment variable STEPCI_DISABLE_ANALYTICS=true.
-`
+- ${chalk.bold('Language-agnostic')}. Configure easily using YAML
+- ${chalk.bold('REST, GraphQL, gRPC')}. Test different API types at once
+- ${chalk.bold('Self-hosted')}. Test services on local network
+- ${chalk.bold('Integrated')}. Play nicely with others
+
+${chalk.cyanBright('Give us your feedback on')} ${chalk.cyanBright.underline('https://step.ci/feedback')}`

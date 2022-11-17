@@ -2,7 +2,7 @@
 
 # Welcome
 
-Step CI is an open-source toolset, which helps you automate API testing and monitoring
+Step CI is an open-source framework, which helps you automate API testing and monitoring
 
 - **Language-agnostic**. Configure easily using YAML
 - **REST, GraphQL, gRPC**. Test different API types at once
@@ -39,7 +39,7 @@ Step CI is an open-source toolset, which helps you automate API testing and moni
         steps:
           - name: GET request
             http:
-              url: https://{{env.host}}
+              url: https://${{env.host}}
               method: GET
               check:
                 status: /^20/

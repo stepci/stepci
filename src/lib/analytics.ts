@@ -16,9 +16,6 @@ const posthog = new PostHog(
 )
 
 export function sendAnalyticsEvent () {
-  if (process.env.STEPCI_DISABLE_ANALYTICS) return
-  console.log(chalk.gray(`\nⓘ  Anonymous usage data collected. Learn more on https://step.ci/yUpOHmZ\n`))
-
   posthog.capture({
     distinctId: uid as string,
     event: 'ping',

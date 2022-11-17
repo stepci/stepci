@@ -5,7 +5,7 @@ tests:
     steps:
       - name: GET request
         http:
-          url: https://en.wikipedia.org/wiki/{{animal.cat | fake}}
+          url: https://en.wikipedia.org/wiki/${{animal.cat | fake}}
           method: GET
           check:
             status: /^20/

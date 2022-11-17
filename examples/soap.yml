@@ -21,5 +21,5 @@ tests:
             </soap:Envelope>
           check:
             status: 200
-            selector:
+            selectors:
               m\:numbertowordsresult: "five hundred "

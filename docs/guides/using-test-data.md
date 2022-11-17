@@ -27,12 +27,12 @@ tests:
     steps:
       - name: Basic Auth
         http:
-          url: https://httpbin.org/basic-auth/{{testdata.username}}/{{testdata.password}}
+          url: https://httpbin.org/basic-auth/${{testdata.username}}/${{testdata.password}}
           method: GET
           auth:
             basic:
-              username: {{ testdata.username }}
-              password: {{ testdata.password }}
+              username: ${{ testdata.username }}
+              password: ${{ testdata.password }}
           check:
             status: 200
 ```

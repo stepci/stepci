@@ -19,7 +19,7 @@ tests:
           url: https://httpbin.org/post
           method: POST
           formData:
-            email: {{ | naughtystring }}
+            email: ${{ | naughtystring }}
           check:
             status: 200
 ```

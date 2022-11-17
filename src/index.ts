@@ -7,12 +7,13 @@ import { generateWorkflowFile, GenerateWorkflowOptions } from '@stepci/plugin-op
 import exit from 'exit'
 import chalk from 'chalk'
 import { EventEmitter } from 'node:events'
-import { stepCiDefaultText } from './lib/constants'
+import { defaultText } from './lib/constants'
 import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
-import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage, renderLoadTest } from './lib/render'
+import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage, renderLoadTest, renderAnalyticsMessage } from './lib/render'
 import { sendAnalyticsEvent } from './lib/analytics'
 
 let noContext: boolean | undefined
+renderAnalyticsMessage()
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
@@ -140,9 +141,7 @@ yargs(hideBin(process.argv))
     console.log(`${chalk.greenBright('Success!')} The workflow file can be found at ${argv.path}`)
     renderFeedbackMessage()
   })
-  .command(['$0'], false, () => {}, async () => {
-    console.log(stepCiDefaultText)
-  })
+  .command(['$0'], false, () => {}, () => console.log(defaultText))
   .parse()
 
 sendAnalyticsEvent()

@@ -35,7 +35,7 @@ env:
 steps:
   - name: GET request
     http:
-      url: https://{{env.host}}
+      url: https://${{env.host}}
       method: GET
 ```
 
@@ -602,7 +602,7 @@ Optional. Check CSS selectors
 
 ```yaml
 check:
-  selectors:
+  selector:
     h1: "Example Domain"
 ```
 

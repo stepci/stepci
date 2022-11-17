@@ -110,7 +110,13 @@ export function renderSummary (result: WorkflowResult['result']) {
 }
 
 export function renderFeedbackMessage () {
-  console.log(chalk.cyanBright(`Give us your feedback on ${chalk.underline('https://step.ci/Z3KD5g9')}`))
+  console.log(chalk.cyanBright(`Give us your feedback on ${chalk.underline('https://step.ci/feedback')}`))
+}
+
+export function renderAnalyticsMessage () {
+  if (!process.env.STEPCI_DISABLE_ANALYTICS) {
+    console.log(chalk.gray(`\nⓘ  Anonymous usage data collected. Learn more on https://step.ci/privacy\n`))
+  }
 }
 
 function dots (offset: number): string {

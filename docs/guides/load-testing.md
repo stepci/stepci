@@ -20,7 +20,7 @@ This feature is currently in preview. Some things may break or change in the fut
         steps:
           - name: GET request
             http:
-              url: https://{{env.host}}
+              url: https://${{env.host}}
               method: GET
     ```
 
@@ -45,7 +45,7 @@ This feature is currently in preview. Some things may break or change in the fut
         steps:
           - name: GET request
             http:
-              url: https://{{env.host}}
+              url: https://${{env.host}}
               method: GET
     ```
 
@@ -75,7 +75,7 @@ This feature is currently in preview. Some things may break or change in the fut
         steps:
           - name: GET request
             http:
-              url: https://{{env.host}}
+              url: https://${{env.host}}
               method: GET
     ```
 

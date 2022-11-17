@@ -8,5 +8,5 @@ tests:
           url: https://example.com
           method: GET
           check:
-            selector:
+            selectors:
               title: Example Domain

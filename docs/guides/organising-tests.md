@@ -2,7 +2,7 @@
 
 ## Splitting tests into multiple files
 
-You can split your tests into multiple files and include them in a workflow using `testsFrom` configuration option
+You can split your tests into multiple files and include them in a workflow using `include` configuration option
 
 ::: warning
 Make sure each test has a unique key, otherwise they will be merged/overwritten
@@ -15,7 +15,7 @@ version: "1.1"
 name: Status Check
 env:
   host: example.com
-testsFrom:
+include:
   - status.yml
 ```
 

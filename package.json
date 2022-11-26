@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "@stepci/plugin-openapi": "^0.3.5",
-    "@stepci/runner": "^1.7.1",
+    "@stepci/runner": "^1.7.2",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "cli-highlight": "^2.1.11",
@@ -28,7 +28,7 @@
     "@types/yargs": "^17.0.13",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3",
-    "vitepress": "^1.0.0-alpha.28",
+    "vitepress": "^1.0.0-alpha.29",
     "vue": "^3.2.41"
   },
   "scripts": {

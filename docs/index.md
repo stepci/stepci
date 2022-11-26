@@ -28,7 +28,7 @@ const members = [
 Step CI is an open-source API Quality Assurance framework
 
 - **Language-agnostic**. Configure easily using YAML
-- **REST, GraphQL, gRPC**. Test different API types at once
+- **REST, GraphQL, gRPC, tRPC, SOAP**. Test different API types in one workflow
 - **Self-hosted**. Test services on local network
 - **Integrated**. Play nicely with others
 

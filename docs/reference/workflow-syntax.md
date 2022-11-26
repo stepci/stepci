@@ -386,7 +386,7 @@ Required. OAuth Client ID
 
 Required. OAuth Client Secret
 
-### `tests.<test>.steps.<step>.http.auth.oauth.client_audience` <Badge text="New" />
+### `tests.<test>.steps.<step>.http.auth.oauth.audience` <Badge text="New" />
 
 Optional. OAuth Client Audience
 
@@ -499,14 +499,14 @@ trpc:
     query: Hello
 ```
 
-### `tests.<test>.steps.<step>.http.trpc.<procedure>.mutate` <Badge text="New" />
+### `tests.<test>.steps.<step>.http.trpc.<procedure>.mutation` <Badge text="New" />
 
 Optional. tRPC mutation
 
 ```yaml
 trpc:
   addUser:
-    mutate:
+    mutation:
       name: Mish
 ```
 

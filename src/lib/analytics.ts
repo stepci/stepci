@@ -4,7 +4,6 @@ import { randomUUID } from 'crypto'
 import ci from 'ci-info'
 import isDocker from 'is-docker'
 import Conf from 'conf'
-import chalk from 'chalk'
 
 const config = new Conf()
 if (!config.get('uid')) config.set('uid', randomUUID())
@@ -16,17 +15,19 @@ const posthog = new PostHog(
 )
 
 export function sendAnalyticsEvent () {
-  posthog.capture({
-    distinctId: uid as string,
-    event: 'ping',
-    properties: {
-      os: os.type(),
-      node: process.version,
-      version: '2.3.x',
-      command: process.argv.slice(2)[0],
-      environment: ci.isCI ? ci.name : isDocker() ? 'Docker' : 'Local'
-    }
-  })
+  if (!process.env.STEPCI_DISABLE_ANALYTICS) {
+    posthog.capture({
+      distinctId: uid as string,
+      event: 'ping',
+      properties: {
+        os: os.type(),
+        node: process.version,
+        version: '2.5.x',
+        command: process.argv.slice(2)[0],
+        environment: ci.isCI ? ci.name : isDocker() ? 'Docker' : 'Local'
+      }
+    })
+  }
 }
 
 process.on('beforeExit', () => posthog.shutdown())

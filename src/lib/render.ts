@@ -41,7 +41,17 @@ function renderHTTPResponse (response: HTTPStepResponse) {
 export function renderStepSummary (steps: StepResult[]) {
   console.log(`\n${chalk.bold('Summary')}\n`)
   steps.forEach(step => {
-    console.log(renderSpaces(2) + (step.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + chalk.bold(step.name || step.id) + ' ' + (step.passed ? 'passed' :'failed') + ' after ' + step.duration / 1000 + 's')
+    if (step.passed) {
+      console.log(renderSpaces(2) + chalk.green('✔ ') + chalk.bold(step.name || step.id) + ' passed after ' + step.duration / 1000 + 's')
+    }
+
+    else if (step.skipped) {
+      console.log(renderSpaces(2) + chalk.yellow('⚠︎ ') + chalk.bold(step.name || step.id) + ' skipped after ' + step.duration / 1000 + 's')
+    }
+
+    else if (!step.passed) {
+      console.log(renderSpaces(2) + chalk.red('✕ ') + chalk.bold(step.name || step.id) + ' failed after ' + step.duration / 1000 + 's')
+    }
   })
 }
 
@@ -98,10 +108,11 @@ export function renderSummary (result: WorkflowResult['result']) {
 
   const steps = result.tests.map(test => test.steps).flat()
   const passedSteps = steps.filter(step => step.passed).length
+  const skippedSteps = steps.filter(step => step.skipped).length
   const failedSteps = steps.filter(step => !step.passed).length
 
   console.log(`\n${chalk.bold('Tests:')} ${chalk.redBright.bold(failedTests + ' failed')}, ${chalk.greenBright.bold(passedTests + ' passed')}, ${result.tests.length} total`)
-  console.log(`${chalk.bold('Steps:')} ${chalk.redBright.bold(failedSteps + ' failed')}, ${chalk.greenBright.bold(passedSteps + ' passed')}, ${steps.length} total`)
+  console.log(`${chalk.bold('Steps:')} ${chalk.redBright.bold(failedSteps + ' failed')}, ${chalk.yellowBright.bold(skippedSteps + ' skipped')}, ${chalk.greenBright.bold(passedSteps + ' passed')}, ${steps.length} total`)
   console.log(`${chalk.bold('Time:')}  ${result.duration / 1000}s, estimated ${(result.duration / 1000).toFixed(0)}s`)
   console.log(result.passed
     ? chalk.greenBright(`\nWorkflow passed after ${result.duration / 1000}s`)
@@ -124,7 +135,7 @@ function dots (offset: number): string {
 }
 
 export function renderLoadTest (result: LoadTestResult['result']) {
-  console.log(`response_time:`)
+  console.log(`\nresponse_time:`)
   console.log(`  min: ${dots(0)} ${chalk.yellow(result.responseTime.min)}`)
   console.log(`  max: ${dots(0)} ${chalk.yellow(result.responseTime.max)}`)
   console.log(`  avg: ${dots(0)} ${chalk.yellow(result.responseTime.avg)}`)

@@ -2,7 +2,7 @@
 
 # Welcome
 
-Step CI is an open-source framework, which helps you automate API testing and monitoring
+Step CI is an open-source API Quality Assurance framework
 
 - **Language-agnostic**. Configure easily using YAML
 - **REST, GraphQL, gRPC**. Test different API types at once

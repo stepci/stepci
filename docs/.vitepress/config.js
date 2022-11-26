@@ -57,10 +57,12 @@ export default {
       {
         text: 'Integration',
         items: [
+          { text: 'FastAPI', link: '/integration/fastapi' },
           { text: 'Docker', link: '/integration/docker' },
           { text: 'GitHub Actions', link: '/integration/actions' },
           { text: 'GitLab CI/CD', link: '/integration/gitlab' },
           { text: 'CircleCI', link: '/integration/circle' },
+          { text: 'Jenkins', link: '/integration/jenkins' },
           { text: 'Azure Pipelines', link: '/integration/azure' },
           { text: 'Google Cloud Build', link: '/integration/cloudbuild' },
           { text: 'Bitbucket Pipelines', link: '/integration/bitbucket' },

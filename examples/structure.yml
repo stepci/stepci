@@ -2,5 +2,5 @@ version: "1.1"
 name: Status Check
 env:
   host: example.com
-testsFrom:
+include:
   - status.yml

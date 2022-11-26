@@ -59,7 +59,7 @@ Optional. Reject if SSL certificate is invalid
 
 Optional. Base URL
 
-### `config.loadTest`
+### `config.loadTest` <Badge text="Unstable" type="warning" />
 
 Optional. Load-Testing configuration
 
@@ -76,23 +76,23 @@ config:
       - lte: 500
 ```
 
-### `config.loadTest.phases`
+### `config.loadTest.phases` <Badge text="Unstable" type="warning" />
 
 Required. Load-Testing phases
 
-### `config.loadTest.phases.[phase]`
+### `config.loadTest.phases.[phase]` <Badge text="Unstable" type="warning" />
 
 Required. Load testing phase
 
-### `config.loadTest.phases.[phase].duration`
+### `config.loadTest.phases.[phase].duration` <Badge text="Unstable" type="warning" />
 
 Required. Load testing phase duration
 
-### `config.loadTest.phases.[phase].arrivalRate`
+### `config.loadTest.phases.[phase].arrivalRate` <Badge text="Unstable" type="warning" />
 
 Required. Load testing phase arrival rate (requests per second)
 
-### `config.loadTest.check`
+### `config.loadTest.check` <Badge text="Unstable" type="warning" />
 
 Optional. Load testing checks
 
@@ -147,12 +147,12 @@ components:
 
 Optional. A list of tests to be executed by runner
 
-### `testsFrom`
+### `include` <Badge text="New" />
 
 Optional. A list of tests to be included from other paths
 
 ```yaml
-testsFrom:
+include:
   - directory/workflow.yml
 ```
 
@@ -359,6 +359,31 @@ Optional. Bearer Auth
 auth:
   bearer:
     token: hello world
+```
+
+### `tests.<test>.steps.<step>.http.auth.oauth` <Badge text="New" />
+
+Optional. OAuth
+
+```yaml
+auth:
+  oauth:
+    endpoint: "https://stepci.eu.auth0.com/oauth/token"
+    client_id: ""
+    client_secret: ""
+    audience: ""
+```
+
+### `tests.<test>.steps.<step>.http.auth.certificate` <Badge text="New" />
+
+Optional. Client Certificate auth
+
+```yaml
+auth:
+  certificate:
+    ca: ""
+    cert: ""
+    key: ""
 ```
 
 ### `tests.<test>.steps.<step>.http.cookies`

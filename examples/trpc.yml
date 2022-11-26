@@ -9,3 +9,5 @@ tests:
           trpc:
             greet:
               query: Mish
+          check:
+            status: /^20/

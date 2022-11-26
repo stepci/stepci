@@ -1,0 +1,11 @@
+version: "1.1"
+name: tRPC
+tests:
+  example:
+    steps:
+      - name: GET request
+        http:
+          url: http://localhost:2022/trpc
+          trpc:
+            greet:
+              query: Mish

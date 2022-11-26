@@ -374,6 +374,22 @@ auth:
     audience: ""
 ```
 
+### `tests.<test>.steps.<step>.http.auth.oauth.endpoint` <Badge text="New" />
+
+Required. OAuth endpoint
+
+### `tests.<test>.steps.<step>.http.auth.oauth.client_id` <Badge text="New" />
+
+Required. OAuth Client ID
+
+### `tests.<test>.steps.<step>.http.auth.oauth.client_secret` <Badge text="New" />
+
+Required. OAuth Client Secret
+
+### `tests.<test>.steps.<step>.http.auth.oauth.client_audience` <Badge text="New" />
+
+Optional. OAuth Client Audience
+
 ### `tests.<test>.steps.<step>.http.auth.certificate` <Badge text="New" />
 
 Optional. Client Certificate auth
@@ -385,6 +401,18 @@ auth:
     cert: ""
     key: ""
 ```
+
+### `tests.<test>.steps.<step>.http.auth.certificate.ca` <Badge text="New" />
+
+Optional. Client Certificate Authority
+
+### `tests.<test>.steps.<step>.http.auth.certificate.cert` <Badge text="New" />
+
+Required. Client Certificate
+
+### `tests.<test>.steps.<step>.http.auth.certificate.key` <Badge text="New" />
+
+Required. Client Certificate Key
 
 ### `tests.<test>.steps.<step>.http.cookies`
 
@@ -443,6 +471,43 @@ graphql:
     }
   variables:
     id: 1
+```
+
+### `tests.<test>.steps.<step>.http.graphql.query`
+
+Optional. GraphQL query
+
+### `tests.<test>.steps.<step>.http.graphql.variables`
+
+Optional. GraphQL variables
+
+### `tests.<test>.steps.<step>.http.trpc` <Badge text="New" />
+
+Optional. tRPC request
+
+### `tests.<test>.steps.<step>.http.trpc.<procedure>` <Badge text="New" />
+
+Required. tRPC procedure
+
+### `tests.<test>.steps.<step>.http.trpc.<procedure>.query` <Badge text="New" />
+
+Optional. tRPC query
+
+```yaml
+trpc:
+  greet:
+    query: Hello
+```
+
+### `tests.<test>.steps.<step>.http.trpc.<procedure>.mutate` <Badge text="New" />
+
+Optional. tRPC mutation
+
+```yaml
+trpc:
+  addUser:
+    mutate:
+      name: Mish
 ```
 
 ### `tests.<test>.steps.<step>.http.captures`

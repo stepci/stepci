@@ -69,7 +69,7 @@ This feature is currently in preview. Some things may break or change in the fut
             arrivalRate: 2
         check:
           p99:
-          - lte: 500
+            - lte: 500
     tests:
       example:
         steps:

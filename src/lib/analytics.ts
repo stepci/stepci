@@ -11,7 +11,10 @@ if (!config.get('uid')) config.set('uid', randomUUID())
 const uid = config.get('uid')
 const posthog = new PostHog(
   'phc_SIwnNDitjnc44ozMtjud1Uz1wXb4cgM63MhtWy1mL2O',
-  { host: 'https://eu.posthog.com' }
+  {
+    host: 'https://eu.posthog.com',
+    requestTimeout: 1000
+  }
 )
 
 export function sendAnalyticsEvent () {

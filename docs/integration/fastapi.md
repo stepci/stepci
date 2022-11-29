@@ -1,6 +1,6 @@
 # Integrating with FastAPI
 
-Generate ready-to-use workflows for your FastAPI-powered APIs by utilising FastAPI's OpenAPI spec
+Generate ready-to-use workflows from FastAPI-powered OpenAPI spec
 
 **Example: FastAPI**
 

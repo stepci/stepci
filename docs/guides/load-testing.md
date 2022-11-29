@@ -82,7 +82,7 @@ This feature is currently in preview. Some things may break or change in the fut
     Checks are optional and allow you to validate that the resulted performance metrics match your expected values
 
     :::info
-    See [Workflow Syntax](/reference/workflow-syntax.html#config-loadtest-check) for available load test checks
+    See [Workflow Syntax](/reference/workflow-syntax#config-loadtest-check) for available load test checks
     :::
 
 3. Run the load test

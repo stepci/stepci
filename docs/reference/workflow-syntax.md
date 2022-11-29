@@ -485,28 +485,24 @@ Optional. GraphQL variables
 
 Optional. tRPC request
 
-### `tests.<test>.steps.<step>.http.trpc.<procedure>` <Badge text="New" />
-
-Required. tRPC procedure
-
-### `tests.<test>.steps.<step>.http.trpc.<procedure>.query` <Badge text="New" />
+### `tests.<test>.steps.<step>.http.trpc.query.<procedure>` <Badge text="New" />
 
 Optional. tRPC query
 
 ```yaml
 trpc:
-  greet:
-    query: Hello
+  query:
+    greet: Hello
 ```
 
-### `tests.<test>.steps.<step>.http.trpc.<procedure>.mutation` <Badge text="New" />
+### `tests.<test>.steps.<step>.http.trpc.mutation.<procedure>` <Badge text="New" />
 
 Optional. tRPC mutation
 
 ```yaml
 trpc:
-  addUser:
-    mutation:
+  mutation:
+    addUser:
       name: Mish
 ```
 

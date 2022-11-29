@@ -7,7 +7,7 @@ tests:
         http:
           url: http://localhost:2022/trpc
           trpc:
-            greet:
-              query: Mish
+            query:
+              greet: Mish
           check:
             status: /^20/

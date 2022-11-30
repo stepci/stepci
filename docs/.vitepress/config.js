@@ -15,6 +15,7 @@ export default {
     nav: [
       { text: 'Home', link: 'https://stepci.com' },
       { text: 'Playground', link: 'https://stepci.com' },
+      { text: 'Star us', link: 'https://github.com/stepci/stepci' },
     ],
     editLink: {
       pattern: 'https://github.com/stepci/stepci/edit/main/docs/:path',
@@ -28,7 +29,7 @@ export default {
           { text: 'Getting Started', link: '/guides/getting-started' },
           { text: 'Concepts', link: '/guides/concepts' },
           { text: 'Testing HTTP APIs', link: '/guides/testing-http' },
-          { text: 'Testing GraphQL APIs <span class="badge-new">New</span>', link: '/guides/testing-graphql' },
+          { text: 'Testing GraphQL APIs', link: '/guides/testing-graphql' },
           { text: 'Testing tRPC APIs <span class="badge-new">New</span>', link: '/guides/testing-trpc' },
           { text: 'Testing gRPC APIs', link: '/guides/testing-grpc' },
           { text: 'Using Test Data', link: '/guides/using-test-data' },
@@ -73,6 +74,7 @@ export default {
           { text: 'Jest', link: '/integration/jest' },
           { text: 'Ava', link: '/integration/ava' },
           { text: 'Mocha', link: '/integration/mocha' },
+          { text: 'Vitest', link: '/integration/vitest' },
         ]
       },
       {

@@ -397,22 +397,44 @@ Optional. Client Certificate auth
 ```yaml
 auth:
   certificate:
-    ca: ""
-    cert: ""
-    key: ""
+    ca: |
+      content
+    cert: |
+      content
+    key: |
+      content
+```
+
+Can be files
+
+```yaml
+auth:
+  certificate:
+    ca:
+      file: file.cert
+    cert:
+      file: file.cert
+    key:
+      file: file.key
 ```
 
 ### `tests.<test>.steps.<step>.http.auth.certificate.ca` <Badge text="New" />
 
 Optional. Client Certificate Authority
 
+Can be a file
+
 ### `tests.<test>.steps.<step>.http.auth.certificate.cert` <Badge text="New" />
 
 Required. Client Certificate
 
+Can be a file
+
 ### `tests.<test>.steps.<step>.http.auth.certificate.key` <Badge text="New" />
 
 Required. Client Certificate Key
+
+Can be a file
 
 ### `tests.<test>.steps.<step>.http.cookies`
 
@@ -844,7 +866,7 @@ grpc:
 
 ### `tests.<test>.steps.<step>.grpc.proto`
 
-Required. gRPC protocol buffer file
+Required. gRPC protocol buffer file path
 
 ### `tests.<test>.steps.<step>.grpc.host`
 
@@ -873,11 +895,11 @@ Optional. gRPC TLS config
 ```yaml
 tls:
   rootCerts: |
-    blablabla
+    content
   privateKey: |
-    blablabla
+    content
   certChain: |
-    blablabla
+    content
 ```
 
 Can be files:

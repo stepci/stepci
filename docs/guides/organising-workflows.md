@@ -1,4 +1,4 @@
-# Organising Tests
+# Organising Workflows
 
 ## Splitting tests into multiple files
 

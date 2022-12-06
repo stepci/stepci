@@ -1,5 +1,9 @@
 # Fuzz Testing
 
+Fuzz Testing is a type of testing, that involves providing unexpected or invalid input to an API in order to test its robustness and identify any potential vulnerabilities
+
+The goal of API fuzz testing is to simulate attacks on the API in order to uncover any security weaknesses that may exist
+
 You can utilise the [templating](/reference/templating) functionality combined with `naughtystring` filter to replace a placeholder value with a "naughty" string
 
 ::: info

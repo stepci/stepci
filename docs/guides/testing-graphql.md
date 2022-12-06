@@ -1,8 +1,10 @@
 # Testing GraphQL APIs
 
-[GraphQL](https://graphql.org) is a query language for APIs and a runtime for fulfilling those queries with your existing data
+[GraphQL](https://graphql.org) is a query language used to access and manipulate data in APIs
 
-We have added useful helpers to reduce the burden for testing GraphQL-powered APIs with our tool
+Testing such APIs would involve ensuring that they function properly and that they can effectively retrieve and manipulate data using GraphQL queries
+
+This typically involves sending requests to the API and examining the responses to ensure that they are correct and meet the expectations of the developer
 
 **Example: GraphQL Query**
 
@@ -28,6 +30,6 @@ tests:
               $.data.method: POST
 ```
 
-:::info
-See [Workflow Syntax Reference](/reference/workflow-syntax#tests-test-steps-step-http-graphql) for more request options
+:::tip
+See [Testing HTTP APIs](/guides/testing-http) for the full guide on testing HTTP-based APIs
 :::

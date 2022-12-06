@@ -1,6 +1,6 @@
 # Integrating with GitHub Actions
 
-Create example workflow
+[GitHub Actions](https://github.com/features/actions) allows users to automate tasks and create custom workflows within the GitHub platform
 
 **tests/workflow.yml**
 

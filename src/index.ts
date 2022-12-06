@@ -17,7 +17,7 @@ renderAnalyticsMessage()
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
-  console.log((test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRed(' FAIL ')) + ' ' + chalk.bold(test.name || test.id))
+  console.log((test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRedBright(' FAIL ')) + ' ' + chalk.bold(test.name || test.id))
   if (!test.passed) {
     renderStepSummary(test.steps)
     test.steps.forEach(step => renderStep(step, { noContext }))
@@ -52,7 +52,7 @@ yargs(hideBin(process.argv))
         describe: 'secret variables to use',
         type: 'string'
       })
-      .option('nocontext', {
+      .option('no-context', {
         alias: 'hide',
         boolean: true,
         demandOption: false,
@@ -78,7 +78,7 @@ yargs(hideBin(process.argv))
         return true
       })
   }, async (argv) => {
-    noContext = argv.nocontext
+    noContext = argv['no-context']
 
     if (argv.loadtest) {
       console.log(chalk.yellowBright(`⚠︎ Running a load test. This may take a while`))

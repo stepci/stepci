@@ -1,12 +1,14 @@
 # Testing tRPC APIs
 
+[tRPC](https://trpc.io) is a library, that enables you to build typesafe APIs using TypeScript
+
+Testing such APIs would involve ensuring that they function properly and that they can effectively retrieve and manipulate data using tRPC queries
+
+This typically involves sending requests to the API and examining the responses to ensure that they are correct and meet the expectations of the developer
+
 :::warning
 Batching is currently not supported
 :::
-
-[tRPC](https://trpc.io) is a library, that enables you to build typesafe APIs using TypeScript
-
-We have added useful helpers to reduce the burden for testing tRPC-powered APIs with our tool
 
 **Example: Greeting**
 
@@ -26,7 +28,7 @@ tests:
             status: /^20/
 ```
 
-**Example: Modifiying a user**
+**Example: Updating a user**
 
 ```yaml
 version: "1.1"
@@ -45,6 +47,6 @@ tests:
             status: /^20/
 ```
 
-:::info
-See [Workflow Syntax Reference](/reference/workflow-syntax#tests-test-steps-step-http-trpc) for more request options
+:::tip
+See [Testing HTTP APIs](/guides/testing-http) for the full guide on testing HTTP-based APIs
 :::

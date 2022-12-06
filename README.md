@@ -71,8 +71,27 @@ Documentation is available on [docs.stepci.com](https://docs.stepci.com)
 
 You can find example workflows under [`examples/`](examples/)
 
+## Community
+
+Join our community on [GitHub Discussions](https://github.com/stepci/stepci/discussions)
+
+## Contributing
+
+As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request
+
 ## License
 
 The source code is distributed under Mozilla Public License terms
 
-## [Privacy](https://docs.stepci.com/legal/privacy)
+## Privacy
+
+By default, the CLI collects anonymous usage data, which includes:
+
+- Unique user ID
+- OS Name
+- Node Version
+- CLI Version
+- Command (`stepci run`, `stepci generate`)
+- Environment (Local, Docker, CI/CD)
+
+> **Note**: The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable

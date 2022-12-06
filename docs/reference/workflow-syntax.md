@@ -2,13 +2,13 @@
 
 ## YAML
 
-We choose YAML as a configuration format, because YAML files can be read and written by humans and machines. This allows you to write workflows by hand or generate them with code
+We choose YAML as a primary configuration format, because YAML files can be read and written by humans and machines. This allows you to write workflows by hand or generate them with code
 
 ::: tip
 Learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
 :::
 
-## Syntax
+## Spec
 
 ### `version`
 
@@ -102,14 +102,29 @@ check:
     - lte: 500
 ```
 
-**Available checks:**
+### `config.loadTest.check.avg` <Badge text="Unstable" type="warning" />
 
-- `avg`
-- `min`
-- `max`
-- `med`
-- `p95`
-- `p99`
+Optional
+
+### `config.loadTest.check.min` <Badge text="Unstable" type="warning" />
+
+Optional
+
+### `config.loadTest.check.max` <Badge text="Unstable" type="warning" />
+
+Optional
+
+### `config.loadTest.check.med` <Badge text="Unstable" type="warning" />
+
+Optional
+
+### `config.loadTest.check.p95` <Badge text="Unstable" type="warning" />
+
+Optional
+
+### `config.loadTest.check.p99` <Badge text="Unstable" type="warning" />
+
+Optional
 
 ### `components`
 
@@ -142,6 +157,173 @@ components:
           type: string
           required: true
 ```
+
+### `components.credentials` <Badge text="New" />
+
+Optional. Reusable components.credentials
+
+```yaml
+components.credentials:
+  example:
+    basic:
+      username: hello
+      password: world
+```
+
+### `components.credentials.<credential>` <Badge text="New" />
+
+Required. Credential
+
+### `components.credentials.<credential>.basic` <Badge text="New" />
+
+Optional. Basic Auth
+
+```yaml
+basic:
+  username: hello
+  password: world
+```
+
+### `components.credentials.<credential>.basic.username` <Badge text="New" />
+
+Required. Basic Auth username
+
+### `components.credentials.<credential>.basic.password` <Badge text="New" />
+
+Required. Basic Auth password
+
+### `components.credentials.<credential>.bearer` <Badge text="New" />
+
+Optional. Bearer Auth
+
+```yaml
+bearer:
+  token: hello world
+```
+
+### `components.credentials.<credential>.bearer.token` <Badge text="New" />
+
+Required. Bearer Auth token
+
+### `components.credentials.<credential>.oauth` <Badge text="New" />
+
+Optional. OAuth
+
+```yaml
+oauth:
+  endpoint: "https://stepci.eu.auth0.com/oauth/token"
+  client_id: ""
+  client_secret: ""
+  audience: ""
+```
+
+### `components.credentials.<credential>.oauth.endpoint` <Badge text="New" />
+
+Required. OAuth endpoint
+
+### `components.credentials.<credential>.oauth.client_id` <Badge text="New" />
+
+Required. OAuth Client ID
+
+### `components.credentials.<credential>.oauth.client_secret` <Badge text="New" />
+
+Required. OAuth Client Secret
+
+### `components.credentials.<credential>.oauth.audience` <Badge text="New" />
+
+Optional. OAuth Client Audience
+
+### `components.credentials.<credential>.certificate` <Badge text="New" />
+
+Optional. Client Certificate auth
+
+```yaml
+certificate:
+  ca: |
+    content
+  cert: |
+    content
+  key: |
+    content
+```
+
+Can be files
+
+```yaml
+certificate:
+  ca:
+    file: file.cert
+  cert:
+    file: file.cert
+  key:
+    file: file.key
+```
+
+### `components.credentials.<credential>.certificate.ca` <Badge text="New" />
+
+Optional. Client Certificate authority
+
+Can be a file
+
+### `components.credentials.<credential>.certificate.cert` <Badge text="New" />
+
+Optional. Client Certificate
+
+Can be a file
+
+### `components.credentials.<credential>.certificate.key` <Badge text="New" />
+
+Optional. Client Certificate Key
+
+Can be a file
+
+### `components.credentials.<credential>.certificate.passphrase` <Badge text="New" />
+
+Optional. Client Certificate passphrase
+
+### `components.credentials.<credential>.tls` <Badge text="New" />
+
+Optional. TLS config
+
+```yaml
+tls:
+  rootCerts: |
+    content
+  privateKey: |
+    content
+  certChain: |
+    content
+```
+
+Can be files:
+
+```yaml
+tls:
+  rootCerts:
+    file: root.cert
+  privateKey:
+    file: key.cert
+  certChain:
+    file: chain.cert
+```
+
+### `components.credentials.<credential>.tls.rootCerts` <Badge text="New" />
+
+Optional. TLS root certificate
+
+Can be a file
+
+### `components.credentials.<credential>.tls.privateKey` <Badge text="New" />
+
+Optional. TLS private key
+
+Can be a file
+
+### `components.credentials.<credential>.tls.certChain` <Badge text="New" />
+
+Optional. TLS certificate chain
+
+Can be a file
 
 ### `tests`
 
@@ -211,26 +393,33 @@ testdata:
 **Example: From csv string**
 
 ```yaml
-testdata: |
-  username,password
-  mish,ushakov
+testdata:
+  content: |
+    username,password
+    mish,ushakov
 ```
+
+### `tests.<test>.testdata.content`
+
+Optional. Test data content
 
 ### `tests.<test>.testdata.file`
 
-Required. Test data file
+Optional. Test data file
 
 ### `tests.<test>.testdata.options`
 
 Optional. Test data parsing options
 
 ```yaml
-delimiter: ","
-quote: "'"
-escape: '"'
-headers:
-  - one
-  - two
+testdata:
+  options:
+    delimiter: ","
+    quote: "'"
+    escape: '"'
+    headers:
+      - one
+      - two
 ```
 
 ### `tests.<test>.testdata.options.delimiter`
@@ -284,6 +473,11 @@ Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/
 ```yaml
 if: captures.title == "Example Domain"
 ```
+
+#### Available objects
+
+- `captures`
+- `env`
 
 ### `tests.<test>.steps.<step>.http`
 
@@ -340,6 +534,10 @@ params:
 
 Optional. Auth configuration
 
+### `tests.<test>.steps.<step>.http.auth.$ref`
+
+Optional. A reference to a credential specified in `components.credentials` section
+
 ### `tests.<test>.steps.<step>.http.auth.basic`
 
 Optional. Basic Auth
@@ -351,6 +549,14 @@ auth:
     password: world
 ```
 
+### `tests.<test>.steps.<step>.http.auth.basic.username`
+
+Required. Basic Auth username
+
+### `tests.<test>.steps.<step>.http.auth.basic.password`
+
+Required. Basic Auth password
+
 ### `tests.<test>.steps.<step>.http.auth.bearer`
 
 Optional. Bearer Auth
@@ -360,6 +566,10 @@ auth:
   bearer:
     token: hello world
 ```
+
+### `tests.<test>.steps.<step>.http.auth.bearer.token`
+
+Required. Bearer Auth token
 
 ### `tests.<test>.steps.<step>.http.auth.oauth` <Badge text="New" />
 
@@ -420,21 +630,25 @@ auth:
 
 ### `tests.<test>.steps.<step>.http.auth.certificate.ca` <Badge text="New" />
 
-Optional. Client Certificate Authority
+Optional. Client Certificate authority
 
 Can be a file
 
 ### `tests.<test>.steps.<step>.http.auth.certificate.cert` <Badge text="New" />
 
-Required. Client Certificate
+Optional. Client Certificate
 
 Can be a file
 
 ### `tests.<test>.steps.<step>.http.auth.certificate.key` <Badge text="New" />
 
-Required. Client Certificate Key
+Optional. Client Certificate Key
 
 Can be a file
+
+### `tests.<test>.steps.<step>.http.auth.certificate.passphrase` <Badge text="New" />
+
+Optional. Client Certificate passphrase
 
 ### `tests.<test>.steps.<step>.http.cookies`
 
@@ -468,6 +682,8 @@ form:
 ### `tests.<test>.steps.<step>.http.formData`
 
 Optional. Multipart Form submission
+
+Fields can include a file
 
 ```yaml
 formData:
@@ -774,16 +990,85 @@ check:
       - lte: 500
 ```
 
-**Available checks:**
+### `tests.<test>.steps.<step>.http.check.performance.wait`
 
-- `wait`
-- `dns`
-- `tcp`
-- `tls`
-- `request`
-- `firstByte`
-- `download`
-- `total`
+Optional
+
+```yaml
+check:
+  performance:
+    wait: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.dns`
+
+Optional
+
+```yaml
+check:
+  performance:
+    dns: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.tcp`
+
+Optional
+
+```yaml
+check:
+  performance:
+    tcp: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.tls`
+
+Optional
+
+```yaml
+check:
+  performance:
+    tls: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.request`
+
+Optional
+
+```yaml
+check:
+  performance:
+    request: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.firstByte`
+
+Optional
+
+```yaml
+check:
+  performance:
+    firstByte: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.download`
+
+Optional
+
+```yaml
+check:
+  performance:
+    download: 20
+```
+
+### `tests.<test>.steps.<step>.http.check.performance.total`
+
+Optional
+
+```yaml
+check:
+  performance:
+    total: 20
+```
 
 ### `tests.<test>.steps.<step>.http.check.ssl`
 
@@ -870,7 +1155,7 @@ Required. gRPC protocol buffer file path
 
 ### `tests.<test>.steps.<step>.grpc.host`
 
-Required. gRPC proto file
+Required. gRPC server
 
 ### `tests.<test>.steps.<step>.grpc.service`
 
@@ -882,51 +1167,61 @@ Required. gRPC method
 
 ### `tests.<test>.steps.<step>.grpc.data`
 
-Required. gRPC data
+Required. gRPC payload
 
 ### `tests.<test>.steps.<step>.grpc.metadata`
 
 Optional. gRPC metadata
 
-### `tests.<test>.steps.<step>.grpc.tls`
+### `tests.<test>.steps.<step>.grpc.auth`
 
-Optional. gRPC TLS config
+Optional. gRPC auth config
+
+### `tests.<test>.steps.<step>.grpc.auth.$ref`
+
+Optional. A reference to a credential specified in `components.credentials` section
+
+### `tests.<test>.steps.<step>.grpc.auth.tls`
+
+Optional. gRPC auth TLS config
 
 ```yaml
-tls:
-  rootCerts: |
-    content
-  privateKey: |
-    content
-  certChain: |
-    content
+auth:
+  tls:
+    rootCerts: |
+      content
+    privateKey: |
+      content
+    certChain: |
+      content
 ```
 
 Can be files:
 
 ```yaml
-tls:
-  rootCerts:
-    file: root.cert
-  privateKey:
-    file: key.cert
-  certChain:
-    file: chain.cert
+auth:
+  tls:
+    rootCerts:
+      file: root.cert
+    privateKey:
+      file: key.cert
+    certChain:
+      file: chain.cert
 ```
 
-### `tests.<test>.steps.<step>.grpc.tls.rootCerts`
+### `tests.<test>.steps.<step>.grpc.auth.tls.rootCerts`
 
 Optional. gRPC TLS root certificate
 
 Can be a file
 
-### `tests.<test>.steps.<step>.grpc.tls.privateKey`
+### `tests.<test>.steps.<step>.grpc.auth.tls.privateKey`
 
 Optional. gRPC TLS private key
 
 Can be a file
 
-### `tests.<test>.steps.<step>.grpc.tls.certChain`
+### `tests.<test>.steps.<step>.grpc.auth.tls.certChain`
 
 Optional. gRPC TLS certificate chain
 

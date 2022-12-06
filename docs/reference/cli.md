@@ -44,7 +44,7 @@ The `run` command lets you run a specified workflow
 |-|-|-|
 | -e [--env] | No | Supply environment variables (can be defined multiple times) |
 | -s [--secret] | No | Supply secret variables (can be defined multiple times) |
-| --nocontext [--hide] | No | Hide context like request/response data |
+| --no-context [--hide] | No | Hide context like request/response data |
 | --loadtest [--load] | No | Run test in load-testing mode |
 
 #### **Examples**

@@ -1,6 +1,8 @@
 # Load Testing
 
-Load Testing is a process of ensuring your API performs as expected during a typical and peak load
+Load Testing is a process of ensuring your API performs as expected during a typical and peak load without breaking or becoming unresponsive
+
+The goal of API load testing is typically to identify potential bottlenecks or issues that may arise when the API is used at scale, and to provide information that can be used to optimize the API for better performance
 
 ::: warning
 This feature is currently in preview. Some things may break or change in the future
@@ -50,6 +52,10 @@ This feature is currently in preview. Some things may break or change in the fut
     ```
 
     Your load test can have multiple phases. Each phase has a `duration`, which defines how long a phase lasts and an `arrivalRate`, which sets how many virtual visitors (or requests) arrive per second during the duration of a phase
+
+    :::warning
+    By default, the test runner will skip subsequent steps after the previous ones have failed. Add `continueOnFail` configuration option to your test or your workflow if you want to continue test execution after a failed step
+    :::
 
 3. Add (optional) checks
 

@@ -1,6 +1,8 @@
 # Integrating with Mocha
 
-Step CI runner can be used directly in JavaScript test tools
+[Mocha](https://mochajs.org) is a popular JavaScript testing framework that allows developers to easily write and run tests for their code
+
+Step CI runner can be used directly in JavaScript testing tools
 
 ## Preparation
 

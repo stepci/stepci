@@ -32,9 +32,9 @@ Step CI is an open-source API Quality Assurance framework
 - **Self-hosted**. Test services on local network
 - **Integrated**. Play nicely with others
 
-### Development
+### Contributing
 
-The Development is happening on our repository on GitHub
+As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request on GitHub
 
 https://github.com/stepci/stepci
 

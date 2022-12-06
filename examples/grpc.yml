@@ -5,7 +5,7 @@ tests:
     steps:
       - name: gRPC request
         grpc:
-          proto: examples/helloworld.proto
+          proto: helloworld.proto
           host: 0.0.0.0:50051
           service: helloworld.Greeter
           method: SayHello

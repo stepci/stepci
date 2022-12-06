@@ -6,7 +6,7 @@ env:
 tests:
   example:
     steps:
-      - name: Post the post
+      - name: Post a post
         http:
           url: https://${{env.host}}/${{env.resource}}
           method: POST

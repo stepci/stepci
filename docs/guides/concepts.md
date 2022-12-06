@@ -2,28 +2,28 @@
 
 ### Workflows
 
-Workflows contain meta information, tests and configuration
+Workflows contain meta information, tests and default configuration
 
 ### Tests
 
-Tests describe different test suites. Tests can have multiple steps. Tests are executed concurrently. Each test has a separate context, shared accross steps
+Tests describe different test suites. Tests can have multiple steps. Tests are executed concurrently. Each test has a separate context, shared across steps
 
 ### Steps
 
-Steps are the instructions to be executed by the runner. Steps contain the request parameters and assertions. Steps are executed in a sequence. If one step fails, all the following steps are skipped. Steps have access to shared context
-
-### Checks
-
-Steps can have many different checks to validate responses
+Steps are the instructions to be executed by the runner. Steps contain the request parameters, captures and checks. Steps are executed in a sequence. If one step fails, all the following steps are skipped. Steps have access to shared context
 
 ### Captures
 
-Steps can capture data from responses into named variables
+Steps can specify captures to capture data from responses into named variables that can later be used in consequent requests. Also known as "request chaining"
 
-### Conditions
+### Checks
 
-Steps can be skipped if a condition is not met
+Steps can include checks to validate responses
 
 ### Matchers
 
-Matchers can match values against a pre-defined set of rules
+Matchers can be used to match values against a pre-defined set of rules
+
+### Reusables
+
+Reusables allow you to reuse content such as schemas and credentials without repetition

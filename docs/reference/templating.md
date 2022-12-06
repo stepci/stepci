@@ -2,7 +2,9 @@
 
 When writing tests, you can take advantage of our powerful templating engine - [liquidless](https://github.com/stepci/liquidless)
 
-**Example: Using environment variables**
+## Objects
+
+**Example: Environment variables**
 
 ```yaml{10}
 version: "1.1"
@@ -22,10 +24,48 @@ tests:
 
 ### Available Objects
 
-- `env` - Environment variables, defined in `env`
-- `secrets` - Secret variables (such as API tokens), only configurable from the CLI
+- `env` - Environment variables defined in the `env` field or in the CLI
+- `secrets` - Secret variables (such as API tokens), set from the CLI
 - `captures` - Captured data
 - `testdata` - A row of test data (if provided)
+
+## Filters
+
+**Example: Uppercasing a username**
+
+```yaml{11}
+version: "1.1"
+name: Posting data
+tests:
+  example:
+    steps:
+      - name: POST request
+        http:
+          url: https://example.com
+          method: POST
+          json:
+            username: ${{ testdata.username | upcase }}
+          check:
+            status: /^20/
+```
+
+**Example: Providing positional arguments**
+
+```yaml{11}
+version: "1.1"
+name: Posting data
+tests:
+  example:
+    steps:
+      - name: POST request
+        http:
+          url: https://example.com
+          method: POST
+          json:
+            post: "${{ lorem.sentences | fake: 1 }}"
+          check:
+            status: /^20/
+```
 
 ### Available Filters
 

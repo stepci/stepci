@@ -8,6 +8,6 @@ tests:
           url: https://httpbin.org/post
           method: POST
           body:
-            file: README.md
+            file: ../README.md
           check:
             status: 200

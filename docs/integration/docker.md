@@ -1,6 +1,6 @@
 # Integrating with Docker
 
-Create example workflow
+[Docker](https://www.docker.com/) is a tool that allows users to create and run virtual containers, which are isolated environments for running applications
 
 **tests/workflow.yml**
 

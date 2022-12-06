@@ -4,7 +4,7 @@
 Only OpenAPI 3.0 and higher is supported. Prepare your OpenAPI spec before running the command. Add request and response examples, default values and specify required params
 :::
 
-Our first-class OpenAPI integration lets you generate workflows from your API spec on the fly
+[OpenAPI](https://www.openapis.org/) is a widely used specification for defining APIs. Our first-class OpenAPI integration lets you generate workflows from your API spec on the fly
 
 **Example: Swagger Petstore 3.0**
 

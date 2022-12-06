@@ -10,6 +10,6 @@ tests:
           formData:
             email: hello@stepci.com
             logo:
-              file: README.md
+              file: ../README.md
           check:
             status: 200

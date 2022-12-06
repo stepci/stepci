@@ -21,9 +21,14 @@ export default {
       pattern: 'https://github.com/stepci/stepci/edit/main/docs/:path',
       text: 'Edit this page on GitHub'
     },
+    algolia: {
+      appId: 'BGFVFFQ7D3',
+      apiKey: '3edb499a6cb1b332569b42cd4e44da82',
+      indexName: 'stepci'
+    },
     sidebar: [
       {
-        text: 'Guides',
+        text: 'Learn',
         items: [
           { text: 'Introduction', link: '/' },
           { text: 'Getting Started', link: '/guides/getting-started' },
@@ -37,7 +42,7 @@ export default {
           { text: 'Load Testing <span class="badge-new">New</span>', link: '/guides/load-testing' },
           { text: 'Fuzz Testing', link: '/guides/fuzz-testing' },
           { text: 'CO<sub>2</sub> Testing', link: '/guides/co2-testing' },
-          { text: 'Organising Tests', link: '/guides/organising-tests' },
+          { text: 'Organising Workflows', link: '/guides/organising-workflows' },
           { text: 'Using as a Library', link: '/guides/using-library' },
         ]
       },
@@ -52,8 +57,9 @@ export default {
         items: [
           { text: 'Using the CLI', link: '/reference/cli' },
           { text: 'Workflow Syntax', link: '/reference/workflow-syntax' },
-          { text: 'Using Matchers', link: '/reference/matchers' },
           { text: 'Templating', link: '/reference/templating' },
+          { text: 'Matchers', link: '/reference/matchers' },
+          { text: 'Reusables', link: '/reference/reusables' },
           { text: 'Examples', link: '/reference/examples' },
         ]
       },

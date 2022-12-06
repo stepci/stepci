@@ -10,6 +10,7 @@
   --vp-c-bg-alt: #141414;
   --vp-c-bg: #181818;
   --vp-code-block-bg: #141414;
+  --docsearch-hit-active-color: black;
 }
 
 .dark .VPImage.logo {
@@ -46,6 +47,6 @@
 
 @media (min-width: 960px) {
   .dark .VPNavBar.has-sidebar .content {
-    background-color: rgba(24, 24, 24, 0.95) !important;
+    background-color: rgba(24, 24, 24, 0.7) !important;
   }
 }

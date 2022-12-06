@@ -1,5 +1,7 @@
 # Integrating with FastAPI
 
+[FastAPI](https://fastapi.tiangolo.com/) is a web framework for building APIs (application programming interfaces) that is known for its speed and ease of use
+
 Generate ready-to-use workflows from FastAPI-powered OpenAPI spec
 
 **Example: FastAPI**

@@ -1,6 +1,8 @@
 # Integrating with Jest
 
-Step CI runner can be used directly in JavaScript test tools
+[Jest](https://jestjs.io/) is a popular JavaScript testing framework created by Facebook. It is used for testing the functionality of applications and libraries
+
+Step CI runner can be used directly in JavaScript testing tools
 
 ## Preparation
 

@@ -25,6 +25,12 @@ Step CI is an open-source API Quality Assurance framework
 
     > **Note**: Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
 
+    or If you're a [Homebrew](https://brew.sh/) user, you can install [stepci](https://formulae.brew.sh/formula/stepci) via:
+
+    ```sh
+    $ brew install stepci
+    ```
+
 2. Create example workflow
 
     **workflow.yml**

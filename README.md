@@ -17,18 +17,20 @@ Step CI is an open-source API Quality Assurance framework
 
 ## Get started
 
-1. Install the CLI from [NPM](https://www.npmjs.com/package/stepci)
+1. Install the CLI
+
+   **Using [Node.js](https://nodejs.org/en/)**
 
     ```sh
     npm install -g stepci
     ```
 
-    > **Note**: Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
+    > **Note**: Make sure you're using the LTS version of Node.js
 
-    or If you're a [Homebrew](https://brew.sh/) user, you can install [stepci](https://formulae.brew.sh/formula/stepci) via:
+    **Using [Homebrew](https://brew.sh/)**
 
     ```sh
-    $ brew install stepci
+    brew install stepci
     ```
 
 2. Create example workflow

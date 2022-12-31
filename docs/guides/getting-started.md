@@ -1,20 +1,20 @@
 # Getting started
 
-1. Install the CLI from [NPM](https://www.npmjs.com/package/stepci)
+1. Install the CLI
+
+    **Using [Node.js](https://nodejs.org/en/)**
 
     ```sh
     npm install -g stepci
     ```
 
-    or If you're a [Homebrew](https://brew.sh/) user, you can install [stepci](https://formulae.brew.sh/formula/stepci) via:
+    > Make sure you're using the LTS version of Node.js
+
+    **Using [Homebrew](https://brew.sh/)**
 
     ```sh
-    $ brew install stepci
+    brew install stepci
     ```
-
-    ::: tip
-    Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
-    :::
 
 2. Create example workflow
 

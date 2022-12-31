@@ -6,6 +6,12 @@
     npm install -g stepci
     ```
 
+    or If you're a [Homebrew](https://brew.sh/) user, you can install [stepci](https://formulae.brew.sh/formula/stepci) via:
+
+    ```sh
+    $ brew install stepci
+    ```
+
     ::: tip
     Make sure you're using the LTS version of [Node.js](https://nodejs.org/en/)
     :::

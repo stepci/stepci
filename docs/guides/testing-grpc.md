@@ -246,10 +246,13 @@ Steps can include checks to validate responses
 ### Performance
 
 ```yaml
-- name: GET Request
-  http:
-    url: https://example.com
-    method: GET
+- grpc:
+    proto: public/helloworld.proto
+    host: 0.0.0.0:50051
+    service: helloworld.Greeter
+    method: SayHello
+    data:
+      message: ${{captures.message}}
     check:
       performance:
         total:

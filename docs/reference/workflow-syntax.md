@@ -1131,6 +1131,10 @@ Optional. Follow redirects. Enabled by default
 
 Optional. Request Timeout
 
+### `tests.<test>.steps.<step>.http.retries`
+
+Optional. Number of times to retry request on failure or timeout, default 0.
+
 ### `tests.<test>.steps.<step>.grpc`
 
 Optional. gRPC Step

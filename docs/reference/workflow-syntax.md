@@ -59,6 +59,10 @@ Optional. Reject if SSL certificate is invalid
 
 Optional. Base URL
 
+### `config.http.http2` <Badge text="New" />
+
+Optional. Enable http2 support
+
 ### `config.loadTest` <Badge text="Unstable" type="warning" />
 
 Optional. Load-Testing configuration
@@ -979,7 +983,7 @@ check:
 
 ### `tests.<test>.steps.<step>.http.check.performance`
 
-Optional. Performance Checking
+Optional. Performance Checking (in ms)
 
 ```yaml
 check:
@@ -1310,7 +1314,7 @@ check:
 
 ### `tests.<test>.steps.<step>.grpc.check.performance`
 
-Optional. Performance Checking
+Optional. Performance Checking (in ms)
 
 ```yaml
 check:

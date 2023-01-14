@@ -114,6 +114,7 @@ export function renderSummary (result: WorkflowResult['result']) {
   console.log(`\n${chalk.bold('Tests:')} ${chalk.redBright.bold(failedTests + ' failed')}, ${chalk.greenBright.bold(passedTests + ' passed')}, ${result.tests.length} total`)
   console.log(`${chalk.bold('Steps:')} ${chalk.redBright.bold(failedSteps + ' failed')}, ${chalk.yellowBright.bold(skippedSteps + ' skipped')}, ${chalk.greenBright.bold(passedSteps + ' passed')}, ${steps.length} total`)
   console.log(`${chalk.bold('Time:')}  ${result.duration / 1000}s, estimated ${(result.duration / 1000).toFixed(0)}s`)
+  console.log(`${chalk.bold('CO2:')}   ${chalk.greenBright(result.co2.toFixed(5) + 'g')}`)
   console.log(result.passed
     ? chalk.greenBright(`\nWorkflow passed after ${result.duration / 1000}s`)
     : chalk.redBright(`\nWorkflow failed after ${result.duration / 1000}s`)

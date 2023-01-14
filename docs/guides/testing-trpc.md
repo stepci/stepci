@@ -47,6 +47,24 @@ tests:
             status: /^20/
 ```
 
+**Nested Routes**
+
+```yaml
+version: "1.1"
+name: tRPC
+tests:
+  example:
+    steps:
+      - name: Query
+        http:
+          url: http://localhost:2022/trpc
+          trpc:
+            query:
+              users/greet: Mish
+          check:
+            status: /^20/
+```
+
 :::tip
 See [Testing HTTP APIs](/guides/testing-http) for the full guide on testing HTTP-based APIs
 :::

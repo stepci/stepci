@@ -30,6 +30,10 @@ Optionally, you can also specify reusables, such as `env` in this example, which
 Your workflows will share a similiar structure, think about a workflow like a LEGO-set that you assemble step-by-step
 :::
 
+:::warning
+By default, the test runner will skip subsequent steps after the previous ones have failed. Add `continueOnFail` to your workflow or your test if you want to continue test execution after a failed step
+:::
+
 [→ More workflow options](/reference/workflow-syntax)
 
 ## Tests

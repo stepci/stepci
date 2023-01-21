@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "@stepci/plugin-openapi": "^0.3.5",
-    "@stepci/runner": "^1.8.7",
+    "@stepci/runner": "^1.8.8",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "cli-highlight": "^2.1.11",

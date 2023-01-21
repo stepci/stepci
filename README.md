@@ -4,9 +4,9 @@
 
 Step CI is an open-source API Quality Assurance framework
 
-- **Language-agnostic**. Configure easily using YAML
+- **Language-agnostic**. Configure easily using YAML, JSON or JavaScript
 - **REST, GraphQL, gRPC, tRPC, SOAP**. Test different API types in one workflow
-- **Self-hosted**. Test services on local network
+- **Self-hosted**. Test services on your network, locally or with CI/CD
 - **Integrated**. Play nicely with others
 
 [→ **Read the Docs**](https://docs.stepci.com)

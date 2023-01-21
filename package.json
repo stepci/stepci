@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "@stepci/plugin-openapi": "^0.3.5",
-    "@stepci/runner": "^1.8.8",
+    "@stepci/runner": "^1.9.0",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "cli-highlight": "^2.1.11",

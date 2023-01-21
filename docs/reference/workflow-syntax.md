@@ -820,6 +820,16 @@ captures:
     regex: <title>(.*?)<\/title>
 ```
 
+### `tests.<test>.steps.<step>.http.captures.<capture>.body`
+
+Optional. Capture whole body
+
+```yaml
+captures:
+  example:
+    body: true
+```
+
 ### `tests.<test>.steps.<step>.http.check`
 
 Optional. Provide checks to validate responses

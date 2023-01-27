@@ -737,6 +737,15 @@ trpc:
     greet: Hello
 ```
 
+Query will be sent as a batch if it is an array
+
+```yaml
+trpc:
+  query:
+    - greet: Hello
+    - greet: Hello
+```
+
 ### `tests.<test>.steps.<step>.http.trpc.mutation.<procedure>` <Badge text="New" />
 
 Optional. tRPC mutation
@@ -762,7 +771,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.jsonpath`
 
-Optional. JSONPath
+Optional. Capture JSONPath
 
 ```yaml
 captures:
@@ -772,7 +781,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.xpath`
 
-Optional. XPath
+Optional. Capture XPath
 
 ```yaml
 captures:
@@ -782,7 +791,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.header`
 
-Optional. Response Header
+Optional. Capture a response Header
 
 ```yaml
 captures:
@@ -792,7 +801,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.selector`
 
-Optional. HTML Selector
+Optional. Capture a HTML selector
 
 ```yaml
 captures:
@@ -802,7 +811,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.cookie`
 
-Optional. Cookie
+Optional. Capture a cookie
 
 ```yaml
 captures:
@@ -812,7 +821,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.regex`
 
-Optional. Match Regex
+Optional. Capture a regex match
 
 ```yaml
 captures:
@@ -822,7 +831,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.http.captures.<capture>.body`
 
-Optional. Capture whole body
+Optional. Capture whole response body
 
 ```yaml
 captures:
@@ -1257,7 +1266,7 @@ captures:
 
 ### `tests.<test>.steps.<step>.grpc.captures.<capture>.jsonpath`
 
-Optional. JSONPath
+Optional. Capture JSONPath
 
 ```yaml
 captures:

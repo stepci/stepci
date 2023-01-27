@@ -6,10 +6,6 @@ Testing such APIs would involve ensuring that they function properly and that th
 
 This typically involves sending requests to the API and examining the responses to ensure that they are correct and meet the expectations of the developer
 
-:::warning
-Batching is currently not supported
-:::
-
 **Example: Greeting**
 
 ```yaml
@@ -47,7 +43,7 @@ tests:
             status: /^20/
 ```
 
-**Nested Routes**
+**Example: Nested Routes**
 
 ```yaml
 version: "1.1"
@@ -61,6 +57,29 @@ tests:
           trpc:
             query:
               users/greet: Mish
+          check:
+            status: /^20/
+```
+
+**Example: Query Batching**
+
+```yaml
+version: "1.1"
+name: tRPC
+tests:
+  example:
+    steps:
+      - name: Query
+        http:
+          url: http://localhost:2022/trpc
+          trpc:
+            query:
+              - greet:
+                  json:
+                    name: Mish
+              - greet:
+                  json:
+                    name: Mish
           check:
             status: /^20/
 ```

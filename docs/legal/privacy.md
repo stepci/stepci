@@ -2,7 +2,7 @@
 
 By default, the CLI collects anonymous usage data, which includes:
 
-- Unique user ID
+- Anonymous unique user ID
 - OS Name
 - Node Version
 - CLI Version

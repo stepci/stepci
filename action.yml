@@ -18,6 +18,9 @@ inputs:
   noContext:
     description: 'no-context option. e.g "true"'
     required: false
+  loadtest:
+    description: 'load-test option. e.g "true"'
+    required: false
 
 runs:
   using: 'docker'
@@ -27,3 +30,4 @@ runs:
     - ${{ inputs.envs }}
     - ${{ inputs.secrets }}
     - ${{ inputs.noContext }}
+    - ${{ inputs.loadtest }}

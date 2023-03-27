@@ -16,4 +16,8 @@ if [ "$4" == "true" ]; then
     EXECUTION_COMMAND="$EXECUTION_COMMAND --hide"
 fi
 
+if [ "$5" == "true" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND --load"
+fi
+
 eval $EXECUTION_COMMAND

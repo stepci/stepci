@@ -9,8 +9,21 @@ inputs:
     description: 'Workflow Path'
     required: true
     default: '.stepci/workflows/workflow.yml'
+  envs:
+    description: 'env option. e.g. "env1 env2 ..."'
+    required: false
+  secrets:
+    description: 'secret option. e.g. "secret1 secret2 ..."'
+    required: false
+  noContext:
+    description: 'no-context option. e.g "true"'
+    required: false
+
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.workflow }}
+    - ${{ inputs.envs }}
+    - ${{ inputs.secrets }}
+    - ${{ inputs.noContext }}

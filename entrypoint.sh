@@ -4,19 +4,19 @@ set +x
 
 EXECUTION_COMMAND="stepci run $1"
 
-if [ -n "$2" ]; then
-    EXECUTION_COMMAND="$EXECUTION_COMMAND -e $2"
+if [ -n "$ENV" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND -e $ENV"
 fi
 
-if [ -n "$3" ]; then
-    EXECUTION_COMMAND="$EXECUTION_COMMAND -s $3"
+if [ -n "$SECRETS" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND -s $SECRETS"
 fi
 
-if [ "$4" == "true" ]; then
+if [ "$NO_CONTEXT" == "true" ]; then
     EXECUTION_COMMAND="$EXECUTION_COMMAND --hide"
 fi
 
-if [ "$5" == "true" ]; then
+if [ "$LOADTEST" == "true" ]; then
     EXECUTION_COMMAND="$EXECUTION_COMMAND --load"
 fi
 

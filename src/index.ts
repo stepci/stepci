@@ -11,6 +11,7 @@ import { defaultText } from './lib/constants'
 import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
 import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage, renderLoadTest, renderAnalyticsMessage } from './lib/render'
 import { sendAnalyticsEvent } from './lib/analytics'
+import 'global-agent/bootstrap';
 
 let noContext: boolean | undefined
 renderAnalyticsMessage()

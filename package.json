@@ -19,7 +19,8 @@
     "exit": "^0.1.2",
     "is-docker": "^2.2.1",
     "posthog-node": "^2.2.2",
-    "yargs": "^17.5.1"
+    "yargs": "^17.5.1",
+    "global-agent": "^3.0.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",

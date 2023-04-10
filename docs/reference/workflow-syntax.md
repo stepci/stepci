@@ -1000,6 +1000,24 @@ check:
   size: 1024
 ```
 
+### `tests.<test>.steps.<step>.http.check.requestSize`
+
+Optional. Check request size (in bytes)
+
+```yaml
+check:
+  requestSize: 1024
+```
+
+### `tests.<test>.steps.<step>.http.check.bodySize`
+
+Optional. Check body size (in bytes)
+
+```yaml
+check:
+  bodySize: 1024
+```
+
 ### `tests.<test>.steps.<step>.http.check.performance`
 
 Optional. Performance Checking (in ms)

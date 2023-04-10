@@ -16,6 +16,9 @@
     "captures": "Captures",
     "ssl": "Certificate",
     "size": "Size",
+    "requestSize": "Request size",
+    "responseSize": "Response size",
+    "bodySize": "Body size",
     "co2": "Emissions"
   }
 }

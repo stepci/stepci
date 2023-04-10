@@ -3,7 +3,7 @@
 You can now test your API carbon footprint by adding a special `co2` check
 
 ::: info
-The calculation algorithm is provided by [Sustainable Web Design](https://sustainablewebdesign.org/calculating-digital-emissions/)
+The calculation algorithm is provided by [CO2.js](https://developers.thegreenwebfoundation.org/co2js/overview/) and [Sustainable Web Design](https://sustainablewebdesign.org/calculating-digital-emissions/)
 :::
 
 **Example: Checking emissions**

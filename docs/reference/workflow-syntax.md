@@ -375,13 +375,13 @@ tests:
       host: example.com
 ```
 
-### `tests.<test>.config`
+<!-- ### `tests.<test>.config`
 
 Optional. Workflow config
 
 ### `tests.<test>.config.continueOnFail`
 
-Optional. Continue workflow after step failed
+Optional. Continue workflow after step failed -->
 
 ### `tests.<test>.testdata`
 

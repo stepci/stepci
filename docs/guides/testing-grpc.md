@@ -30,7 +30,7 @@ Your workflows will share a similiar structure, think about a workflow like a LE
 :::
 
 :::warning
-By default, the test runner will skip subsequent steps after the previous ones have failed. Add `continueOnFail` to your workflow or your test if you want to continue test execution after a failed step
+By default, the test runner will skip subsequent steps after the previous ones have failed. Add `continueOnFail` to your workflow, if you want to continue test execution after a failed step
 :::
 
 [→ More workflow options](/reference/workflow-syntax)
@@ -45,8 +45,6 @@ env:
 tests:
   example:
     name: Example test
-    config:
-      continueOnFail: false
 ```
 
 Tests describe different test suites. Tests can have multiple steps. Tests are executed concurrently. Each test has a separate context, shared across steps

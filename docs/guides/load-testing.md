@@ -56,7 +56,7 @@ This feature is currently in preview. Some things may break or change in the fut
     Your load test can have multiple phases. Each phase has a `duration`, which defines how long a phase lasts and an `arrivalRate`, which sets how many virtual visitors (or requests) arrive per second during the duration of a phase
 
     :::warning
-    By default, the test runner will skip subsequent steps after the previous ones have failed. Add `continueOnFail` configuration option to your workflow or your test if you want to continue test execution after a failed step
+    By default, the test runner will skip subsequent steps after the previous ones have failed. Add `continueOnFail` configuration option to your workflow, if you want to continue test execution after a failed step
     :::
 
 3. Add (optional) checks

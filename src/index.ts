@@ -66,6 +66,12 @@ yargs(hideBin(process.argv))
         describe: 'run workflow in load-testing mode',
         type: 'boolean'
       })
+      .option('concurrency', {
+        number: true,
+        demandOption: false,
+        describe: 'number of concurrency executions',
+        type: 'number'
+      })
       .check(({ e: envs, s: secrets }) => {
         if (checkOptionalEnvArrayFormat(envs)) {
           throw new Error('env variables have wrong format, use `env=VARIABLE`.')
@@ -96,7 +102,8 @@ yargs(hideBin(process.argv))
     runFromFile(argv.workflow, {
       env: parseEnvArray(argv.e),
       secrets: parseEnvArray(argv.s),
-      ee
+      ee,
+      concurrency: argv.concurrency
     })
   })
   .command('generate [spec] [path]', 'generate workflow from OpenAPI spec', yargs => {

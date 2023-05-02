@@ -1,5 +1,8 @@
 ![Step CI CLI Demo](https://i.imgur.com/QgC0cRr.gif)
 
+> **Note**
+> We just released [Garph](https://github.com/stepci/garph), a full-stack GraphQL framework for TypeScript
+
 # Welcome
 
 Step CI is an open-source API Quality Assurance framework

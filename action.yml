@@ -24,12 +24,11 @@ inputs:
 
 runs:
   using: 'docker'
-  image: 'Dockerfile'
-  env: 
+  image: 'Dockerfile.action'
+  env:
     ENV: ${{ inputs.envs }}
     SECRETS: ${{ inputs.secrets }}
     NO_CONTEXT: ${{ inputs.noContext }}
     LOADTEST: ${{ inputs.loadtest }}
   args:
     - ${{ inputs.workflow }}
- 

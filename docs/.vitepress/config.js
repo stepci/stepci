@@ -36,6 +36,7 @@ export default {
           { text: 'Testing HTTP APIs', link: '/guides/testing-http' },
           { text: 'Testing GraphQL APIs', link: '/guides/testing-graphql' },
           { text: 'Testing tRPC APIs <span class="badge-new">New</span>', link: '/guides/testing-trpc' },
+          { text: 'Testing SSE <span class="badge-new">New</span>', link: '/guides/testing-sse' },
           { text: 'Testing gRPC APIs', link: '/guides/testing-grpc' },
           { text: 'Using Test Data', link: '/guides/using-test-data' },
           { text: 'Using Fake Data', link: '/guides/using-fake-data' },

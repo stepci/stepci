@@ -1,0 +1,15 @@
+version: "1.1"
+name: Server Sent Events
+tests:
+  example:
+    steps:
+      - name: SSE
+        sse:
+          url: http://localhost:8080
+          timeout: 10000
+          check:
+            - id: 'message1'
+              jsonpath:
+                $.hello: "world"
+            - id: 'message2'
+              body: "world"

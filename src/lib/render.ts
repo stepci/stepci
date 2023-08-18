@@ -75,6 +75,14 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(highlight(renderHTTPResponse(step.response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
+  if (step.type === 'sse' && !options?.noContext) {
+    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' SSE ')}\n`))
+    console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+
+    console.log(chalk.bold(`\nResponse\n`))
+    console.log(highlight((step.response?.body as Buffer).toString(), { language: 'txt', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+  }
+
   if (step.type === 'grpc' && !options?.noContext) {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
     console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
@@ -88,7 +96,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
   const checks = step.checks as {[key: string]: any}
   for (const check in checks) {
     console.log('\n' + (labels as {[key: string]: string})[check] + '\n')
-    if (['jsonpath', 'xpath', 'headers', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
+    if (['jsonpath', 'xpath', 'headers', 'messages', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
       for (const component in checks[check]) {
         checks[check][component].passed
           ? console.log(renderSpaces(2) + chalk.green('✔ ') + chalk.bold(component) + ': ' + checks[check][component].given)

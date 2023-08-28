@@ -84,7 +84,7 @@ You can find example workflows under [`examples/`](examples/)
 
 ## Community
 
-Join our community on [GitHub Discussions](https://github.com/stepci/stepci/discussions)
+Join our community on [Discord](https://discord.gg/KqJJzJ3BTu) and [GitHub](https://github.com/stepci/stepci/discussions)
 
 ## Contributing
 

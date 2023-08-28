@@ -8,8 +8,9 @@ export default {
   themeConfig: {
     siteTitle: 'Step CI',
     socialLinks: [
+      { icon: 'discord', link: 'https://discord.gg/KqJJzJ3BTu' },
+      { icon: 'twitter', link: 'https://twitter.com/ci_step' },
       { icon: 'github', link: 'https://github.com/stepci/stepci' },
-      { icon: 'twitter', link: 'https://twitter.com/ci_step' }
     ],
     logo: 'https://stepci.com/logo.svg',
     nav: [
@@ -35,8 +36,8 @@ export default {
           { text: 'Concepts', link: '/guides/concepts' },
           { text: 'Testing HTTP APIs', link: '/guides/testing-http' },
           { text: 'Testing GraphQL APIs', link: '/guides/testing-graphql' },
-          { text: 'Testing tRPC APIs <span class="badge-new">New</span>', link: '/guides/testing-trpc' },
-          { text: 'Testing SSE <span class="badge-new">New</span>', link: '/guides/testing-sse' },
+          { text: 'Testing tRPC APIs', link: '/guides/testing-trpc' },
+          { text: 'Testing SSE APIs <span class="badge-new">New</span>', link: '/guides/testing-sse' },
           { text: 'Testing gRPC APIs', link: '/guides/testing-grpc' },
           { text: 'Using Test Data', link: '/guides/using-test-data' },
           { text: 'Using Fake Data', link: '/guides/using-fake-data' },

@@ -2,9 +2,9 @@ contact_links:
   - name: 📢 Feedback
     url: https://step.ci/feedback
     about: Leave your feedback
-  - name: 🙋 GitHub Community
+  - name: 👋 Discord Community
+    url: https://discord.gg/KqJJzJ3BTu
+    about: Chat, updates and gatherings
+  - name: 🙋 GitHub Discussions
     url: https://github.com/stepci/stepci/discussions
-    about: Please ask and answer questions here
-  - name: 📨 Newsletter
-    url: https://stepci.com/#newsletter
-    about: Subscribe to our newsletter for updates
+    about: Ask and answer questions here

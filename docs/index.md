@@ -40,15 +40,11 @@ https://github.com/stepci/stepci
 
 ### Community
 
-Join our community on GitHub Discussions
+Join our community on Discord and GitHub
 
-https://github.com/stepci/stepci/discussions
+[→ Discord](https://discord.gg/KqJJzJ3BTu)
 
-### Newsletter
-
-Subscribe to our newsletter on Google Groups
-
-https://groups.google.com/g/stepci
+[→ GitHub Discussions](https://github.com/stepci/stepci/discussions)
 
 ### Team
 

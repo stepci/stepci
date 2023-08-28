@@ -1,7 +1,7 @@
 ![Step CI CLI Demo](https://i.imgur.com/QgC0cRr.gif)
 
 > **Note**
-> We just released [Garph](https://github.com/stepci/garph), a full-stack GraphQL framework for TypeScript
+> Please join our [Discord](https://discord.gg/KqJJzJ3BTu) community to get help and receive updates!
 
 # Welcome
 

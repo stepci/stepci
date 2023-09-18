@@ -1,7 +1,7 @@
 ![Step CI CLI Demo](https://i.imgur.com/QgC0cRr.gif)
 
 > **Note**
-> Please join our [Discord](https://discord.gg/KqJJzJ3BTu) community to get help and receive updates!
+> We just announced [Enterprise Support Tier](#enterprise-support) for Step CI
 
 # Welcome
 
@@ -106,3 +106,11 @@ By default, the CLI collects anonymous usage data, which includes:
 - Environment (Local, Docker, CI/CD)
 
 > **Note**: The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable
+
+## Enterprise Support
+
+Receive support with SLA, a setup/training session, prioritized feature requests, bug resolutions and more.
+
+[→ Learn more](https://stepci.com/#pricing)
+
+[→ Schedule a call](https://cal.com/wissmueller/30-minute-call)

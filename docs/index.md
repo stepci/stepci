@@ -46,6 +46,16 @@ Join our community on Discord and GitHub
 
 [→ GitHub Discussions](https://github.com/stepci/stepci/discussions)
 
+## Support
+
+Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
+
+[→ Learn more](https://stepci.com/#pricing)
+
+[→ Schedule a call](https://cal.com/wissmueller/30-minute-call)
+
+<hr />
+
 ### Team
 
 <VPTeamMembers size="small" :members="members" />

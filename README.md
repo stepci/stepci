@@ -107,9 +107,9 @@ By default, the CLI collects anonymous usage data, which includes:
 
 > **Note**: The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable
 
-## Enterprise Support
+## Support
 
-Receive support with SLA, a setup/training session, prioritized feature requests, bug resolutions and more.
+Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
 
 [→ Learn more](https://stepci.com/#pricing)
 

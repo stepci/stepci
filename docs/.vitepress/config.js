@@ -52,6 +52,8 @@ export default {
         text: 'Import',
         items: [
           { text: 'OpenAPI', link: '/import/openapi' },
+          { text: 'Postman', link: 'https://github.com/stepci/stepci/issues/29' },
+          { text: 'Insomnia', link: 'https://github.com/stepci/stepci/issues/30' },
         ]
       },
       {

@@ -1,7 +1,7 @@
 ![Step CI CLI Demo](https://i.imgur.com/QgC0cRr.gif)
 
 > **Note**
-> We just announced [Enterprise Support Tier](#enterprise-support) for Step CI
+> We just announced [Enterprise Support Tier](#support) for Step CI
 
 # Welcome
 
@@ -16,7 +16,7 @@ Step CI is an open-source API Quality Assurance framework
 
 [→ **Try the Online Playground**](https://stepci.com)
 
-[→ **Join us on GitHub Discussions**](https://github.com/stepci/stepci/discussions)
+[→ **Join us on Discord**](https://discord.gg/KqJJzJ3BTu)
 
 ## Get started
 
@@ -90,9 +90,13 @@ Join our community on [Discord](https://discord.gg/KqJJzJ3BTu) and [GitHub](http
 
 As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request
 
-## License
+## Support
 
-The source code is distributed under Mozilla Public License terms
+Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
+
+[→ Learn more](https://stepci.com/#pricing)
+
+[→ Schedule a call](https://cal.com/wissmueller/30-minute-call)
 
 ## Privacy
 
@@ -107,10 +111,6 @@ By default, the CLI collects anonymous usage data, which includes:
 
 > **Note**: The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable
 
-## Support
+## License
 
-Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
-
-[→ Learn more](https://stepci.com/#pricing)
-
-[→ Schedule a call](https://cal.com/wissmueller/30-minute-call)
+The source code is distributed under Mozilla Public License terms

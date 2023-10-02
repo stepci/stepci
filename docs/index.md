@@ -56,6 +56,6 @@ Get support hours covered by SLA, setup and training sessions, prioritized featu
 
 <hr />
 
-### Team
+### Contacts
 
 <VPTeamMembers size="small" :members="members" />

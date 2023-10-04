@@ -1,4 +1,4 @@
-![Step CI Demo](https://github.com/stepci/stepci/assets/10400064/9962abaa-a2f5-40c2-96a2-3ad90a695fac)
+![Screen Recording 2023-10-04 at 15 43 17](https://github.com/stepci/stepci/assets/10400064/881efd49-fd93-4ff8-8e99-4b6e24fe1227)
 
 > **Note**
 > We just announced [Enterprise Support Tier](#support) for Step CI

@@ -1,4 +1,4 @@
-https://github.com/stepci/stepci/assets/10400064/9962abaa-a2f5-40c2-96a2-3ad90a695fac
+![Step CI Demo](https://github.com/stepci/stepci/assets/10400064/9962abaa-a2f5-40c2-96a2-3ad90a695fac)
 
 > **Note**
 > We just announced [Enterprise Support Tier](#support) for Step CI

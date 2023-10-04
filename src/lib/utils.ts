@@ -8,5 +8,12 @@ export const checkOptionalEnvArrayFormat = (envs?: string[]) =>
   envs?.length && !envs.every(checkEnvFormat)
 
 // Parse every entry in optional env array to a key value pair and return as object
-export const parseEnvArray = (env?: string[]): WorkflowEnv =>
-  Object.fromEntries(env?.map((opt) => opt.split('=')) ?? [])
+export function parseEnvArray(env?: string[]): WorkflowEnv {
+  const entries = env?.map((opt) => {
+    const eq = opt.indexOf('=')
+    const key = opt.substring(0, eq)
+    const value = opt.substring(eq + 1)
+    return [key, value]
+  })
+  return Object.fromEntries(entries ?? [])
+}

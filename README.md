@@ -1,7 +1,10 @@
-![Step CI CLI Demo](https://i.imgur.com/QgC0cRr.gif)
+https://github.com/stepci/stepci/assets/10400064/9962abaa-a2f5-40c2-96a2-3ad90a695fac
 
 > **Note**
 > We just announced [Enterprise Support Tier](#support) for Step CI
+
+> **Important**
+> For users migrating from Postman and Insomnia, see issues [#29]([respectively](https://github.com/stepci/stepci/issues/29)) and [#30](https://github.com/stepci/stepci/issues/30) respectively
 
 # Welcome
 

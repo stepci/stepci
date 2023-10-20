@@ -52,7 +52,7 @@ Get support hours covered by SLA, setup and training sessions, prioritized featu
 
 [→ Learn more](https://stepci.com/#pricing)
 
-[→ Schedule a call](https://cal.com/wissmueller/30-minute-call)
+[→ Schedule a call](https://cal.com/wissmueller/step-ci-enterprise-support)
 
 <hr />
 

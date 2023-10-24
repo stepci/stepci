@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "2.6.9",
+  "version": "2.7.0",
   "description": "API Testing and Monitoring made simple",
   "main": "index.js",
   "bin": {
@@ -34,6 +34,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:watch": "tsc -w -p tsconfig.json",
+    "init": "ts-node ./src/index.ts init",
     "test": "ts-node ./src/index.ts run",
     "test:generate": "ts-node ./src/index.ts generate",
     "test:loadtest": "ts-node ./src/index.ts run --loadtest",

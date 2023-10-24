@@ -97,9 +97,7 @@ As an open-source project, we welcome contributions from the community. If you a
 
 Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
 
-[→ Learn more](https://stepci.com/#pricing)
-
-[→ Schedule a call](https://cal.com/wissmueller/step-ci-enterprise-support)
+<a href="https://cal.com/wissmueller/step-ci-enterprise-support"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 ## Privacy
 
@@ -109,7 +107,7 @@ By default, the CLI collects anonymous usage data, which includes:
 - OS Name
 - Node Version
 - CLI Version
-- Command (`stepci run`, `stepci generate`)
+- Command (`stepci init`, `stepci run`, `stepci generate`)
 - Environment (Local, Docker, CI/CD)
 
 > **Note**: The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable

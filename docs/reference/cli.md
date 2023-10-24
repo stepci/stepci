@@ -28,6 +28,29 @@ Options:
 
 ## Commands
 
+### `init [path]`
+
+The `init` command lets you init a new workflow
+
+#### **Arguments**
+
+| Argument | Required | Description |
+|-|-|-|
+| path | No | Specify the path to a workflow |
+
+#### **Examples**
+
+Initialise a workflow
+
+```
+stepci init
+```
+
+```
+Success! The workflow file can be found at workflow.yml
+Enter npx stepci run workflow.yml to run it
+```
+
 ### `run [workflow]`
 
 The `run` command lets you run a specified workflow

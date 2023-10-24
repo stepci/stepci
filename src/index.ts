@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
+import fs from 'fs'
 import { runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
 import { loadTestFromFile }  from '@stepci/runner/dist/loadtesting'
 import { generateWorkflowFile, GenerateWorkflowOptions } from '@stepci/plugin-openapi'
@@ -147,6 +148,32 @@ yargs(hideBin(process.argv))
     await generateWorkflowFile(argv.spec, argv.path, generateWorkflowConfig)
     console.log(`${chalk.greenBright('Success!')} The workflow file can be found at ${argv.path}`)
     renderFeedbackMessage()
+  })
+  .command('init', 'Init a Step CI workflow', yargs => {
+    return yargs
+      .positional('path', {
+        describe: 'workflow file path',
+        type: 'string',
+        default: 'workflow.yml'
+      })
+    },
+  (argv) => {
+    const defaultWorkflow = `version: "1.1"
+name: Status Check
+env:
+  host: example.com
+tests:
+  example:
+    steps:
+      - name: GET request
+        http:
+          url: https://\${{env.host}}
+          method: GET
+          check:
+            status: /^20/`
+
+    fs.writeFileSync(argv.path, defaultWorkflow)
+    console.log(`${chalk.greenBright('Success!')} The workflow file can be found at ${argv.path}\nEnter ${chalk.grey('npx stepci run ' + argv.path)} to run it`)
   })
   .command(['$0'], false, () => {}, () => console.log(defaultText))
   .parse()

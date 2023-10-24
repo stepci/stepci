@@ -6,7 +6,7 @@ By default, the CLI collects anonymous usage data, which includes:
 - OS Name
 - Node Version
 - CLI Version
-- Command (`stepci run`, `stepci generate`)
+- Command (`stepci init`, `stepci run`, `stepci generate`)
 - Environment (Local, Docker, CI/CD)
 
 ::: info

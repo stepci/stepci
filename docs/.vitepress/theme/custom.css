@@ -1,11 +1,11 @@
 :root {
   --vp-c-brand-dark: black;
-  --vp-c-brand: black;
+  --vp-c-brand-1: black;
   --vp-code-block-bg: #202020;
 }
 
 .dark {
-  --vp-c-brand: white;
+  --vp-c-brand-1: white;
   --vp-c-brand-dark: white;
   --vp-c-bg-alt: #141414;
   --vp-c-bg: #181818;
@@ -39,6 +39,14 @@
   border-radius: 20px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.menu {
+  color: blue !important;
+}
+
+.dark .menu {
+  color: #3375f6 !important;
 }
 
 .dark .badge-new {

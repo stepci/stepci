@@ -4,7 +4,7 @@
 
     **Using [Node.js](https://nodejs.org/en/)**
 
-    ```sh
+    ```
     npm install -g stepci
     ```
 
@@ -12,7 +12,7 @@
 
     **Using [Homebrew](https://brew.sh/)**
 
-    ```sh
+    ```
     brew install stepci
     ```
 
@@ -42,7 +42,7 @@
 
 3. Run the workflow
 
-    ```sh
+    ```
     stepci run workflow.yml
     ```
 

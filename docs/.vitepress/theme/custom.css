@@ -52,9 +52,3 @@
 .dark .badge-new {
   background-color: #3375f6
 }
-
-@media (min-width: 960px) {
-  .dark .VPNavBar.has-sidebar .content {
-    background-color: rgba(24, 24, 24, 0.7) !important;
-  }
-}

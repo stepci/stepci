@@ -1,6 +1,6 @@
 # Using as a Library
 
-Step CI runner can be used independently in other Node projects
+Step CI runner can be used programmatically in other Node projects
 
 Install `@stepci/runner` dependency
 
@@ -12,7 +12,7 @@ npm install --save-dev @stepci/runner
 
 ```js
 import { runFromFile } from '@stepci/runner'
-runFromFile('./examples/status.yml').then(console.log)
+runFromFile('./examples/workflow.yml').then(console.log)
 ```
 
 **Example: Run workflow from config**

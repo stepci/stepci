@@ -6,7 +6,7 @@ Step CI runner can be used directly in JavaScript testing tools
 
 ## Preparation
 
-Put your workflows under `test/stepci/`
+Put your workflows under `tests/`
 
 Install `@stepci/runner` dependency
 
@@ -24,7 +24,7 @@ const { runFromFile } = require('@stepci/runner')
 const path = require('path')
 
 it('Check Response Status', async () => {
-  const { result } = await runFromFile(path.join(__dirname, './stepci/status.yml'))
+  const { result } = await runFromFile(path.join(__dirname, './tests/workflow.yml'))
   assert.equal(result.passed, true)
 })
 ```

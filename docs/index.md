@@ -29,7 +29,7 @@ Step CI is an open-source API Quality Assurance framework
 
 - **Language-agnostic**. Configure easily using YAML, JSON or JavaScript
 - **REST, GraphQL, gRPC, tRPC, SOAP**. Test different API types in one workflow
-- **Self-hosted**. Test services on your network, locally or with CI/CD
+- **Self-hosted**. Test services on your network, locally and CI/CD
 - **Integrated**. Play nicely with others
 
 ### Contributing
@@ -50,9 +50,7 @@ Join our community on Discord and GitHub
 
 Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
 
-[→ Learn more](https://stepci.com/#pricing)
-
-[→ Schedule a call](https://cal.com/wissmueller/step-ci-enterprise-support)
+<a href="https://cal.com/wissmueller/step-ci-enterprise-support"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 <hr />
 

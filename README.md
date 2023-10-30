@@ -1,7 +1,7 @@
 ![Screen Recording 2023-10-04 at 15 43 17](https://github.com/stepci/stepci/assets/10400064/881efd49-fd93-4ff8-8e99-4b6e24fe1227)
 
 > **Note**
-> We just announced [Enterprise Support Tier](#support) for Step CI
+> We just announced [Support Plan](#support) for Step CI
 
 > **Important**
 > For users migrating from Postman and Insomnia, see issues [#29](https://github.com/stepci/stepci/issues/29) and [#30](https://github.com/stepci/stepci/issues/30) respectively
@@ -12,7 +12,7 @@ Step CI is an open-source API Quality Assurance framework
 
 - **Language-agnostic**. Configure easily using YAML, JSON or JavaScript
 - **REST, GraphQL, gRPC, tRPC, SOAP**. Test different API types in one workflow
-- **Self-hosted**. Test services on your network, locally or with CI/CD
+- **Self-hosted**. Test services on your network, locally and CI/CD
 - **Integrated**. Play nicely with others
 
 [→ **Read the Docs**](https://docs.stepci.com)
@@ -27,7 +27,7 @@ Step CI is an open-source API Quality Assurance framework
 
    **Using [Node.js](https://nodejs.org/en/)**
 
-    ```sh
+    ```
     npm install -g stepci
     ```
 
@@ -35,7 +35,7 @@ Step CI is an open-source API Quality Assurance framework
 
     **Using [Homebrew](https://brew.sh/)**
 
-    ```sh
+    ```
     brew install stepci
     ```
 
@@ -63,7 +63,7 @@ Step CI is an open-source API Quality Assurance framework
 
 3. Run the workflow
 
-    ```sh
+    ```
     stepci run workflow.yml
     ```
 
@@ -110,7 +110,8 @@ By default, the CLI collects anonymous usage data, which includes:
 - Command (`stepci init`, `stepci run`, `stepci generate`)
 - Environment (Local, Docker, CI/CD)
 
-> **Note**: The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable
+> **Note**
+> The usage analytics can be disabled by setting `STEPCI_DISABLE_ANALYTICS` environment variable
 
 ## License
 

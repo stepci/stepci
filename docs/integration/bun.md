@@ -1,8 +1,8 @@
-# Integrating with Jest
+# Integrating with Bun
 
-[Jest](https://jestjs.io/) is a popular JavaScript testing framework created by Facebook. It is used for testing the functionality of applications and libraries
+[Bun](https://bun.sh) ships with a fast, built-in, Jest-compatible test runner
 
-Step CI runner can be used directly in JavaScript testing tools
+Step CI runner can be used directly in Bun
 
 ## Preparation
 
@@ -11,7 +11,7 @@ Put your workflows under `tests/`
 Install `@stepci/runner` dependency
 
 ```
-npm install --save-dev @stepci/runner
+bun add @stepci/runner
 ```
 
 ## Using in tests
@@ -19,11 +19,11 @@ npm install --save-dev @stepci/runner
 **Example: Run workflow from file**
 
 ```js
-const { runFromFile } = require('@stepci/runner')
-const path = require('path')
+import { expect, test } from 'bun:test'
+import { runFromFile } from '@stepci/runner'
 
 test('Check Response Status', async () => {
-  const { result } = await runFromFile(path.join(__dirname, './tests/workflow.yml'))
+  const { result } = await runFromFile(new URL('tests/workflow.yml', import.meta.url))
   expect(result.passed).toBe(true)
 })
 ```
@@ -31,7 +31,8 @@ test('Check Response Status', async () => {
 **Example: Run workflow from config**
 
 ```js
-const { run } = require('@stepci/runner')
+import { expect, test } from 'bun:test'
+import { run } from '@stepci/runner'
 
 test('Check Response Status', async () => {
   const workflow = {

@@ -2,10 +2,6 @@
 
 Reusables allow you to reuse content such as schemas and credentials without repetition. Reusable content is listed under the components section of your workflow and can be called by using a reference. The `$ref` syntax should be familiar to OpenAPI users
 
-:::warning
-Currently, only internal references are supported
-:::
-
 ## Reusable credentials
 
 **Example: Basic Auth**

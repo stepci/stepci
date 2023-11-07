@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "@stepci/plugin-openapi": "^0.3.5",
-    "@stepci/runner": "^1.9.9",
+    "@stepci/runner": "^1.10.10",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "cli-highlight": "^2.1.11",
@@ -24,15 +24,17 @@
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
     "@types/exit": "^0.1.31",
-    "@types/node": "^18.7.18",
+    "@types/node": "^20.8.10",
     "@types/yargs": "^17.0.13",
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3",
+    "typescript-json-schema": "^0.62.0",
     "vitepress": "^1.0.0-rc.24",
     "vue": "^3.2.41"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "postbuild": "typescript-json-schema --esModuleInterop node_modules/@stepci/runner/dist/index.d.ts Workflow -o schema.json",
     "build:watch": "tsc -w -p tsconfig.json",
     "init": "ts-node ./src/index.ts init",
     "test": "ts-node ./src/index.ts run",

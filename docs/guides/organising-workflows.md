@@ -2,11 +2,7 @@
 
 ## Splitting tests into multiple files
 
-You can split your tests into multiple files and include them in a workflow using `include` configuration option
-
-::: warning
-Make sure each test has a unique key, otherwise they will be merged/overwritten
-:::
+You can split your tests and steps into multiple files and import them into workflows using `$ref` syntax, similar to OpenAPI. This way you can still use defined environment variables and the state will be shared across steps.
 
 **workflow.yml**
 
@@ -15,22 +11,27 @@ version: "1.1"
 name: Status Check
 env:
   host: example.com
-include:
-  - status.yml
+tests:
+  $ref: "tests.yml"
+```
+
+**tests.yml**
+
+```yaml
+example:
+  steps:
+    - $ref: "status.yml"
 ```
 
 **status.yml**
 
 ```yaml
-tests:
-  example:
-    steps:
-      - name: GET request
-        http:
-          url: https://${{env.host}}
-          method: GET
-          check:
-            status: /^20/
+name: GET request
+http:
+  url: https://${{env.host}}
+  method: GET
+  check:
+    status: /^20/
 ```
 
 ## Performance tips

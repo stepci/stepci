@@ -333,15 +333,6 @@ Can be a file
 
 Optional. A list of tests to be executed by runner
 
-### `include` <Badge text="New" />
-
-Optional. A list of tests to be included from other paths
-
-```yaml
-include:
-  - directory/workflow.yml
-```
-
 ### `tests.<test>`
 
 Required. A test

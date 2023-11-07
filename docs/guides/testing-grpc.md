@@ -26,7 +26,7 @@ A minimal Workflow should at least define a `version` and a `name`
 Optionally, you can also specify reusables, such as `env` in this example, which you can use throughout the workflow
 
 :::tip
-Your workflows will share a similiar structure, think about a workflow like a LEGO-set that you assemble step-by-step
+Your workflows will share a similar structure, think about a workflow like a LEGO-set that you assemble step-by-step
 :::
 
 :::warning

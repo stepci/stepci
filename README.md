@@ -81,6 +81,26 @@ Step CI is an open-source API Quality Assurance framework
 
 Documentation is available on [docs.stepci.com](https://docs.stepci.com)
 
+## Completions (experimental)
+
+You can optionally add Step CI IntelliSense completions to VSCode, by adding the following to your settings.json:
+
+```json
+{
+  "json.validate.enable": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "/*.stepci.json"
+      ],
+      "url": "https://raw.githubusercontent.com/stepci/stepci/main/schema.json"
+    }
+  ]
+}
+```
+
+After that you should be able to see completions for JSON files starting with `.stepci.json`
+
 ## Examples
 
 You can find example workflows under [`examples/`](examples/)

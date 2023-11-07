@@ -1,9 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "additionalProperties": false,
     "definitions": {
         "ArrayBuffer": {
-            "additionalProperties": false,
             "properties": {
                 "__@toStringTag@25": {
                     "type": "string"
@@ -12,6 +10,10 @@
                     "type": "number"
                 }
             },
+            "required": [
+                "__@toStringTag@25",
+                "byteLength"
+            ],
             "type": "object"
         },
         "ArrayBufferLike": {
@@ -25,7 +27,6 @@
             ]
         },
         "SharedArrayBuffer": {
-            "additionalProperties": false,
             "properties": {
                 "__@species@471": {
                     "$ref": "#/definitions/SharedArrayBuffer"
@@ -38,19 +39,21 @@
                     "type": "number"
                 }
             },
+            "required": [
+                "__@species@471",
+                "__@toStringTag@25",
+                "byteLength"
+            ],
             "type": "object"
         }
     },
     "properties": {
         "components": {
-            "additionalProperties": false,
             "properties": {
                 "credentials": {
                     "additionalProperties": {
-                        "additionalProperties": false,
                         "properties": {
                             "basic": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "password": {
                                         "type": "string"
@@ -59,29 +62,36 @@
                                         "type": "string"
                                     }
                                 },
+                                "required": [
+                                    "password",
+                                    "username"
+                                ],
                                 "type": "object"
                             },
                             "bearer": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "token": {
                                         "type": "string"
                                     }
                                 },
+                                "required": [
+                                    "token"
+                                ],
                                 "type": "object"
                             },
                             "certificate": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "ca": {
                                         "anyOf": [
                                             {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "file": {
                                                         "type": "string"
                                                     }
                                                 },
+                                                "required": [
+                                                    "file"
+                                                ],
                                                 "type": "object"
                                             },
                                             {
@@ -92,12 +102,14 @@
                                     "cert": {
                                         "anyOf": [
                                             {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "file": {
                                                         "type": "string"
                                                     }
                                                 },
+                                                "required": [
+                                                    "file"
+                                                ],
                                                 "type": "object"
                                             },
                                             {
@@ -108,12 +120,14 @@
                                     "key": {
                                         "anyOf": [
                                             {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "file": {
                                                         "type": "string"
                                                     }
                                                 },
+                                                "required": [
+                                                    "file"
+                                                ],
                                                 "type": "object"
                                             },
                                             {
@@ -128,7 +142,6 @@
                                 "type": "object"
                             },
                             "oauth": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "audience": {
                                         "type": "string"
@@ -143,20 +156,26 @@
                                         "type": "string"
                                     }
                                 },
+                                "required": [
+                                    "client_id",
+                                    "client_secret",
+                                    "endpoint"
+                                ],
                                 "type": "object"
                             },
                             "tls": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "certChain": {
                                         "anyOf": [
                                             {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "file": {
                                                         "type": "string"
                                                     }
                                                 },
+                                                "required": [
+                                                    "file"
+                                                ],
                                                 "type": "object"
                                             },
                                             {
@@ -167,12 +186,14 @@
                                     "privateKey": {
                                         "anyOf": [
                                             {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "file": {
                                                         "type": "string"
                                                     }
                                                 },
+                                                "required": [
+                                                    "file"
+                                                ],
                                                 "type": "object"
                                             },
                                             {
@@ -183,12 +204,14 @@
                                     "rootCerts": {
                                         "anyOf": [
                                             {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "file": {
                                                         "type": "string"
                                                     }
                                                 },
+                                                "required": [
+                                                    "file"
+                                                ],
                                                 "type": "object"
                                             },
                                             {
@@ -212,7 +235,6 @@
             "type": "object"
         },
         "config": {
-            "additionalProperties": false,
             "properties": {
                 "concurrency": {
                     "type": "number"
@@ -221,7 +243,6 @@
                     "type": "boolean"
                 },
                 "http": {
-                    "additionalProperties": false,
                     "properties": {
                         "baseURL": {
                             "type": "string"
@@ -236,16 +257,13 @@
                     "type": "object"
                 },
                 "loadTest": {
-                    "additionalProperties": false,
                     "properties": {
                         "check": {
-                            "additionalProperties": false,
                             "properties": {
                                 "avg": {
                                     "anyOf": [
                                         {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "eq": {},
                                                     "gt": {
@@ -309,7 +327,6 @@
                                     "anyOf": [
                                         {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "eq": {},
                                                     "gt": {
@@ -373,7 +390,6 @@
                                     "anyOf": [
                                         {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "eq": {},
                                                     "gt": {
@@ -437,7 +453,6 @@
                                     "anyOf": [
                                         {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "eq": {},
                                                     "gt": {
@@ -501,7 +516,6 @@
                                     "anyOf": [
                                         {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "eq": {},
                                                     "gt": {
@@ -565,7 +579,6 @@
                                     "anyOf": [
                                         {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "eq": {},
                                                     "gt": {
@@ -630,7 +643,6 @@
                         },
                         "phases": {
                             "items": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "arrivalRate": {
                                         "type": "number"
@@ -639,11 +651,18 @@
                                         "type": "number"
                                     }
                                 },
+                                "required": [
+                                    "arrivalRate",
+                                    "duration"
+                                ],
                                 "type": "object"
                             },
                             "type": "array"
                         }
                     },
+                    "required": [
+                        "phases"
+                    ],
                     "type": "object"
                 }
             },
@@ -660,7 +679,6 @@
         },
         "tests": {
             "additionalProperties": {
-                "additionalProperties": false,
                 "properties": {
                     "env": {
                         "additionalProperties": true,
@@ -672,26 +690,24 @@
                     },
                     "steps": {
                         "items": {
-                            "additionalProperties": false,
                             "properties": {
                                 "grpc": {
-                                    "additionalProperties": false,
                                     "properties": {
                                         "auth": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "tls": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "certChain": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -702,12 +718,14 @@
                                                         "privateKey": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -718,12 +736,14 @@
                                                         "rootCerts": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -739,7 +759,6 @@
                                         },
                                         "captures": {
                                             "additionalProperties": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "jsonpath": {
                                                         "type": "string"
@@ -750,7 +769,6 @@
                                             "type": "object"
                                         },
                                         "check": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "captures": {
                                                     "additionalProperties": {},
@@ -760,7 +778,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -830,7 +847,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -898,7 +914,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -972,7 +987,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -1074,6 +1088,14 @@
                                                                 "type": "number"
                                                             }
                                                         },
+                                                        "required": [
+                                                            "BYTES_PER_ELEMENT",
+                                                            "__@toStringTag@25",
+                                                            "buffer",
+                                                            "byteLength",
+                                                            "byteOffset",
+                                                            "length"
+                                                        ],
                                                         "type": "object"
                                                     },
                                                     {
@@ -1103,16 +1125,20 @@
                                             "type": "string"
                                         }
                                     },
+                                    "required": [
+                                        "data",
+                                        "host",
+                                        "method",
+                                        "proto",
+                                        "service"
+                                    ],
                                     "type": "object"
                                 },
                                 "http": {
-                                    "additionalProperties": false,
                                     "properties": {
                                         "auth": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "basic": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "password": {
                                                             "type": "string"
@@ -1121,29 +1147,36 @@
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "password",
+                                                        "username"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 "bearer": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "token": {
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "token"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 "certificate": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "ca": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -1154,12 +1187,14 @@
                                                         "cert": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -1170,12 +1205,14 @@
                                                         "key": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -1190,7 +1227,6 @@
                                                     "type": "object"
                                                 },
                                                 "oauth": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "audience": {
                                                             "type": "string"
@@ -1205,20 +1241,26 @@
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "client_id",
+                                                        "client_secret",
+                                                        "endpoint"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 "tls": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "certChain": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -1229,12 +1271,14 @@
                                                         "privateKey": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -1245,12 +1289,14 @@
                                                         "rootCerts": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -1267,12 +1313,14 @@
                                         "body": {
                                             "anyOf": [
                                                 {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "file": {
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "file"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 {
@@ -1282,7 +1330,6 @@
                                         },
                                         "captures": {
                                             "additionalProperties": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "body": {
                                                         "type": "boolean"
@@ -1311,13 +1358,11 @@
                                             "type": "object"
                                         },
                                         "check": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "body": {
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -1381,7 +1426,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -1449,7 +1493,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -1520,7 +1563,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -1590,7 +1632,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -1659,7 +1700,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -1730,7 +1770,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -1808,7 +1847,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -1884,7 +1922,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -1950,7 +1987,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -2011,13 +2047,11 @@
                                                     ]
                                                 },
                                                 "ssl": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "daysUntilExpiration": {
                                                             "anyOf": [
                                                                 {
                                                                     "items": {
-                                                                        "additionalProperties": false,
                                                                         "properties": {
                                                                             "eq": {},
                                                                             "gt": {
@@ -2090,7 +2124,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -2154,7 +2187,6 @@
                                                     "anyOf": [
                                                         {
                                                             "items": {
-                                                                "additionalProperties": false,
                                                                 "properties": {
                                                                     "eq": {},
                                                                     "gt": {
@@ -2225,7 +2257,6 @@
                                                         {
                                                             "additionalProperties": {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -2306,12 +2337,14 @@
                                             "additionalProperties": {
                                                 "anyOf": [
                                                     {
-                                                        "additionalProperties": false,
                                                         "properties": {
                                                             "file": {
                                                                 "type": "string"
                                                             }
                                                         },
+                                                        "required": [
+                                                            "file"
+                                                        ],
                                                         "type": "object"
                                                     },
                                                     {
@@ -2322,7 +2355,6 @@
                                             "type": "object"
                                         },
                                         "graphql": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "query": {
                                                     "type": "string"
@@ -2333,6 +2365,10 @@
                                                     "type": "object"
                                                 }
                                             },
+                                            "required": [
+                                                "query",
+                                                "variables"
+                                            ],
                                             "type": "object"
                                         },
                                         "headers": {
@@ -2362,7 +2398,6 @@
                                             "type": "number"
                                         },
                                         "trpc": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "mutation": {
                                                     "additionalProperties": {
@@ -2402,6 +2437,10 @@
                                             "type": "string"
                                         }
                                     },
+                                    "required": [
+                                        "method",
+                                        "url"
+                                    ],
                                     "type": "object"
                                 },
                                 "id": {
@@ -2414,13 +2453,10 @@
                                     "type": "string"
                                 },
                                 "sse": {
-                                    "additionalProperties": false,
                                     "properties": {
                                         "auth": {
-                                            "additionalProperties": false,
                                             "properties": {
                                                 "basic": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "password": {
                                                             "type": "string"
@@ -2429,29 +2465,36 @@
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "password",
+                                                        "username"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 "bearer": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "token": {
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "token"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 "certificate": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "ca": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -2462,12 +2505,14 @@
                                                         "cert": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -2478,12 +2523,14 @@
                                                         "key": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -2498,7 +2545,6 @@
                                                     "type": "object"
                                                 },
                                                 "oauth": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "audience": {
                                                             "type": "string"
@@ -2513,20 +2559,26 @@
                                                             "type": "string"
                                                         }
                                                     },
+                                                    "required": [
+                                                        "client_id",
+                                                        "client_secret",
+                                                        "endpoint"
+                                                    ],
                                                     "type": "object"
                                                 },
                                                 "tls": {
-                                                    "additionalProperties": false,
                                                     "properties": {
                                                         "certChain": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -2537,12 +2589,14 @@
                                                         "privateKey": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -2553,12 +2607,14 @@
                                                         "rootCerts": {
                                                             "anyOf": [
                                                                 {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "file": {
                                                                             "type": "string"
                                                                         }
                                                                     },
+                                                                    "required": [
+                                                                        "file"
+                                                                    ],
                                                                     "type": "object"
                                                                 },
                                                                 {
@@ -2574,13 +2630,11 @@
                                         },
                                         "check": {
                                             "items": {
-                                                "additionalProperties": false,
                                                 "properties": {
                                                     "body": {
                                                         "anyOf": [
                                                             {
                                                                 "items": {
-                                                                    "additionalProperties": false,
                                                                     "properties": {
                                                                         "eq": {},
                                                                         "gt": {
@@ -2653,7 +2707,6 @@
                                                             {
                                                                 "additionalProperties": {
                                                                     "items": {
-                                                                        "additionalProperties": false,
                                                                         "properties": {
                                                                             "eq": {},
                                                                             "gt": {
@@ -2722,6 +2775,9 @@
                                                         "type": "object"
                                                     }
                                                 },
+                                                "required": [
+                                                    "id"
+                                                ],
                                                 "type": "object"
                                             },
                                             "type": "array"
@@ -2750,6 +2806,9 @@
                                             "type": "string"
                                         }
                                     },
+                                    "required": [
+                                        "url"
+                                    ],
                                     "type": "object"
                                 }
                             },
@@ -2758,7 +2817,6 @@
                         "type": "array"
                     },
                     "testdata": {
-                        "additionalProperties": false,
                         "properties": {
                             "content": {
                                 "type": "string"
@@ -2767,7 +2825,6 @@
                                 "type": "string"
                             },
                             "options": {
-                                "additionalProperties": false,
                                 "properties": {
                                     "delimiter": {
                                         "type": "string"
@@ -2801,6 +2858,9 @@
                         "type": "object"
                     }
                 },
+                "required": [
+                    "steps"
+                ],
                 "type": "object"
             },
             "type": "object"
@@ -2809,6 +2869,11 @@
             "type": "string"
         }
     },
+    "required": [
+        "name",
+        "tests",
+        "version"
+    ],
     "type": "object"
 }
 

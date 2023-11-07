@@ -43,6 +43,7 @@ export default {
           { text: 'Testing ChatGPT <span class="badge-new">New</span>', link: '/guides/testing-gpt' },
           { text: 'Using Test Data', link: '/guides/using-test-data' },
           { text: 'Using Fake Data', link: '/guides/using-fake-data' },
+          { text: 'Using Proxies <span class="badge-new">New</span>', link: '/guides/using-proxy' },
           { text: 'Load Testing', link: '/guides/load-testing' },
           { text: 'Fuzz Testing', link: '/guides/fuzz-testing' },
           { text: 'CO<sub>2</sub> Testing', link: '/guides/co2-testing' },

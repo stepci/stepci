@@ -5,7 +5,7 @@ import { LoadTestResult } from '@stepci/runner/dist/loadtesting'
 import { labels } from './../labels.json'
 
 type RenderOptions = {
-  noContext?: boolean | undefined
+  verbose?: boolean | undefined
 }
 
 const GitHubHighlightTheme: Theme = {
@@ -56,18 +56,21 @@ export function renderStepSummary (steps: StepResult[]) {
 }
 
 export function renderStep (step: StepResult, options?: RenderOptions) {
-  if (step.passed) return
-
   if (step.errored || step.skipped) {
     console.log(chalk.yellowBright(`\n⚠︎ ${step.testId} › ${step.name}`))
     return console.log('\n' + step.errorMessage + '\n')
+  }
+
+  if (step.passed) {
+    console.log(chalk.greenBright(`\n✔ ${step.testId} › ${step.name}`))
+    if (!options?.verbose) return
   }
 
   else {
     console.log(chalk.redBright(`\n● ${step.testId} › ${step.name}`))
   }
 
-  if (step.type === 'http' && !options?.noContext) {
+  if (step.type === 'http') {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
     console.log(highlight(renderHTTPRequest(step.request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
@@ -75,7 +78,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(highlight(renderHTTPResponse(step.response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
-  if (step.type === 'sse' && !options?.noContext) {
+  if (step.type === 'sse') {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' SSE ')}\n`))
     console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
@@ -83,7 +86,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(highlight((step.response?.body as Buffer).toString(), { language: 'txt', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
-  if (step.type === 'grpc' && !options?.noContext) {
+  if (step.type === 'grpc') {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
     console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 

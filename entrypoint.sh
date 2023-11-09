@@ -12,8 +12,8 @@ if [ -n "$SECRETS" ]; then
     EXECUTION_COMMAND="$EXECUTION_COMMAND -s $SECRETS"
 fi
 
-if [ "$NO_CONTEXT" == "true" ]; then
-    EXECUTION_COMMAND="$EXECUTION_COMMAND --hide"
+if [ "$VERBOSE" == "true" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND -v"
 fi
 
 if [ "$LOADTEST" == "true" ]; then

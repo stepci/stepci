@@ -65,10 +65,10 @@ The `run` command lets you run a specified workflow
 
 | Option | Required | Description |
 |-|-|-|
-| -e [--env] | No | Supply environment variables (can be defined multiple times) |
-| -s [--secret] | No | Supply secret variables (can be defined multiple times) |
-| --no-context [--hide] | No | Hide context like request/response data |
-| --loadtest [--load] | No | Run test in load-testing mode |
+| --env [-e] | No | Supply environment variables (can be defined multiple times) |
+| --secret [-s] | No | Supply secret variables (can be defined multiple times) |
+| --verbose [-v] | No | Verbose mode: always show request/response |
+| --loadtest [-load] | No | Run test in load-testing mode |
 
 #### **Examples**
 

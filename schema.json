@@ -242,6 +242,27 @@
                 "continueOnFail": {
                     "type": "boolean"
                 },
+                "grpc": {
+                    "properties": {
+                        "proto": {
+                            "anyOf": [
+                                {
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    "required": [
+                        "proto"
+                    ],
+                    "type": "object"
+                },
                 "http": {
                     "properties": {
                         "baseURL": {
@@ -674,6 +695,12 @@
             },
             "type": "object"
         },
+        "include": {
+            "items": {
+                "type": "string"
+            },
+            "type": "array"
+        },
         "name": {
             "type": "string"
         },
@@ -691,6 +718,9 @@
                     "steps": {
                         "items": {
                             "properties": {
+                                "delay": {
+                                    "type": "string"
+                                },
                                 "grpc": {
                                     "properties": {
                                         "auth": {

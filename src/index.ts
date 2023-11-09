@@ -13,15 +13,16 @@ import { checkOptionalEnvArrayFormat, parseEnvArray } from './lib/utils'
 import { renderStep, renderSummary, renderStepSummary, renderFeedbackMessage, renderLoadTest, renderAnalyticsMessage } from './lib/render'
 import { sendAnalyticsEvent } from './lib/analytics'
 
-let noContext: boolean | undefined
+let verbose: boolean | undefined = false
+
 renderAnalyticsMessage()
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
   console.log(`${(test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRedBright(' FAIL '))} ${chalk.bold(test.name || test.id)} ⏲ ${test.duration / 1000 + 's'} ${chalk.red('⬆')} ${test.bytesSent} bytes ${chalk.green('⬇')} ${test.bytesReceived} bytes`)
-  if (!test.passed) {
+  if (!test.passed || verbose) {
     renderStepSummary(test.steps)
-    test.steps.forEach(step => renderStep(step, { noContext }))
+    test.steps.forEach(step => renderStep(step, { verbose }))
   }
 })
 
@@ -53,11 +54,11 @@ yargs(hideBin(process.argv))
         describe: 'secret variables to use',
         type: 'string'
       })
-      .option('no-context', {
-        alias: 'hide',
+      .option('verbose', {
+        alias: 'v',
         boolean: true,
         demandOption: false,
-        describe: 'hide context like request/response data',
+        describe: 'verbose output',
         type: 'boolean'
       })
       .option('loadtest', {
@@ -85,7 +86,7 @@ yargs(hideBin(process.argv))
         return true
       })
   }, async (argv) => {
-    noContext = argv['no-context']
+    verbose = argv.verbose
 
     if (argv.loadtest) {
       console.log(chalk.yellowBright(`⚠︎ Running a load test. This may take a while`))

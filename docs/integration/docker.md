@@ -23,5 +23,5 @@ tests:
 Run your workflow using the [official Docker image](https://github.com/stepci/stepci/pkgs/container/stepci)
 
 ```
-docker run -v "$(pwd)"/tests:/tests ghcr.io/stepci/stepci tests/workflow.yml
+docker run -v "$(pwd)"/tests:/tests ghcr.io/stepci/stepci /tests/workflow.yml
 ```

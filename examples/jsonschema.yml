@@ -13,13 +13,10 @@ tests:
               properties:
                 userId:
                   type: integer
-                  required: true
                 id:
                   type: integer
-                  required: true
                 title:
                   type: string
-                  required: true
                 body:
                   type: string
-                  required: true
+              required: [userId, id, title, body]

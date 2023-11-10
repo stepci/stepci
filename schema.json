@@ -1080,9 +1080,21 @@
                                             "type": "object"
                                         },
                                         "data": {
-                                            "additionalProperties": true,
-                                            "properties": {},
-                                            "type": "object"
+                                            "anyOf": [
+                                                {
+                                                    "additionalProperties": true,
+                                                    "properties": {},
+                                                    "type": "object"
+                                                },
+                                                {
+                                                    "items": {
+                                                        "additionalProperties": true,
+                                                        "properties": {},
+                                                        "type": "object"
+                                                    },
+                                                    "type": "array"
+                                                }
+                                            ]
                                         },
                                         "host": {
                                             "type": "string"
@@ -1156,7 +1168,6 @@
                                         }
                                     },
                                     "required": [
-                                        "data",
                                         "host",
                                         "method",
                                         "proto",

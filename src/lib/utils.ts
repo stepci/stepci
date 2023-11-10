@@ -17,3 +17,13 @@ export function parseEnvArray(env?: string[]): WorkflowEnv {
   })
   return Object.fromEntries(entries ?? [])
 }
+
+export function isJSON (input: string | object) {
+  if (typeof input === 'object') return true
+  try {
+    JSON.parse(input as string)
+    return true
+  } catch (e) {
+    return false
+  }
+}

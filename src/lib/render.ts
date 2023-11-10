@@ -1,8 +1,10 @@
 import chalk from 'chalk'
 import { highlight, Theme } from 'cli-highlight'
-import { HTTPStepRequest, HTTPStepResponse, StepResult, WorkflowResult } from '@stepci/runner'
+import { HTTPStepRequest, HTTPStepResponse, StepCheckResult, StepCheckValue, StepResult, WorkflowResult } from '@stepci/runner'
 import { LoadTestResult } from '@stepci/runner/dist/loadtesting'
 import { labels } from './../labels.json'
+import { isJSON } from './utils'
+import { CheckResult } from '@stepci/runner/dist/matcher'
 
 type RenderOptions = {
   verbose?: boolean | undefined
@@ -94,21 +96,49 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(highlight(JSON.stringify(step.response?.body, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
-  console.log(chalk.bold('\nChecks'))
+  if (step.captures) {
+    console.log(chalk.bold('\nCaptures\n'))
+    console.log(highlight(JSON.stringify(step.captures, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+  }
 
-  const checks = step.checks as {[key: string]: any}
-  for (const check in checks) {
-    console.log('\n' + (labels as {[key: string]: string})[check] + '\n')
-    if (['jsonpath', 'xpath', 'headers', 'messages', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
-      for (const component in checks[check]) {
-        checks[check][component].passed
-          ? console.log(renderSpaces(2) + chalk.green('✔ ') + chalk.bold(component) + ': ' + checks[check][component].given)
-          : console.log(renderSpaces(2) + chalk.red('✕ ') + chalk.bold(component) + ': ' + checks[check][component].given + ' (expected ' + checks[check][component].expected + ')')
+  if (step.cookies) {
+    console.log(chalk.bold('\nCookies\n'))
+    console.log(highlight(JSON.stringify(step.cookies, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+  }
+
+  if (step.checks) {
+    console.log(chalk.bold('\nChecks'))
+
+    const checks = step.checks as {[key: string]: any}
+    for (const check in checks) {
+      if (['jsonpath', 'xpath', 'headers', 'messages', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
+        for (const component in checks[check]) {
+          renderStepCheck((labels as {[key: string]: string})[check] + chalk.gray(' > ') + component, checks[check][component], options)
+        }
+      } else {
+        renderStepCheck((labels as {[key: string]: string})[check], checks[check], options)
       }
+    }
+  }
+}
+
+function renderStepCheck (label: string, check: CheckResult, options?: RenderOptions) {
+  console.log('\n' + (check.passed ? chalk.green('✔ ') : chalk.red('✕ ')) + label)
+  if (!check.passed || options?.verbose) {
+    console.log(chalk.gray('\nExpected\n'))
+
+    if (isJSON(check.expected)) {
+      console.log(highlight(JSON.stringify(check.expected, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
     } else {
-      checks[check].passed
-        ? console.log(renderSpaces(2) + chalk.green('✔ ') + chalk.bold(checks[check].given))
-        : console.log(renderSpaces(2) + chalk.red('✕ ') + chalk.bold(checks[check].given) + ' (expected ' + checks[check].expected + ')')
+      console.log(check.expected)
+    }
+
+    console.log(chalk.gray('\nGiven\n'))
+
+    if (isJSON(check.given)) {
+      console.log(highlight(JSON.stringify(check.given, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    } else {
+      console.log(check.given)
     }
   }
 }

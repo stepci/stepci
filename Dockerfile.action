@@ -8,7 +8,7 @@ RUN npm run build
 
 # Stage 2: Create the runtime image
 FROM node:lts-alpine
-WORKDIR /usr/src/app
+WORKDIR /
 COPY --from=builder /usr/src/app/package*.json ./
 RUN npm install --only=production
 COPY --from=builder /usr/src/app/dist ./dist

@@ -72,29 +72,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(chalk.redBright(`\n● ${step.testId} › ${step.name}`))
   }
 
-  if (step.type === 'http') {
-    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
-    console.log(highlight(renderHTTPRequest(step.request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
-
-    console.log(chalk.bold(`Response\n`))
-    console.log(highlight(renderHTTPResponse(step.response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
-  }
-
-  if (step.type === 'sse') {
-    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' SSE ')}\n`))
-    console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
-
-    console.log(chalk.bold(`\nResponse\n`))
-    console.log(highlight((step.response?.body as Buffer).toString(), { language: 'txt', ignoreIllegals: true, theme: GitHubHighlightTheme }))
-  }
-
-  if (step.type === 'grpc') {
-    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
-    console.log(highlight(JSON.stringify(step.request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
-
-    console.log(chalk.bold(`\nResponse\n`))
-    console.log(highlight(JSON.stringify(step.response?.body, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
-  }
+  renderRequestResponse(step.type, step.request, step.response)
 
   if (step.captures) {
     console.log(chalk.bold('\nCaptures\n'))
@@ -119,6 +97,32 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
         renderStepCheck((labels as {[key: string]: string})[check], checks[check], options)
       }
     }
+  }
+}
+
+function renderRequestResponse (type: string | undefined, request: StepResult['request'], response: StepResult['response']) {
+  if (type === 'http') {
+    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
+    console.log(highlight(renderHTTPRequest(request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+
+    console.log(chalk.bold(`Response\n`))
+    console.log(highlight(renderHTTPResponse(response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+  }
+
+  if (type === 'sse') {
+    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' SSE ')}\n`))
+    console.log(highlight(JSON.stringify(request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+
+    console.log(chalk.bold(`\nResponse\n`))
+    console.log(highlight((response?.body as Buffer).toString(), { language: 'txt', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+  }
+
+  if (type === 'grpc') {
+    console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
+    console.log(highlight(JSON.stringify(request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+
+    console.log(chalk.bold(`\nResponse\n`))
+    console.log(highlight(JSON.stringify(response?.body, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 }
 

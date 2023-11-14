@@ -97,6 +97,8 @@ As an open-source project, we welcome contributions from the community. If you a
 
 Get Pro-level functionality, support (with SLA), onboarding, custom features and plugins.
 
+[→ **Learn more**](https://stepci.com/#pricing)
+
 <a href="https://cal.com/wissmueller/step-ci-enterprise-support"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 ## Privacy

@@ -41,6 +41,18 @@
   text-transform: uppercase;
 }
 
+.badge-pro {
+  margin-right: 2px;
+  box-sizing: border-box;
+  padding: 2px 6px;
+  background-color: black;
+  font-size: 10px;
+  color: white;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .menu {
   color: blue !important;
 }
@@ -51,4 +63,9 @@
 
 .dark .badge-new {
   background-color: #3375f6
+}
+
+.dark .badge-pro {
+  background-color: white;
+  color: black
 }

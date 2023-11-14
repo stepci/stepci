@@ -106,20 +106,6 @@ Steps are the instructions to be executed by the runner. Steps contain the reque
         token: hello
 ```
 
-#### OAuth
-
-```yaml
-- http:
-    url: https://example.com/protected
-    method: GET
-    auth:
-      oauth:
-        endpoint: "https://app.auth0.com/oauth/token"
-        client_id: ""
-        client_secret: ""
-        audience: ""
-```
-
 #### Certificate
 
 ```yaml
@@ -364,34 +350,6 @@ Steps can include checks to validate responses
     check:
       selectors:
         title: Example Domain
-```
-
-### Performance
-
-```yaml
-- http:
-    url: https://example.com
-    method: GET
-    check:
-      performance:
-        firstByte:
-          - lte: 200
-        total:
-          - lte: 500
-```
-
-### SSL
-
-```yaml
-- http:
-    method: GET
-    url: https://example.com
-    check:
-      ssl:
-        valid: true
-        signed: true
-        daysUntilExpiration:
-          - gte: 60
 ```
 
 ### Hash

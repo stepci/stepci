@@ -52,8 +52,8 @@ Get support hours covered by SLA, setup and training sessions, prioritized featu
 
 <a href="https://cal.com/wissmueller/step-ci-enterprise-support"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
-<hr />
+<!-- <hr />
 
 ### Contacts
 
-<VPTeamMembers size="small" :members="members" />
+<VPTeamMembers size="small" :members="members" /> -->

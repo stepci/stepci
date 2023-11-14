@@ -63,6 +63,14 @@ Optional. Base URL
 
 Optional. Enable http2 support
 
+### `config.grpc`
+
+Optional. gRPC-Client config
+
+### `config.grpc.proto`
+
+Optional. Pre-load gRPC Protos into the workflow
+
 ### `config.loadTest` <Badge text="Unstable" type="warning" />
 
 Optional. Load-Testing configuration
@@ -437,7 +445,7 @@ Optional. The first row is always treated as headers. Otherwise, you can provide
 
 Required. A list of steps to be executed by runner
 
-### `tests.<test>.steps.<step>`
+### `tests.<test>.steps.[step]`
 
 Required. The step to be executed
 
@@ -453,15 +461,15 @@ steps:
         status: 200
 ```
 
-### `tests.<test>.steps.<step>.id`
+### `tests.<test>.steps.[step].id`
 
 Optional. Step id
 
-### `tests.<test>.steps.<step>.name`
+### `tests.<test>.steps.[step].name`
 
 Optional. Step name
 
-### `tests.<test>.steps.<step>.if`
+### `tests.<test>.steps.[step].if`
 
 Optional. Condition. For Syntax, see [Filtrex Documentation](https://github.com/joewalnes/filtrex#expressions)
 
@@ -474,19 +482,19 @@ if: captures.title == "Example Domain"
 - `captures`
 - `env`
 
-### `tests.<test>.steps.<step>.http`
+### `tests.<test>.steps.[step].http`
 
 Optional. HTTP Step
 
-### `tests.<test>.steps.<step>.http.url`
+### `tests.<test>.steps.[step].http.url`
 
 Required. Request URL
 
-### `tests.<test>.steps.<step>.http.method`
+### `tests.<test>.steps.[step].http.method`
 
 Required. Request method
 
-### `tests.<test>.steps.<step>.http.headers`
+### `tests.<test>.steps.[step].http.headers`
 
 Optional. Request headers
 
@@ -495,7 +503,7 @@ headers:
   Content-Type: application/json
 ```
 
-### `tests.<test>.steps.<step>.http.body`
+### `tests.<test>.steps.[step].http.body`
 
 Optional. Request Body
 
@@ -515,7 +523,7 @@ body:
   file: README.md
 ```
 
-### `tests.<test>.steps.<step>.http.params`
+### `tests.<test>.steps.[step].http.params`
 
 Optional. Query Params
 
@@ -525,15 +533,15 @@ params:
   world: hello
 ```
 
-### `tests.<test>.steps.<step>.http.auth`
+### `tests.<test>.steps.[step].http.auth`
 
 Optional. Auth configuration
 
-### `tests.<test>.steps.<step>.http.auth.$ref`
+### `tests.<test>.steps.[step].http.auth.$ref`
 
 Optional. A reference to a credential specified in `components.credentials` section
 
-### `tests.<test>.steps.<step>.http.auth.basic`
+### `tests.<test>.steps.[step].http.auth.basic`
 
 Optional. Basic Auth
 
@@ -544,15 +552,15 @@ auth:
     password: world
 ```
 
-### `tests.<test>.steps.<step>.http.auth.basic.username`
+### `tests.<test>.steps.[step].http.auth.basic.username`
 
 Required. Basic Auth username
 
-### `tests.<test>.steps.<step>.http.auth.basic.password`
+### `tests.<test>.steps.[step].http.auth.basic.password`
 
 Required. Basic Auth password
 
-### `tests.<test>.steps.<step>.http.auth.bearer`
+### `tests.<test>.steps.[step].http.auth.bearer`
 
 Optional. Bearer Auth
 
@@ -562,11 +570,11 @@ auth:
     token: hello world
 ```
 
-### `tests.<test>.steps.<step>.http.auth.bearer.token`
+### `tests.<test>.steps.[step].http.auth.bearer.token`
 
 Required. Bearer Auth token
 
-### `tests.<test>.steps.<step>.http.auth.oauth` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.oauth` <Badge text="New" />
 
 Optional. OAuth
 
@@ -579,23 +587,23 @@ auth:
     audience: ""
 ```
 
-### `tests.<test>.steps.<step>.http.auth.oauth.endpoint` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.oauth.endpoint` <Badge text="New" />
 
 Required. OAuth endpoint
 
-### `tests.<test>.steps.<step>.http.auth.oauth.client_id` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.oauth.client_id` <Badge text="New" />
 
 Required. OAuth Client ID
 
-### `tests.<test>.steps.<step>.http.auth.oauth.client_secret` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.oauth.client_secret` <Badge text="New" />
 
 Required. OAuth Client Secret
 
-### `tests.<test>.steps.<step>.http.auth.oauth.audience` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.oauth.audience` <Badge text="New" />
 
 Optional. OAuth Client Audience
 
-### `tests.<test>.steps.<step>.http.auth.certificate` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.certificate` <Badge text="New" />
 
 Optional. Client Certificate auth
 
@@ -623,29 +631,29 @@ auth:
       file: file.key
 ```
 
-### `tests.<test>.steps.<step>.http.auth.certificate.ca` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.certificate.ca` <Badge text="New" />
 
 Optional. Client Certificate authority
 
 Can be a file
 
-### `tests.<test>.steps.<step>.http.auth.certificate.cert` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.certificate.cert` <Badge text="New" />
 
 Optional. Client Certificate
 
 Can be a file
 
-### `tests.<test>.steps.<step>.http.auth.certificate.key` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.certificate.key` <Badge text="New" />
 
 Optional. Client Certificate Key
 
 Can be a file
 
-### `tests.<test>.steps.<step>.http.auth.certificate.passphrase` <Badge text="New" />
+### `tests.<test>.steps.[step].http.auth.certificate.passphrase` <Badge text="New" />
 
 Optional. Client Certificate passphrase
 
-### `tests.<test>.steps.<step>.http.cookies`
+### `tests.<test>.steps.[step].http.cookies`
 
 Optional. Set Cookies. Once set, the cookies will be sent in consequent requests
 
@@ -654,7 +662,7 @@ cookies:
   wows: world
 ```
 
-### `tests.<test>.steps.<step>.http.json`
+### `tests.<test>.steps.[step].http.json`
 
 Optional. Request JSON
 
@@ -665,7 +673,7 @@ json:
   userId: 1
 ```
 
-### `tests.<test>.steps.<step>.http.form`
+### `tests.<test>.steps.[step].http.form`
 
 Optional. Form submission
 
@@ -674,7 +682,7 @@ form:
   email: hello@stepci.com
 ```
 
-### `tests.<test>.steps.<step>.http.formData`
+### `tests.<test>.steps.[step].http.formData`
 
 Optional. Multipart Form submission
 
@@ -687,7 +695,7 @@ formData:
     file: README.md
 ```
 
-### `tests.<test>.steps.<step>.http.graphql`
+### `tests.<test>.steps.[step].http.graphql`
 
 Optional. GraphQL Data
 
@@ -706,19 +714,19 @@ graphql:
     id: 1
 ```
 
-### `tests.<test>.steps.<step>.http.graphql.query`
+### `tests.<test>.steps.[step].http.graphql.query`
 
 Optional. GraphQL query
 
-### `tests.<test>.steps.<step>.http.graphql.variables`
+### `tests.<test>.steps.[step].http.graphql.variables`
 
 Optional. GraphQL variables
 
-### `tests.<test>.steps.<step>.http.trpc` <Badge text="New" />
+### `tests.<test>.steps.[step].http.trpc` <Badge text="New" />
 
 Optional. tRPC request
 
-### `tests.<test>.steps.<step>.http.trpc.query.<procedure>` <Badge text="New" />
+### `tests.<test>.steps.[step].http.trpc.query.<procedure>` <Badge text="New" />
 
 Optional. tRPC query
 
@@ -737,7 +745,7 @@ trpc:
     - greet: Hello
 ```
 
-### `tests.<test>.steps.<step>.http.trpc.mutation.<procedure>` <Badge text="New" />
+### `tests.<test>.steps.[step].http.trpc.mutation.<procedure>` <Badge text="New" />
 
 Optional. tRPC mutation
 
@@ -748,7 +756,7 @@ trpc:
       name: Mish
 ```
 
-### `tests.<test>.steps.<step>.http.captures`
+### `tests.<test>.steps.[step].http.captures`
 
 Optional. Capture response values into named variables
 
@@ -760,7 +768,7 @@ captures:
     cookie: user
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.jsonpath`
+### `tests.<test>.steps.[step].http.captures.<capture>.jsonpath`
 
 Optional. Capture JSONPath
 
@@ -770,7 +778,7 @@ captures:
     jsonpath: $.id
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.xpath`
+### `tests.<test>.steps.[step].http.captures.<capture>.xpath`
 
 Optional. Capture XPath
 
@@ -780,7 +788,7 @@ captures:
     xpath: //ID
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.header`
+### `tests.<test>.steps.[step].http.captures.<capture>.header`
 
 Optional. Capture a response Header
 
@@ -790,7 +798,7 @@ captures:
     header: Content-Type
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.selector`
+### `tests.<test>.steps.[step].http.captures.<capture>.selector`
 
 Optional. Capture a HTML selector
 
@@ -800,7 +808,7 @@ captures:
     selector: h1
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.cookie`
+### `tests.<test>.steps.[step].http.captures.<capture>.cookie`
 
 Optional. Capture a cookie
 
@@ -810,7 +818,7 @@ captures:
     cookie: user
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.regex`
+### `tests.<test>.steps.[step].http.captures.<capture>.regex`
 
 Optional. Capture a regex match
 
@@ -820,7 +828,7 @@ captures:
     regex: <title>(.*?)<\/title>
 ```
 
-### `tests.<test>.steps.<step>.http.captures.<capture>.body`
+### `tests.<test>.steps.[step].http.captures.<capture>.body`
 
 Optional. Capture whole response body
 
@@ -830,11 +838,11 @@ captures:
     body: true
 ```
 
-### `tests.<test>.steps.<step>.http.check`
+### `tests.<test>.steps.[step].http.check`
 
 Optional. Provide checks to validate responses
 
-### `tests.<test>.steps.<step>.http.check.status`
+### `tests.<test>.steps.[step].http.check.status`
 
 Optional. Check status code
 
@@ -843,7 +851,7 @@ check:
   status: 200
 ```
 
-### `tests.<test>.steps.<step>.http.check.statusText`
+### `tests.<test>.steps.[step].http.check.statusText`
 
 Optional. Check status text
 
@@ -852,7 +860,7 @@ check:
   statusText: OK
 ```
 
-### `tests.<test>.steps.<step>.http.check.redirected`
+### `tests.<test>.steps.[step].http.check.redirected`
 
 Optional. Check redirection status
 
@@ -861,7 +869,7 @@ check:
   redirected: true
 ```
 
-### `tests.<test>.steps.<step>.http.check.redirects`
+### `tests.<test>.steps.[step].http.check.redirects`
 
 Optional. Check redirects
 
@@ -871,7 +879,7 @@ check:
     - https://example.com/
 ```
 
-### `tests.<test>.steps.<step>.http.check.headers`
+### `tests.<test>.steps.[step].http.check.headers`
 
 Optional. Check headers
 
@@ -881,7 +889,7 @@ check:
     Content-Type: application/json
 ```
 
-### `tests.<test>.steps.<step>.http.check.body`
+### `tests.<test>.steps.[step].http.check.body`
 
 Optional. Check body
 
@@ -890,7 +898,7 @@ check:
   body: "Hello"
 ```
 
-### `tests.<test>.steps.<step>.http.check.json`
+### `tests.<test>.steps.[step].http.check.json`
 
 Optional. Check JSON
 
@@ -900,7 +908,7 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.http.check.schema`
+### `tests.<test>.steps.[step].http.check.schema`
 
 Optional. Check response against JSON Schema
 
@@ -914,7 +922,7 @@ check:
         required: true
 ```
 
-### `tests.<test>.steps.<step>.http.check.jsonpath`
+### `tests.<test>.steps.[step].http.check.jsonpath`
 
 Optional. Check JSONPath
 
@@ -924,7 +932,7 @@ check:
     $.id: 1
 ```
 
-### `tests.<test>.steps.<step>.http.check.xpath`
+### `tests.<test>.steps.[step].http.check.xpath`
 
 Optional. Check XPath
 
@@ -934,7 +942,7 @@ check:
     //SUCCESS: false
 ```
 
-### `tests.<test>.steps.<step>.http.check.selectors`
+### `tests.<test>.steps.[step].http.check.selectors`
 
 Optional. Check CSS selectors
 
@@ -944,7 +952,7 @@ check:
     h1: "Example Domain"
 ```
 
-### `tests.<test>.steps.<step>.http.check.cookies`
+### `tests.<test>.steps.[step].http.check.cookies`
 
 Optional. Check cookies
 
@@ -954,7 +962,7 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.http.check.captures`
+### `tests.<test>.steps.[step].http.check.captures`
 
 Optional. Check captures
 
@@ -964,7 +972,7 @@ check:
     id: 1
 ```
 
-### `tests.<test>.steps.<step>.http.check.sha256`
+### `tests.<test>.steps.[step].http.check.sha256`
 
 Optional. Check SHA-256 Hash (response)
 
@@ -973,7 +981,7 @@ check:
   sha256: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
 ```
 
-### `tests.<test>.steps.<step>.http.check.md5`
+### `tests.<test>.steps.[step].http.check.md5`
 
 Optional. Check MD5 Hash (response)
 
@@ -982,7 +990,7 @@ check:
   md5: "567cfaf94ebaf279cea4eb0bc05c4655021fb4ee004aca52c096709d3ba87a63"
 ```
 
-### `tests.<test>.steps.<step>.http.check.size`
+### `tests.<test>.steps.[step].http.check.size`
 
 Optional. Check response size (in bytes)
 
@@ -991,7 +999,7 @@ check:
   size: 1024
 ```
 
-### `tests.<test>.steps.<step>.http.check.requestSize`
+### `tests.<test>.steps.[step].http.check.requestSize`
 
 Optional. Check request size (in bytes)
 
@@ -1000,7 +1008,7 @@ check:
   requestSize: 1024
 ```
 
-### `tests.<test>.steps.<step>.http.check.bodySize`
+### `tests.<test>.steps.[step].http.check.bodySize`
 
 Optional. Check body size (in bytes)
 
@@ -1009,7 +1017,7 @@ check:
   bodySize: 1024
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance`
+### `tests.<test>.steps.[step].http.check.performance`
 
 Optional. Performance Checking (in ms)
 
@@ -1022,7 +1030,7 @@ check:
       - lte: 500
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.wait`
+### `tests.<test>.steps.[step].http.check.performance.wait`
 
 Optional
 
@@ -1032,7 +1040,7 @@ check:
     wait: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.dns`
+### `tests.<test>.steps.[step].http.check.performance.dns`
 
 Optional
 
@@ -1042,7 +1050,7 @@ check:
     dns: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.tcp`
+### `tests.<test>.steps.[step].http.check.performance.tcp`
 
 Optional
 
@@ -1052,7 +1060,7 @@ check:
     tcp: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.tls`
+### `tests.<test>.steps.[step].http.check.performance.tls`
 
 Optional
 
@@ -1062,7 +1070,7 @@ check:
     tls: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.request`
+### `tests.<test>.steps.[step].http.check.performance.request`
 
 Optional
 
@@ -1072,7 +1080,7 @@ check:
     request: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.firstByte`
+### `tests.<test>.steps.[step].http.check.performance.firstByte`
 
 Optional
 
@@ -1082,7 +1090,7 @@ check:
     firstByte: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.download`
+### `tests.<test>.steps.[step].http.check.performance.download`
 
 Optional
 
@@ -1092,7 +1100,7 @@ check:
     download: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.performance.total`
+### `tests.<test>.steps.[step].http.check.performance.total`
 
 Optional
 
@@ -1102,7 +1110,7 @@ check:
     total: 20
 ```
 
-### `tests.<test>.steps.<step>.http.check.ssl`
+### `tests.<test>.steps.[step].http.check.ssl`
 
 Optional. SSL Certificate Validation
 
@@ -1115,7 +1123,7 @@ check:
       - gte: 60
 ```
 
-### `tests.<test>.steps.<step>.http.check.ssl.valid`
+### `tests.<test>.steps.[step].http.check.ssl.valid`
 
 Optional
 
@@ -1125,7 +1133,7 @@ check:
     valid: true
 ```
 
-### `tests.<test>.steps.<step>.http.check.ssl.signed`
+### `tests.<test>.steps.[step].http.check.ssl.signed`
 
 Optional
 
@@ -1135,7 +1143,7 @@ check:
     signed: true
 ```
 
-### `tests.<test>.steps.<step>.http.check.ssl.daysUntilExpiration`
+### `tests.<test>.steps.[step].http.check.ssl.daysUntilExpiration`
 
 Optional
 
@@ -1145,7 +1153,7 @@ check:
     daysUntilExpiration: 30
 ```
 
-### `tests.<test>.steps.<step>.http.check.co2`
+### `tests.<test>.steps.[step].http.check.co2`
 
 Optional. Check co2 emissions of the response in grams
 
@@ -1155,19 +1163,19 @@ check:
     - lte: 1
 ```
 
-### `tests.<test>.steps.<step>.http.followRedirects`
+### `tests.<test>.steps.[step].http.followRedirects`
 
 Optional. Follow redirects. Enabled by default
 
-### `tests.<test>.steps.<step>.http.timeout`
+### `tests.<test>.steps.[step].http.timeout`
 
 Optional. Request Timeout
 
-### `tests.<test>.steps.<step>.http.retries`
+### `tests.<test>.steps.[step].http.retries`
 
 Optional. Number of times to retry request on failure or timeout, default 0.
 
-### `tests.<test>.steps.<step>.grpc`
+### `tests.<test>.steps.[step].grpc`
 
 Optional. gRPC Step
 
@@ -1185,39 +1193,39 @@ grpc:
       $.message: Hello world!
 ```
 
-### `tests.<test>.steps.<step>.grpc.proto`
+### `tests.<test>.steps.[step].grpc.proto`
 
 Required. gRPC protocol buffer file path
 
-### `tests.<test>.steps.<step>.grpc.host`
+### `tests.<test>.steps.[step].grpc.host`
 
 Required. gRPC server
 
-### `tests.<test>.steps.<step>.grpc.service`
+### `tests.<test>.steps.[step].grpc.service`
 
 Required. gRPC service
 
-### `tests.<test>.steps.<step>.grpc.method`
+### `tests.<test>.steps.[step].grpc.method`
 
 Required. gRPC method
 
-### `tests.<test>.steps.<step>.grpc.data`
+### `tests.<test>.steps.[step].grpc.data`
 
 Required. gRPC payload
 
-### `tests.<test>.steps.<step>.grpc.metadata`
+### `tests.<test>.steps.[step].grpc.metadata`
 
 Optional. gRPC metadata
 
-### `tests.<test>.steps.<step>.grpc.auth`
+### `tests.<test>.steps.[step].grpc.auth`
 
 Optional. gRPC auth config
 
-### `tests.<test>.steps.<step>.grpc.auth.$ref`
+### `tests.<test>.steps.[step].grpc.auth.$ref`
 
 Optional. A reference to a credential specified in `components.credentials` section
 
-### `tests.<test>.steps.<step>.grpc.auth.tls`
+### `tests.<test>.steps.[step].grpc.auth.tls`
 
 Optional. gRPC auth TLS config
 
@@ -1245,25 +1253,25 @@ auth:
       file: chain.cert
 ```
 
-### `tests.<test>.steps.<step>.grpc.auth.tls.rootCerts`
+### `tests.<test>.steps.[step].grpc.auth.tls.rootCerts`
 
 Optional. gRPC TLS root certificate
 
 Can be a file
 
-### `tests.<test>.steps.<step>.grpc.auth.tls.privateKey`
+### `tests.<test>.steps.[step].grpc.auth.tls.privateKey`
 
 Optional. gRPC TLS private key
 
 Can be a file
 
-### `tests.<test>.steps.<step>.grpc.auth.tls.certChain`
+### `tests.<test>.steps.[step].grpc.auth.tls.certChain`
 
 Optional. gRPC TLS certificate chain
 
 Can be a file
 
-### `tests.<test>.steps.<step>.grpc.captures`
+### `tests.<test>.steps.[step].grpc.captures`
 
 Optional. Capture response values into named variables
 
@@ -1273,7 +1281,7 @@ captures:
     jsonpath: $.id
 ```
 
-### `tests.<test>.steps.<step>.grpc.captures.<capture>.jsonpath`
+### `tests.<test>.steps.[step].grpc.captures.<capture>.jsonpath`
 
 Optional. Capture JSONPath
 
@@ -1283,11 +1291,11 @@ captures:
     jsonpath: $.id
 ```
 
-### `tests.<test>.steps.<step>.grpc.check`
+### `tests.<test>.steps.[step].grpc.check`
 
 Optional. Provide checks to validate responses
 
-### `tests.<test>.steps.<step>.grpc.check.json`
+### `tests.<test>.steps.[step].grpc.check.json`
 
 Optional. Check JSON
 
@@ -1297,7 +1305,7 @@ check:
     hello: world
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.schema`
+### `tests.<test>.steps.[step].grpc.check.schema`
 
 Optional. Check response against JSON Schema
 
@@ -1311,7 +1319,7 @@ check:
         required: true
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.jsonpath`
+### `tests.<test>.steps.[step].grpc.check.jsonpath`
 
 Optional. Check JSONPath
 
@@ -1321,7 +1329,7 @@ check:
     $.id: 1
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.captures`
+### `tests.<test>.steps.[step].grpc.check.captures`
 
 Optional. Check captures
 
@@ -1331,7 +1339,7 @@ check:
     id: 1
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.size`
+### `tests.<test>.steps.[step].grpc.check.size`
 
 Optional. Check response size (in bytes)
 
@@ -1340,7 +1348,7 @@ check:
   size: 1024
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.performance`
+### `tests.<test>.steps.[step].grpc.check.performance`
 
 Optional. Performance Checking (in ms)
 
@@ -1351,7 +1359,7 @@ check:
       - lte: 500
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.performance.total`
+### `tests.<test>.steps.[step].grpc.check.performance.total`
 
 Optional
 
@@ -1361,7 +1369,7 @@ check:
     total: 20
 ```
 
-### `tests.<test>.steps.<step>.grpc.check.co2`
+### `tests.<test>.steps.[step].grpc.check.co2`
 
 Optional. Check co2 emissions of the response in grams
 
@@ -1369,4 +1377,65 @@ Optional. Check co2 emissions of the response in grams
 check:
   co2:
     - lte: 1
+```
+
+### `tests.<test>.steps.[step].sse`
+
+Optional. Server-Sent-Events step type
+
+```yaml
+sse:
+  url: http://localhost:8080
+  timeout: 10000
+  check:
+    messages:
+      - id: 'message1'
+        jsonpath:
+          $.hello: "world"
+      - id: 'message2'
+        body: "world"
+```
+
+### `tests.<test>.steps.[step].sse.url`
+
+Required. Server-Sent-Events URL
+
+### `tests.<test>.steps.[step].sse.timeout`
+
+Optional. Server-Sent-Events Timeout. Defaults to 10000
+
+### `tests.<test>.steps.[step].sse.check`
+
+Optional. Server-Sent-Events checks
+
+### `tests.<test>.steps.[step].sse.messages`
+
+Optional. Server-Sent-Events message checks
+
+### `tests.<test>.steps.[step].sse.messages.[message]`
+
+Optional. Server-Sent-Events message check
+
+### `tests.<test>.steps.[step].sse.messages.[message].jsonpath`
+
+Optional. Server-Sent-Events JSONPath message check
+
+### `tests.<test>.steps.[step].sse.messages.[message].body`
+
+Optional. Server-Sent-Events JSON message check
+
+### `tests.<test>.steps.[step].sse.messages.[message].body`
+
+Optional. Server-Sent-Events body message check
+
+### `tests.<test>.steps.[step].sse.messages.[message].schema`
+
+Optional. Server-Sent-Events JSONSchema message check
+
+### `tests.<test>.steps.[step].delay`
+
+Optional. Delay step type
+
+```yaml
+- delay: 1s
 ```

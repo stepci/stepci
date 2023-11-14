@@ -37,7 +37,7 @@
     "postbuild": "typescript-json-schema --required --esModuleInterop node_modules/@stepci/runner/dist/index.d.ts Workflow -o schema.json",
     "build:watch": "tsc -w -p tsconfig.json",
     "init": "ts-node ./src/index.ts init",
-    "test": "ts-node ./src/index.ts run",
+    "test": "ts-node ./src/index.ts run -v",
     "test:generate": "ts-node ./src/index.ts generate",
     "test:loadtest": "ts-node ./src/index.ts run --loadtest",
     "docs:dev": "vitepress dev docs",

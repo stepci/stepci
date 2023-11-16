@@ -8,9 +8,9 @@ RUN npm run build
 
 # Stage 2: Create the runtime image
 FROM node:lts-alpine
-COPY --from=builder /usr/src/app/package*.json ./
+COPY --from=builder /usr/src/app/package*.json /
 RUN npm install --only=production
-COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/dist /dist
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

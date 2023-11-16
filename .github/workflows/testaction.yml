@@ -6,6 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Step CI Action
-        uses: stepci/stepci@main
+        uses: ./
         with:
           workflow: "examples/status.yml"

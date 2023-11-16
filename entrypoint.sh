@@ -2,7 +2,7 @@
 
 set +x
 
-EXECUTION_COMMAND="node /dist/index.js run $1"
+EXECUTION_COMMAND="node dist/index.js run $1"
 
 if [ -n "$ENV" ]; then
     EXECUTION_COMMAND="$EXECUTION_COMMAND -e $ENV"

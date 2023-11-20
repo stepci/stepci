@@ -99,7 +99,7 @@ Get Pro-level functionality, support (with SLA), onboarding, custom features and
 
 [→ **Learn more**](https://stepci.com/#pricing)
 
-<a href="https://cal.com/wissmueller/step-ci-enterprise-support"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
+<a href="https://cal.com/ushakov/step-ci-demo"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 ## Privacy
 

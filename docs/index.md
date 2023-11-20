@@ -50,7 +50,7 @@ Join our community on Discord and GitHub
 
 Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
 
-<a href="https://cal.com/wissmueller/step-ci-enterprise-support"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
+<a href="https://cal.com/ushakov/step-ci-demo"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 <!-- <hr />
 

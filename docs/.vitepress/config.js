@@ -50,7 +50,7 @@ export default {
       {
         text: 'Pro',
         items: [
-          { text: 'Get The Pro Plan', link: 'https://cal.com/wissmueller/step-ci-enterprise-support' },
+          { text: 'Get The Pro Plan', link: 'https://cal.com/ushakov/step-ci-demo' },
           { text: '<span class="badge-pro">Pro</span> Testing gRPC APIs', link: '/guides/testing-grpc' },
           { text: '<span class="badge-pro">Pro</span> Testing SSE APIs', link: '/guides/testing-sse' },
           { text: '<span class="badge-pro">Pro</span> Using Test Data', link: '/guides/using-test-data' },

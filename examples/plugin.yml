@@ -1,0 +1,12 @@
+version: "1.1"
+name: Plugin
+tests:
+  example:
+    steps:
+      - name: GET request
+        plugin:
+          id: "@yourcompany/plugin"
+          params:
+            hello: world
+          check:
+            reply: world

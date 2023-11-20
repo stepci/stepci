@@ -60,6 +60,7 @@ export default {
           { text: '<span class="badge-pro">Pro</span> Contract Testing', link: '/guides/contract-testing' },
           { text: '<span class="badge-pro">Pro</span> OAuth 2.0', link: '/guides/oauth' },
           { text: '<span class="badge-pro">Pro</span> Retries and Timeout', link: '/guides/retry-timeout' },
+          { text: '<span class="badge-pro">Pro</span> Delays', link: '/guides/delay' },
           { text: '<span class="badge-pro">Pro</span> Coverage Report', link: '/guides/coverage' },
           { text: '<span class="badge-pro">Pro</span> Editor Integration', link: '/guides/editor-integration' },
           { text: '<span class="badge-pro">Pro</span> Plugins', link: '/guides/plugins' },

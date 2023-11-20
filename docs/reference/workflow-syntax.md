@@ -482,6 +482,24 @@ if: captures.title == "Example Domain"
 - `captures`
 - `env`
 
+### `tests.<test>.steps.[step].retries`
+
+Optional. Retries config
+
+```yaml
+retries:
+  amount: 1
+  interval: 1s
+```
+
+### `tests.<test>.steps.[step].retries.amount`
+
+Optional. Amount of retries
+
+### `tests.<test>.steps.[step].retries.interval`
+
+Optional. Interval between the retries
+
 ### `tests.<test>.steps.[step].http`
 
 Optional. HTTP Step
@@ -1271,6 +1289,10 @@ Optional. gRPC TLS certificate chain
 
 Can be a file
 
+### `tests.<test>.steps.[step].grpc.timeout`
+
+Optional. Connection timeout (deadline)
+
 ### `tests.<test>.steps.[step].grpc.captures`
 
 Optional. Capture response values into named variables
@@ -1402,7 +1424,7 @@ Required. Server-Sent-Events URL
 
 ### `tests.<test>.steps.[step].sse.timeout`
 
-Optional. Server-Sent-Events Timeout. Defaults to 10000
+Optional. Server-Sent-Events connection timeout. Defaults to 10000
 
 ### `tests.<test>.steps.[step].sse.check`
 
@@ -1439,3 +1461,113 @@ Optional. Delay step type
 ```yaml
 - delay: 1s
 ```
+
+### `tests.<test>.steps.[step].graphql`
+
+Optional. GraphQL step type
+
+```yaml
+- graphql:
+    url: https://echo.hoppscotch.io/graphql
+    query: |
+      query Request {
+        method
+      }
+    variables:
+      id: 1
+    check:
+      status: 200
+      jsonpath:
+        $.data.method: POST
+```
+
+Inherited from HTTP step type
+
+### `tests.<test>.steps.[step].graphql.url`
+
+Optional. GraphQL URL
+
+### `tests.<test>.steps.[step].graphql.query`
+
+Optional. GraphQL query string
+
+### `tests.<test>.steps.[step].graphql.variables`
+
+Optional. GraphQL variables
+
+### `tests.<test>.steps.[step].trpc`
+
+Optional. tRPC step type
+
+```yml
+- name: Query
+  trpc:
+    url: http://localhost:2022/trpc
+    query:
+      - greet:
+          json:
+            name: Mish
+      - greet:
+          json:
+            name: Mish
+    check:
+      status: /^20/
+```
+
+Inherited from HTTP Step type
+
+### `tests.<test>.steps.[step].trpc.query.<procedure>`
+
+Optional. tRPC query
+
+```yaml
+trpc:
+  query:
+    greet: Hello
+```
+
+Query will be sent as a batch if it is an array
+
+```yaml
+trpc:
+  query:
+    - greet: Hello
+    - greet: Hello
+```
+
+### `tests.<test>.steps.[step].trpc.mutation.<procedure>`
+
+Optional. tRPC mutation
+
+```yaml
+trpc:
+  mutation:
+    addUser:
+      name: Mish
+```
+
+### `tests.<test>.steps.[step].plugin`
+
+Optional. Plugin step type
+
+```yaml
+- name: Plugin
+  plugin:
+    id: "@yourcompany/plugin"
+    params:
+      hello: world
+    check:
+      reply: world
+```
+
+### `tests.<test>.steps.[step].plugin.id`
+
+Optional. Plugin id (npm package or local file)
+
+### `tests.<test>.steps.[step].plugin.params`
+
+Optional. Plugin params
+
+### `tests.<test>.steps.[step].plugin.check`
+
+Optional. Plugin checks

@@ -64,7 +64,7 @@ Step CI is an open-source API Quality Assurance framework
 3. Run the workflow
 
     ```
-    stepci run workflow.yml
+    stepci run workflow.yml -e host=example.org
     ```
 
     ```

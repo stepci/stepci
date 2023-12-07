@@ -33,7 +33,7 @@ ee.on('workflow:result', ({ result }: WorkflowResult) => {
 })
 
 yargs(hideBin(process.argv))
-  .command('run [workflow]', 'run workflow', (yargs) => {
+  .command('run [workflow] [options]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
         describe: 'workflow file path',
@@ -76,7 +76,7 @@ yargs(hideBin(process.argv))
       })
       .check(({ e: envs, s: secrets }) => {
         if (checkOptionalEnvArrayFormat(envs)) {
-          throw new Error('env variables have wrong format, use `env=VARIABLE`.')
+          throw new Error(`env variables have wrong format, use \`env=VARIABLE\`. Found: ${envs}`)
         }
 
         if (checkOptionalEnvArrayFormat(secrets)) {

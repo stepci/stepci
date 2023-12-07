@@ -18,8 +18,8 @@ When `stepci` is called with the `--help` option, a list of avaliable commands a
 stepci [command]
 
 Commands:
-  stepci run [workflow]          run workflow
-  stepci generate [spec] [path]  generate workflow from OpenAPI spec
+  stepci run [workflow] [options] run workflow
+  stepci generate [spec] [path]   generate workflow from OpenAPI spec
 
 Options:
   --help     Show help                                                 [boolean]
@@ -51,7 +51,7 @@ Success! The workflow file can be found at workflow.yml
 Enter npx stepci run workflow.yml to run it
 ```
 
-### `run [workflow]`
+### `run [workflow] [options]`
 
 The `run` command lets you run a specified workflow
 
@@ -75,7 +75,7 @@ The `run` command lets you run a specified workflow
 Run example workflow located at `examples/status.yml`
 
 ```
-stepci run examples/status.yml
+stepci run examples/status.yml -e host=localhost
 ```
 
 ```

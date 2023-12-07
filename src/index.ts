@@ -33,7 +33,7 @@ ee.on('workflow:result', ({ result }: WorkflowResult) => {
 })
 
 yargs(hideBin(process.argv))
-  .command('run [workflow] [options]', 'run workflow', (yargs) => {
+  .command('run [workflow]', 'run workflow', (yargs) => {
     return yargs
       .positional('workflow', {
         describe: 'workflow file path',

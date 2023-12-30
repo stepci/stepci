@@ -16,7 +16,7 @@ export default {
     nav: [
       { text: 'Home', link: 'https://stepci.com' },
       { text: 'Playground', link: 'https://stepci.com' },
-      { text: 'Star us', link: 'https://github.com/stepci/stepci' },
+      { text: '<span class="badge-pro">New</span> Support Plan', link: 'https://stepci.com/#pricing' },
     ],
     editLink: {
       pattern: 'https://github.com/stepci/stepci/edit/main/docs/:path',
@@ -50,7 +50,7 @@ export default {
       {
         text: 'Pro',
         items: [
-          { text: 'Get The Pro Plan', link: 'https://cal.com/ushakov/step-ci-demo' },
+          { text: 'Get The Support Plan', link: 'https://stepci.com/#pricing' },
           { text: '<span class="badge-pro">Pro</span> Testing gRPC APIs', link: '/guides/testing-grpc' },
           { text: '<span class="badge-pro">Pro</span> Testing SSE APIs', link: '/guides/testing-sse' },
           { text: '<span class="badge-pro">Pro</span> Using Test Data', link: '/guides/using-test-data' },

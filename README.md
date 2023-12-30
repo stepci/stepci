@@ -1,7 +1,7 @@
 ![Screen Recording 2023-10-04 at 15 43 17](https://github.com/stepci/stepci/assets/10400064/881efd49-fd93-4ff8-8e99-4b6e24fe1227)
 
 > **Note**
-> We just announced [Pro Plan](https://stepci.com/#pricing) for Step CI
+> We just announced [Support Plan](https://stepci.com/#pricing) for Step CI
 
 > **Important**
 > For users migrating from Postman and Insomnia, see issues [#29](https://github.com/stepci/stepci/issues/29) and [#30](https://github.com/stepci/stepci/issues/30) respectively
@@ -93,9 +93,9 @@ Join our community on [Discord](https://discord.gg/KqJJzJ3BTu) and [GitHub](http
 
 As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request
 
-## Pro Plan
+## Support Plan
 
-Get Pro-level functionality, support (with SLA), onboarding, custom features and plugins.
+Get Pro-level support with SLA, onboarding, prioritized feature-requests and bugfixes.
 
 [→ **Learn more**](https://stepci.com/#pricing)
 

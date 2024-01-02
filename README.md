@@ -1,8 +1,5 @@
 ![Screen Recording 2023-10-04 at 15 43 17](https://github.com/stepci/stepci/assets/10400064/881efd49-fd93-4ff8-8e99-4b6e24fe1227)
 
-> **Note**
-> We just announced [Support Plan](https://stepci.com/#pricing) for Step CI
-
 > **Important**
 > For users migrating from Postman and Insomnia, see issues [#29](https://github.com/stepci/stepci/issues/29) and [#30](https://github.com/stepci/stepci/issues/30) respectively
 
@@ -93,14 +90,6 @@ Join our community on [Discord](https://discord.gg/KqJJzJ3BTu) and [GitHub](http
 
 As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request
 
-## Support Plan
-
-Get Pro-level support with SLA, onboarding, prioritized feature-requests and bugfixes.
-
-[→ **Learn more**](https://stepci.com/#pricing)
-
-<a href="https://cal.com/ushakov/step-ci-demo"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
-
 ## Privacy
 
 By default, the CLI collects anonymous usage data, which includes:
@@ -118,3 +107,7 @@ By default, the CLI collects anonymous usage data, which includes:
 ## License
 
 The source code is distributed under Mozilla Public License terms
+
+## Contact
+
+You may contact the Step CI Development Team by e-mail (team@stepci.com)

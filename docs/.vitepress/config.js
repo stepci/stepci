@@ -16,7 +16,6 @@ export default {
     nav: [
       { text: 'Home', link: 'https://stepci.com' },
       { text: 'Playground', link: 'https://stepci.com' },
-      { text: '<span class="badge-pro">New</span> Support Plan', link: 'https://stepci.com/#pricing' },
     ],
     editLink: {
       pattern: 'https://github.com/stepci/stepci/edit/main/docs/:path',
@@ -48,22 +47,21 @@ export default {
         ]
       },
       {
-        text: 'Pro',
+        text: 'Advanced',
         items: [
-          { text: 'Get The Support Plan', link: 'https://stepci.com/#pricing' },
-          { text: '<span class="badge-pro">Pro</span> Testing gRPC APIs', link: '/guides/testing-grpc' },
-          { text: '<span class="badge-pro">Pro</span> Testing SSE APIs', link: '/guides/testing-sse' },
-          { text: '<span class="badge-pro">Pro</span> Using Test Data', link: '/guides/using-test-data' },
-          { text: '<span class="badge-pro">Pro</span> SSL-Testing', link: '/guides/ssl-testing' },
-          { text: '<span class="badge-pro">Pro</span> Performance Testing', link: '/guides/performance-testing' },
-          { text: '<span class="badge-pro">Pro</span> Load Testing', link: '/guides/load-testing' },
-          { text: '<span class="badge-pro">Pro</span> Contract Testing', link: '/guides/contract-testing' },
-          { text: '<span class="badge-pro">Pro</span> OAuth 2.0', link: '/guides/oauth' },
-          { text: '<span class="badge-pro">Pro</span> Retries and Timeout', link: '/guides/retry-timeout' },
-          { text: '<span class="badge-pro">Pro</span> Delays', link: '/guides/delay' },
-          { text: '<span class="badge-pro">Pro</span> Coverage Report', link: '/guides/coverage' },
-          { text: '<span class="badge-pro">Pro</span> Editor Integration', link: '/guides/editor-integration' },
-          { text: '<span class="badge-pro">Pro</span> Plugins', link: '/guides/plugins' },
+          { text: 'Testing gRPC APIs', link: '/guides/testing-grpc' },
+          { text: 'Testing SSE APIs', link: '/guides/testing-sse' },
+          { text: 'Using Test Data', link: '/guides/using-test-data' },
+          { text: 'SSL-Testing', link: '/guides/ssl-testing' },
+          { text: 'Performance Testing', link: '/guides/performance-testing' },
+          { text: 'Load Testing', link: '/guides/load-testing' },
+          { text: 'Contract Testing', link: '/guides/contract-testing' },
+          { text: 'OAuth 2.0', link: '/guides/oauth' },
+          { text: 'Retries and Timeout', link: '/guides/retry-timeout' },
+          { text: 'Delays', link: '/guides/delay' },
+          { text: 'Coverage Report', link: '/guides/coverage' },
+          { text: 'Editor Integration', link: '/guides/editor-integration' },
+          { text: 'Plugins', link: '/guides/plugins' },
         ]
       },
       {

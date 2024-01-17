@@ -21,6 +21,9 @@ inputs:
   loadtest:
     description: 'load-test option. e.g "true"'
     required: false
+  concurrency:
+    description: 'concurrency option. e.g. "0"'
+    required: false
 
 runs:
   using: 'docker'

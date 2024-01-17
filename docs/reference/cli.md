@@ -69,6 +69,7 @@ The `run` command lets you run a specified workflow
 | --secret [-s] | No | Supply secret variables (can be defined multiple times) |
 | --verbose [-v] | No | Verbose mode: always show request/response |
 | --loadtest [-load] | No | Run test in load-testing mode |
+| --concurrency | No | Concurrency setting |
 
 #### **Examples**
 

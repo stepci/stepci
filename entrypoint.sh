@@ -20,4 +20,8 @@ if [ "$LOADTEST" == "true" ]; then
     EXECUTION_COMMAND="$EXECUTION_COMMAND --load"
 fi
 
+if [ -n "$CONCURRENCY" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND --concurrency $CONCURRENCY"
+fi
+
 eval $EXECUTION_COMMAND

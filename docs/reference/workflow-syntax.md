@@ -47,6 +47,10 @@ Optional. Workflow config
 
 Optional. Continue workflow after step failed
 
+### `config.concurrency`
+
+Optional. Tests concurrency setting. The default amount is ∞
+
 ### `config.http`
 
 Optional. HTTP-Client config

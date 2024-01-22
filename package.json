@@ -1,7 +1,7 @@
 {
   "name": "stepci",
-  "version": "2.7.2",
-  "description": "API Testing and Monitoring made simple",
+  "version": "3.0.0",
+  "description": "Automated API Testing and Quality Assurance",
   "main": "index.js",
   "bin": {
     "stepci": "dist/index.js"
@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "@stepci/plugin-openapi": "^0.3.5",
-    "@stepci/runner": "^1.11.6",
+    "@stepci/runner": "^2.0.0",
     "chalk": "^4.1.2",
     "ci-info": "^3.5.0",
     "cli-highlight": "^2.1.11",

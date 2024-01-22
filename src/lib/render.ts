@@ -1,6 +1,7 @@
 import chalk from 'chalk'
 import { highlight, Theme } from 'cli-highlight'
-import { HTTPStepRequest, HTTPStepResponse, StepCheckResult, StepCheckValue, StepResult, WorkflowResult } from '@stepci/runner'
+import { StepResult, WorkflowResult } from '@stepci/runner'
+import { HTTPStepRequest, HTTPStepResponse } from '@stepci/runner/dist/steps/http'
 import { LoadTestResult } from '@stepci/runner/dist/loadtesting'
 import { labels } from './../labels.json'
 import { isJSON } from './utils'

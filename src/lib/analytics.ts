@@ -22,7 +22,6 @@ export function sendAnalyticsEvent () {
       properties: {
         os: os.type(),
         node: process.version,
-        version: '2.5.x',
         command: process.argv.slice(2)[0],
         environment: ci.isCI ? ci.name : isDocker() ? 'Docker' : 'Local'
       }

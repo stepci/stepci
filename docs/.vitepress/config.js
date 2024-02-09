@@ -16,6 +16,7 @@ export default {
     nav: [
       { text: 'Home', link: 'https://stepci.com' },
       { text: 'Playground', link: 'https://stepci.com' },
+      { text: '<span class="badge-pro">New</span> Support Plan', link: 'https://stepci.com/#pricing' }
     ],
     editLink: {
       pattern: 'https://github.com/stepci/stepci/edit/main/docs/:path',

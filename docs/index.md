@@ -46,11 +46,11 @@ Join our community on Discord and GitHub
 
 [→ GitHub Discussions](https://github.com/stepci/stepci/discussions)
 
-## Contact
+## Support
 
-You may contact the Step CI Development Team by e-maling us
+Get support hours covered by SLA, setup and training sessions, prioritized feature requests and bug resolution.
 
-team@stepci.com
+<a href="https://cal.com/ushakov/step-ci-demo"><img alt="Book us with Cal.com" src="https://cal.com/book-with-cal-dark.svg" /></a>
 
 <!-- <hr />
 

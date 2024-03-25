@@ -11,13 +11,13 @@ Note: VS Code users may require to install Red Hat's [YAML extension](https://ma
 ```json
 {
   "yaml.completion": true,
-  "json.schemas": {
+  "yaml.schemas": {
     "https://raw.githubusercontent.com/stepci/stepci/main/schema.json": "*.stepci.yml"
   }
 }
 ```
 
-After that you should be able to see completions for **YAML files** starting with `.stepci.yml`
+After that you should be able to see completions for **YAML files** ending with `.stepci.yml`
 
 **JSON Completions**
 
@@ -35,4 +35,4 @@ After that you should be able to see completions for **YAML files** starting wit
 }
 ```
 
-After that you should be able to see completions for **JSON files** starting with `.stepci.json`
+After that you should be able to see completions for **JSON files** ending with `.stepci.json`

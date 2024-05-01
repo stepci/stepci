@@ -30,20 +30,20 @@ function renderSpaces (spaces: number) {
 }
 
 function shouldDisplayBody(contentType: string | undefined): boolean {
+  // Treat empty content-type as displayable
   if (!contentType) {
-    // Treat empty content-type as displayable
-    return true;
-}
+    return true
+  }
+
   const displayableTypes: RegExp[] = [
     /^text\//, // Matches any MIME type starting with "text/"
     /application\/(x-)?(json|xml|csv|javascript|ecmascript)/, // Matches both standard and non-standard textual application types
     /application\/.*\+(json|xml)$/, // Matches MIME types that end with +json or +xml
-];
+  ]
 
   // Normalize content type to handle cases with parameters like charset
-  const normalizedType = contentType.split(';')[0].trim();
-
-  return displayableTypes.some(pattern => pattern.test(normalizedType));
+  const normalizedType = contentType.split(';')[0].trim()
+  return displayableTypes.some(pattern => pattern.test(normalizedType))
 }
 
 function renderHTTPRequest (request: HTTPStepRequest) {
@@ -55,12 +55,12 @@ function renderHTTPRequest (request: HTTPStepRequest) {
 function renderHTTPResponse (response: HTTPStepResponse) {
   const responseHeaders = response.headers ? Object.keys(response.headers).map(header => `${header}: ${response.headers ? response.headers[header] : ''}\n`) : ''
   let responseBody
-  if (shouldDisplayBody(response.contentType || undefined) || process.env.STEPCI_DISPLAY_ALL_CONTENT_TYPES) {
+  if (shouldDisplayBody(response.contentType || undefined)) {
     responseBody =  '\n' + Buffer.from(response.body).toString()
   }
 
   else {
-    responseBody = '\n[Response body not displayed due to Content-Type (Use STEPCI_DISPLAY_ALL_CONTENT_TYPES=1 to force display)]'
+    responseBody = '\nResponse body not displayed due to unsupported Content-Type'
   }
 
   return `${response.protocol} ${response.status} ${response.statusText}\n${responseHeaders.toString().replaceAll(',', '')}${responseBody}`

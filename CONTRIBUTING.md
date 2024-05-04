@@ -1,13 +1,13 @@
 # Contributing to Stepci
 Welcome to Stepci's open-source community! We invite you to contribute by reporting bugs or suggesting improvements through issues or pull requests.
 
-## Development setup
+## Setting up in Developement Environement
 
 ### Pre-requisite
 - Node version >= v18
 - npm   
 
-### Development setup 
+### Setup
 - Clone the project
 
     - via ssh: `git clone git@github.com:stepci/stepci.git` 
@@ -15,7 +15,7 @@ Welcome to Stepci's open-source community! We invite you to contribute by report
     - via https: `git clone https://github.com/stepci/stepci.git`
 
 - Navigate to the project root and execute:  
-  ```
+  ```shell
   # install the dependencies of the project.
   npm i
   
@@ -28,11 +28,12 @@ Welcome to Stepci's open-source community! We invite you to contribute by report
     `npx stepci run example/<example-workflow.yml>`
 
 ### Run tests
-    > To run the test we require a workflow file.  
-
-  ```
+   > To run the test we require a workflow file.
+    
+  ```shell
   # We can get the default workflow file by intialising it.
-  npx stepci init`
+  npx stepci init
+
   npm run test
   ```
 

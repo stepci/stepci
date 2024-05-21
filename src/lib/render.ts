@@ -1,4 +1,4 @@
-import chalk from 'chalk'
+import chalk, { Chalk } from 'chalk'
 import { highlight, Theme } from 'cli-highlight'
 import { StepResult, WorkflowResult } from '@stepci/runner'
 import { HTTPStepRequest, HTTPStepResponse } from '@stepci/runner/dist/steps/http'
@@ -182,8 +182,12 @@ export function renderSummary (result: WorkflowResult['result']) {
   const skippedSteps = steps.filter(step => step.skipped).length
   const failedSteps = steps.filter(step => !step.passed).length
 
-  console.log(`\n${chalk.bold('Tests:')} ${chalk.redBright.bold(failedTests + ' failed')}, ${chalk.greenBright.bold(passedTests + ' passed')}, ${result.tests.length} total`)
-  console.log(`${chalk.bold('Steps:')} ${chalk.redBright.bold(failedSteps + ' failed')}, ${chalk.yellowBright.bold(skippedSteps + ' skipped')}, ${chalk.greenBright.bold(passedSteps + ' passed')}, ${steps.length} total`)
+  function colorIfNonZero(n: number, color: Chalk, text: string): string {
+    return n > 0 ? color.bold(text) : chalk.bold(text)
+  }
+
+  console.log(`\n${chalk.bold('Tests:')} ${colorIfNonZero(failedTests, chalk.redBright, failedTests + ' failed')}, ${colorIfNonZero(passedTests, chalk.greenBright, passedTests + ' passed')}, ${result.tests.length} total`)
+  console.log(`${chalk.bold('Steps:')} ${colorIfNonZero(failedSteps, chalk.redBright, failedSteps + ' failed')}, ${colorIfNonZero(skippedSteps, chalk.yellowBright, skippedSteps + ' skipped')}, ${colorIfNonZero(passedSteps, chalk.greenBright, passedSteps + ' passed')}, ${steps.length} total`)
   console.log(`${chalk.bold('Time:')}  ${result.duration / 1000}s, estimated ${(result.duration / 1000).toFixed(0)}s`)
   console.log(`${chalk.bold('CO2:')}   ${chalk.greenBright(result.co2.toFixed(5) + 'g')}`)
   console.log(result.passed

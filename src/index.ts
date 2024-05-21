@@ -19,7 +19,7 @@ renderAnalyticsMessage()
 
 const ee = new EventEmitter()
 ee.on('test:result', (test: TestResult) => {
-  console.log(`${(test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRedBright(' FAIL '))} ${chalk.bold(test.name || test.id)} ⏲ ${test.duration / 1000 + 's'} ${chalk.red('⬆')} ${test.bytesSent} bytes ${chalk.green('⬇')} ${test.bytesReceived} bytes`)
+  console.log(`${(test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRedBright(' FAIL '))} ${chalk.bold(test.name || test.id)} ⏲ ${test.duration / 1000 + 's'} ${chalk.magenta('⬆')} ${test.bytesSent} bytes ${chalk.cyan('⬇')} ${test.bytesReceived} bytes`)
   if (!test.passed || verbose) {
     renderStepSummary(test.steps)
     test.steps.forEach(step => renderStep(step, { verbose }))

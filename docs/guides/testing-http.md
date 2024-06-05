@@ -174,9 +174,15 @@ Steps are the instructions to be executed by the runner. Steps contain the reque
     url: https://httpbin.org/post
     method: POST
     formData:
-      email: hello@example.com
+      email: hello@example.com      # simple field value
       example:
-        file: file.txt
+        file: file.txt              # file attachment
+      idDocument:
+        file: password.pdf          # file attachment with specific content-type
+        type: application/pdf
+      personInfo:
+        value: '{ "name": "john" }' # form field with specific content-type
+        type: application/json
 ```
 
 ### File uploads

@@ -1,6 +1,6 @@
 {
   "name": "stepci",
-  "version": "2.8.1",
+  "version": "2.8.2",
   "description": "Automated API Testing and Quality Assurance",
   "main": "index.js",
   "bin": {

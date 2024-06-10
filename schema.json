@@ -3857,6 +3857,1902 @@
         }
     },
     "properties": {
+        "after": {
+            "properties": {
+                "env": {
+                    "additionalProperties": true,
+                    "properties": {},
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "steps": {
+                    "items": {
+                        "properties": {
+                            "delay": {
+                                "type": "string"
+                            },
+                            "graphql": {
+                                "$ref": "#/definitions/GraphQLStep"
+                            },
+                            "grpc": {
+                                "properties": {
+                                    "auth": {
+                                        "properties": {
+                                            "tls": {
+                                                "properties": {
+                                                    "certChain": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "privateKey": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "rootCerts": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "captures": {
+                                        "additionalProperties": {
+                                            "properties": {
+                                                "jsonpath": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "object"
+                                    },
+                                    "check": {
+                                        "properties": {
+                                            "captures": {
+                                                "additionalProperties": {},
+                                                "type": "object"
+                                            },
+                                            "co2": {
+                                                "anyOf": [
+                                                    {
+                                                        "items": {
+                                                            "properties": {
+                                                                "eq": {},
+                                                                "gt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "gte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "in": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                },
+                                                                "isArray": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isBoolean": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isDefined": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNull": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNumber": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isObject": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isString": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "lt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "lte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "match": {
+                                                                    "type": "string"
+                                                                },
+                                                                "ne": {},
+                                                                "nin": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ]
+                                            },
+                                            "json": {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "jsonpath": {
+                                                "anyOf": [
+                                                    {
+                                                        "additionalProperties": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "eq": {},
+                                                                    "gt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "gte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "in": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    },
+                                                                    "isArray": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isBoolean": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isDefined": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNull": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNumber": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isObject": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isString": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "lt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "lte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "match": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "ne": {},
+                                                                    "nin": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    {
+                                                        "additionalProperties": {},
+                                                        "type": "object"
+                                                    }
+                                                ]
+                                            },
+                                            "performance": {
+                                                "anyOf": [
+                                                    {
+                                                        "additionalProperties": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "eq": {},
+                                                                    "gt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "gte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "in": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    },
+                                                                    "isArray": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isBoolean": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isDefined": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNull": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNumber": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isObject": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isString": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "lt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "lte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "match": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "ne": {},
+                                                                    "nin": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    {
+                                                        "additionalProperties": {
+                                                            "type": "number"
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                ]
+                                            },
+                                            "schema": {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "size": {
+                                                "anyOf": [
+                                                    {
+                                                        "items": {
+                                                            "properties": {
+                                                                "eq": {},
+                                                                "gt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "gte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "in": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                },
+                                                                "isArray": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isBoolean": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isDefined": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNull": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNumber": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isObject": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isString": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "lt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "lte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "match": {
+                                                                    "type": "string"
+                                                                },
+                                                                "ne": {},
+                                                                "nin": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "data": {
+                                        "anyOf": [
+                                            {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            {
+                                                "items": {
+                                                    "additionalProperties": true,
+                                                    "properties": {},
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        ]
+                                    },
+                                    "host": {
+                                        "type": "string"
+                                    },
+                                    "metadata": {
+                                        "additionalProperties": {
+                                            "anyOf": [
+                                                {
+                                                    "additionalProperties": false,
+                                                    "patternProperties": {
+                                                        "^[0-9]+$": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "properties": {
+                                                        "BYTES_PER_ELEMENT": {
+                                                            "type": "number"
+                                                        },
+                                                        "__@toStringTag@23": {
+                                                            "const": "Uint8Array",
+                                                            "type": "string"
+                                                        },
+                                                        "buffer": {
+                                                            "$ref": "#/definitions/ArrayBufferLike"
+                                                        },
+                                                        "byteLength": {
+                                                            "type": "number"
+                                                        },
+                                                        "byteOffset": {
+                                                            "type": "number"
+                                                        },
+                                                        "length": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "BYTES_PER_ELEMENT",
+                                                        "__@toStringTag@23",
+                                                        "buffer",
+                                                        "byteLength",
+                                                        "byteOffset",
+                                                        "length"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                {
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "type": "object"
+                                    },
+                                    "method": {
+                                        "type": "string"
+                                    },
+                                    "proto": {
+                                        "anyOf": [
+                                            {
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "type": "array"
+                                            },
+                                            {
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "service": {
+                                        "type": "string"
+                                    },
+                                    "timeout": {
+                                        "type": [
+                                            "string",
+                                            "number"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "host",
+                                    "method",
+                                    "proto",
+                                    "service"
+                                ],
+                                "type": "object"
+                            },
+                            "http": {
+                                "$ref": "#/definitions/HTTPStep"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "if": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "plugin": {
+                                "properties": {
+                                    "check": {
+                                        "additionalProperties": true,
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "params": {
+                                        "additionalProperties": true,
+                                        "properties": {},
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "type": "object"
+                            },
+                            "retries": {
+                                "properties": {
+                                    "count": {
+                                        "type": "number"
+                                    },
+                                    "interval": {
+                                        "type": [
+                                            "string",
+                                            "number"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "count"
+                                ],
+                                "type": "object"
+                            },
+                            "sse": {
+                                "properties": {
+                                    "auth": {
+                                        "properties": {
+                                            "basic": {
+                                                "properties": {
+                                                    "password": {
+                                                        "type": "string"
+                                                    },
+                                                    "username": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "password",
+                                                    "username"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "bearer": {
+                                                "properties": {
+                                                    "token": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "token"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "certificate": {
+                                                "properties": {
+                                                    "ca": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "cert": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "key": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "passphrase": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "oauth": {
+                                                "properties": {
+                                                    "audience": {
+                                                        "type": "string"
+                                                    },
+                                                    "client_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "client_secret": {
+                                                        "type": "string"
+                                                    },
+                                                    "endpoint": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "client_id",
+                                                    "client_secret",
+                                                    "endpoint"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "tls": {
+                                                "properties": {
+                                                    "certChain": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "privateKey": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "rootCerts": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "check": {
+                                        "properties": {
+                                            "messages": {
+                                                "items": {
+                                                    "properties": {
+                                                        "body": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "eq": {},
+                                                                            "gt": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "gte": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "in": {
+                                                                                "additionalProperties": true,
+                                                                                "properties": {},
+                                                                                "type": "object"
+                                                                            },
+                                                                            "isArray": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isBoolean": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isDefined": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isNull": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isNumber": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isObject": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isString": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "lt": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "lte": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "match": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "ne": {},
+                                                                            "nin": {
+                                                                                "additionalProperties": true,
+                                                                                "properties": {},
+                                                                                "type": "object"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "type": "array"
+                                                                },
+                                                                {
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "json": {
+                                                            "additionalProperties": true,
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "jsonpath": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "additionalProperties": {
+                                                                        "items": {
+                                                                            "properties": {
+                                                                                "eq": {},
+                                                                                "gt": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "gte": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "in": {
+                                                                                    "additionalProperties": true,
+                                                                                    "properties": {},
+                                                                                    "type": "object"
+                                                                                },
+                                                                                "isArray": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isBoolean": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isDefined": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isNull": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isNumber": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isObject": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isString": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "lt": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "lte": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "match": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "ne": {},
+                                                                                "nin": {
+                                                                                    "additionalProperties": true,
+                                                                                    "properties": {},
+                                                                                    "type": "object"
+                                                                                }
+                                                                            },
+                                                                            "type": "object"
+                                                                        },
+                                                                        "type": "array"
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                {
+                                                                    "additionalProperties": {},
+                                                                    "type": "object"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "schema": {
+                                                            "additionalProperties": true,
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "headers": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "type": "object"
+                                    },
+                                    "json": {
+                                        "additionalProperties": true,
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "params": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "type": "object"
+                                    },
+                                    "timeout": {
+                                        "type": "number"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "url"
+                                ],
+                                "type": "object"
+                            },
+                            "trpc": {
+                                "$ref": "#/definitions/tRPCStep"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "testdata": {
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "file": {
+                            "type": "string"
+                        },
+                        "options": {
+                            "properties": {
+                                "delimiter": {
+                                    "type": "string"
+                                },
+                                "escape": {
+                                    "type": "string"
+                                },
+                                "headers": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                },
+                                "quote": {
+                                    "type": "string"
+                                },
+                                "workflowPath": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "steps"
+            ],
+            "type": "object"
+        },
+        "before": {
+            "properties": {
+                "env": {
+                    "additionalProperties": true,
+                    "properties": {},
+                    "type": "object"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "steps": {
+                    "items": {
+                        "properties": {
+                            "delay": {
+                                "type": "string"
+                            },
+                            "graphql": {
+                                "$ref": "#/definitions/GraphQLStep"
+                            },
+                            "grpc": {
+                                "properties": {
+                                    "auth": {
+                                        "properties": {
+                                            "tls": {
+                                                "properties": {
+                                                    "certChain": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "privateKey": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "rootCerts": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "captures": {
+                                        "additionalProperties": {
+                                            "properties": {
+                                                "jsonpath": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "type": "object"
+                                    },
+                                    "check": {
+                                        "properties": {
+                                            "captures": {
+                                                "additionalProperties": {},
+                                                "type": "object"
+                                            },
+                                            "co2": {
+                                                "anyOf": [
+                                                    {
+                                                        "items": {
+                                                            "properties": {
+                                                                "eq": {},
+                                                                "gt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "gte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "in": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                },
+                                                                "isArray": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isBoolean": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isDefined": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNull": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNumber": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isObject": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isString": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "lt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "lte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "match": {
+                                                                    "type": "string"
+                                                                },
+                                                                "ne": {},
+                                                                "nin": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ]
+                                            },
+                                            "json": {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "jsonpath": {
+                                                "anyOf": [
+                                                    {
+                                                        "additionalProperties": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "eq": {},
+                                                                    "gt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "gte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "in": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    },
+                                                                    "isArray": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isBoolean": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isDefined": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNull": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNumber": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isObject": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isString": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "lt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "lte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "match": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "ne": {},
+                                                                    "nin": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    {
+                                                        "additionalProperties": {},
+                                                        "type": "object"
+                                                    }
+                                                ]
+                                            },
+                                            "performance": {
+                                                "anyOf": [
+                                                    {
+                                                        "additionalProperties": {
+                                                            "items": {
+                                                                "properties": {
+                                                                    "eq": {},
+                                                                    "gt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "gte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "in": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    },
+                                                                    "isArray": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isBoolean": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isDefined": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNull": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isNumber": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isObject": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "isString": {
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "lt": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "lte": {
+                                                                        "type": "number"
+                                                                    },
+                                                                    "match": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "ne": {},
+                                                                    "nin": {
+                                                                        "additionalProperties": true,
+                                                                        "properties": {},
+                                                                        "type": "object"
+                                                                    }
+                                                                },
+                                                                "type": "object"
+                                                            },
+                                                            "type": "array"
+                                                        },
+                                                        "type": "object"
+                                                    },
+                                                    {
+                                                        "additionalProperties": {
+                                                            "type": "number"
+                                                        },
+                                                        "type": "object"
+                                                    }
+                                                ]
+                                            },
+                                            "schema": {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "size": {
+                                                "anyOf": [
+                                                    {
+                                                        "items": {
+                                                            "properties": {
+                                                                "eq": {},
+                                                                "gt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "gte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "in": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                },
+                                                                "isArray": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isBoolean": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isDefined": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNull": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isNumber": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isObject": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isString": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "lt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "lte": {
+                                                                    "type": "number"
+                                                                },
+                                                                "match": {
+                                                                    "type": "string"
+                                                                },
+                                                                "ne": {},
+                                                                "nin": {
+                                                                    "additionalProperties": true,
+                                                                    "properties": {},
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        },
+                                                        "type": "array"
+                                                    },
+                                                    {
+                                                        "type": "number"
+                                                    }
+                                                ]
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "data": {
+                                        "anyOf": [
+                                            {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            {
+                                                "items": {
+                                                    "additionalProperties": true,
+                                                    "properties": {},
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        ]
+                                    },
+                                    "host": {
+                                        "type": "string"
+                                    },
+                                    "metadata": {
+                                        "additionalProperties": {
+                                            "anyOf": [
+                                                {
+                                                    "additionalProperties": false,
+                                                    "patternProperties": {
+                                                        "^[0-9]+$": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "properties": {
+                                                        "BYTES_PER_ELEMENT": {
+                                                            "type": "number"
+                                                        },
+                                                        "__@toStringTag@23": {
+                                                            "const": "Uint8Array",
+                                                            "type": "string"
+                                                        },
+                                                        "buffer": {
+                                                            "$ref": "#/definitions/ArrayBufferLike"
+                                                        },
+                                                        "byteLength": {
+                                                            "type": "number"
+                                                        },
+                                                        "byteOffset": {
+                                                            "type": "number"
+                                                        },
+                                                        "length": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "BYTES_PER_ELEMENT",
+                                                        "__@toStringTag@23",
+                                                        "buffer",
+                                                        "byteLength",
+                                                        "byteOffset",
+                                                        "length"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                {
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        },
+                                        "type": "object"
+                                    },
+                                    "method": {
+                                        "type": "string"
+                                    },
+                                    "proto": {
+                                        "anyOf": [
+                                            {
+                                                "items": {
+                                                    "type": "string"
+                                                },
+                                                "type": "array"
+                                            },
+                                            {
+                                                "type": "string"
+                                            }
+                                        ]
+                                    },
+                                    "service": {
+                                        "type": "string"
+                                    },
+                                    "timeout": {
+                                        "type": [
+                                            "string",
+                                            "number"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "host",
+                                    "method",
+                                    "proto",
+                                    "service"
+                                ],
+                                "type": "object"
+                            },
+                            "http": {
+                                "$ref": "#/definitions/HTTPStep"
+                            },
+                            "id": {
+                                "type": "string"
+                            },
+                            "if": {
+                                "type": "string"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "plugin": {
+                                "properties": {
+                                    "check": {
+                                        "additionalProperties": true,
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "id": {
+                                        "type": "string"
+                                    },
+                                    "params": {
+                                        "additionalProperties": true,
+                                        "properties": {},
+                                        "type": "object"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ],
+                                "type": "object"
+                            },
+                            "retries": {
+                                "properties": {
+                                    "count": {
+                                        "type": "number"
+                                    },
+                                    "interval": {
+                                        "type": [
+                                            "string",
+                                            "number"
+                                        ]
+                                    }
+                                },
+                                "required": [
+                                    "count"
+                                ],
+                                "type": "object"
+                            },
+                            "sse": {
+                                "properties": {
+                                    "auth": {
+                                        "properties": {
+                                            "basic": {
+                                                "properties": {
+                                                    "password": {
+                                                        "type": "string"
+                                                    },
+                                                    "username": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "password",
+                                                    "username"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "bearer": {
+                                                "properties": {
+                                                    "token": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "token"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "certificate": {
+                                                "properties": {
+                                                    "ca": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "cert": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "key": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "passphrase": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "oauth": {
+                                                "properties": {
+                                                    "audience": {
+                                                        "type": "string"
+                                                    },
+                                                    "client_id": {
+                                                        "type": "string"
+                                                    },
+                                                    "client_secret": {
+                                                        "type": "string"
+                                                    },
+                                                    "endpoint": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "client_id",
+                                                    "client_secret",
+                                                    "endpoint"
+                                                ],
+                                                "type": "object"
+                                            },
+                                            "tls": {
+                                                "properties": {
+                                                    "certChain": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "privateKey": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    },
+                                                    "rootCerts": {
+                                                        "anyOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "file": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "file"
+                                                                ],
+                                                                "type": "object"
+                                                            },
+                                                            {
+                                                                "type": "string"
+                                                            }
+                                                        ]
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "check": {
+                                        "properties": {
+                                            "messages": {
+                                                "items": {
+                                                    "properties": {
+                                                        "body": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "items": {
+                                                                        "properties": {
+                                                                            "eq": {},
+                                                                            "gt": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "gte": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "in": {
+                                                                                "additionalProperties": true,
+                                                                                "properties": {},
+                                                                                "type": "object"
+                                                                            },
+                                                                            "isArray": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isBoolean": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isDefined": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isNull": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isNumber": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isObject": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "isString": {
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "lt": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "lte": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "match": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "ne": {},
+                                                                            "nin": {
+                                                                                "additionalProperties": true,
+                                                                                "properties": {},
+                                                                                "type": "object"
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "type": "array"
+                                                                },
+                                                                {
+                                                                    "type": "string"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "json": {
+                                                            "additionalProperties": true,
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        },
+                                                        "jsonpath": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "additionalProperties": {
+                                                                        "items": {
+                                                                            "properties": {
+                                                                                "eq": {},
+                                                                                "gt": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "gte": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "in": {
+                                                                                    "additionalProperties": true,
+                                                                                    "properties": {},
+                                                                                    "type": "object"
+                                                                                },
+                                                                                "isArray": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isBoolean": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isDefined": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isNull": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isNumber": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isObject": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "isString": {
+                                                                                    "type": "boolean"
+                                                                                },
+                                                                                "lt": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "lte": {
+                                                                                    "type": "number"
+                                                                                },
+                                                                                "match": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "ne": {},
+                                                                                "nin": {
+                                                                                    "additionalProperties": true,
+                                                                                    "properties": {},
+                                                                                    "type": "object"
+                                                                                }
+                                                                            },
+                                                                            "type": "object"
+                                                                        },
+                                                                        "type": "array"
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                {
+                                                                    "additionalProperties": {},
+                                                                    "type": "object"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "schema": {
+                                                            "additionalProperties": true,
+                                                            "properties": {},
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "type": "object"
+                                                },
+                                                "type": "array"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "headers": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "type": "object"
+                                    },
+                                    "json": {
+                                        "additionalProperties": true,
+                                        "properties": {},
+                                        "type": "object"
+                                    },
+                                    "params": {
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        },
+                                        "type": "object"
+                                    },
+                                    "timeout": {
+                                        "type": "number"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "url"
+                                ],
+                                "type": "object"
+                            },
+                            "trpc": {
+                                "$ref": "#/definitions/tRPCStep"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                },
+                "testdata": {
+                    "properties": {
+                        "content": {
+                            "type": "string"
+                        },
+                        "file": {
+                            "type": "string"
+                        },
+                        "options": {
+                            "properties": {
+                                "delimiter": {
+                                    "type": "string"
+                                },
+                                "escape": {
+                                    "type": "string"
+                                },
+                                "headers": {
+                                    "anyOf": [
+                                        {
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "type": "boolean"
+                                        }
+                                    ]
+                                },
+                                "quote": {
+                                    "type": "string"
+                                },
+                                "workflowPath": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "required": [
+                "steps"
+            ],
+            "type": "object"
+        },
         "components": {
             "properties": {
                 "credentials": {

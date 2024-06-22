@@ -2,7 +2,7 @@
 
 [CricleCI](https://circleci.com/) is a continous integration platform that allows you test your code and automate workflows in your project. You can use StepCI in CircleCI using the official [Node Orb](https://circleci.com/developer/orbs/orb/circleci/node)
 
-To integrate StepCI into your CircleCI build:
+To integrate Step CI into your CircleCI build:
 
 ### Create your Step CI workflow
 **workflow.yml**
@@ -36,11 +36,11 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: npm install -D stepci # install stepci as a dev dependency
-          name: install StepCI
+          command: npm install -D stepci # install Step CI as a dev dependency
+          name: install Step CI
       - run:
           command: npx stepci run workflow.yml # needs to run using npx 
-          name: Run StepCI
+          name: Run Step CI
       
 
 

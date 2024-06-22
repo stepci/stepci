@@ -1,6 +1,6 @@
 # Integrating with CircleCI
 
-[CricleCI](https://circleci.com/) is a continous integration platform that allows you test your code and automate workflows in your project. You can use StepCI in CircleCI using the official [Node Orb](https://circleci.com/developer/orbs/orb/circleci/node)
+[CricleCI](https://circleci.com/) is a continous integration platform that allows you test your code and automate workflows in your project. You can use Step CI in CircleCI using the official [Node Orb](https://circleci.com/developer/orbs/orb/circleci/node)
 
 To integrate Step CI into your CircleCI build:
 

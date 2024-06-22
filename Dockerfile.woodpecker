@@ -12,7 +12,7 @@ COPY --from=builder /usr/src/app/package*.json /
 RUN npm install --only=production
 COPY --from=builder /usr/src/app/dist /dist
 
-COPY entrypoint_action.sh /entrypoint_action.sh
-RUN chmod +x /entrypoint_action.sh
+COPY entrypoint_woodpecker.sh /entrypoint_woodpecker.sh
+RUN chmod +x /entrypoint_woodpecker.sh
 
-ENTRYPOINT ["/entrypoint_action.sh"]
+ENTRYPOINT ["/entrypoint_woodpecker.sh"]

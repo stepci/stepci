@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set +x
+
+EXECUTION_COMMAND="node /dist/index.js run $1"
+
+if [ -n "$PLUGIN_ENV" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND -e $PLUGIN_ENV"
+fi
+
+if [ -n "$PLUGIN_SECRETS" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND -s $PLUGIN_SECRETS"
+fi
+
+if [ "$PLUGIN_VERBOSE" == "true" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND -v"
+fi
+
+if [ "$PLUGIN_LOAD" == "true" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND --load"
+fi
+
+if [ -n "$PLUGIN_CONCURRENCY" ]; then
+    EXECUTION_COMMAND="$EXECUTION_COMMAND --concurrency $PLUGIN_CONCURRENCY"
+fi
+
+eval $EXECUTION_COMMAND

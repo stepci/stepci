@@ -4,7 +4,7 @@
 
 To integrate StepCI into your CircleCI build:
 
-### Create your StepCI workflow
+### Create your Step CI workflow
 **workflow.yml**
 ```yml
 version: "1.1"
@@ -21,7 +21,7 @@ tests:
           check:
             status: /^20/
 ```
-### Add StepCI to your CircleCI build using nodejs
+### Add Step CI to your CircleCI build using nodejs
 **.circleci/config.yml**
 ```yml
 version: 2.1
@@ -45,7 +45,7 @@ jobs:
 
 
 workflows:
-  run-stepci: 
+  run-step-ci: 
     jobs:
       - install-and-run
 ```

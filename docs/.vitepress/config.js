@@ -34,6 +34,7 @@ export default {
           { text: 'Introduction', link: '/' },
           { text: 'Getting Started', link: '/guides/getting-started' },
           { text: 'Concepts', link: '/guides/concepts' },
+          { text: 'Running setup and teardown steps', link: '/guides/setup-teardown' },
           { text: 'Testing HTTP APIs', link: '/guides/testing-http' },
           { text: 'Testing GraphQL APIs', link: '/guides/testing-graphql' },
           { text: 'Testing SOAP APIs', link: '/guides/testing-soap' },

@@ -92,6 +92,8 @@ Join our community on [Discord](https://discord.gg/KqJJzJ3BTu) and [GitHub](http
 ## Contributing
 
 As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request
+Before contributing, please review our [contribution guidelines](https://github.com/stepci/stepci/blob/main/CONTRIBUTING.md) to ensure your changes align with our project's standards.
+Additionally, You can find instructions to setup development environment in the guidelines.
 
 ## Support Plan
 

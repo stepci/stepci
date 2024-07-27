@@ -1466,6 +1466,9 @@
                                         "audience": {
                                             "type": "string"
                                         },
+                                        "scope": {
+                                            "type": "string"
+                                        },
                                         "client_id": {
                                             "type": "string"
                                         },
@@ -1474,6 +1477,13 @@
                                         },
                                         "endpoint": {
                                             "type": "string"
+                                        },
+                                        "contentType": {
+                                            "type": "string",
+                                            "enum": [
+                                                "application/x-www-form-urlencoded",
+                                                "application/json"
+                                            ]
                                         }
                                     },
                                     "required": [
@@ -7371,4 +7381,3 @@
     ],
     "type": "object"
 }
-

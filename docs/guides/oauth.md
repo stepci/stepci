@@ -2,7 +2,10 @@
 
 OAuth is used widely for authorization in applications and websites, allowing seamless integration and secure connections between different services.
 
-You can call an OAuth-protected endpoint by utilizing the OAuth auth type in a HTTP step
+You can call an OAuth-protected endpoint by utilizing the OAuth auth type in a HTTP step.
+
+This will execute a POST request to the given token endpoint with the given authentication data.
+As some IdPs require the data to be sent in different format, you can specify the `contentType` as an option.
 
 ```yaml
 version: "1.1"
@@ -19,4 +22,6 @@ tests:
               client_id: ""
               client_secret: ""
               audience: ""
+              scope: ""
+              contentType: "application/json"
 ```

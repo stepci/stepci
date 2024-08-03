@@ -534,11 +534,11 @@ Optional. Retries config
 
 ```yaml
 retries:
-  amount: 1
+  count: 1
   interval: 1s
 ```
 
-### `tests.<test>.steps.[step].retries.amount`
+### `tests.<test>.steps.[step].retries.count`
 
 Optional. Amount of retries
 

@@ -233,6 +233,9 @@
                                     "header": {
                                         "type": "string"
                                     },
+                                    "jsonata": {
+                                        "type": "string"
+                                    },
                                     "jsonpath": {
                                         "type": "string"
                                     },
@@ -586,6 +589,10 @@
                                 "json": {
                                     "additionalProperties": true,
                                     "properties": {},
+                                    "type": "object"
+                                },
+                                "jsonata": {
+                                    "additionalProperties": {},
                                     "type": "object"
                                 },
                                 "jsonpath": {
@@ -1302,6 +1309,22 @@
                                         "type": "object"
                                     },
                                     {
+                                        "properties": {
+                                            "json": {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    {
                                         "type": "string"
                                     }
                                 ]
@@ -1555,6 +1578,9 @@
                                         "type": "string"
                                     },
                                     "header": {
+                                        "type": "string"
+                                    },
+                                    "jsonata": {
                                         "type": "string"
                                     },
                                     "jsonpath": {
@@ -1910,6 +1936,10 @@
                                 "json": {
                                     "additionalProperties": true,
                                     "properties": {},
+                                    "type": "object"
+                                },
+                                "jsonata": {
+                                    "additionalProperties": {},
                                     "type": "object"
                                 },
                                 "jsonpath": {
@@ -2829,6 +2859,9 @@
                                     "header": {
                                         "type": "string"
                                     },
+                                    "jsonata": {
+                                        "type": "string"
+                                    },
                                     "jsonpath": {
                                         "type": "string"
                                     },
@@ -3182,6 +3215,10 @@
                                 "json": {
                                     "additionalProperties": true,
                                     "properties": {},
+                                    "type": "object"
+                                },
+                                "jsonata": {
+                                    "additionalProperties": {},
                                     "type": "object"
                                 },
                                 "jsonpath": {

@@ -115,7 +115,7 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
 
     const checks = step.checks as {[key: string]: any}
     for (const check in checks) {
-      if (['jsonpath', 'xpath', 'headers', 'messages', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
+      if (['jsonpath', 'jsonata', 'xpath', 'headers', 'messages', 'selector', 'cookies', 'performance', 'captures', 'ssl'].includes(check)) {
         for (const component in checks[check]) {
           renderStepCheck((labels as {[key: string]: string})[check] + chalk.gray(' > ') + component, checks[check][component], options)
         }

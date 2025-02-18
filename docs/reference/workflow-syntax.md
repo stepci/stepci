@@ -850,6 +850,16 @@ captures:
     jsonpath: $.id
 ```
 
+### `tests.<test>.steps.[step].http.captures.<capture>.jsonata`
+
+Optional. Capture JSONata
+
+```yaml
+captures:
+  id:
+    jsonata: id
+```
+
 ### `tests.<test>.steps.[step].http.captures.<capture>.xpath`
 
 Optional. Capture XPath
@@ -1002,6 +1012,16 @@ Optional. Check JSONPath
 check:
   jsonpath:
     $.id: 1
+```
+
+### `tests.<test>.steps.[step].http.check.jsonata`
+
+Optional. Check JSONata
+
+```yaml
+check:
+  jsonata:
+    somelabel: id = 1
 ```
 
 ### `tests.<test>.steps.[step].http.check.xpath`

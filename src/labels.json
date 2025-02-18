@@ -5,6 +5,7 @@
     "json": "JSON",
     "schema": "JSON Schema",
     "jsonpath": "JSONPath",
+    "jsonata": "JSONata",
     "xpath": "XPath",
     "headers": "Headers",
     "messages": "Messages",

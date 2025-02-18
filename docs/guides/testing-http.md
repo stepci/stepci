@@ -322,6 +322,18 @@ Steps can include checks to validate responses
         $.id: 1
 ```
 
+### JSONata
+
+```yaml
+- http:
+    url: https://jsonplaceholder.typicode.com/posts/
+    method: GET
+    check:
+      jsonata:
+        order: |
+          $[0].id < $[1].id
+```
+
 ### JSON Schema
 
 ```yaml

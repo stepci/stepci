@@ -1,0 +1,27 @@
+version: "1.1"
+name: JSONata Example
+tests:
+  example:
+    steps:
+      - name: JSONata check
+        http:
+          url: https://jsonplaceholder.typicode.com/posts/
+          method: GET
+          check:
+            jsonata:
+              # Simple way
+              $count($): 100
+              # By returning a CheckResult object, the specific reasons for errors become more transparent and easier to understand.
+              # ex: { "expected": 9, "given": 10, "passed": false }
+              check2: |
+                (
+                  $expected := 10;
+                  $given := $count($[userId=1]);
+                  {
+                    "expected": $expected,
+                    "given": $given,
+                    "passed": ($expected = $given)
+                  }
+                )
+              # The same as check2
+              $count($[userId=1]): 10

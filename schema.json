@@ -1302,6 +1302,22 @@
                                         "type": "object"
                                     },
                                     {
+                                        "properties": {
+                                            "json": {
+                                                "additionalProperties": true,
+                                                "properties": {},
+                                                "type": "object"
+                                            },
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    {
                                         "type": "string"
                                     }
                                 ]
@@ -4709,6 +4725,9 @@
                                                             "additionalProperties": true,
                                                             "properties": {},
                                                             "type": "object"
+                                                        },
+                                                        "type": {
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "required": [
@@ -5657,6 +5676,9 @@
                                                             "additionalProperties": true,
                                                             "properties": {},
                                                             "type": "object"
+                                                        },
+                                                        "type": {
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "required": [
@@ -7262,6 +7284,9 @@
                                                                 "additionalProperties": true,
                                                                 "properties": {},
                                                                 "type": "object"
+                                                            },
+                                                            "type": {
+                                                                "type": "string"
                                                             }
                                                         },
                                                         "required": [

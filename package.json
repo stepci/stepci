@@ -18,7 +18,7 @@
     "conf": "^10.2.0",
     "exit": "^0.1.2",
     "is-docker": "^2.2.1",
-    "posthog-node": "^2.2.2",
+    "posthog-node": "^4.11.1",
     "yargs": "^17.5.1"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^4.8.3",
     "typescript-json-schema": "^0.62.0",
-    "vitepress": "^1.0.0-rc.24",
+    "vitepress": "^1.6.3",
     "vue": "^3.2.41"
   },
   "scripts": {

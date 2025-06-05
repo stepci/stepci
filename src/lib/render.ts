@@ -4,11 +4,13 @@ import { StepResult, WorkflowResult } from '@stepci/runner'
 import { HTTPStepRequest, HTTPStepResponse } from '@stepci/runner/dist/steps/http'
 import { LoadTestResult } from '@stepci/runner/dist/loadtesting'
 import { labels } from './../labels.json'
-import { isJSON } from './utils'
+import { isJSON, maskSecrets, maskObject } from './utils'
 import { CheckResult } from '@stepci/runner/dist/matcher'
+import { WorkflowEnv } from '@stepci/runner'
 
 type RenderOptions = {
   verbose?: boolean | undefined
+  secrets?: WorkflowEnv
 }
 
 const GitHubHighlightTheme: Theme = {
@@ -46,17 +48,25 @@ function shouldDisplayBody(contentType: string | undefined): boolean {
   return displayableTypes.some(pattern => pattern.test(normalizedType))
 }
 
-function renderHTTPRequest (request: HTTPStepRequest) {
-  const requestHeaders = request.headers ? Object.keys(request.headers).map(header => `${header}: ${request.headers ? request.headers[header] : ''}\n`) : ''
-  const requestBody = typeof request.body === 'string' ? '\n' + request.body : ''
-  return `${request.method} ${request.url} ${request.protocol}\n${requestHeaders.toString().replace(',', '')}${requestBody}`
+function renderHTTPRequest (request: HTTPStepRequest, secrets?: WorkflowEnv) {
+  // Mask secrets in the request object before rendering
+  const maskedRequest = secrets ? maskObject(request, secrets) : request
+  
+  const requestHeaders = maskedRequest.headers ? Object.keys(maskedRequest.headers).map(header => `${header}: ${maskedRequest.headers ? maskedRequest.headers[header] : ''}\n`) : ''
+  const requestBody = typeof maskedRequest.body === 'string' ? '\n' + maskedRequest.body : ''
+  
+  return `${maskedRequest.method} ${maskedRequest.url} ${maskedRequest.protocol}\n${requestHeaders.toString().replace(',', '')}${requestBody}`
 }
 
-function renderHTTPResponse (response: HTTPStepResponse) {
-  const responseHeaders = response.headers ? Object.keys(response.headers).map(header => `${header}: ${response.headers ? response.headers[header] : ''}\n`) : ''
+function renderHTTPResponse (response: HTTPStepResponse, secrets?: WorkflowEnv) {
+  // Mask secrets in headers only, handle body separately
+  const maskedHeaders = response.headers && secrets ? maskObject(response.headers, secrets) : response.headers
+  
+  const responseHeaders = maskedHeaders ? Object.keys(maskedHeaders).map(header => `${header}: ${maskedHeaders[header] || ''}\n`) : ''
   let responseBody
   if (shouldDisplayBody(response.contentType || undefined)) {
-    responseBody =  '\n' + Buffer.from(response.body).toString()
+    const bodyText = Buffer.from(response.body).toString()
+    responseBody = '\n' + (secrets ? maskSecrets(bodyText, secrets) : bodyText)
   }
 
   else {
@@ -98,16 +108,18 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
     console.log(chalk.redBright(`\n● ${step.testId} › ${step.name}`))
   }
 
-  renderRequestResponse(step.type, step.request, step.response)
+  renderRequestResponse(step.type, step.request, step.response, options?.secrets)
 
   if (step.captures) {
     console.log(chalk.bold('\nCaptures\n'))
-    console.log(highlight(JSON.stringify(step.captures, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    const maskedCaptures = options?.secrets ? maskObject(step.captures, options.secrets) : step.captures
+    console.log(highlight(JSON.stringify(maskedCaptures, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
   if (step.cookies) {
     console.log(chalk.bold('\nCookies\n'))
-    console.log(highlight(JSON.stringify(step.cookies, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    const maskedCookies = options?.secrets ? maskObject(step.cookies, options.secrets) : step.cookies
+    console.log(highlight(JSON.stringify(maskedCookies, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
   if (step.checks) {
@@ -126,29 +138,36 @@ export function renderStep (step: StepResult, options?: RenderOptions) {
   }
 }
 
-function renderRequestResponse (type: string | undefined, request: StepResult['request'], response: StepResult['response']) {
+function renderRequestResponse (type: string | undefined, request: StepResult['request'], response: StepResult['response'], secrets?: WorkflowEnv) {
   if (type === 'http') {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' HTTP ')}\n`))
-    console.log(highlight(renderHTTPRequest(request as HTTPStepRequest), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    console.log(highlight(renderHTTPRequest(request as HTTPStepRequest, secrets), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
     console.log(chalk.bold(`Response\n`))
-    console.log(highlight(renderHTTPResponse(response as HTTPStepResponse), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    console.log(highlight(renderHTTPResponse(response as HTTPStepResponse, secrets), { language: 'http', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
   if (type === 'sse') {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' SSE ')}\n`))
-    console.log(highlight(JSON.stringify(request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    const maskedRequest = secrets ? maskObject(request, secrets) : request
+    console.log(highlight(JSON.stringify(maskedRequest, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
     console.log(chalk.bold(`\nResponse\n`))
-    console.log(highlight((response?.body as Buffer).toString(), { language: 'txt', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    let responseOutput = (response?.body as Buffer).toString()
+    if (secrets) {
+      responseOutput = maskSecrets(responseOutput, secrets)
+    }
+    console.log(highlight(responseOutput, { language: 'txt', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 
   if (type === 'grpc') {
     console.log(chalk.bold(`\nRequest ${chalk.bold.bgGray(' GRPC ')}\n`))
-    console.log(highlight(JSON.stringify(request, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    const maskedRequest = secrets ? maskObject(request, secrets) : request
+    console.log(highlight(JSON.stringify(maskedRequest, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
 
     console.log(chalk.bold(`\nResponse\n`))
-    console.log(highlight(JSON.stringify(response?.body, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+    const maskedResponseBody = secrets ? maskObject(response?.body, secrets) : response?.body
+    console.log(highlight(JSON.stringify(maskedResponseBody, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
   }
 }
 
@@ -157,18 +176,30 @@ function renderStepCheck (label: string, check: CheckResult, options?: RenderOpt
   if (!check.passed || options?.verbose) {
     console.log(chalk.gray('\nExpected\n'))
 
+    const maskedExpected = options?.secrets && isJSON(check.expected) 
+      ? maskObject(check.expected, options.secrets)
+      : options?.secrets && typeof check.expected === 'string'
+      ? maskSecrets(String(check.expected), options.secrets)
+      : check.expected
+
     if (isJSON(check.expected)) {
-      console.log(highlight(JSON.stringify(check.expected, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+      console.log(highlight(JSON.stringify(maskedExpected, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
     } else {
-      console.log(check.expected)
+      console.log(String(maskedExpected))
     }
 
     console.log(chalk.gray('\nGiven\n'))
 
+    const maskedGiven = options?.secrets && isJSON(check.given) 
+      ? maskObject(check.given, options.secrets)
+      : options?.secrets && typeof check.given === 'string'
+      ? maskSecrets(String(check.given), options.secrets)
+      : check.given
+    
     if (isJSON(check.given)) {
-      console.log(highlight(JSON.stringify(check.given, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
+      console.log(highlight(JSON.stringify(maskedGiven, null, 2), { language: 'json', ignoreIllegals: true, theme: GitHubHighlightTheme }))
     } else {
-      console.log(check.given)
+      console.log(String(maskedGiven))
     }
   }
 }

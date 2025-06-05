@@ -2,7 +2,7 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import fs from 'fs'
-import { runFromFile, TestResult, WorkflowResult } from '@stepci/runner'
+import { runFromFile, TestResult, WorkflowEnv, WorkflowResult } from '@stepci/runner'
 import { loadTestFromFile }  from '@stepci/runner/dist/loadtesting'
 import { generateWorkflowFile, GenerateWorkflowOptions } from '@stepci/plugin-openapi'
 import exit from 'exit'
@@ -17,20 +17,25 @@ let verbose: boolean | undefined = false
 
 renderAnalyticsMessage()
 
-const ee = new EventEmitter()
-ee.on('test:result', (test: TestResult) => {
-  console.log(`${(test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRedBright(' FAIL '))} ${chalk.bold(test.name || test.id)} ⏲ ${test.duration / 1000 + 's'} ${chalk.magenta('⬆')} ${test.bytesSent} bytes ${chalk.cyan('⬇')} ${test.bytesReceived} bytes`)
-  if (!test.passed || verbose) {
-    renderStepSummary(test.steps)
-    test.steps.forEach(step => renderStep(step, { verbose }))
-  }
-})
+function createEventEmitter(secrets: WorkflowEnv) {
+  const ee = new EventEmitter()
+  
+  ee.on('test:result', (test: TestResult) => {
+    console.log(`${(test.passed ? chalk.bgGreenBright(' PASS ') : chalk.bgRedBright(' FAIL '))} ${chalk.bold(test.name || test.id)} ⏲ ${test.duration / 1000 + 's'} ${chalk.magenta('⬆')} ${test.bytesSent} bytes ${chalk.cyan('⬇')} ${test.bytesReceived} bytes`)
+    if (!test.passed || verbose) {
+      renderStepSummary(test.steps)
+      test.steps.forEach(step => renderStep(step, { verbose, secrets }))
+    }
+  })
 
-ee.on('workflow:result', ({ result }: WorkflowResult) => {
-  renderSummary(result)
-  renderFeedbackMessage()
-  if (!result.passed) exit(5)
-})
+  ee.on('workflow:result', ({ result }: WorkflowResult) => {
+    renderSummary(result)
+    renderFeedbackMessage()
+    if (!result.passed) exit(5)
+  })
+  
+  return ee
+}
 
 yargs(hideBin(process.argv))
   .command('run [workflow]', 'run workflow', (yargs) => {
@@ -101,9 +106,12 @@ yargs(hideBin(process.argv))
       return
     }
 
+    const secrets = parseEnvArray(argv.s)
+    const ee = createEventEmitter(secrets)
+
     runFromFile(argv.workflow, {
       env: parseEnvArray(argv.e),
-      secrets: parseEnvArray(argv.s),
+      secrets,
       ee,
       concurrency: argv.concurrency
     })

@@ -1,0 +1,20 @@
+name: Update Product
+http:
+  url: https://api.example.com/products/${{ captures.newProductId }}
+  method: PUT
+  headers:
+    Authorization: Bearer ${{ captures.authToken }}
+    Content-Type: application/json
+  json:
+    name: Updated Test Product
+    price: 39.99
+    stock: 150
+  check:
+    status: 200
+    jsonpath:
+      $.id:
+        - eq: ${{ captures.newProductId }}
+      $.name:
+        - eq: Updated Test Product
+      $.price:
+        - eq: 39.99

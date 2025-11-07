@@ -1,0 +1,15 @@
+name: Get Order Status
+http:
+  url: https://api.example.com/orders/${{ captures.orderId }}
+  method: GET
+  headers:
+    Authorization: Bearer ${{ captures.authToken }}
+  check:
+    status: 200
+    jsonpath:
+      $.orderId:
+        - eq: ${{ captures.orderId }}
+      $.status:
+        - in: [pending, processing, shipped, delivered]
+      $.items:
+        - isArray: true

@@ -1,0 +1,34 @@
+name: Product Management Test
+steps:
+  # First authenticate to get access token
+  - $ref: ../steps/login.yml
+
+  # Get list of existing products
+  - $ref: ../steps/get-products.yml
+
+  # Create a new product
+  - $ref: ../steps/create-product.yml
+
+  # Retrieve the newly created product details
+  - $ref: ../steps/get-product-details.yml
+
+  # Update the product
+  - $ref: ../steps/update-product.yml
+
+  # Verify the update
+  - name: Verify Product Update
+    http:
+      url: https://api.example.com/products/${{ captures.newProductId }}
+      method: GET
+      headers:
+        Authorization: Bearer ${{ captures.authToken }}
+      check:
+        status: 200
+        jsonpath:
+          $.name:
+            - eq: Updated Test Product
+          $.price:
+            - eq: 39.99
+
+  # Clean up: Delete the test product
+  - $ref: ../steps/delete-product.yml

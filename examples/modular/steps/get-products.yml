@@ -1,0 +1,21 @@
+name: Get Products List
+http:
+  url: https://api.example.com/products
+  method: GET
+  headers:
+    Authorization: Bearer ${{ captures.authToken }}
+  params:
+    limit: 10
+    page: 1
+  check:
+    status: 200
+    jsonpath:
+      $.data:
+        - isArray: true
+      $.data[0].id:
+        - isNumber: true
+      $.data[0].name:
+        - isString: true
+  captures:
+    firstProductId:
+      jsonpath: $.data[0].id

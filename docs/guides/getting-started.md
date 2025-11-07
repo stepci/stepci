@@ -40,6 +40,21 @@
     You can also also use JSON format to configure your workflow
     :::
 
+    **Understanding the structure**
+
+    StepCI workflows follow a three-level hierarchy:
+
+    ```
+    Workflow → Tests → Steps
+    ```
+
+    In the example above:
+    - **Workflow**: The entire `workflow.yml` file (named "Status Check")
+    - **Test**: The `example` test (contains one or more steps)
+    - **Step**: The "GET request" step (performs a single HTTP request)
+
+    Tests run in parallel, while steps within a test run sequentially. Learn more in [Concepts](./concepts.md).
+
 3. Run the workflow
 
     ```

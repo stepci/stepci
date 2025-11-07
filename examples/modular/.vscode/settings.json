@@ -1,0 +1,9 @@
+{
+  "yaml.schemas": {
+    "../../schemas/workflow.schema.json": ["*workflow.yml", "*.stepci.yml"],
+    "../../schemas/test.schema.json": ["tests/*test.yml"],
+    "../../schemas/step.schema.json": ["steps/*step.yml"]
+  },
+  "yaml.completion": true,
+  "yaml.validate": true
+}

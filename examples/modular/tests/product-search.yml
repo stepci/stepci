@@ -1,0 +1,41 @@
+name: Product Search Test
+steps:
+  # Authenticate
+  - $ref: ../steps/login.yml
+
+  # Search for products by category
+  - name: Search Electronics
+    http:
+      url: https://api.example.com/products/search
+      method: GET
+      headers:
+        Authorization: Bearer ${{ captures.authToken }}
+      params:
+        category: electronics
+        limit: 20
+      check:
+        status: 200
+        jsonpath:
+          $.results:
+            - isArray: true
+          $.total:
+            - isNumber: true
+    captures:
+      searchResults:
+        jsonpath: $.total
+
+  # Search with price filters
+  - name: Search by Price Range
+    http:
+      url: https://api.example.com/products/search
+      method: GET
+      headers:
+        Authorization: Bearer ${{ captures.authToken }}
+      params:
+        minPrice: 10
+        maxPrice: 50
+      check:
+        status: 200
+        jsonpath:
+          $.results:
+            - isArray: true

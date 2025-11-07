@@ -1,0 +1,8 @@
+name: Delete Product
+http:
+  url: https://api.example.com/products/${{ captures.newProductId }}
+  method: DELETE
+  headers:
+    Authorization: Bearer ${{ captures.authToken }}
+  check:
+    status: 204

@@ -1,0 +1,15 @@
+name: Login to API
+http:
+  url: https://api.example.com/auth/login
+  method: POST
+  json:
+    username: ${{ env.API_USERNAME }}
+    password: ${{ env.API_PASSWORD }}
+  check:
+    status: 200
+    jsonpath:
+      $.token:
+        - isString: true
+  captures:
+    authToken:
+      jsonpath: $.token

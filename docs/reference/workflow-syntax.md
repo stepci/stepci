@@ -8,6 +8,54 @@ We choose YAML as a primary configuration format, because YAML files can be read
 Learn more about YAML from ["Learn YAML in Y minutes"](https://learnxinyminutes.com/docs/yaml/)
 :::
 
+## Structure Overview
+
+StepCI workflows follow a three-level hierarchical structure:
+
+```
+┌─────────────────────────────────────┐
+│         Workflow (Suite)            │
+│  ┌───────────────────────────────┐  │
+│  │          Test 1               │  │
+│  │  ┌─────────┐  ┌─────────┐   │  │
+│  │  │ Step 1  │  │ Step 2  │   │  │
+│  │  └─────────┘  └─────────┘   │  │
+│  └───────────────────────────────┘  │
+│  ┌───────────────────────────────┐  │
+│  │          Test 2               │  │
+│  │  ┌─────────┐                 │  │
+│  │  │ Step 1  │                 │  │
+│  │  └─────────┘                 │  │
+│  └───────────────────────────────┘  │
+└─────────────────────────────────────┘
+```
+
+**Hierarchy:**
+- **Workflow**: Top-level container with metadata, configuration, and tests
+  - Can contain **one or more Tests** (inline or via `$ref`)
+- **Test**: A distinct test scenario with its own context
+  - Can contain **one or more Steps** (inline or via `$ref`)
+  - Tests run **concurrently** (parallel execution)
+- **Step**: A single API operation (HTTP, GraphQL, gRPC, etc.)
+  - Steps within a test run **sequentially**
+  - If one step fails, following steps are skipped
+
+**Composability:**
+
+All three levels support imports using `$ref`, enabling modular test organization:
+```yaml
+tests:
+  userTest:
+    $ref: "./tests/user-test.yml"    # Import entire test
+
+tests:
+  example:
+    steps:
+      - $ref: "./steps/login.yml"     # Import individual step
+```
+
+See [Concepts](../guides/concepts.md) for detailed explanations and [Organising Workflows](../guides/organising-workflows.md) for examples of composable structures.
+
 ## Spec
 
 ### `version`
@@ -1625,3 +1673,90 @@ Optional. Plugin params
 ### `tests.<test>.steps.[step].plugin.check`
 
 Optional. Plugin checks
+
+## JSON Schemas
+
+StepCI provides JSON Schema definitions for workflows, tests, and steps to enable validation, editor integration, and programmatic workflow generation.
+
+### Available Schemas
+
+**[`suite.schema.json`](../../schemas/suite.schema.json)** - Workflow (Suite) Schema
+- Defines the top-level workflow structure
+- Includes: version, name, env, config, tests
+- Use this for validating complete workflow files
+
+**[`test.schema.json`](../../schemas/test.schema.json)** - Test Schema
+- Defines individual test structure
+- Includes: name, steps, before, after, env, config
+- Use this for validating standalone test files
+- Note: Test files can contain either a single test or multiple tests
+
+**[`step.schema.json`](../../schemas/step.schema.json)** - Step Schema
+- Defines individual step structure
+- Includes: name, http, graphql, grpc, and all step types
+- Use this for validating reusable step definitions
+
+### Using the Schemas
+
+**Validation in CI/CD:**
+```bash
+# Validate a workflow file
+npx ajv-cli validate -s schemas/suite.schema.json -d workflow.yml
+```
+
+**Editor Integration:**
+
+For VSCode and other editors that support JSON Schema, reference the schemas in your YAML files:
+
+```yaml
+# yaml-language-server: $schema=../../schemas/suite.schema.json
+version: "1.1"
+name: "My Workflow"
+tests:
+  example:
+    steps:
+      - name: Test
+        http:
+          url: https://example.com
+```
+
+See [Editor Integration](../guides/editor-integration.md) for more details on setting up schema validation in your editor.
+
+**Programmatic Generation:**
+
+Use the schemas to validate dynamically generated workflows:
+
+```javascript
+const Ajv = require('ajv');
+const ajv = new Ajv();
+const suiteSchema = require('./schemas/suite.schema.json');
+
+const workflow = {
+  version: "1.1",
+  name: "Generated Workflow",
+  tests: { /* ... */ }
+};
+
+const validate = ajv.compile(suiteSchema);
+const valid = validate(workflow);
+if (!valid) console.error(validate.errors);
+```
+
+### Schema Relationships
+
+The schemas mirror the three-level hierarchy:
+
+```
+suite.schema.json (Workflow)
+    ↓ references
+test.schema.json (Test)
+    ↓ references
+step.schema.json (Step)
+```
+
+This modular design allows you to:
+- Validate workflows, tests, and steps independently
+- Build composable test suites with validated components
+- Generate type definitions for programmatic workflow creation
+
+For more details, see the [Schemas Reference](./schemas.md).

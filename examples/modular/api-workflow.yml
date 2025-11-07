@@ -1,0 +1,89 @@
+# yaml-language-server: $schema=../../schemas/workflow.schema.json
+version: "1.1"
+name: E-Commerce API Test Suite
+
+# Environment variables accessible to all tests and steps
+env:
+  API_USERNAME: test@example.com
+  API_PASSWORD: testpassword123
+  API_BASE_URL: https://api.example.com
+
+# Global HTTP configuration
+config:
+  http:
+    baseURL: ${{ env.API_BASE_URL }}
+    timeout: 5000
+    headers:
+      User-Agent: StepCI/ModularExample
+
+# Setup: Run before all tests
+before:
+  name: Setup
+  steps:
+    - name: Health Check
+      http:
+        url: /health
+        method: GET
+        check:
+          status: 200
+          jsonpath:
+            $.status:
+              - eq: healthy
+
+# Test suites - imported from separate files
+tests:
+  # Basic authentication test
+  authentication:
+    $ref: ./tests/auth.yml
+
+  # Product CRUD operations
+  productManagement:
+    $ref: ./tests/product-management.yml
+
+  # Search functionality
+  productSearch:
+    $ref: ./tests/product-search.yml
+
+  # Complete order workflow
+  orderFlow:
+    $ref: ./tests/order-flow.yml
+
+  # Inline test example (mixing inline and imported tests)
+  apiStatus:
+    name: API Status Test
+    steps:
+      - name: Check API Version
+        http:
+          url: /version
+          method: GET
+          check:
+            status: 200
+            jsonpath:
+              $.version:
+                - isString: true
+              $.apiVersion:
+                - isString: true
+
+      - name: Get Server Time
+        http:
+          url: /time
+          method: GET
+          check:
+            status: 200
+            jsonpath:
+              $.timestamp:
+                - isNumber: true
+
+# Teardown: Run after all tests
+after:
+  name: Teardown
+  steps:
+    - name: Log Test Completion
+      http:
+        url: /logs
+        method: POST
+        json:
+          message: Test suite completed
+          timestamp: ${{ env.TIMESTAMP }}
+        check:
+          status: /^20/

@@ -1,0 +1,25 @@
+name: Create New Product
+http:
+  url: https://api.example.com/products
+  method: POST
+  headers:
+    Authorization: Bearer ${{ captures.authToken }}
+    Content-Type: application/json
+  json:
+    name: Test Product
+    description: A product created during testing
+    price: 29.99
+    category: electronics
+    stock: 100
+  check:
+    status: 201
+    jsonpath:
+      $.id:
+        - isNumber: true
+      $.name:
+        - eq: Test Product
+      $.price:
+        - eq: 29.99
+  captures:
+    newProductId:
+      jsonpath: $.id

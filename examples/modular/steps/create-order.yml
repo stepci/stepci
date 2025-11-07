@@ -1,0 +1,28 @@
+name: Create Order
+http:
+  url: https://api.example.com/orders
+  method: POST
+  headers:
+    Authorization: Bearer ${{ captures.authToken }}
+    Content-Type: application/json
+  json:
+    items:
+      - productId: ${{ captures.newProductId }}
+        quantity: 2
+    shippingAddress:
+      street: 123 Test Street
+      city: Test City
+      postalCode: "12345"
+      country: US
+  check:
+    status: 201
+    jsonpath:
+      $.orderId:
+        - isString: true
+      $.status:
+        - eq: pending
+      $.total:
+        - isNumber: true
+  captures:
+    orderId:
+      jsonpath: $.orderId

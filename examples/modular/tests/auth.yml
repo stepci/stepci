@@ -1,0 +1,3 @@
+name: Authentication Test
+steps:
+  - $ref: ../steps/login.yml

@@ -93,6 +93,36 @@ Join our community on [Discord](https://discord.gg/KqJJzJ3BTu) and [GitHub](http
 
 As an open-source project, we welcome contributions from the community. If you are experiencing any bugs or want to add some improvements, please feel free to open an issue or pull request
 
+### Development setup
+
+To work on the Step CI codebase locally, install the LTS version of [Node.js](https://nodejs.org/en/) and npm, then install the project dependencies:
+
+```sh
+npm install
+```
+
+Use the scripts in [`package.json`](package.json) for local development:
+
+```sh
+# Compile the TypeScript source and regenerate schema.json.
+npm run build
+
+# Run the default Step CI example test.
+npm test
+
+# Generate an example workflow.
+npm run test:generate
+
+# Run the VitePress documentation build.
+npm run docs:build
+```
+
+For iterative source changes, you can keep the TypeScript compiler running:
+
+```sh
+npm run build:watch
+```
+
 ## Support Plan
 
 Get Pro-level support with SLA, onboarding, prioritized feature-requests and bugfixes.
